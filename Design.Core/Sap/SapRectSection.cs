@@ -6,7 +6,7 @@ namespace Desing.Core.Sap
     {
         Default = -1
     }
-    internal public class SapRectSection
+     public class SapRectSection
     {
         #region Memeber Variables
 

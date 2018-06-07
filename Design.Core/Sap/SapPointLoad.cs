@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desing.Core.Sap
 {
-    enum Type
+   public enum Type
     {
         Force = 1,
         Moment = 2

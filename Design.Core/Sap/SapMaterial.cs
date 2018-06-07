@@ -6,7 +6,7 @@ namespace Desing.Core.Sap
     {
         Default = -1
     }
-    internal public class SapMaterial
+     public class SapMaterial
     {
         #region Member Variables
 

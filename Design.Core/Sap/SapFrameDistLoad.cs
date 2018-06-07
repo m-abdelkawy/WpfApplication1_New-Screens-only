@@ -22,7 +22,7 @@ namespace Desing.Core.Sap
         gravityDir = 10,
         projGravityDir = 11,
     }
-    public public class SapFrameDistLoad
+    public  class SapFrameDistLoad
     {
         #region Member Variables
         private SapLoadPattern loadPattern;

@@ -6,8 +6,33 @@
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="226,172,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
-    </Grid>
+    <StackPanel>
+        <!--Menu Bar-->
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Header="_Edit"/>
+                <MenuItem Header="_View"/>
+                <MenuItem Header="_Draw"/>
+                <MenuItem Header="_Help"/>
+            </Menu>
+        </DockPanel>
+        <!--Tab controller-->
+        <Grid>
+
+            <TabControl  >
+                <TabItem Header="Untitled">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Design-Untitled">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </StackPanel>
 </Window>

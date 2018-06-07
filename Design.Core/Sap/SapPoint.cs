@@ -2,7 +2,7 @@
 
 namespace Desing.Core.Sap
 {
-    internal public class SapPoint
+     public class SapPoint
     {
         #region Memeber Variables
 

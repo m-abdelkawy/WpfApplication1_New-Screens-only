@@ -7,7 +7,7 @@ using SAP2000v20;
 
 namespace Desing.Core.Sap
 {
-    public public class SapLoadPattern
+    public  class SapLoadPattern
     {
         #region Member Variables
 
