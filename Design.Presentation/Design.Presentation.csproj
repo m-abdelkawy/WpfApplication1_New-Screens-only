@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\GridData.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
     <Compile Include="BeamGeometry.xaml.cs">
       <DependentUpon>BeamGeometry.xaml</DependentUpon>

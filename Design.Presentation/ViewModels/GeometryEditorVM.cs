@@ -8,16 +8,19 @@ using System.Windows;
 
 namespace Design.Presentation.ViewModels
 {
-   public class GeometryEditorVM
+    public class GeometryEditorVM
     {
-        public int NumberOfSpans { get;
-            set; } = 1;
+        public int NumberOfSpans
+        {
+            get;
+            set;
+        } = 1;
         public int SpanLength { get; set; } = 5;
 
         public GeometryEditorVM()
         {
-           // if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) return;
-            
+            // if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) return;
+
         }
     }
 }

@@ -76,8 +76,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Width="50" Content="_Ok" Grid.Column="0" HorizontalAlignment="Right" Margin="20 10 20 0"/>
-            <Button Width="50" Content="_Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="20 10 20 0"/>
+            <Button Width="50" Content="_Ok" Grid.Column="0" HorizontalAlignment="Right" Margin="20 10 20 0" Click="Button_Click"/>
+            <Button Width="50" Content="_Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="20 10 20 0" Click="Button_Click_1"/>
         </Grid>
      
     </Grid>

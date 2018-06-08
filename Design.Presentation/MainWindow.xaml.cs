@@ -38,14 +38,15 @@ namespace Design.Presentation
         private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
             GeometryEditor= new GeometryEditor();
-            GeometryEditor.Show();
-          
+            GeometryEditor.ShowDialog();
+
         }
         #endregion
 
         private void btn_analyse_Click(object sender, RoutedEventArgs e)
         {
             var gemoemtryData = (GeometryEditorVM)GeometryEditor.DataContext;
+
         }
     }
 }
