@@ -54,7 +54,7 @@ namespace Design.Presentation
         private void btn_loadCases_Click(object sender, RoutedEventArgs e)
         {
             LoadCases = new LoadCases();
-            LoadCases.Shows();
+            LoadCases.Show();
         }
     }
 }
