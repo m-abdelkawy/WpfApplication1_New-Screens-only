@@ -32,7 +32,7 @@
                 <Button Name="btn_editBeam" Content="Edit Beam" Margin="10 10 10 0" Click="Btn_editBeam_Click"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Name="btn_loadCases" Content="Load Cases" Margin="10 10 10 0" Click="btn_loadCases_Click"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>

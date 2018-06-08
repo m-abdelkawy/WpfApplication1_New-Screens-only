@@ -67,6 +67,14 @@
     <Compile Include="SectionProperties.xaml.cs">
       <DependentUpon>SectionProperties.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LoadAssignmentVM.cs" />
+    <Compile Include="ViewModels\LoadCasesVM.cs" />
+    <Compile Include="Views\LoadAssignment.xaml.cs">
+      <DependentUpon>LoadAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadCases.xaml.cs">
+      <DependentUpon>LoadCases.xaml</DependentUpon>
+    </Compile>
     <Page Include="BeamGeometry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +105,14 @@
     <Page Include="SectionProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoadAssignment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadCases.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -133,8 +149,6 @@
       <Name>Design.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

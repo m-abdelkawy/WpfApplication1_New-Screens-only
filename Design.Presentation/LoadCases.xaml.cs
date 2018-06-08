@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SAP2000v20;
+using Design.Presentation.ViewModels;
+
 
 namespace Design.Presentation
 {
