@@ -26,43 +26,43 @@ namespace Design.Presentation
             InitializeComponent();
         }
 
-        static int loadCaseBtnClicked = 0;
-        private void loadCaseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            loadPatternName.Add(loadCasetxtBox.Text);
-            SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
-            patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
+        //static int loadCaseBtnClicked = 0;
+        //private void loadCaseBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    loadPatternName.Add(loadCasetxtBox.Text);
+        //    SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
+        //    patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
 
-            distLoadShapes.Add(new List<Rectangle>());
-            loadCaseBtnClicked += 1;
-        }
+        //    distLoadShapes.Add(new List<Rectangle>());
+        //    loadCaseBtnClicked += 1;
+        //}
 
-        private void loadTypeComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            loadTypeComboBox.ItemsSource = Enum.GetValues(typeof(eLoadPatternType)).Cast<eLoadPatternType>();
-        }
+        //private void loadTypeComboBox_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    loadTypeComboBox.ItemsSource = Enum.GetValues(typeof(eLoadPatternType)).Cast<eLoadPatternType>();
+        //}
 
-        private void loadCaseComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            var loadCaseComboBox = sender as ComboBox;
-            loadCaseComboBox.ItemsSource = loadPatternName;
-            loadCaseComboBox.SelectedIndex = 0;
-        }
+        //private void loadCaseComboBox_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    var loadCaseComboBox = sender as ComboBox;
+        //    loadCaseComboBox.ItemsSource = loadPatternName;
+        //    loadCaseComboBox.SelectedIndex = 0;
+        //}
 
-        private void loadCaseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var loadCaseComboBox = sender as ComboBox;
-            string value = loadCaseComboBox.SelectedIndex.ToString();
+        //private void loadCaseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var loadCaseComboBox = sender as ComboBox;
+        //    string value = loadCaseComboBox.SelectedIndex.ToString();
 
-            var loadComboBoxSelectedItem = e.AddedItems[0] as string;
+        //    var loadComboBoxSelectedItem = e.AddedItems[0] as string;
 
-            //loadCaseName = loadComboBoxSelectedItem;
-            //this.Title = value;
-        }
+        //    //loadCaseName = loadComboBoxSelectedItem;
+        //    //this.Title = value;
+        //}
 
-        private void loadComboBtn_Click(object sender, RoutedEventArgs e)
-        {
+        //private void loadComboBtn_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
     }
 }

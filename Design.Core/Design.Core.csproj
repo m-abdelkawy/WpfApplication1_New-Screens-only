@@ -31,10 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
+
       <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="SAP2000v20">
       <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\SAP2000v20.dll</HintPath>
+
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +47,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WW">
+
       <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.dll</HintPath>
     </Reference>
     <Reference Include="WW.Cad">
@@ -58,6 +61,7 @@
     </Reference>
     <Reference Include="WW.Pdf">
       <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.Pdf.dll</HintPath>
+
     </Reference>
   </ItemGroup>
   <ItemGroup>

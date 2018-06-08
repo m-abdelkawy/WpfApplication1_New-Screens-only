@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SAP2000v20">
+      <HintPath>C:\Program Files\Computers and Structures\SAP2000 20\SAP2000v20.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,6 +62,12 @@
     <Compile Include="Material.xaml.cs">
       <DependentUpon>Material.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadAssignment.xaml.cs">
+      <DependentUpon>LoadAssignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadCases.xaml.cs">
+      <DependentUpon>LoadCases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SectionProperties.xaml.cs">
       <DependentUpon>SectionProperties.xaml</DependentUpon>
     </Compile>
@@ -67,6 +76,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GeometryEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadAssignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadCases.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,7 +135,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Design.Core\Design.Core.csproj">
