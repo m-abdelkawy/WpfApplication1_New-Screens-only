@@ -49,8 +49,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" Height="200" />
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                    <DataGrid Grid.Column="0" Height="200" ItemsSource="{Binding GridData}"/>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center"  >
                     <Button Content="Add" Width="50" Margin="10"/>
                     <Button Content="Delete" Width="50"/>
                 </StackPanel>
