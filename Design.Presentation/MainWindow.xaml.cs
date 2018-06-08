@@ -25,6 +25,9 @@ namespace Design.Presentation
         #region Properties
         public GeometryEditor GeometryEditor { get; set; }
         public SectionProperties SectioProperties { get; set; }
+
+        //Load Cases Window
+        public LoadCases LoadCases { get; set; }
         #endregion
         public MainWindow()
         {
@@ -46,6 +49,12 @@ namespace Design.Presentation
         private void btn_analyse_Click(object sender, RoutedEventArgs e)
         {
             var gemoemtryData = (GeometryEditorVM)GeometryEditor.DataContext;
+        }
+
+        private void btn_loadCases_Click(object sender, RoutedEventArgs e)
+        {
+            LoadCases = new LoadCases();
+            LoadCases.Shows();
         }
     }
 }
