@@ -4,10 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Design.Presentation"
+      xmlns:local1="clr-namespace:Design.Presentation.ViewModels"
+      xmlns:localSap="clr-namespace:SAP2000v20;assembly=SAP2000v20"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
       Title="LoadCases">
-
+    
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="loadPatternEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="localSap:eLoadPatternType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <!--Window Header-->
@@ -65,9 +75,9 @@
                   Width="100"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
-                  ItemsSource="{Binding eLoadPatternType}"
-                  SelectedValue="{Binding loadPatternType, Mode=TwoWay}"
-                  Loaded="loadTypeComboBox_Loaded">
+                  ItemsSource="{Binding Source={StaticResource loadPatternEnum}}"
+                  SelectedValue="{Binding loadPatternType}">
+            <!--Loaded="loadTypeComboBox_Loaded"-->
         </ComboBox>
         <TextBlock Text="selfWt Multiplier: "
                    Grid.Row="3"
@@ -90,8 +100,8 @@
                 Content="AddCase"
                 Grid.Row="3"
                 Grid.Column="2"
-                Grid.ColumnSpan="2"
-                Click="loadCaseBtn_Click">
+                Grid.ColumnSpan="2">
+            <!--Click="loadCaseBtn_Click"-->
         </Button>
         <ListBox x:Name="LoadCaseListBox"
                  Grid.Row="4"
@@ -140,9 +150,9 @@
                   Grid.Column="3"
                   Width="100"
                   HorizontalAlignment="Left"
-                  VerticalAlignment="Center"
-                  Loaded="loadCaseComboBox_Loaded"
-                  SelectionChanged="loadCaseComboBox_SelectionChanged">
+                  VerticalAlignment="Center">
+            <!--Loaded="loadCaseComboBox_Loaded"
+                  SelectionChanged="loadCaseComboBox_SelectionChanged"-->
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel x:Name="loadCaseStackPanel" 
@@ -173,8 +183,8 @@
                 Content="AddCombo"
                 Grid.Row="7"
                 Grid.Column="2"
-                Grid.ColumnSpan="2"
-                Click="loadComboBtn_Click">
+                Grid.ColumnSpan="2">
+            <!--Click="loadComboBtn_Click"-->
         </Button>
         <ListBox x:Name="LoadComboListBox"
                  Grid.Row="8"
@@ -186,7 +196,6 @@
                  Margin="5,5,5,5"
                  VerticalAlignment="Center"
                  Width="240"/>
-        
 
     </Grid>
 </Window>

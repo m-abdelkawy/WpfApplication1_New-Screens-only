@@ -20,7 +20,7 @@ namespace Design.Presentation
     /// <summary>
     /// Interaction logic for LoadAssignment.xaml
     /// </summary>
-    public partial class LoadAssignment : Page
+    public partial class LoadAssignment : Window
     {
         public LoadAssignment()
         {
