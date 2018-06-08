@@ -21,11 +21,10 @@ namespace Design.Presentation
     /// <summary>
     /// Interaction logic for LoadCases.xaml
     /// </summary>
-    public partial class LoadCases : Page
+    public partial class LoadCases : Window
     {
         public LoadCases()
         {
-            DataContext = new LoadCasesVM();
             InitializeComponent();
         }
 
