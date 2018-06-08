@@ -24,8 +24,20 @@
         </DockPanel>
         <!--Tab controller-->
         <Grid>
-
-            <TabControl  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <Button Name="btn_editBeam" Content="Edit Beam" Margin="10 10 10 0" Click="Btn_editBeam_Click"/>
+                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
+            </StackPanel>
+            <TabControl Grid.Column="1" >
                 <TabItem Header="Untitled">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>

@@ -20,10 +20,9 @@ namespace Design.Presentation
     public partial class SectionProperties : Window
     {
 
-        public double  Width { get; set; }
+        
         public double Thickness { get; set; }
-        public Window Parent { get; set; }
-        public SectionProperties()
+               public SectionProperties()
         {
             InitializeComponent();
             var mainWindow = (MainWindow)Parent;

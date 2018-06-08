@@ -1,4 +1,5 @@
-﻿using Desing.Core.Sap;
+﻿using Design.Presentation.ViewModels;
+using Desing.Core.Sap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,19 +22,30 @@ namespace Design.Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string anaParent { get; set; }
+        #region Properties
+        public GeometryEditor GeometryEditor { get; set; }
+        public SectionProperties SectioProperties { get; set; }
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+
+        #region Btn_Events
+
+        private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
-            SectionProperties p = new SectionProperties();
-            p.Parent = this;
-            p.Show();
-            var w = p.Width;
-            var t = p.Thickness;
+            GeometryEditor= new GeometryEditor();
+            GeometryEditor.Show();
+          
+        }
+        #endregion
+
+        private void btn_analyse_Click(object sender, RoutedEventArgs e)
+        {
+            var gemoemtryData = (GeometryEditorVM)GeometryEditor.DataContext;
         }
     }
 }

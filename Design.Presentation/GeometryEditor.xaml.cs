@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Design.Presentation.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +18,12 @@ namespace Design.Presentation
     /// <summary>
     /// Interaction logic for Geometry.xaml
     /// </summary>
-    public partial class Geometry : Window
+    public partial class GeometryEditor : Window
     {
-        public Geometry()
+
+        public GeometryEditor()
         {
+            DataContext = new GeometryEditorVM();
             InitializeComponent();
         }
     }

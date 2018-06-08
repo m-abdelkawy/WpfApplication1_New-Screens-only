@@ -1,11 +1,13 @@
-﻿<Window x:Class="Design.Presentation.Geometry"
+﻿<Window x:Class="Design.Presentation.GeometryEditor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
-        Title="Geometry Editor" Height="450" Width="800">
+        Title="Geometry Editor" Height="474" Width="800">
+   
+   
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,9 +35,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Number of Span"/>
-                    <TextBox Grid.Column="1" Width="50"/>
+                    <TextBox Grid.Column="1" Width="50" Text="{Binding NumberOfSpans}"/>
                     <Label Grid.Column="3" Content="Span Length"/>
-                    <TextBox Grid.Column="4" Width="50"/>
+                    <TextBox Grid.Column="4" Width="50" Text="{Binding SpanLength}"/>
                 </Grid>
                 <!--Grid data-->
                 
