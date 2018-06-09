@@ -128,7 +128,9 @@ namespace Design.Presentation
 
         private void btn_loadCases_Click(object sender, RoutedEventArgs e)
         {
-            
+            var lc=new LoadCases();
+            lc.DataContext = new LoadCasesVM();
+            lc.ShowDialog();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       Height="400" Width="450"
       Title="LoadCases">
-    
+
     <Window.Resources>
         <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="loadPatternEnum">
             <ObjectDataProvider.MethodParameters>
@@ -28,7 +28,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Load Cases-->
         <StackPanel VerticalAlignment="Center">
             <StackPanel Margin="10">
@@ -44,16 +44,7 @@
                                   Height="100"
                                   Grid.Column="0"
                             ItemsSource="{Binding loadCaseGridData}">
-                            <!--<DataGrid.Columns>
-                                <DataGridTextColumn Header="ID"
-                                                    Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="Load Case"
-                                                    Binding="{Binding LoadcaseName}"/>
-                                <DataGridTextColumn Header="Self Weight Multiplier"
-                                                    Binding="{Binding SelfWtMult}"/>
-                                <DataGridTextColumn Header="Pattern Type"
-                                                    Binding="{Binding loadPatternType}"/>
-                            </DataGrid.Columns>-->
+
                         </DataGrid>
                         <StackPanel VerticalAlignment="Center"
                                     Grid.Column="1">
@@ -82,19 +73,12 @@
                         <DataGrid x:Name="loadComboGridData"
                                   Width="350"
                                   Height="100"
-                                  Grid.Column="0">
-                            <!--ItemsSource="{Binding loadComboGridData}"-->
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID"
-                                                    Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="Load Combo"
-                                                    Binding="{Binding LoadComboName}"/>
-                                <DataGridTextColumn Header="Load Case"
-                                                    Binding="{Binding LoadCaseName}"/>
-                                <DataGridTextColumn Header="Load Factor"
-                                                    Binding="{Binding LoadFactor}"/>
-                            </DataGrid.Columns>
+                                  
+                                  ItemsSource="{Binding loadComboGridData}"
+                                  >
                         </DataGrid>
+
+
                         <StackPanel VerticalAlignment="Center"
                                     Grid.Column="1">
                             <Button x:Name="AddLoadComboBtn"
@@ -130,7 +114,7 @@
                         VerticalAlignment="Top"/>
             </Grid>
         </StackPanel>
-        
+
 
 
 

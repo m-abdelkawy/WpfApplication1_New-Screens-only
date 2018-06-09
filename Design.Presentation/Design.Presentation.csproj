@@ -64,6 +64,8 @@
     </Compile>
     <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\GridData.cs" />
+    <Compile Include="Model\LoadCaseGridData.cs" />
+    <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="Model\SteelMaterialProperties.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
