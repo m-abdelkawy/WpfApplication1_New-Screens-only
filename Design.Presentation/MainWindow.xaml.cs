@@ -1,7 +1,10 @@
 ﻿using Design.Presentation.ViewModels;
+using Design.Presentation.Views.Material;
+using Design.Presentation.Views.Section;
 using Desing.Core.Sap;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +27,16 @@ namespace Design.Presentation
     {
         #region Properties
         public GeometryEditor GeometryEditor { get; set; }
-        public SectionProperties SectioProperties { get; set; }
-
+        public ObservableCollection<MaterialEditorVM> Materials { get; set; }
+        public ObservableCollection<SectionEditorVM> Sections { get; set; }
         //Load Cases Window
-        public LoadCases LoadCases { get; set; }
+
         #endregion
         public MainWindow()
         {
             InitializeComponent();
+            Materials = new ObservableCollection<MaterialEditorVM>();
+            Sections= new ObservableCollection<SectionEditorVM>();
         }
 
 
@@ -54,8 +59,36 @@ namespace Design.Presentation
 
         private void btn_loadCases_Click(object sender, RoutedEventArgs e)
         {
-            LoadCases = new LoadCases();
-            LoadCases.Show();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Btn_Material_Click(object sender, RoutedEventArgs e)
+        {
+            MaterialDialouge md = new MaterialDialouge
+            {
+                DataContext = new MaterialDialougeVM().Materials = Materials
+            };
+            md.ShowDialog();
+            
+        }
+
+        private void Btn_Section_Click(object sender, RoutedEventArgs e)
+        {
+            SectionDialouge sd = new SectionDialouge
+            {
+                DataContext = new SectionDialougeVM().Sections = Sections
+            };
+            sd.Show();
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Design.Presentation.Model
     {
         public int Id { get; set; }
         public double Span { get; set; }
-        public int MyProperty { get; set; }
+        public int SectionProperties { get; set; }
     }
 }

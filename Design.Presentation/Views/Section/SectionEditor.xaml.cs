@@ -12,16 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Design.Presentation
+namespace Design.Presentation.Views.Section
 {
     /// <summary>
-    /// Interaction logic for Material.xaml
+    /// Interaction logic for SectionEditor.xaml
     /// </summary>
-    public partial class Material : Window
+    public partial class SectionEditor : Window
     {
-        public Material()
+        public SectionEditor()
         {
             InitializeComponent();
+        }
+
+        private void Btn_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Btn_Ok_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

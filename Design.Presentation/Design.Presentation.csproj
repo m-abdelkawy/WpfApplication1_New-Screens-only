@@ -56,31 +56,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LoadCases.xaml.cs" />
+    <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\GridData.cs" />
+    <Compile Include="ViewModels\SectionDialougeVM.cs" />
+    <Compile Include="Model\SteelMaterialProperties.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
-    <Compile Include="BeamGeometry.xaml.cs">
-      <DependentUpon>BeamGeometry.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Material.xaml.cs">
-      <DependentUpon>Material.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SectionProperties.xaml.cs">
-      <DependentUpon>SectionProperties.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\MaterialProperty.cs" />
     <Compile Include="ViewModels\LoadAssignmentVM.cs" />
     <Compile Include="ViewModels\LoadCasesVM.cs" />
-    <Page Include="BeamGeometry.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="ViewModels\MaterialDialougeVM.cs" />
+    <Compile Include="ViewModels\MaterialEditorVM.cs" />
+    <Compile Include="ViewModels\SectionEditorVM.cs" />
+    <Compile Include="Views\Material\MaterialDialouge.xaml.cs">
+      <DependentUpon>MaterialDialouge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Material\MaterialEditor.xaml.cs">
+      <DependentUpon>MaterialEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Section\SectionDialouge.xaml.cs">
+      <DependentUpon>SectionDialouge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Section\SectionEditor.xaml.cs">
+      <DependentUpon>SectionEditor.xaml</DependentUpon>
+    </Compile>
     <Page Include="GeometryEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LoadCases.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -97,11 +98,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Material.xaml">
+    <Page Include="Views\Material\MaterialDialouge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SectionProperties.xaml">
+    <Page Include="Views\Material\MaterialEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Section\SectionDialouge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Section\SectionEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,8 +149,6 @@
       <Name>Design.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
