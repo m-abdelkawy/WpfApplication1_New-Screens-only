@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1024" WindowStartupLocation="CenterScreen">
 
     <StackPanel>
         <!--Menu Bar-->
@@ -29,9 +29,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                <Button Name="btn_editBeam" Content="Edit Beam" Margin="10 10 10 0" Click="Btn_editBeam_Click"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button Name="btn_editBeam" Content="Edit " Margin="10 10 10 0" Click="Btn_editBeam_Click"/>
+                <Button Name="Btn_Section" Content="Section" Margin="10 10 10 0" Click="Btn_Section_Click"/>
+                <Button Name="Btn_Material" Content="Material" Margin="10 10 10 0" Click="Btn_Material_Click" />
                 <Button Name="btn_loadCases" Content="Load Cases" Margin="10 10 10 0" Click="btn_loadCases_Click"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>

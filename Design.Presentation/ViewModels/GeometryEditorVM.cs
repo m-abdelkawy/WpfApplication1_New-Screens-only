@@ -14,11 +14,12 @@ namespace Design.Presentation.ViewModels
     {
         public int NumberOfSpans { get; set; } = 1;
         public int SpanLength { get; set; } = 5;
+        public ObservableCollection<SectionEditorVM> Sections { get; set; }
         public ObservableCollection<GridData> GridData { get; set; }
 
-        public GeometryEditorVM()
+        public GeometryEditorVM(ObservableCollection<SectionEditorVM> sections)
         {
-            // if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) return;
+            Sections = sections;
             GridData = new ObservableCollection<GridData>()
             {
                 new GridData{Id=1,Span=10},
