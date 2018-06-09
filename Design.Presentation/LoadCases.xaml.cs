@@ -37,7 +37,12 @@ namespace Design.Presentation
         {
             DataContext = new LoadCasesVM();
             InitializeComponent();
-
+            loadCaseGridData.CanUserAddRows = false;
+            loadCaseGridData.CanUserDeleteRows = false;
+            loadCaseGridData.CanUserSortColumns = false;
+            loadCaseGridData.CanUserReorderColumns = false;
+            loadCaseGridData.CanUserResizeColumns = false;
+            loadCaseGridData.CanUserResizeRows = false;
             #region DataBindingTrial
             //LoadCaseGridData load1 = new LoadCaseGridData();
             //load1.LoadcaseName = "Dead";
@@ -53,82 +58,101 @@ namespace Design.Presentation
 
         private void AddLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
-            loadCaseGridData.SelectAllCells();
-            loadCaseGridData.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-            ApplicationCommands.Copy.Execute(null, loadCaseGridData);
-            loadCaseGridData.UnselectAllCells();
-            String result = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-            string[] Lines = result.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-            string[] Fields;
-            Fields = Lines[0].Split(new char[] { ',' });
-            int Cols = Fields.GetLength(0);
 
-            //1st row must be column names; force lower case to ensure matching later on.
-            for (int i = 0; i < Cols; i++)
-                dt.Columns.Add(Fields[i].ToUpper(), typeof(string));
-            DataRow Row;
-            for (int i = 1; i < Lines.GetLength(0) - 1; i++)
+            var viewModel =(LoadCasesVM) DataContext;
+            viewModel.loadCaseGridData.Add(new LoadCaseGridData()
             {
-                Fields = Lines[i].Split(new char[] { ',' });
-                Row = dt.NewRow();
-                for (int f = 0; f < Cols; f++)
-                {
-                    Row[f] = Fields[f];
-                }
-                dt.Rows.Add(Row);
-                loadPatternName.Add(dt.Rows[AddLoadCaseBtnClicked].ItemArray[1].ToString());
+                Id = 5,
+                LoadcaseName = "ay haga",
+                loadPatternType = eLoadPatternType.Dead,
+                SelfWtMult=0
+            });
+            #region old
+            //loadCaseGridData.SelectAllCells();
+            //loadCaseGridData.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+            //ApplicationCommands.Copy.Execute(null, loadCaseGridData);
+            //loadCaseGridData.UnselectAllCells();
+            //String result = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
+            //string[] Lines = result.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+            //string[] Fields;
+            //Fields = Lines[0].Split(new char[] { ',' });
+            //int Cols = Fields.GetLength(0);
 
-
-
-                //SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
-                //patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
-
-                //distLoadShapes.Add(new List<Rectangle>());
-            }
-
-            //loadPatternName.Add(dgv.LoadcaseName);
-            AddLoadCaseBtnClicked += 1;
-
-
-
-            //static int loadCaseBtnClicked = 0;
-            //private void loadCaseBtn_Click(object sender, RoutedEventArgs e)
+            ////1st row must be column names; force lower case to ensure matching later on.
+            //for (int i = 0; i < Cols; i++)
+            //    dt.Columns.Add(Fields[i].ToUpper(), typeof(string));
+            //DataRow Row;
+            //for (int i = 1; i < Lines.GetLength(0) - 1; i++)
             //{
-            //    loadPatternName.Add(loadCasetxtBox.Text);
-            //    SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
-            //    patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
+            //    Fields = Lines[i].Split(new char[] { ',' });
+            //    Row = dt.NewRow();
+            //    for (int f = 0; f < Cols; f++)
+            //    {
+            //        Row[f] = Fields[f];
+            //    }
+            //    dt.Rows.Add(Row);
+            //    loadPatternName.Add(dt.Rows[AddLoadCaseBtnClicked].ItemArray[1].ToString());
 
-            //    distLoadShapes.Add(new List<Rectangle>());
-            //    loadCaseBtnClicked += 1;
+
+
+            //    //SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
+            //    //patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
+
+            //    //distLoadShapes.Add(new List<Rectangle>());
             //}
 
-            //private void loadTypeComboBox_Loaded(object sender, RoutedEventArgs e)
-            //{
-            //    loadTypeComboBox.ItemsSource = Enum.GetValues(typeof(eLoadPatternType)).Cast<eLoadPatternType>();
-            //}
+            ////loadPatternName.Add(dgv.LoadcaseName);
+            //AddLoadCaseBtnClicked += 1;
 
-            //private void loadCaseComboBox_Loaded(object sender, RoutedEventArgs e)
-            //{
-            //    var loadCaseComboBox = sender as ComboBox;
-            //    loadCaseComboBox.ItemsSource = loadPatternName;
-            //    loadCaseComboBox.SelectedIndex = 0;
-            //}
 
-            //private void loadCaseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-            //{
-            //    var loadCaseComboBox = sender as ComboBox;
-            //    string value = loadCaseComboBox.SelectedIndex.ToString();
 
-            //    var loadComboBoxSelectedItem = e.AddedItems[0] as string;
+            ////static int loadCaseBtnClicked = 0;
+            ////private void loadCaseBtn_Click(object sender, RoutedEventArgs e)
+            ////{
+            ////    loadPatternName.Add(loadCasetxtBox.Text);
+            ////    SelfWtMultiplier.Add(Convert.ToDouble(selfWttxtBox.Text));
+            ////    patternType.Add((eLoadPatternType)loadTypeComboBox.SelectedValue);
 
-            //    //loadCaseName = loadComboBoxSelectedItem;
-            //    //this.Title = value;
-            //}
+            ////    distLoadShapes.Add(new List<Rectangle>());
+            ////    loadCaseBtnClicked += 1;
+            ////}
 
-            //private void loadComboBtn_Click(object sender, RoutedEventArgs e)
-            //{
+            ////private void loadTypeComboBox_Loaded(object sender, RoutedEventArgs e)
+            ////{
+            ////    loadTypeComboBox.ItemsSource = Enum.GetValues(typeof(eLoadPatternType)).Cast<eLoadPatternType>();
+            ////}
 
-            //}
+            ////private void loadCaseComboBox_Loaded(object sender, RoutedEventArgs e)
+            ////{
+            ////    var loadCaseComboBox = sender as ComboBox;
+            ////    loadCaseComboBox.ItemsSource = loadPatternName;
+            ////    loadCaseComboBox.SelectedIndex = 0;
+            ////}
+
+            ////private void loadCaseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            ////{
+            ////    var loadCaseComboBox = sender as ComboBox;
+            ////    string value = loadCaseComboBox.SelectedIndex.ToString();
+
+            ////    var loadComboBoxSelectedItem = e.AddedItems[0] as string;
+
+            ////    //loadCaseName = loadComboBoxSelectedItem;
+            ////    //this.Title = value;
+            ////}
+
+            ////private void loadComboBtn_Click(object sender, RoutedEventArgs e)
+            ////{
+
+            ////}
+            #endregion
+
+        }
+
+        private void DltLoadCaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = (LoadCasesVM)DataContext;
+            var index = loadCaseGridData.SelectedIndex;
+            viewModel.loadCaseGridData.RemoveAt(index);
         }
     }
 }

@@ -43,9 +43,7 @@
                                   Width="350"
                                   Height="100"
                                   Grid.Column="0"
-                            ItemsSource="{Binding loadCaseGridData}">
-
-                        </DataGrid>
+                            ItemsSource="{Binding loadCaseGridData}"/>
                         <StackPanel VerticalAlignment="Center"
                                     Grid.Column="1">
                             <Button x:Name="AddLoadCaseBtn"
@@ -56,7 +54,7 @@
                             <Button x:Name="DltLoadCaseBtn"
                                     Content="Delete"
                                     Width="50"
-                                    Margin="5"/>
+                                    Margin="5" Click="DltLoadCaseBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
