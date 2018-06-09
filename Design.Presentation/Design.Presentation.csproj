@@ -58,6 +58,8 @@
     </ApplicationDefinition>
     <Compile Include="LoadCases.xaml.cs" />
     <Compile Include="Model\GridData.cs" />
+    <Compile Include="Model\LoadCaseGridData.cs" />
+    <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
     <Compile Include="BeamGeometry.xaml.cs">
       <DependentUpon>BeamGeometry.xaml</DependentUpon>

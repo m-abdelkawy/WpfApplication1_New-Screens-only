@@ -4,25 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SAP2000v20;
+using System.Collections.ObjectModel;
+using Design.Presentation.Model;
 
 namespace Design.Presentation.ViewModels
 {
-    enum loadPatternType { Ahmed, Ali, Maha}
+    //enum loadPatternType { Ahmed, Ali, Maha}
 
     class LoadCasesVM
     {
-        public string LoadCaseName { get; set; } = "Dead";
-        public double SelfWtMult { get; set; } = 0;
-        public eLoadPatternType loadPatternType
-        {
-            get { return loadPatternType; }
-            set { loadPatternType = value; }
-        }
+        //public string LoadCaseName { get; set; }
+        //public double SelfWtMult { get; set; } = 0;
+        //public eLoadPatternType loadPatternType
+        //{
+        //    get { return loadPatternType; }
+        //    set { loadPatternType = value; }
+        //}
+
+        public ObservableCollection<LoadCaseGridData> loadCaseGridData { get; set; }
+        public ObservableCollection<LoadComboGridData> loadComboGridData { get; set; }
 
 
         public LoadCasesVM()
         {
-
+            loadCaseGridData = new ObservableCollection<LoadCaseGridData>()
+            {
+                //new LoadCaseGridData {Id=1,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=2,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=3,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+            };
+            loadComboGridData = new ObservableCollection<LoadComboGridData>()
+            {
+                //new LoadCaseGridData {Id=1,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=2,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=3,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+            };
         }
+        
     }
 }
