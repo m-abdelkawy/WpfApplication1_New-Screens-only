@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Section"
         mc:Ignorable="d"
-        Title="SectionEditor" MinHeight="380" MaxHeight="380" Height="380" Width="500">
+        Title="SectionEditor"  Height="500" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <StackPanel Margin="10">
         <StackPanel>
             <!--General-->
@@ -49,8 +49,8 @@
                                 <Label Content="Width (t2)" Margin="5"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Width="80">
-                                <TextBox Text="{Binding Name}" Margin="8"/>
-                                <TextBox Text="{Binding Name}" Margin="10"/>
+                                <TextBox Text="{Binding Depth}" Margin="8"/>
+                                <TextBox Text="{Binding Width}" Margin="10"/>
                             </StackPanel>
                         </Grid>
                     </GroupBox>
@@ -111,7 +111,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0" Content="+" Width="20" HorizontalAlignment="Right" Margin="0 10 5 10"/>
-                            <ComboBox Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin="0,10"/>
+                            <ComboBox Grid.Column="1" Width="150" HorizontalAlignment="Left" Margin="0,10" ItemsSource="{Binding Path=Materials }" DisplayMemberPath="Name"/>
                         </Grid>
                     </GroupBox>
                     <!--Action Buttons-->

@@ -20,6 +20,7 @@ namespace Design.Presentation.Views.Section
     /// </summary>
     public partial class SectionDialouge : Window
     {
+        public MainWindow MainWindow { get; set; }
         public SectionDialouge()
         {
             InitializeComponent();
@@ -27,8 +28,11 @@ namespace Design.Presentation.Views.Section
 
         private void Btn_New_Section_Click(object sender, RoutedEventArgs e)
         {
-            SectionEditor se = new SectionEditor();
-            DataContext = new SectionEditorVM();
+            SectionEditor se = new SectionEditor
+            {
+                DataContext = new SectionEditorVM(MainWindow. Materials),
+                SectionDialouge = this
+            };
             se.ShowDialog();
         }
 

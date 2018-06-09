@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Design.Presentation.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +19,11 @@ namespace Design.Presentation.Views.Section
     /// <summary>
     /// Interaction logic for SectionEditor.xaml
     /// </summary>
+    /// 
+    
     public partial class SectionEditor : Window
     {
+        public SectionDialouge SectionDialouge { get; set; }
         public SectionEditor()
         {
             InitializeComponent();
@@ -31,6 +36,8 @@ namespace Design.Presentation.Views.Section
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
+            var sections = ((SectionDialougeVM)SectionDialouge.DataContext).Sections;
+            sections.Add((SectionEditorVM)this.DataContext);
             Close();
         }
     }

@@ -26,7 +26,7 @@ namespace Design.Presentation
     public partial class MainWindow : Window
     {
         #region Properties
-        public GeometryEditor GeometryEditor { get; set; }
+        public GeometryEditorVM GeometryEditor { get; set; }
         public ObservableCollection<MaterialEditorVM> Materials { get; set; }
         public ObservableCollection<SectionEditorVM> Sections { get; set; }
         //Load Cases Window
@@ -45,15 +45,19 @@ namespace Design.Presentation
 
         private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
-            GeometryEditor= new GeometryEditor();
-            GeometryEditor.ShowDialog();
+            var ge = new GeometryEditor
+            {
+                MainWindow = this,
+            };
 
+            ge.DataContext = new GeometryEditorVM(Sections);
+
+            ge.ShowDialog();
         }
         #endregion
 
         private void btn_analyse_Click(object sender, RoutedEventArgs e)
         {
-            var gemoemtryData = (GeometryEditorVM)GeometryEditor.DataContext;
 
         }
 
@@ -84,10 +88,10 @@ namespace Design.Presentation
 
         private void Btn_Section_Click(object sender, RoutedEventArgs e)
         {
-            SectionDialouge sd = new SectionDialouge
-            {
-                DataContext = new SectionDialougeVM().Sections = Sections
-            };
+            SectionDialouge sd = new SectionDialouge();
+            sd.DataContext = new SectionDialougeVM(Sections) ;
+            ((SectionDialougeVM)sd.DataContext).Sections = Sections;
+            sd.MainWindow = this;
             sd.Show();
         }
     }

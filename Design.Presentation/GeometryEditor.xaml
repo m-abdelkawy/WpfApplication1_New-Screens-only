@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
-        Title="Geometry Editor" Height="474" Width="800">
-   
-   
+        Title="Geometry Editor" Height="460" Width="520" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
 
-        <!--Beam Dimension-->
+
+        
         <StackPanel>
+            <!--Beam Dimension-->
             <GroupBox Grid.Row="0" Grid.Column="0" Header="Beam Dimensions"  >
-           
+
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -40,45 +41,51 @@
                     <TextBox Grid.Column="4" Width="50" Text="{Binding SpanLength}"/>
                 </Grid>
                 <!--Grid data-->
-                
-           
-        </GroupBox>
-        <GroupBox Header="Grid Data">
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                    <DataGrid Grid.Column="0" Height="200" ItemsSource="{Binding GridData}"/>
-                <StackPanel Grid.Column="1" VerticalAlignment="Center"  >
-                    <Button Content="Add" Width="50" Margin="10"/>
-                    <Button Content="Delete" Width="50"/>
-                </StackPanel>
-            </Grid>
-        </GroupBox>
+
+
+            </GroupBox>
+            <!--Section Properties-->
+            <GroupBox Grid.Row="1" Header="Section Properties">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Beams" Margin="50 0 0 0"/>
+                    <ComboBox Grid.Column="1" Margin="0 0 0 0" ItemsSource="{Binding Path=Sections}" DisplayMemberPath="Name" >
+                       
+                    </ComboBox>
+                    <Button Grid.Column="2"  Content="+" Width="50" Click="Button_Click"></Button>
+                </Grid>
+            </GroupBox>
+            <!--Grid Data-->
+            <GroupBox Header="Grid Data">
+                <Expander Header=" Show Grid Data">
+                <Grid Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                        <DataGrid Name="Gr_GridData" Grid.Column="0" Height="150" MaxHeight="150"  ItemsSource="{Binding GridData}" AutoGeneratingColumn="OnAutoGeneratingColumn" CanUserSortColumns="False"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center"  >
+                        <Button Content="Add" Width="50" Margin="10"/>
+                        <Button Content="Delete" Width="50"/>
+                    </StackPanel>
+                </Grid>
+                </Expander>
+            </GroupBox>
         </StackPanel>
-        <!--Section Properties-->
-        <GroupBox Grid.Row="1" Header="Section Properties">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Beams" Margin="50 0 0 0"/>
-                <ComboBox Grid.Column="1" Margin="0 0 0 0" />
-                <Button Grid.Column="2"  Content="+" Width="50"></Button>
-            </Grid>
-        </GroupBox>
+
         <!--Buttons-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Width="50" Content="_Ok" Grid.Column="0" HorizontalAlignment="Right" Margin="20 10 20 0" Click="Button_Click"/>
-            <Button Width="50" Content="_Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="20 10 20 0" Click="Button_Click_1"/>
+            <Button Name="Btn_Ok" Width="50" Content="_Ok" Grid.Column="0" HorizontalAlignment="Right" Margin="20 10 20 0" Click="Btn_Ok_Click" />
+            <Button Name="Btn_Cancel" Width="50" Content="_Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="20,10,0,0" Height="21" VerticalAlignment="Top" Click="Btn_Cancel_Click" />
         </Grid>
-     
+
     </Grid>
 </Window>

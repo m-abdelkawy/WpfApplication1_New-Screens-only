@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Material"
         mc:Ignorable="d"
-        Title="MaterialEditor" Height="650" Width="400">
+        Title="MaterialEditor" Height="650" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <StackPanel Margin="10">
         <!--General-->
         <GroupBox Header="General">
