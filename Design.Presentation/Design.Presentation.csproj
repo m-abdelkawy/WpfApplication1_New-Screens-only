@@ -61,10 +61,8 @@
     </Compile>
     <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\GridData.cs" />
-    <Compile Include="Model\LoadCaseGridData.cs" />
     <Compile Include="Model\LoadCasesModel.cs" />
     <Compile Include="Model\LoadCombinationsModel.cs" />
-    <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="ViewModels\LoadCasesViewModel.cs" />
     <Compile Include="ViewModels\LoadCombinationsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -73,7 +71,6 @@
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
     <Compile Include="Model\MaterialProperty.cs" />
     <Compile Include="ViewModels\LoadAssignmentVM.cs" />
-    <Compile Include="ViewModels\LoadCasesVM.cs" />
     <Compile Include="ViewModels\MaterialDialougeVM.cs" />
     <Compile Include="ViewModels\MaterialEditorVM.cs" />
     <Compile Include="ViewModels\SectionEditorVM.cs" />

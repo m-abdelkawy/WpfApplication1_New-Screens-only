@@ -31,15 +31,31 @@
                                   Width="350"
                                   Height="100"
                                   Grid.Column="0"
+                                  AutoGenerateColumns="False"
                             ItemsSource="{Binding Path= LoadComboCollection}" >
                             <DataGrid.Columns>
-                                <DataGridComboBoxColumn Header="Load Cases" DisplayMemberPath="LoadcaseName" >
+                                <DataGridTextColumn Header="Id"
+                                                    Binding="{Binding Path=Id}"/>
+                                <DataGridTextColumn Header="LoadCombination"
+                                                    Binding="{Binding Path=LoadComboName}"/>
+                                <DataGridComboBoxColumn x:Name="dgcbLoadCases"
+                                                        Header="Load Cases"
+                                                        DisplayMemberPath="LoadcaseName"
+                                                        SelectedItemBinding="{Binding LoadcaseName}">
+                                    <DataGridComboBoxColumn.ElementStyle>
+                                        <Style TargetType="ComboBox">
+                                            <Setter Property="ItemsSource" Value="{Binding Path=LoadCases, Mode=OneWay}"/>
+                                            <!--<Setter Property="IsSynchronizedWithCurrentItem" Value="{x:Null}"/>-->
+                                        </Style>
+                                    </DataGridComboBoxColumn.ElementStyle>
                                     <DataGridComboBoxColumn.EditingElementStyle>
                                         <Style TargetType="ComboBox">
-                                            <Setter Property="ItemsSource" Value="{Binding Path=LoadCases}"  />
+                                            <Setter Property="ItemsSource" Value="{Binding Path=LoadCases, Mode=OneWay}"  />
+                                            <!--<Setter Property="IsDropDownOpen" Value="True" />-->
                                         </Style>
                                     </DataGridComboBoxColumn.EditingElementStyle>
                                 </DataGridComboBoxColumn>
+                                <DataGridTextColumn Header="Load Factor" Binding="{Binding Path=LoadFactor}"/>
                             </DataGrid.Columns>
                             
 

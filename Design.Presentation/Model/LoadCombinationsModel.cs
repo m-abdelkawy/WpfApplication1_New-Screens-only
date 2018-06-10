@@ -16,6 +16,7 @@ namespace Design.Presentation.Model
         public string LoadComboName { get; set; }
         public ObservableCollection<LoadCasesModel> LoadCases { get; set; }
         public double LoadFactor { get; set; }
+        public string loadCaseSelectedItem { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

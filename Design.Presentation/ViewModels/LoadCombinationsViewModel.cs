@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Design.Presentation.ViewModels
 {
-    public class LoadCombinationsViewModel 
+    public class LoadCombinationsViewModel :INotifyPropertyChanged
     {
 
         public static ObservableCollection<LoadCombinationsModel> LoadComboModelCollection { get; set; }
@@ -22,9 +22,11 @@ namespace Design.Presentation.ViewModels
         {
             LoadComboCollection = LoadCombinationsViewModel.LoadComboModelCollection;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
-       
+
 
 
 

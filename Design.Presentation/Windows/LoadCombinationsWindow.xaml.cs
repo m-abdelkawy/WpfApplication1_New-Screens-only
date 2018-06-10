@@ -63,9 +63,10 @@ namespace Design.Presentation.Windows
             {
                 if (LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName != null)
                 {
-                    Combinations.Add(LoadCasesVM.loadComboGridData[i].LoadComboName);
-                    loadCaseName.Add(LoadCasesVM.loadComboGridData[i].LoadCaseName);
-                    loadFactorList.Add(LoadCasesVM.loadComboGridData[i].LoadFactor);
+                    Combinations.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName);
+                    //loadCaseName.Add(dgcbLoadCases.);
+                    loadCaseName.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadCases[0].LoadcaseName);
+                    loadFactorList.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadFactor);
                 }
             }
         }
