@@ -60,13 +60,9 @@ namespace Design.Presentation
         {
 
             var viewModel =(LoadCasesVM) DataContext;
-            viewModel.loadCaseGridData.Add(new LoadCaseGridData()
-            {
-                Id = 5,
-                LoadcaseName = "ay haga",
-                loadPatternType = eLoadPatternType.Dead,
-                SelfWtMult=0
-            });
+            var newLoadCaseRow = new LoadCaseGridData();
+            viewModel.loadCaseGridData.Add(newLoadCaseRow);
+
             #region old
             //loadCaseGridData.SelectAllCells();
             //loadCaseGridData.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
