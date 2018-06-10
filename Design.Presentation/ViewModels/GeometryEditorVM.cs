@@ -20,7 +20,7 @@ namespace Design.Presentation.ViewModels
 = new GeometryEditorVM();
         public int NumberOfSpans
         {
-            get => _numberOfSpans;
+            get { return _numberOfSpans; }
             set
             {
                 _numberOfSpans = value;
@@ -29,7 +29,7 @@ namespace Design.Presentation.ViewModels
         }
         public int SpanLength
         {
-            get => _spanLength;
+            get { return _spanLength; }
             set
             {
                 _spanLength = value;

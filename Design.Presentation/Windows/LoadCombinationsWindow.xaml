@@ -38,23 +38,38 @@
                                                     Binding="{Binding Path=Id}"/>
                                 <DataGridTextColumn Header="LoadCombination"
                                                     Binding="{Binding Path=LoadComboName}"/>
-                                <DataGridComboBoxColumn x:Name="dgcbLoadCases"
+                                <!--Load Case ComboBox Column-->
+                                <DataGridTemplateColumn Header="Load Case">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="SelectionLoadCase"
+                                             ItemsSource="{Binding Path=LoadCases}"
+                                                DisplayMemberPath="LoadcaseName" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock Text="{Binding SelectedLoadCase.Name}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <!--<DataGridComboBoxColumn x:Name="dgcbLoadCases"
                                                         Header="Load Cases"
                                                         DisplayMemberPath="LoadcaseName"
                                                         SelectedItemBinding="{Binding LoadcaseName}">
                                     <DataGridComboBoxColumn.ElementStyle>
                                         <Style TargetType="ComboBox">
                                             <Setter Property="ItemsSource" Value="{Binding Path=LoadCases, Mode=OneWay}"/>
-                                            <!--<Setter Property="IsSynchronizedWithCurrentItem" Value="{x:Null}"/>-->
+                                            --><!--<Setter Property="IsSynchronizedWithCurrentItem" Value="{x:Null}"/>--><!--
                                         </Style>
                                     </DataGridComboBoxColumn.ElementStyle>
                                     <DataGridComboBoxColumn.EditingElementStyle>
                                         <Style TargetType="ComboBox">
                                             <Setter Property="ItemsSource" Value="{Binding Path=LoadCases, Mode=OneWay}"  />
-                                            <!--<Setter Property="IsDropDownOpen" Value="True" />-->
+                                            --><!--<Setter Property="IsDropDownOpen" Value="True" />--><!--
                                         </Style>
                                     </DataGridComboBoxColumn.EditingElementStyle>
-                                </DataGridComboBoxColumn>
+                                </DataGridComboBoxColumn>-->
                                 <DataGridTextColumn Header="Load Factor" Binding="{Binding Path=LoadFactor}"/>
                             </DataGrid.Columns>
                             
