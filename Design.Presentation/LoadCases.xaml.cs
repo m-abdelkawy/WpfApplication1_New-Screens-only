@@ -17,16 +17,45 @@ using Design.Presentation.ViewModels;
 using Design.Presentation.Model;
 using Desing.Core.Sap;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Design.Presentation
 {
+    //public class loadCaseItems
+    //{
+    //    private string name;
+
+    //    public string Name
+    //    {
+    //        get { return name; }
+    //        set { name = value; }
+    //    }
+
+    //    private List<string> loadcaseNames;
+
+    //    public List<string> LoadCaseNames
+    //    {
+    //        get { return loadcaseNames; }
+    //        set { loadcaseNames = value; }
+    //    }
+
+
+    //    public loadCaseItems(string _name, List<string> _names)
+    //    {
+    //        this.name = _name;
+    //        this.loadcaseNames = _names;
+    //    }
+
+    //}
     /// <summary>
     /// Interaction logic for LoadCases.xaml
     /// </summary>
     public partial class LoadCases : Window
     {
+        //public static ObservableCollection<string> loadPatName = new ObservableCollection<string>();
         //LoadPattern
         public List<string> loadPatternName = new List<string>();
+        public static List<string> loadPatternName = new List<string>();
         public List<double> SelfWtMultiplier = new List<double>();
         public List<eLoadPatternType> patternType = new List<eLoadPatternType>();
 
@@ -59,10 +88,26 @@ namespace Design.Presentation
         private void AddLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
 
+<<<<<<< HEAD
             var viewModel =(LoadCasesVM) DataContext;
             var newLoadCaseRow = new LoadCaseGridData();
             viewModel.loadCaseGridData.Add(newLoadCaseRow);
 
+=======
+            LoadCasesVM.loadCaseGridData.Add(newLoadCaseRow);
+
+
+            #region Amr
+            //var viewModel = (LoadCasesVM)DataContext;
+            //var newLoadCaseRow = new LoadCaseGridData();
+
+            //viewModel.loadCaseGridData.Add(newLoadCaseRow);
+            #endregion
+
+            //loadPatternName.Add(loadCaseGridData[);
+            //SelfWtMultiplier.Add(viewModel.SelfWtMult);
+            //patternType.Add(viewModel.loadPatternType);
+>>>>>>> d595c6264d5ef05c3e907d634bc4dcc57e69ec0e
             #region old
             //loadCaseGridData.SelectAllCells();
             //loadCaseGridData.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
@@ -141,12 +186,11 @@ namespace Design.Presentation
 
             ////}
             #endregion
-
+            AddLoadCaseBtnClicked += 1;
         }
 
         private void DltLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
-            var viewModel = (LoadCasesVM)DataContext;
             var index = loadCaseGridData.SelectedIndex;
             viewModel.loadCaseGridData.RemoveAt(index);
         }
