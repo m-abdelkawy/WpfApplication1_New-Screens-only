@@ -38,7 +38,7 @@
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
-            <TabControl Grid.ColumnSpan="2" Margin="78,10,0,-428" HorizontalAlignment="Left" Width="928" >
+            <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
                     <Canvas Name="canvas_Geometry">
 

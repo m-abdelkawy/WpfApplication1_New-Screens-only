@@ -5,95 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Material"
         mc:Ignorable="d"
-        Title="MaterialEditor" Height="650" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <StackPanel Margin="10">
+        Title="MaterialEditor" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <StackPanel Margin="10,10,19,10">
         <!--General-->
-        <GroupBox Header="General">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <Label Content="Material Name" Margin="10" />
-                    <Label Content="Material Type" Margin="10"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBox Text="{Binding Name}" Margin="15" />
-                    <ComboBox  Name="Cb_MaterialType" Margin="10" />
-                </StackPanel>
-
-            </Grid>
-        </GroupBox>
         <!--Weight and MAss-->
-        <GroupBox Header="Weight and Mass">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <Label Content="Weight per Unit Volume" Margin="10" />
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Text="{Binding WeightPerUnitVolume}" Margin="15"/>
-                        <Label Grid.Column="1" Content="N,m,C" Margin="0 15 0 15"/>
-                    </Grid>
-                    
-                </StackPanel>
-
-            </Grid>
-        </GroupBox>
 
         <!--Isotropic Property Data-->
-        <GroupBox Header="Isotropic Property Data">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <Label Content="Modulus of Elasticity ,E" Margin="10" />
-                    <Label Content="Poisson,U" Margin="10"/>
-                    <Label Content="Cofficient of Thermal Expansion,A" Margin="10"/>
-                    <Label Content="Shear Modulus,G" Margin="10"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBox Text="" Margin="15"/>
-                    <TextBox Text="" Margin="15"/>
-                    <TextBox Text="" Margin="15"/>
-                    <TextBox Text="" Margin="15" IsReadOnly="True"/>
-                </StackPanel>
-            </Grid>
-        </GroupBox>
         <!--General-->
-        <GroupBox Header="Other Concrete Proprties">
+        <GroupBox Header="Material Properties" Margin="0,0,42,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
-                    <Label Content="Specified Concrete Compressive Strength, f'c" Margin="10" />
-                    <Label Content="Expected Concrete Compressive Strength" Margin="10"/>
-                    <CheckBox Content="LightWeight Concrete" Margin="10"></CheckBox>
+                    <Label Content="Fcu(N/mm2)" Margin="5" />
+                    <Label Content="Fy(N/mm2)" Margin="5"/>
+                    <Label Content="no of Branches" Margin="5"/>
+                    <Label Content="Fy Stirrups(N/mm2)" Margin="5"/>
+                   
                 </StackPanel>
                 <StackPanel Grid.Column="1">
-                    <TextBox Text="Material" Margin="15"/>
-                    <TextBox Text="Material" Margin="10"/>
-                    <!--Action Buttons-->
-                    <StackPanel Margin="10 10 10 0" VerticalAlignment="Center">
-                        <Button Name="Btn_Ok" Content="_Ok" Margin="10" Width="80" Click="Btn_Ok_Click"/>
-                        <Button Name="Btn_Cancel" Content="_Cancel" Margin="10" Width="80" Click="Btn_Cancel_Click"/>
-                    </StackPanel>
+                    <TextBox Text="{Binding Fcu}" Margin="8"  />
+                    <TextBox Text="{Binding Fy}" Margin="10"/>
+                    <TextBox Text="{Binding NoOfBranches}" Margin="8"/>
+                    <TextBox Text="{Binding FyStirrups}" Margin="10"/>
                 </StackPanel>
 
             </Grid>
         </GroupBox>
+        <!--Action Buttons-->
+        <Grid Margin="10 10 10 0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" HorizontalAlignment="Right" Name="Btn_Ok" Content="_Ok" Margin="10" Width="80" Click="Btn_Ok_Click"/>
+            <Button  Grid.Column="1" HorizontalAlignment="Left" Name="Btn_Cancel" Content="_Cancel" Margin="10" Width="80" Click="Btn_Cancel_Click"/>
+        </Grid>
     </StackPanel>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,15 @@ namespace Desing.Core.Sap
 {
     public enum Restraints
     {
+       [Description("Fixed")] 
         Fixed,
+        [Description("Hinged")]
         Hinged,
+        [Description("Roller")]
         Roller,
+        [Description("NoRestraints")]
         NoRestraints
+
     }
     public class SapJointRestraints
     {

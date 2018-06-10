@@ -1,4 +1,5 @@
 ﻿using Design.Presentation.Model;
+using Desing.Core.Sap;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,20 +13,53 @@ namespace Design.Presentation.ViewModels
 {
     public class GeometryEditorVM
     {
-        public int NumberOfSpans { get; set; } = 1;
-        public int SpanLength { get; set; } = 5;
-        public ObservableCollection<SectionEditorVM> Sections { get; set; }
-        public ObservableCollection<GridData> GridData { get; set; }
+        private int _numberOfSpans = 1;
+        private int _spanLength = 5;
 
-        public GeometryEditorVM(ObservableCollection<SectionEditorVM> sections)
+        public static GeometryEditorVM GeometryEditor { get; set; }
+= new GeometryEditorVM();
+        public int NumberOfSpans
         {
-            Sections = sections;
-            GridData = new ObservableCollection<GridData>()
+            get => _numberOfSpans;
+            set
             {
-                new GridData{Id=1,Span=10},
-                new GridData{Id=2,Span=10},
-                new GridData{Id=3,Span=10},
-            };
+                _numberOfSpans = value;
+                UpdateGeometry();
+            }
+        }
+        public int SpanLength
+        {
+            get => _spanLength;
+            set
+            {
+                _spanLength = value;
+                UpdateGeometry();
+            }
+        }
+        public ObservableCollection<SectionEditorVM> Sections { get;
+            set; }
+        public ObservableCollection<GridData> GridData { get; set; }
+        public SectionEditorVM SelectedSection { get; set; }
+        public GeometryEditorVM()
+        {
+            Sections = SectionEditorVM.Sections;
+            GridData = new ObservableCollection<GridData>();
+        }
+
+        private void UpdateGeometry()
+        {
+            GridData.Clear();
+            for (int i = 0; i < NumberOfSpans; i++)
+            {
+                GridData.Add(new GridData()
+                {
+                    Id = i,
+                    SectionProperties = SectionEditorVM.Sections,
+                    Span = SpanLength,
+                    Restrain = Restraints.Fixed,
+                    SelectedSection = SelectedSection
+                });
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Design.Presentation.ViewModels;
 using Design.Presentation.Views.Section;
+using Desing.Core.Sap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,10 +24,10 @@ namespace Design.Presentation
     /// </summary>
     public partial class GeometryEditor : Window
     {
-        public MainWindow MainWindow { get; set; }
 
-        public GeometryEditor()
+        public GeometryEditor(GeometryEditorVM geometryEditorVM)
         {
+            DataContext = geometryEditorVM;
             InitializeComponent();
             Gr_GridData.CanUserResizeColumns = false;
             Gr_GridData.CanUserReorderColumns = false;
@@ -96,7 +97,7 @@ namespace Design.Presentation
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.GeometryEditor = (GeometryEditorVM)DataContext;
+            
             this.Close();
         }
 
@@ -107,10 +108,21 @@ namespace Design.Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var sd = new SectionDialouge();
-            sd.MainWindow = this.MainWindow;
-            sd.DataContext = new SectionDialougeVM(MainWindow.Sections);
+           
+        }
 
+        private void Btn_Add_Section_Click(object sender, RoutedEventArgs e)
+        {
+            var se = new SectionEditor(new SectionEditorVM() );
+           
+            se.ShowDialog();
+
+        }
+
+        private void SelectionRestrain_Loaded(object sender, RoutedEventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            cb.ItemsSource=Enum.GetValues(typeof(Restraints)).Cast<Restraints>();
         }
     }
 }

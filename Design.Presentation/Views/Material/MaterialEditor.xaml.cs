@@ -21,22 +21,15 @@ namespace Design.Presentation.Views.Material
     /// </summary>
     public partial class MaterialEditor : Window
     {
-        public MaterialDialouge MaterialDialouge { get; set; }
-        public MaterialEditor()
+        
+        public MaterialEditor( MaterialEditorVM materialEditorVM)
         {
-          
+            DataContext = materialEditorVM;
             InitializeComponent();
-            Cb_MaterialType.ItemsSource =
-                Enum.GetValues(typeof(MaterialType)).Cast<MaterialType>();
-            Cb_MaterialType.SelectedIndex = 0;
         }
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
-            var materials = (ObservableCollection<MaterialEditorVM>)MaterialDialouge.DataContext;
-           // Adding current material to the list
-            materials.Add((MaterialEditorVM)DataContext);
-            //close the window
             this.Close();
         }
 
@@ -46,6 +39,6 @@ namespace Design.Presentation.Views.Material
             Close();
         }
 
-       
+
     }
 }

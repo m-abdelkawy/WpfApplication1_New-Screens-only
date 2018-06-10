@@ -10,9 +10,9 @@ namespace Design.Presentation.ViewModels
     public class SectionDialougeVM
     {
       public  ObservableCollection<SectionEditorVM> Sections { get; set; }
-        public SectionDialougeVM(ObservableCollection<SectionEditorVM> sections)
+        public SectionDialougeVM()
         {
-            Sections = sections;
+            Sections =SectionEditorVM.Sections;
         }
     }
 }

@@ -24,8 +24,9 @@ namespace Design.Presentation.Views.Section
     public partial class SectionEditor : Window
     {
         public SectionDialouge SectionDialouge { get; set; }
-        public SectionEditor()
+        public SectionEditor(SectionEditorVM sectionEditorVM)
         {
+            DataContext = sectionEditorVM;
             InitializeComponent();
         }
 
@@ -36,8 +37,7 @@ namespace Design.Presentation.Views.Section
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
-            var sections = ((SectionDialougeVM)SectionDialouge.DataContext).Sections;
-            sections.Add((SectionEditorVM)this.DataContext);
+            SectionEditorVM.Sections.Add((SectionEditorVM)this.DataContext);
             Close();
         }
     }
