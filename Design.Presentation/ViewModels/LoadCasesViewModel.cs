@@ -22,13 +22,15 @@ namespace Design.Presentation.ViewModels
             set { loadCasesmodel = value; }
         }
         public static ObservableCollection<LoadCasesModel> LoadCasesModelCollection { get; set; }
+        =new ObservableCollection<LoadCasesModel>();
         #endregion
 
         //Costructor
+       
         public LoadCasesViewModel()
         {
             this.loadCasesmodel = new LoadCasesModel();
-            LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
+           
         }
         public LoadCasesViewModel(LoadCasesModel _loadCasesmodel)
         {

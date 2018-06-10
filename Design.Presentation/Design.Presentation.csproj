@@ -59,15 +59,14 @@
     <Compile Include="LoadAssignment.xaml.cs">
       <DependentUpon>LoadAssignment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoadCases.xaml.cs">
-      <DependentUpon>LoadCases.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\GridData.cs" />
     <Compile Include="Model\LoadCaseGridData.cs" />
     <Compile Include="Model\LoadCasesModel.cs" />
+    <Compile Include="Model\LoadCombinationsModel.cs" />
     <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="ViewModels\LoadCasesViewModel.cs" />
+    <Compile Include="ViewModels\LoadCombinationsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="Model\SteelMaterialProperties.cs" />
@@ -93,15 +92,14 @@
     <Compile Include="Windows\LoadCasesWindow.xaml.cs">
       <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LoadCombinationsWindow.xaml.cs">
+      <DependentUpon>LoadCombinationsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="GeometryEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoadAssignment.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="LoadCases.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\LoadCombinationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -175,6 +177,8 @@
       <Name>Design.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Application\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
