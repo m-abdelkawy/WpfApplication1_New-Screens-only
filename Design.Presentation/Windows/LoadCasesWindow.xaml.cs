@@ -23,7 +23,7 @@ namespace Design.Presentation.Windows
     /// </summary>
     public partial class LoadCasesWindow : Window
     {
-        //LoadPattern
+        #region Load Pattern Storage
         public static List<string> loadPatternName = new List<string>();
         public List<double> SelfWtMultiplier = new List<double>();
         public List<eLoadPatternType> patternType = new List<eLoadPatternType>();
@@ -32,6 +32,7 @@ namespace Design.Presentation.Windows
         public List<SapLoadPattern> loadPatterns = new List<SapLoadPattern>();
         public eCNameType ec = eCNameType.LoadCase;
         /*------------------------------*/
+        #endregion
         public LoadCasesWindow()
         {
             DataContext = new LoadCasesViewModel();
@@ -42,6 +43,35 @@ namespace Design.Presentation.Windows
             loadCaseGridData.CanUserReorderColumns = false;
             loadCaseGridData.CanUserResizeColumns = false;
             loadCaseGridData.CanUserResizeRows = false;
+        }
+
+        private void AddLoadCaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //New object of the Model(Auto Column Generating)
+            var newLoadCaseRow = new LoadCasesModel(); 
+
+            //Add object of the model to a collection of the object view mode(DataGrid)
+            LoadCasesViewModel.LoadCasesModelCollection.Add(newLoadCaseRow); 
+        }
+
+        private void DltLoadCaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var index = loadCaseGridData.SelectedIndex;
+            LoadCasesViewModel.LoadCasesModelCollection.RemoveAt(index);
+        }
+
+        private void loadCasesSubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < LoadCasesViewModel.LoadCasesModelCollection.Count; i++)
+            {
+                if (LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName != null)
+                {
+                    loadPatternName.Add(LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName);
+                    SelfWtMultiplier.Add(LoadCasesViewModel.LoadCasesModelCollection[i].SelfWtMult);
+                    patternType.Add(LoadCasesViewModel.LoadCasesModelCollection[i].loadPatternType);
+
+                }
+            }
         }
     }
 }

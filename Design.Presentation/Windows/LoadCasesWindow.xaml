@@ -31,7 +31,7 @@
                                   Width="350"
                                   Height="100"
                                   Grid.Column="0"
-                            ItemsSource="{Binding LoadCasesViewModel}"/>
+                            ItemsSource="{Binding LoadCasesModelCollection}"/>
                         <StackPanel VerticalAlignment="Center"
                                     Grid.Column="1">
                             <Button x:Name="AddLoadCaseBtn"
@@ -50,7 +50,7 @@
                                     HorizontalAlignment="Right"
                                     Margin="10"
                                     VerticalAlignment="Top"
-                                    Click="loadCasesOkBtn_Click"/>
+                                    Click="loadCasesSubmitBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>

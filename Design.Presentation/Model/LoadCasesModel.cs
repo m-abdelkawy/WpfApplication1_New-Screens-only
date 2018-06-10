@@ -9,12 +9,17 @@ using System.Threading.Tasks;
 
 namespace Design.Presentation.Model
 {
-    public class LoadCasesModel
+    public class LoadCasesModel:INotifyPropertyChanged
     {
         public int Id { get; set; }
         public string LoadcaseName { get; set; }
         public double SelfWtMult { get; set; } = 0;
         public eLoadPatternType loadPatternType { get; set; }
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

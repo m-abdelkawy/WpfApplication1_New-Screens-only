@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SAP2000v20;
+using Design.Presentation.Windows;
 
 namespace Design.Presentation
 {
@@ -128,8 +129,8 @@ namespace Design.Presentation
 
         private void btn_loadCases_Click(object sender, RoutedEventArgs e)
         {
-            var lc=new LoadCases();
-            lc.DataContext = new LoadCasesVM();
+            var lc=new LoadCasesWindow();
+            lc.DataContext = new LoadCasesViewModel();
             lc.ShowDialog();
 
 

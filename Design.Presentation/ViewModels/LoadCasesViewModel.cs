@@ -21,18 +21,19 @@ namespace Design.Presentation.ViewModels
             get { return loadCasesmodel; }
             set { loadCasesmodel = value; }
         }
-        public ObservableCollection<LoadCasesModel> LoadCasesModelCollection { get; set; }
+        public static ObservableCollection<LoadCasesModel> LoadCasesModelCollection { get; set; }
         #endregion
 
         //Costructor
         public LoadCasesViewModel()
         {
-            this.LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
+            this.loadCasesmodel = new LoadCasesModel();
+            LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
         }
         public LoadCasesViewModel(LoadCasesModel _loadCasesmodel)
         {
             this.loadCasesmodel = _loadCasesmodel;
-            this.LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
+            LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
         }
 
         #region Property Wrapping
