@@ -16,7 +16,7 @@ namespace Design.Presentation.ViewModels
         //Load Cases
         public string LoadCaseName { get; set; }
         public double SelfWtMult { get; set; } = 0;
-        public eLoadPatternType loadPatternType
+        public eLoadPatternType loadPatternType 
         {
             get { return loadPatternType; }
             set { loadPatternType = value; }

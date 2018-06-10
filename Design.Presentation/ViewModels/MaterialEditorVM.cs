@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace Design.Presentation.ViewModels
 {
-    public enum MaterialType
-    {
-        Concrete,
-        Steel
-    }
+   
     public class MaterialEditorVM
     {
         
@@ -26,12 +22,5 @@ namespace Design.Presentation.ViewModels
         {
             
         }
-        public static MaterialEditorVM GetMterial()
-        {
-            return Material;
-        }
-
-
-
     }
 }

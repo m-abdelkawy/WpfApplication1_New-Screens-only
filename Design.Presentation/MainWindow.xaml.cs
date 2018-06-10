@@ -92,17 +92,10 @@ namespace Design.Presentation
         /*-------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------*/
-        #region Properties
-        public GeometryEditorVM GeometryEditor { get; set; }
-        public ObservableCollection<MaterialEditorVM> Materials { get; set; }
-        public ObservableCollection<LoadCasesModel> LoadCases { get; set; }
-        //Load Cases Window
-
-        #endregion
+       
         public MainWindow()
         {
             InitializeComponent();
-            Materials = new ObservableCollection<MaterialEditorVM>();
            
         }
 
@@ -112,13 +105,7 @@ namespace Design.Presentation
 
         private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
-            var ge = new GeometryEditor
-            {
-                MainWindow = this,
-            };
-
-            ge.DataContext = new GeometryEditorVM();
-
+            var ge = new GeometryEditor(GeometryEditorVM.GeometryEditor);
             ge.ShowDialog();
         }
         #endregion
@@ -149,7 +136,7 @@ namespace Design.Presentation
 
         private void Btn_Material_Click(object sender, RoutedEventArgs e)
         {
-            MaterialEditor me = new MaterialEditor( MaterialEditorVM.GetMterial());
+            MaterialEditor me = new MaterialEditor( MaterialEditorVM.Material);
             me.ShowDialog();
         }
 

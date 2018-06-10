@@ -55,54 +55,6 @@
                         </Grid>
                     </GroupBox>
                     <!--Modifiers-->
-                    <Expander Header="Property Modifiers">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <!--Right-->
-                            <Grid Grid.Column="0" Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0">
-                                    <Label Content="Cross Section Area"/>
-                                    <Label Content="Shear Area in 2 Direction"/>
-                                    <Label Content="Shear Area in 3 Direction"/>
-                                    <Label Content="Torsional Constant"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="1">
-                                    <TextBox Text="{Binding value}" Margin="5" />
-                                    <TextBox Text="{Binding value}" Margin="5" />
-                                    <TextBox Text="{Binding value}" Margin="4" />
-                                    <TextBox Text="{Binding value}" Margin="3" />
-                                </StackPanel>
-                            </Grid>
-                            <!--Left-->
-                            <Grid Grid.Column="1" Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0">
-                                    <Label Content="Moment Of Inertia about 2 Axis"/>
-                                    <Label Content="Moment Of Inertia about 3 Axis"/>
-                                    <Label Content="Mass"/>
-                                    <Label Content="Weight"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="1">
-                                    <TextBox Text="{Binding value}" Margin="5" />
-                                    <TextBox Text="{Binding value}" Margin="5" />
-                                    <TextBox Text="{Binding value}" Margin="4" />
-                                    <TextBox Text="{Binding value}" Margin="3" />
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Expander>
                     <!--Action Buttons-->
                     <Grid Margin="10 10 10 0" >
                         <Grid.ColumnDefinitions>
