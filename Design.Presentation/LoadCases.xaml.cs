@@ -54,7 +54,6 @@ namespace Design.Presentation
     {
         //public static ObservableCollection<string> loadPatName = new ObservableCollection<string>();
         //LoadPattern
-        public List<string> loadPatternName = new List<string>();
         public static List<string> loadPatternName = new List<string>();
         public List<double> SelfWtMultiplier = new List<double>();
         public List<eLoadPatternType> patternType = new List<eLoadPatternType>();
@@ -62,6 +61,13 @@ namespace Design.Presentation
 
         public List<SapLoadPattern> loadPatterns = new List<SapLoadPattern>();
         public eCNameType ec = eCNameType.LoadCase;
+        /*------------------------------*/
+
+        //Load Combinations
+        List<string> Combinations = new List<string>();
+        public static List<string> loadCaseName = new List<string>();
+        List<double> loadFactorList = new List<double>();
+        /*------------------------------*/
         public LoadCases()
         {
             DataContext = new LoadCasesVM();
@@ -72,6 +78,13 @@ namespace Design.Presentation
             loadCaseGridData.CanUserReorderColumns = false;
             loadCaseGridData.CanUserResizeColumns = false;
             loadCaseGridData.CanUserResizeRows = false;
+
+            loadComboGridData.CanUserAddRows = false;
+            loadComboGridData.CanUserDeleteRows = false;
+            loadComboGridData.CanUserSortColumns = false;
+            loadComboGridData.CanUserReorderColumns = false;
+            loadComboGridData.CanUserResizeColumns = false;
+            loadComboGridData.CanUserResizeRows = false;
             #region DataBindingTrial
             //LoadCaseGridData load1 = new LoadCaseGridData();
             //load1.LoadcaseName = "Dead";
@@ -82,11 +95,10 @@ namespace Design.Presentation
         }
 
         static int AddLoadCaseBtnClicked = 0;
-        DataTable dt = new DataTable();
-        List<LoadCaseGridData> l = new List<LoadCaseGridData>();
 
         private void AddLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
+            var newLoadCaseRow = new LoadCaseGridData();
 
 <<<<<<< HEAD
             var viewModel =(LoadCasesVM) DataContext;
@@ -192,7 +204,57 @@ namespace Design.Presentation
         private void DltLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
             var index = loadCaseGridData.SelectedIndex;
-            viewModel.loadCaseGridData.RemoveAt(index);
+            LoadCasesVM.loadCaseGridData.RemoveAt(index);
+
+            #region Amr
+            //var viewModel = (LoadCasesVM)DataContext;
+            //var index = loadCaseGridData.SelectedIndex;
+            //viewModel.loadCaseGridData.RemoveAt(index);
+            #endregion
+        }
+
+        private void loadCasesOkBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            for (int i = 0; i < LoadCasesVM.loadCaseGridData.Count; i++)
+            {
+                if (LoadCasesVM.loadCaseGridData[i].LoadcaseName != null)
+                {
+                    loadPatternName.Add(LoadCasesVM.loadCaseGridData[i].LoadcaseName);
+                    SelfWtMultiplier.Add(LoadCasesVM.loadCaseGridData[i].SelfWtMult);
+                    patternType.Add(LoadCasesVM.loadCaseGridData[i].loadPatternType);
+
+                    //loadPatName.Add(LoadCasesVM.loadCaseGridData[i].LoadcaseName);
+                }
+            }
+        }
+
+        private void AddLoadComboBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //ComboBox loadcasecb = new ComboBox();
+
+            //loadcasecb.ItemsSource = loadCaseName;
+
+            var newLoadComboRow = new LoadComboGridData();
+            LoadCasesVM.loadComboGridData.Add(newLoadComboRow);
+
+
+        }
+
+        private void ComboSubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //var loadpat = new ObservableCollection<LoadCasesVM>();
+
+            for (int i = 0; i < LoadCasesVM.loadComboGridData.Count; i++)
+            {
+                if (LoadCasesVM.loadComboGridData[i].LoadComboName != null && LoadCasesVM.loadComboGridData[i].LoadComboName != null)
+                {
+                    Combinations.Add(LoadCasesVM.loadComboGridData[i].LoadComboName);
+                    loadCaseName.Add(LoadCasesVM.loadComboGridData[i].LoadCaseName);
+                    loadFactorList.Add(LoadCasesVM.loadComboGridData[i].LoadFactor);
+                }
+            }
+
         }
     }
 }
