@@ -66,8 +66,10 @@
     <Compile Include="Model\GridData.cs" />
     <Compile Include="Model\LoadCaseGridData.cs" />
     <Compile Include="Model\LoadCasesModel.cs" />
+    <Compile Include="Model\LoadCombinationsModel.cs" />
     <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="ViewModels\LoadCasesViewModel.cs" />
+    <Compile Include="ViewModels\LoadCombinationsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="Model\SteelMaterialProperties.cs" />
@@ -92,6 +94,9 @@
     </Compile>
     <Compile Include="Windows\LoadCasesWindow.xaml.cs">
       <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoadCombinationsWindow.xaml.cs">
+      <DependentUpon>LoadCombinationsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="GeometryEditor.xaml">
       <SubType>Designer</SubType>
@@ -137,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoadCasesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LoadCombinationsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
