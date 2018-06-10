@@ -65,7 +65,10 @@
     <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\GridData.cs" />
     <Compile Include="Model\LoadCaseGridData.cs" />
+    <Compile Include="Model\LoadCasesModel.cs" />
     <Compile Include="Model\LoadComboGridData.cs" />
+    <Compile Include="ViewModels\LoadCasesViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="Model\SteelMaterialProperties.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
@@ -86,6 +89,9 @@
     </Compile>
     <Compile Include="Views\Section\SectionEditor.xaml.cs">
       <DependentUpon>SectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoadCasesWindow.xaml.cs">
+      <DependentUpon>LoadCasesWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="GeometryEditor.xaml">
       <SubType>Designer</SubType>
@@ -127,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Section\SectionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LoadCasesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

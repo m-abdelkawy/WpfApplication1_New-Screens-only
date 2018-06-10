@@ -11,8 +11,9 @@ namespace Design.Presentation.ViewModels
 {
     //enum loadPatternType { Ahmed, Ali, Maha}
 
-    class LoadCasesVM
+    public class LoadCasesVM
     {
+        //Load Cases
         public string LoadCaseName { get; set; }
         public double SelfWtMult { get; set; } = 0;
         public eLoadPatternType loadPatternType
@@ -21,23 +22,23 @@ namespace Design.Presentation.ViewModels
             set { loadPatternType = value; }
         }
 
-        public ObservableCollection<LoadCaseGridData> loadCaseGridData { get; set; }
-        public ObservableCollection<LoadComboGridData> loadComboGridData { get; set; }
+        public static ObservableCollection<LoadCaseGridData> loadCaseGridData { get; set; }
+        public static ObservableCollection<LoadComboGridData> loadComboGridData { get; set; }
 
 
         public LoadCasesVM()
         {
             loadCaseGridData = new ObservableCollection<LoadCaseGridData>()
             {
-                new LoadCaseGridData {Id=1,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
-                new LoadCaseGridData {Id=2,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
-                new LoadCaseGridData {Id=3,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=1,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=2,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
+                //new LoadCaseGridData {Id=3,LoadcaseName = "Dead", SelfWtMult = 1, loadPatternType = eLoadPatternType.Dead},
             };
             loadComboGridData = new ObservableCollection<LoadComboGridData>()
             {
-                new LoadComboGridData {Id=1,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
-                new LoadComboGridData {Id=2,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
-                new LoadComboGridData {Id=3,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
+                //new LoadComboGridData {Id=1,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
+                //new LoadComboGridData {Id=2,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
+                //new LoadComboGridData {Id=3,LoadCaseName = "Dead", LoadComboName = "Dead", LoadFactor =1},
             };
         }
         

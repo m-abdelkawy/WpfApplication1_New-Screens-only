@@ -18,6 +18,14 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
+    <!--<DataGridTemplateColumn Header="Writer">
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <ItemsControl ItemsSource="{Binding Writers}" DisplayMemberPath="Fullname"/>
+            </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+    </DataGridTemplateColumn>-->
+
     <Grid>
         <Grid.RowDefinitions>
             <!--Window Header-->
@@ -55,6 +63,14 @@
                                     Content="Delete"
                                     Width="50"
                                     Margin="5" Click="DltLoadCaseBtn_Click"/>
+                            <Button x:Name="loadCasesOkBtn"
+                                    Grid.Column="0"
+                                    Content="Submit"
+                                    Width="50"
+                                    HorizontalAlignment="Right"
+                                    Margin="10"
+                                    VerticalAlignment="Top"
+                                    Click="loadCasesOkBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
@@ -71,9 +87,24 @@
                         <DataGrid x:Name="loadComboGridData"
                                   Width="350"
                                   Height="100"
-                                  
-                                  ItemsSource="{Binding loadComboGridData}"
-                                  >
+                                  ItemsSource="{Binding loadComboGridData}">
+                            
+                            <!--<DataGrid.Columns >
+                                <DataGridTextColumn Header="Id">
+                                    
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Load Combo">
+                                    
+                                </DataGridTextColumn>
+                                <DataGridComboBoxColumn x:Name="loadCasesComboBox" Header="Load Case"
+                                                        ItemsSource="{Binding LoadCases.loadPatternNameArr}"
+                                                        SelectedValueBinding="{Binding Path=LoadCases.loadCaseName}">
+                                    
+                                </DataGridComboBoxColumn>
+                                <DataGridCheckBoxColumn Header="LoadFactor">
+                                    
+                                </DataGridCheckBoxColumn>
+                            </DataGrid.Columns>-->
                         </DataGrid>
 
 
@@ -82,11 +113,20 @@
                             <Button x:Name="AddLoadComboBtn"
                                     Content="Add"
                                     Width="50"
-                                    Margin="5"/>
+                                    Margin="5"
+                                    Click="AddLoadComboBtn_Click"/>
                             <Button x:Name="DltLoadComboBtn"
                                     Content="Delete"
                                     Width="50"
                                     Margin="5"/>
+                            <Button x:Name="ComboSubmitBtn"
+                                    Grid.Column="0"
+                                    Content="Submit"
+                                    Width="50"
+                                    HorizontalAlignment="Right"
+                                    Margin="10"
+                                    VerticalAlignment="Top"
+                                    Click="ComboSubmitBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
@@ -96,18 +136,19 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="loadCasesOkBtn"
-                        Grid.Column="0"
-                        Content="OK"
-                        Width="50"
-                        HorizontalAlignment="Right"
-                        Margin="10"
-                        VerticalAlignment="Top"/>
+                
                 <Button x:Name="loadCasesCancelBtn"
                         Grid.Column="1"
                         Content="Cancel"
                         Width="50"
                         HorizontalAlignment="Left"
+                        Margin="10"
+                        VerticalAlignment="Top"/>
+                <Button x:Name="OkBtn"
+                        Grid.Column="0"
+                        Content="Submit"
+                        Width="50"
+                        HorizontalAlignment="Right"
                         Margin="10"
                         VerticalAlignment="Top"/>
             </Grid>

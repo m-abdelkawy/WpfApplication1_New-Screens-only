@@ -16,10 +16,10 @@ namespace Design.Presentation.Model
         public double SelfWtMult { get; set; } = 0;
         public eLoadPatternType loadPatternType { get; set; }
 
-        public static IEnumerable<LoadCaseGridData> GetloadCases()
-        {
-            return new List<LoadCaseGridData>();
-        }
+        //public static IEnumerable<LoadCaseGridData> GetloadCases()
+        //{
+        //    return new List<LoadCaseGridData>();
+        //}
 
 
         //Events
@@ -27,7 +27,7 @@ namespace Design.Presentation.Model
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

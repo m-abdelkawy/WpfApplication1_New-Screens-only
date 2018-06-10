@@ -131,6 +131,8 @@ namespace Design.Presentation
             var lc=new LoadCases();
             lc.DataContext = new LoadCasesVM();
             lc.ShowDialog();
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -160,6 +162,11 @@ namespace Design.Presentation
             ((SectionDialougeVM)sd.DataContext).Sections = Sections;
             sd.MainWindow = this;
             sd.Show();
+        }
+
+        private void Btn_LoadCombos_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

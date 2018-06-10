@@ -33,6 +33,7 @@
                 <Button Name="Btn_Section" Content="Section" Margin="10 10 10 0" Click="Btn_Section_Click"/>
                 <Button Name="Btn_Material" Content="Material" Margin="10 10 10 0" Click="Btn_Material_Click" />
                 <Button Name="btn_loadCases" Content="Load Cases" Margin="10 10 10 0" Click="btn_loadCases_Click"/>
+                <Button Name="Btn_LoadCombos" Content="LoadCombinations" Margin="10 10 10 0" Click="Btn_LoadCombos_Click"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
