@@ -82,7 +82,7 @@
                         <DataGrid Name="Gr_GridData" Grid.Column="0" Height="150" Width="250"
                                   ItemsSource="{Binding GridData}" 
                                   CanUserSortColumns="False"
-                                  AutoGenerateColumns="False">
+                                  AutoGenerateColumns="False" SelectionChanged="Gr_GridData_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Grid Id" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Span" Binding="{Binding Span}" />
@@ -106,8 +106,9 @@
                                 <DataGridTemplateColumn Header="Restrain">
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <ComboBox x:Name="SelectionRestrain" Loaded="SelectionRestrain_Loaded"    
+                                            <ComboBox  x:Name="SelectionRestrain" Loaded="SelectionRestrain_Loaded"    
                                              ItemsSource="{Binding Path=Restrain}"
+                                                       SelectedValuePath="SelectedRestrain" SelectionChanged="SelectionRestrain_SelectionChanged"
                                                />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>

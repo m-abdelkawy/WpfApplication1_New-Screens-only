@@ -19,7 +19,6 @@ namespace Design.Presentation.Model
         public ObservableCollection<SectionEditorVM> SectionProperties { get; set; }
         public Restraints Restrain { get; set; }
         public SectionEditorVM SelectedSection { get; set; }
-
         public Restraints SelectedRestrain { get; set; }
     }
 }

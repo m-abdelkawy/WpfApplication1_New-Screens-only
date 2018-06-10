@@ -1,4 +1,5 @@
-﻿using Design.Presentation.ViewModels;
+﻿using Design.Presentation.Model;
+using Design.Presentation.ViewModels;
 using Design.Presentation.Views.Section;
 using Desing.Core.Sap;
 using System;
@@ -24,6 +25,7 @@ namespace Design.Presentation
     /// </summary>
     public partial class GeometryEditor : Window
     {
+        private GridData GridData { get; set; }
 
         public GeometryEditor(GeometryEditorVM geometryEditorVM)
         {
@@ -123,6 +125,18 @@ namespace Design.Presentation
         {
             var cb = (ComboBox)sender;
             cb.ItemsSource=Enum.GetValues(typeof(Restraints)).Cast<Restraints>();
+        }
+
+        private void SelectionRestrain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            var s = (Restraints)cb.SelectedItem;
+            GridData.SelectedRestrain = s;
+        }
+
+        private void Gr_GridData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GridData = Gr_GridData.SelectedItem as GridData ;
         }
     }
 }
