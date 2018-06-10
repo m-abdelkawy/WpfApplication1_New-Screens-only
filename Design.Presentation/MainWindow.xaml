@@ -38,9 +38,16 @@
                 <Button Content="Beam Editor" Margin="10 10 10 0"/>
                 <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
-            <TabControl Grid.Column="1" >
+            <TabControl Grid.ColumnSpan="2" Margin="78,10,0,-428" HorizontalAlignment="Left" Width="928" >
                 <TabItem Header="Untitled">
-                    <Grid Background="#FFE5E5E5"/>
+                    <Canvas Name="canvas_Geometry">
+
+                        <Line
+    X1="10" Y1="10"
+    X2="50" Y2="50"
+    Stroke="Black"
+    StrokeThickness="4" />
+                    </Canvas>
                 </TabItem>
                 <TabItem Header="Design-Untitled">
                     <Grid Background="#FFE5E5E5"/>

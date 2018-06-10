@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="SAP2000v20">
       <HintPath>C:\Program Files\Computers and Structures\SAP2000 20\SAP2000v20.dll</HintPath>
@@ -56,19 +56,19 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WW">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.dll</HintPath>
     </Reference>
     <Reference Include="WW.Cad">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.Cad.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.Cad.dll</HintPath>
     </Reference>
     <Reference Include="WW.GL">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.GL.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.GL.dll</HintPath>
     </Reference>
     <Reference Include="WW.License">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.License.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.License.dll</HintPath>
     </Reference>
     <Reference Include="WW.Pdf">
-      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.Pdf.dll</HintPath>
+      <HintPath>C:\Users\amr Fayez\Desktop\Temp\For Amr_ Design Project\WpfApplication1\WpfApplication00-DesignProject\bin\Debug\WW.Pdf.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
