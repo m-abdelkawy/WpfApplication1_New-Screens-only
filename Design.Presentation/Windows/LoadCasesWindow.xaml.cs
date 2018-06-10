@@ -73,5 +73,10 @@ namespace Design.Presentation.Windows
                 }
             }
         }
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
