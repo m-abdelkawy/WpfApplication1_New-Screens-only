@@ -167,7 +167,9 @@ namespace Design.Presentation
 
         private void Btn_LoadCombos_Click(object sender, RoutedEventArgs e)
         {
-
+            var loadComboWin = new LoadCombinationsWindow();
+            loadComboWin.DataContext = new LoadCombinationsViewModel();
+            loadComboWin.ShowDialog();
         }
     }
 }

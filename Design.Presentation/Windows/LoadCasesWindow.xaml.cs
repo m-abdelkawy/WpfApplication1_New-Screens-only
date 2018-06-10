@@ -50,7 +50,7 @@ namespace Design.Presentation.Windows
             //New object of the Model(Auto Column Generating)
             var newLoadCaseRow = new LoadCasesModel(); 
 
-            //Add object of the model to a collection of the object view mode(DataGrid)
+            //Add object of the model to a collection of the object mode(DataGrid)
             LoadCasesViewModel.LoadCasesModelCollection.Add(newLoadCaseRow); 
         }
 
