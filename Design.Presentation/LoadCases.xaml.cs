@@ -55,7 +55,7 @@ namespace Design.Presentation
         //public static ObservableCollection<string> loadPatName = new ObservableCollection<string>();
         //LoadPattern
         public List<string> loadPatternName = new List<string>();
-        public static List<string> loadPatternName = new List<string>();
+       
         public List<double> SelfWtMultiplier = new List<double>();
         public List<eLoadPatternType> patternType = new List<eLoadPatternType>();
 
@@ -88,12 +88,9 @@ namespace Design.Presentation
         private void AddLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
 
-<<<<<<< HEAD
-            var viewModel =(LoadCasesVM) DataContext;
-            var newLoadCaseRow = new LoadCaseGridData();
-            viewModel.loadCaseGridData.Add(newLoadCaseRow);
 
-=======
+            var viewModel = (LoadCasesVM)DataContext;
+            var newLoadCaseRow = new LoadCaseGridData();
             LoadCasesVM.loadCaseGridData.Add(newLoadCaseRow);
 
 
@@ -107,7 +104,7 @@ namespace Design.Presentation
             //loadPatternName.Add(loadCaseGridData[);
             //SelfWtMultiplier.Add(viewModel.SelfWtMult);
             //patternType.Add(viewModel.loadPatternType);
->>>>>>> d595c6264d5ef05c3e907d634bc4dcc57e69ec0e
+
             #region old
             //loadCaseGridData.SelectAllCells();
             //loadCaseGridData.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
@@ -192,7 +189,7 @@ namespace Design.Presentation
         private void DltLoadCaseBtn_Click(object sender, RoutedEventArgs e)
         {
             var index = loadCaseGridData.SelectedIndex;
-            viewModel.loadCaseGridData.RemoveAt(index);
+            
         }
     }
 }

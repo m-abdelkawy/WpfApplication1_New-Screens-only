@@ -31,7 +31,21 @@
                                   Width="350"
                                   Height="100"
                                   Grid.Column="0"
-                            ItemsSource="{Binding LoadComboModelCollection}"/>
+                            ItemsSource="{Binding Path= LoadComboCollection}" >
+                            <DataGrid.Columns>
+                                <DataGridComboBoxColumn Header="Load Cases" DisplayMemberPath="LoadcaseName" >
+                                    <DataGridComboBoxColumn.EditingElementStyle>
+                                        <Style TargetType="ComboBox">
+                                            <Setter Property="ItemsSource" Value="{Binding Path=LoadCases}"  />
+                                        </Style>
+                                    </DataGridComboBoxColumn.EditingElementStyle>
+                                </DataGridComboBoxColumn>
+                            </DataGrid.Columns>
+                            
+
+
+
+                        </DataGrid>
                         <StackPanel VerticalAlignment="Center"
                                     Grid.Column="1">
                             <Button x:Name="AddLoadComboBtn"

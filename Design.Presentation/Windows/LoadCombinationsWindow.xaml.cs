@@ -21,6 +21,7 @@ namespace Design.Presentation.Windows
     /// </summary>
     public partial class LoadCombinationsWindow : Window
     {
+        public MainWindow MainWindow { get; set; }
         #region Load Combination Storage
         //Load Combinations
         List<string> Combinations = new List<string>();
@@ -60,7 +61,7 @@ namespace Design.Presentation.Windows
         {
             for (int i = 0; i < LoadCombinationsViewModel.LoadComboModelCollection.Count; i++)
             {
-                if (LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName != null && LoadCombinationsViewModel.LoadComboModelCollection[i].LoadCaseName != null)
+                if (LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName != null)
                 {
                     Combinations.Add(LoadCasesVM.loadComboGridData[i].LoadComboName);
                     loadCaseName.Add(LoadCasesVM.loadComboGridData[i].LoadCaseName);

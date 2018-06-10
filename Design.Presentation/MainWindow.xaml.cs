@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SAP2000v20;
 using Design.Presentation.Windows;
+using Design.Presentation.Model;
 
 namespace Design.Presentation
 {
@@ -95,6 +96,7 @@ namespace Design.Presentation
         public GeometryEditorVM GeometryEditor { get; set; }
         public ObservableCollection<MaterialEditorVM> Materials { get; set; }
         public ObservableCollection<SectionEditorVM> Sections { get; set; }
+        public ObservableCollection<LoadCasesModel> LoadCases { get; set; }
         //Load Cases Window
 
         #endregion
