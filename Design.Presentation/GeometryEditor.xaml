@@ -56,7 +56,7 @@
                     <ComboBox Grid.Column="1" Margin="0 0 0 0" ItemsSource="{Binding Path=Sections}" DisplayMemberPath="Name" >
                        
                     </ComboBox>
-                    <Button Grid.Column="2"  Content="+" Width="50" Click="Button_Click"></Button>
+                    <Button Name="Btn_Add_Section" Grid.Column="2"  Content="+" Width="50" Click="Btn_Add_Section_Click" ></Button>
                 </Grid>
             </GroupBox>
             <!--Grid Data-->

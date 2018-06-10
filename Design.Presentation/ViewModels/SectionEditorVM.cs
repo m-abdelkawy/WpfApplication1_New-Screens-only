@@ -9,15 +9,15 @@ namespace Design.Presentation.ViewModels
 {
     public class SectionEditorVM
     {
+        public static ObservableCollection<SectionEditorVM> Sections { get; set; }
+        = new ObservableCollection<SectionEditorVM>();
+
         public string Name { get; set; }
         public double Depth { get; set; }
         public double Width { get; set; }
-        public ObservableCollection<MaterialEditorVM> Materials { get; set; }
-        public MaterialEditorVM SelectedMaterial { get; set; }
-
-        public SectionEditorVM(ObservableCollection<MaterialEditorVM> materials)
+        public SectionEditorVM()
         {
-            Materials = materials;
+           
         }
     }
 }

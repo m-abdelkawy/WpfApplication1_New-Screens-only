@@ -14,58 +14,24 @@ namespace Design.Presentation.ViewModels
     }
     public class MaterialEditorVM
     {
-        private MaterialType _materialType;
-
-        public  static int Counter=1;
         
-        public string Name { get; set; }
-        public MaterialType MaterialType
-        {
-            get
-            {
-                return _materialType;
-            }
-            set
-            {
-                _materialType = value;
-                SetMaterialProperty();
-            }
-        }
-        public double WeightPerUnitVolume { get; set; }
-        public double MassPerUnitVolume { get; set; }
-        public double E { get; set; }
-        public double U { get; set; }
-        public double A { get; set; }
-        public double G { get; }
-        public MaterialProperty MaterialProperty { get; set; }
+        public  static int Counter=1;
+        public static MaterialEditorVM Material { get; set; } = new MaterialEditorVM();
+        public double Fcu { get; set; }
+        public double Fy { get; set; }
+        public double NoOfBranches { get; set; }
+        public double FyStirrups { get; set; }
+       
         public MaterialEditorVM()
         {
             
-            WeightPerUnitVolume = 11111;
-            MaterialType = MaterialType.Concrete;
-            SetMaterialProperty();
-            Name = "Concrete- " + Counter;
-            Counter++;
-
         }
-
-        public override string ToString()
+        public static MaterialEditorVM GetMterial()
         {
-            return Name;
+            return Material;
         }
-        private void SetMaterialProperty()
-        {
-            switch (MaterialType)
-            {
-                case MaterialType.Concrete:
-                    MaterialProperty = new ConcreteMaterialProperties();
-                    break;
-                case MaterialType.Steel:
-                    MaterialProperty = new SteelMaterialProperties();
-                    break;
 
-            }
-        }
+
 
     }
 }

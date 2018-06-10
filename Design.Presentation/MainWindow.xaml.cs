@@ -95,7 +95,6 @@ namespace Design.Presentation
         #region Properties
         public GeometryEditorVM GeometryEditor { get; set; }
         public ObservableCollection<MaterialEditorVM> Materials { get; set; }
-        public ObservableCollection<SectionEditorVM> Sections { get; set; }
         public ObservableCollection<LoadCasesModel> LoadCases { get; set; }
         //Load Cases Window
 
@@ -104,7 +103,7 @@ namespace Design.Presentation
         {
             InitializeComponent();
             Materials = new ObservableCollection<MaterialEditorVM>();
-            Sections= new ObservableCollection<SectionEditorVM>();
+           
         }
 
 
@@ -118,7 +117,7 @@ namespace Design.Presentation
                 MainWindow = this,
             };
 
-            ge.DataContext = new GeometryEditorVM(Sections);
+            ge.DataContext = new GeometryEditorVM();
 
             ge.ShowDialog();
         }
@@ -150,20 +149,16 @@ namespace Design.Presentation
 
         private void Btn_Material_Click(object sender, RoutedEventArgs e)
         {
-            MaterialDialouge md = new MaterialDialouge
-            {
-                DataContext = new MaterialDialougeVM().Materials = Materials
-            };
-            md.ShowDialog();
-            
+            MaterialEditor me = new MaterialEditor( MaterialEditorVM.GetMterial());
+            me.ShowDialog();
         }
 
         private void Btn_Section_Click(object sender, RoutedEventArgs e)
         {
             SectionDialouge sd = new SectionDialouge();
-            sd.DataContext = new SectionDialougeVM(Sections) ;
-            ((SectionDialougeVM)sd.DataContext).Sections = Sections;
-            sd.MainWindow = this;
+            sd.DataContext = new SectionDialougeVM() ;
+            
+         
             sd.Show();
         }
 

@@ -367,6 +367,7 @@ namespace WpfApplication00_DesignProject
                 }
                 else if (assignBtnClicked > 0 && (distLoadPattern[assignBtnClicked] != distLoadPattern[assignBtnClicked - 1]))
                 {
+
                     loadComboSelectedIndex = loadComboComboBox2.SelectedIndex;
                     loadIndexShapeList2 = loadComboComboBox2.SelectedIndex;
                     //DrawLoads:
@@ -377,8 +378,6 @@ namespace WpfApplication00_DesignProject
                             LoadCanvas.Children.Remove(distLoadShapes[loadIndexShapeList1][i]);
                         }
                     }
-                    
-
                     Rectangle r = new Rectangle();
                     r.Width = (comSpanValues[xBeamsComboBox.SelectedIndex + 1] - comSpanValues[xBeamsComboBox.SelectedIndex]) * 20;
                     r.Height = Convert.ToDouble(distLoadtxtBox.Text) * 20;

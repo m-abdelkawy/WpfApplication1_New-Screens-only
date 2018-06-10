@@ -107,9 +107,14 @@ namespace Design.Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var sd = new SectionDialouge();
-            sd.MainWindow = this.MainWindow;
-            sd.DataContext = new SectionDialougeVM(MainWindow.Sections);
+           
+        }
+
+        private void Btn_Add_Section_Click(object sender, RoutedEventArgs e)
+        {
+            var se = new SectionEditor(new SectionEditorVM() );
+           
+            se.ShowDialog();
 
         }
     }

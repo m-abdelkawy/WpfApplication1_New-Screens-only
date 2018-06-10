@@ -74,12 +74,8 @@
     <Compile Include="Model\MaterialProperty.cs" />
     <Compile Include="ViewModels\LoadAssignmentVM.cs" />
     <Compile Include="ViewModels\LoadCasesVM.cs" />
-    <Compile Include="ViewModels\MaterialDialougeVM.cs" />
     <Compile Include="ViewModels\MaterialEditorVM.cs" />
     <Compile Include="ViewModels\SectionEditorVM.cs" />
-    <Compile Include="Views\Material\MaterialDialouge.xaml.cs">
-      <DependentUpon>MaterialDialouge.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Material\MaterialEditor.xaml.cs">
       <DependentUpon>MaterialEditor.xaml</DependentUpon>
     </Compile>
@@ -118,10 +114,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Material\MaterialDialouge.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Material\MaterialEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

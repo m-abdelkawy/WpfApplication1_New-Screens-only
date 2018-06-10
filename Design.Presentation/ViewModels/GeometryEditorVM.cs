@@ -17,9 +17,9 @@ namespace Design.Presentation.ViewModels
         public ObservableCollection<SectionEditorVM> Sections { get; set; }
         public ObservableCollection<GridData> GridData { get; set; }
 
-        public GeometryEditorVM(ObservableCollection<SectionEditorVM> sections)
+        public GeometryEditorVM()
         {
-            Sections = sections;
+            Sections = SectionEditorVM.Sections;
             GridData = new ObservableCollection<GridData>()
             {
                 new GridData{Id=1,Span=10},
