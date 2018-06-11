@@ -56,6 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Geometry\GCanvas.cs" />
+    <Compile Include="Geometry\GCircle.cs" />
+    <Compile Include="Geometry\GeometryEngine.cs" />
+    <Compile Include="Geometry\GLine.cs" />
+    <Compile Include="Geometry\GPolygon.cs" />
+    <Compile Include="Geometry\GTriangle.cs" />
+    <Compile Include="Geometry\GShape.cs" />
+    <Compile Include="Geometry\ShapesEnum.cs" />
     <Compile Include="LoadAssignment.xaml.cs">
       <DependentUpon>LoadAssignment.xaml</DependentUpon>
     </Compile>
@@ -169,8 +177,6 @@
       <Name>Design.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

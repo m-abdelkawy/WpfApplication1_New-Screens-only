@@ -20,11 +20,12 @@ using System.Windows.Shapes;
 using SAP2000v20;
 using Design.Presentation.Windows;
 using Design.Presentation.Model;
+using Design.Presentation.Geometry;
 
 namespace Design.Presentation
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction Geometry for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -49,7 +50,7 @@ namespace Design.Presentation
         SapModel mySapModel;
         /*------------------------------*/
 
-        
+
 
         /*------------------------------*/
 
@@ -92,11 +93,13 @@ namespace Design.Presentation
         /*-------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------*/
-       
+
+        public GeometryEngine GeometryEngine { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-           
+            GeometryEngine = new GeometryEngine();
+            GeometryEngine.GCanvas.Canvas = canvas_Geometry;
         }
 
 
@@ -117,7 +120,7 @@ namespace Design.Presentation
 
         private void btn_loadCases_Click(object sender, RoutedEventArgs e)
         {
-            var lc=new LoadCasesWindow();
+            var lc = new LoadCasesWindow();
             lc.DataContext = new LoadCasesViewModel();
             lc.ShowDialog();
 
@@ -131,21 +134,21 @@ namespace Design.Presentation
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Btn_Material_Click(object sender, RoutedEventArgs e)
         {
-            MaterialEditor me = new MaterialEditor( MaterialEditorVM.Material);
+            MaterialEditor me = new MaterialEditor(MaterialEditorVM.Material);
             me.ShowDialog();
         }
 
         private void Btn_Section_Click(object sender, RoutedEventArgs e)
         {
             SectionDialouge sd = new SectionDialouge();
-            sd.DataContext = new SectionDialougeVM() ;
-            
-         
+            sd.DataContext = new SectionDialougeVM();
+
+
             sd.Show();
         }
 
@@ -154,6 +157,34 @@ namespace Design.Presentation
             var loadComboWin = new LoadCombinationsWindow();
             loadComboWin.DataContext = new LoadCombinationsViewModel();
             loadComboWin.ShowDialog();
+        }
+
+
+        GLine g;
+        private void Btn_DrawLine_Click(object sender, RoutedEventArgs e)
+        {
+             g= new GLine(GeometryEngine.GCanvas, new Point(0, 0), new Point(60, 70));
+            var c = new GCircle(GeometryEngine.GCanvas, new Point(0,0), 50);
+          
+            System.Windows.Point Point1 = new System.Windows.Point(1, 50);
+            System.Windows.Point Point2 = new System.Windows.Point(10, 80);
+            System.Windows.Point Point3 = new System.Windows.Point(50, 50);
+    
+            PointCollection myPointCollection = new PointCollection();
+            myPointCollection.Add(Point1);
+            myPointCollection.Add(Point2);
+            myPointCollection.Add(Point3);
+            
+            GPolygon tr = new GPolygon(GeometryEngine.GCanvas, myPointCollection);
+
+            GeometryEngine.GCanvas.Render();
+        }
+
+        private void bBtn_Show_Click(object sender, RoutedEventArgs e)
+        {
+            GeometryEngine.GCanvas.Hide();
+            //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
+
         }
     }
 }

@@ -34,13 +34,13 @@
                 <Button Name="Btn_Material" Content="Material" Margin="10 10 10 0" Click="Btn_Material_Click" />
                 <Button Name="btn_loadCases" Content="Load Cases" Margin="10 10 10 0" Click="btn_loadCases_Click"/>
                 <Button Name="Btn_LoadCombos" Content="LoadCombinations" Margin="10 10 10 0" Click="Btn_LoadCombos_Click"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
-                <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
+                <Button Name="Btn_DrawLine" Content="Draw Line" Margin="10 10 10 0" Click="Btn_DrawLine_Click"/>
+                <Button Name="Btn_Hide" Content="Hide Drawings" Margin="10 10 10 0" Click="bBtn_Show_Click"/>
+                <Button Name="Btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
-                    <Canvas Name="canvas_Geometry">
+                    <Canvas Name="canvas_Geometry" Width="850" Height="620" MinWidth="850" MinHeight="620" >
 
                         <Line
     X1="10" Y1="10"
