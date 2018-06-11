@@ -132,6 +132,7 @@ namespace Design.Presentation
             var cb = (ComboBox)sender;
             var s = (Restraints)cb.SelectedItem;
             GridData.SelectedRestrain = s;
+
         }
 
         private void Gr_GridData_SelectionChanged(object sender, SelectionChangedEventArgs e)
