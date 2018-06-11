@@ -149,11 +149,15 @@ namespace Design.Presentation
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cb = ((ComboBox)sender).SelectedItem as GeometryEditorVM;
-            if (cb == null) return;
-           
-            var selectedSection = ((GeometryEditorVM)DataContext).SelectedSection=cb.SelectedSection;
 
+
+        }
+
+        private void cb_SelectedSection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = ((ComboBox)sender).SelectedItem as SectionEditorVM;
+            if (cb == null) return;
+            var selectedSection = ((GeometryEditorVM)DataContext).SelectedSection = cb;
         }
     }
 }

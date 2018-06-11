@@ -15,6 +15,8 @@ namespace Design.Presentation.ViewModels
     {
         private int _numberOfSpans = 1;
         private int _spanLength = 5;
+        private ObservableCollection<SectionEditorVM> _sections;
+        private SectionEditorVM _selectedSection;
 
         public static GeometryEditorVM GeometryEditor { get; set; }
 = new GeometryEditorVM();
@@ -36,10 +38,27 @@ namespace Design.Presentation.ViewModels
                 UpdateGeometry();
             }
         }
-        public ObservableCollection<SectionEditorVM> Sections { get;
-            set; }
+        public ObservableCollection<SectionEditorVM> Sections
+        {
+            get { return _sections; }
+            set { _sections = value; try { UpdateGeometry(); } catch { } }
+        }
         public ObservableCollection<GridData> GridData { get; set; }
-        public SectionEditorVM SelectedSection { get; set; }
+        public SectionEditorVM SelectedSection
+        {
+            get
+            {
+                if (_selectedSection == null)
+                {
+                    _selectedSection = Sections.FirstOrDefault();
+                };
+                return _selectedSection; }
+            set
+            {
+                _selectedSection = value;
+               
+            }
+        }
         public GeometryEditorVM()
         {
             Sections = SectionEditorVM.Sections;
@@ -53,12 +72,15 @@ namespace Design.Presentation.ViewModels
             {
                 GridData.Add(new GridData()
                 {
-                    Id = i+1,
+                    Id = i + 1,
                     SectionProperties = SectionEditorVM.Sections,
                     Span = SpanLength,
                     Restrain = Restraints.Fixed,
-                    SelectedSection = SelectedSection
+                    SelectedSection =  GeometryEditor.SelectedSection
                 });
+
+
+
             }
         }
     }
