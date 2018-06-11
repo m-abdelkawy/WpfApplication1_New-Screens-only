@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Desing.Core.Sap;
 using System;
@@ -74,7 +75,36 @@ namespace Design.Presentation.Windows
         {
             var cb = sender as ComboBox;
             var s = (int)cb.SelectedItem;
+            if (s <0) return;
             DLAM.selectedSpanNo = s;
+
+        }
+
+        private void DistLoadDltBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var index = DistLoadGridData.SelectedIndex;
+            DistLoadAssignmentViewModel.DistLoadModelStaticCollection.RemoveAt(index);
+        }
+
+        private void DistLoadSubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
+            {
+                if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].LoadCases!=null)
+                {
+                    //Load Value
+                    AnalysisMapping.distLoadVals.Add(DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal);
+
+                    // Load Pattern we Assign load to
+                    AnalysisMapping.distLoadPattern.Add(DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedLoadCase);
+
+                    //Sap Frame Element We Assign Load to:
+                    AnalysisMapping.DistLoadFrameElement.Add((DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo).ToString());
+
+                    //Load Direction List
+                    AnalysisMapping.distLoadDirVal.Add(DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedDir);
+                }
+            }
         }
     }
 }

@@ -68,7 +68,7 @@
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate >
-                                            <TextBlock Text="{Binding Path= selectedSpanNo}"/>
+                                            <TextBlock Text="{Binding Path=selectedSpanNo}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
@@ -122,14 +122,16 @@
                             <Button x:Name="DistLoadDltBtn"
                                     Content="Delete"
                                     Width="50"
-                                    Margin="5"/>
+                                    Margin="5"
+                                    Click="DistLoadDltBtn_Click"/>
                             <Button x:Name="DistLoadSubmitBtn"
                                     Grid.Column="0"
                                     Content="Submit"
                                     Width="50"
                                     HorizontalAlignment="Right"
                                     Margin="10"
-                                    VerticalAlignment="Top"/>
+                                    VerticalAlignment="Top"
+                                    Click="DistLoadSubmitBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>

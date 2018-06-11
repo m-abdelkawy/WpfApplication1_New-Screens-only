@@ -28,7 +28,7 @@ namespace Design.Presentation.Model
 
         //Selected Items
         public string selectedLoadCase { get; set; } //to set the selected value in the textBlock
-        public int selectedSpanNo;
+        public int selectedSpanNo { get; set; }
         public LoadDir selectedDir { get; set; }
         #endregion
 
