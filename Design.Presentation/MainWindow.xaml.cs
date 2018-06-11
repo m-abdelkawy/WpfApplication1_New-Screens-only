@@ -186,5 +186,19 @@ namespace Design.Presentation
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
         }
+
+        private void Btn_DistLoadAssinment_Click(object sender, RoutedEventArgs e)
+        {
+            var distLoadWin = new DistLoadAssignmentWindow();
+            distLoadWin.DataContext = new DistLoadAssignmentViewModel();
+            distLoadWin.ShowDialog();
+        }
+
+        private void Btn_PointLoadAssignment_Click(object sender, RoutedEventArgs e)
+        {
+            var pointLoadWin = new PointLoadAssignmentWindow();
+            pointLoadWin.DataContext = new PointLoadAssignmentViewModel();
+            pointLoadWin.ShowDialog();
+        }
     }
 }
