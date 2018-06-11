@@ -38,7 +38,7 @@ namespace Design.Presentation
 
         public double[] spanValues;
         public double[] comSpanValues; //comlative
-        public int[] rebarDiameterArr;
+        //public int[] rebarDiameterArr;
         public int[] sections = new int[] { 1, 2, 3 };
         public int[] shearSections = new int[] { 1, 2 };
 
@@ -185,6 +185,20 @@ namespace Design.Presentation
             GeometryEngine.GCanvas.Hide();
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
+        }
+
+        private void Btn_DistLoadAssinment_Click(object sender, RoutedEventArgs e)
+        {
+            var distLoadWin = new DistLoadAssignmentWindow();
+            distLoadWin.DataContext = new DistLoadAssignmentViewModel();
+            distLoadWin.ShowDialog();
+        }
+
+        private void Btn_PointLoadAssignment_Click(object sender, RoutedEventArgs e)
+        {
+            var pointLoadWin = new PointLoadAssignmentWindow();
+            pointLoadWin.DataContext = new PointLoadAssignmentViewModel();
+            pointLoadWin.ShowDialog();
         }
     }
 }

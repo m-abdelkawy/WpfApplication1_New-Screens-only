@@ -18,7 +18,7 @@ namespace Design.Presentation.Geometry
         private Canvas _canvas;
         private Vector translateVector;
 
-        public Canvas Canvas { get => _canvas; set { _canvas = value; Initializer(); } }
+        public Canvas Canvas { get { return _canvas; } set { _canvas = value; Initializer(); } }
         // Zoom
         public Double ZoomMax { get; set; }
         public Double ZoomMin { get; set; }

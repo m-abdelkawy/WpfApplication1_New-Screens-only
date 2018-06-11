@@ -12,6 +12,13 @@ namespace Design.Presentation.ViewModels
 {
     public class LoadCombinationsViewModel :INotifyPropertyChanged
     {
+        
+        public string SelectedLoadCase
+        {
+            get;
+            set;
+        }
+
 
         public static ObservableCollection<LoadCombinationsModel> LoadComboModelCollection { get; set; }
        = new ObservableCollection<LoadCombinationsModel>();
