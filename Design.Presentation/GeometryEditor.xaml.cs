@@ -36,7 +36,7 @@ namespace Design.Presentation
 
         }
 
-       
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -99,7 +99,7 @@ namespace Design.Presentation
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
-            
+
             this.Close();
         }
 
@@ -110,13 +110,13 @@ namespace Design.Presentation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void Btn_Add_Section_Click(object sender, RoutedEventArgs e)
         {
-            var se = new SectionEditor(new SectionEditorVM() );
-           
+            var se = new SectionEditor(new SectionEditorVM());
+
             se.ShowDialog();
 
         }
@@ -124,7 +124,7 @@ namespace Design.Presentation
         private void SelectionRestrain_Loaded(object sender, RoutedEventArgs e)
         {
             var cb = (ComboBox)sender;
-            cb.ItemsSource=Enum.GetValues(typeof(Restraints)).Cast<Restraints>();
+            cb.ItemsSource = Enum.GetValues(typeof(Restraints)).Cast<Restraints>();
         }
 
         private void SelectionRestrain_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -132,12 +132,28 @@ namespace Design.Presentation
             var cb = (ComboBox)sender;
             var s = (Restraints)cb.SelectedItem;
             GridData.SelectedRestrain = s;
-
         }
 
         private void Gr_GridData_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            GridData = Gr_GridData.SelectedItem as GridData ;
+            GridData = Gr_GridData.SelectedItem as GridData;
+        }
+
+        private void SelectionCol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            var se = (SectionEditorVM)cb.SelectedItem;
+            if (se == null) return;
+            GridData.SelectedSection = se;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = ((ComboBox)sender).SelectedItem as GeometryEditorVM;
+            if (cb == null) return;
+           
+            var selectedSection = ((GeometryEditorVM)DataContext).SelectedSection=cb.SelectedSection;
+
         }
     }
 }

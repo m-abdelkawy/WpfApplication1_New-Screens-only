@@ -27,7 +27,6 @@ namespace Design.Presentation.Geometry
         public bool IsMouseCaptured { get; private set; }
         private Point origin;  // Original Offset of Canvas
         private Point start;   // Original Position of the mouse
-
         public GCanvas()
         {
             ZoomMax = 5;
@@ -40,9 +39,9 @@ namespace Design.Presentation.Geometry
         private void Initializer()
         {
             Canvas.MouseWheel += Canvas_MouseWheel;
-            //Canvas.MouseLeftButtonUp += MyCanvas_MouseLeftButtonUp;
-            //Canvas.MouseMove += MyCanvas_MouseMove;
-            //Canvas.MouseLeftButtonDown+= MyCanvas_MouseLeftButtonDown;
+            Canvas.MouseLeftButtonUp += MyCanvas_MouseLeftButtonUp;
+            Canvas.MouseMove += MyCanvas_MouseMove;
+            Canvas.MouseLeftButtonDown += MyCanvas_MouseLeftButtonDown;
         }
 
         // Zoom on Mouse wheel
@@ -65,9 +64,9 @@ namespace Design.Presentation.Geometry
         }
 
         /////
-        
-        
-        
+
+
+
         void MyCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Canvas.ReleaseMouseCapture();

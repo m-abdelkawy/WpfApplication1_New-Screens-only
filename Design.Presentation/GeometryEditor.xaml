@@ -65,7 +65,7 @@
                     <ComboBox Grid.Column="1" Margin="0 0 0 0" 
                               ItemsSource="{Binding Path=Sections}"
                               DisplayMemberPath="Name"
-                              SelectedValuePath="SelectedSection" SelectedItem="SelectedSection">
+                              SelectedValuePath="SelectedSection" SelectedItem="SelectedSection" SelectionChanged="ComboBox_SelectionChanged">
 
                     </ComboBox>
                     <Button Name="Btn_Add_Section" Grid.Column="2"  Content="+" Width="50" Click="Btn_Add_Section_Click" ></Button>
@@ -92,18 +92,18 @@
                                         <DataTemplate>
                                             <ComboBox Name="SelectionCol"
                                              ItemsSource="{Binding Path=SectionProperties}"
-                                                DisplayMemberPath="Name" />
+                                                DisplayMemberPath="Name"  SelectionChanged="SelectionCol_SelectionChanged"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate >
-                                            <TextBlock Text="{Binding SelectedSection.Name}" />
+                                            <TextBlock Text="{Binding Path=SelectedSection.Name}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 
                                 <!--Restrain Column-->
-                                <DataGridTemplateColumn Header="Restrain">
+                                <DataGridTemplateColumn Header="Restrain" >
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <ComboBox  x:Name="SelectionRestrain" Loaded="SelectionRestrain_Loaded"    
