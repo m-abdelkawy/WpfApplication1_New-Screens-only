@@ -69,5 +69,12 @@ namespace Design.Presentation.Windows
             var s = (LoadDir)cb.SelectedItem;
             DLAM.selectedDir = s;
         }
+
+        private void DistSpanNoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = sender as ComboBox;
+            var s = (int)cb.SelectedItem;
+            DLAM.selectedSpanNo = s;
+        }
     }
 }

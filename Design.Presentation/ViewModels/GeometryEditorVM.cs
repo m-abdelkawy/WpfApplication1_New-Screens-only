@@ -53,7 +53,7 @@ namespace Design.Presentation.ViewModels
             {
                 GridData.Add(new GridData()
                 {
-                    Id = i,
+                    Id = i+1,
                     SectionProperties = SectionEditorVM.Sections,
                     Span = SpanLength,
                     Restrain = Restraints.Fixed,

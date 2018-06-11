@@ -63,7 +63,8 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <ComboBox Name="PointSpanNoComboBox"
-                                                      ItemsSource="{Binding Path=SpanNo}"/>
+                                                      ItemsSource="{Binding Path=SpanNo}"
+                                                      SelectionChanged="PointSpanNoComboBox_SelectionChanged"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>

@@ -38,7 +38,7 @@ namespace Design.Presentation
 
         public double[] spanValues;
         public double[] comSpanValues; //comlative
-        public int[] rebarDiameterArr;
+        //public int[] rebarDiameterArr;
         public int[] sections = new int[] { 1, 2, 3 };
         public int[] shearSections = new int[] { 1, 2 };
 

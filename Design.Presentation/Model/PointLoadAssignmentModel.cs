@@ -16,7 +16,11 @@ namespace Design.Presentation.Model
         #region Properties
         public int Id { get; set; }
         public double PointLoadVal { get; set; } = 0;
-        public ObservableCollection<int> SpanNo { get; set; }
+        public ObservableCollection<int> SpanNo
+        {
+            get { return new ObservableCollection<int>(GeometryEditorVM.GeometryEditor.GridData.Select(e => e.Id)); }
+            set { SpanNo = value; }
+        }
         public LoadDir DistLoadDirection { get; set; }
         public ObservableCollection<LoadCasesModel> LoadCases { get; set; }
         public LoadDir PointLoadDirection { get; set; }

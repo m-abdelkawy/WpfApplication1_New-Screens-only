@@ -69,5 +69,12 @@ namespace Design.Presentation.Windows
             //Add object of the model to a collection of the object mode(DataGrid)
             PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Add(newPointLoadRow);
         }
+
+        private void PointSpanNoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = sender as ComboBox;
+            var s = (int)cb.SelectedItem;
+            PLAM.selectedSpanNo = s;
+        }
     }
 }
