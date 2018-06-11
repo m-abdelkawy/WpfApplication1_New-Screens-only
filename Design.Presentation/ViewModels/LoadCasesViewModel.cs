@@ -35,7 +35,7 @@ namespace Design.Presentation.ViewModels
         public LoadCasesViewModel(LoadCasesModel _loadCasesmodel)
         {
             this.loadCasesmodel = _loadCasesmodel;
-            LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
+            //LoadCasesModelCollection = new ObservableCollection<LoadCasesModel>() { };
         }
 
         #region Property Wrapping

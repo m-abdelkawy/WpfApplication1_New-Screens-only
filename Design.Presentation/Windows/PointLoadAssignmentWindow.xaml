@@ -1,0 +1,162 @@
+﻿<Window x:Class="Design.Presentation.Windows.PointLoadAssignmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Design.Presentation.Windows"
+        xmlns:localSapenum="clr-namespace:Desing.Core.Sap;assembly=Design.Core"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="PointLoadAssignmentWindow" Height="250" Width="450">
+
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                                ObjectType="{x:Type sys:Enum}"
+                                x:Key="loadPatternEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="localSapenum:LoadDir"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--Window Header-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Load Cases-->
+        <StackPanel VerticalAlignment="Center">
+            <!--Point Load StackPanel-->
+            <StackPanel Margin="10">
+                <GroupBox Header="Point Loads">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <DataGrid x:Name="PointLoadGridData"
+                                  Width="350"
+                                  Height="100"
+                                  Grid.Column="0"
+                                  AutoGenerateColumns="False"
+                                  ItemsSource="{Binding Path= PointLoadCollection}"
+                                  SelectionChanged="PointLoadGridData_SelectionChanged">
+                            <DataGrid.Columns>
+
+                                <!--PointLoad Id-->
+                                <DataGridTextColumn Header="Id"
+                                                    Binding="{Binding Path=Id}"/>
+
+                                <!--PointLoad Value-->
+                                <DataGridTextColumn Header="Point Load"
+                                                    Binding="{Binding Path=PointLoadVal}"/>
+
+                                <!--Span ComboBox Column-->
+                                <DataGridTemplateColumn Header="Span">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="PointSpanNoComboBox"
+                                                      ItemsSource="{Binding Path=SpanNo}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock Text="{Binding Path= selectedSpanNo}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!--Load Cases ComboBox-->
+                                <DataGridTemplateColumn Header="Load Case">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox Name="PointLoadCasesComboBox"
+                                                      ItemsSource="{Binding Path=LoadCases}"
+                                                      DisplayMemberPath="LoadcaseName"
+                                                      SelectionChanged="PointLoadCasesComboBox_SelectionChanged"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock Text="{Binding Path= selectedLoadCase}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!--Load Direction Enum ComboBox-->
+                                <DataGridTemplateColumn Header="Load Direction">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox x:Name="PointLoadDirComboBox"
+                                                      ItemsSource="{Binding Path=PointLoadDirection}"
+                                                      Loaded="PointLoadDirComboBox_Loaded"
+                                                      SelectionChanged="PointLoadDirComboBox_SelectionChanged"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock Text="{Binding Path= selectedDir}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!--Relative Distance-->
+                                <DataGridTextColumn Header="Relative Distance"
+                                                    Binding="{Binding Path=RelativeDistance}"/>
+                            </DataGrid.Columns>
+
+
+                        </DataGrid>
+
+
+                        <StackPanel VerticalAlignment="Center"
+                                    Grid.Column="1">
+                            <Button x:Name="PointLoadAddBtn"
+                                    Content="Add"
+                                    Width="50"
+                                    Margin="5"
+                                    Click="PointLoadAddBtn_Click"/>
+                            <Button x:Name="PointLoadDltBtn"
+                                    Content="Delete"
+                                    Width="50"
+                                    Margin="5"/>
+                            <Button x:Name="PointLoadSubmitBtn"
+                                    Grid.Column="0"
+                                    Content="Submit"
+                                    Width="50"
+                                    HorizontalAlignment="Right"
+                                    Margin="10"
+                                    VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+            
+
+            <StackPanel Margin="10">
+
+            </StackPanel>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button x:Name="OkBtn"
+                        Grid.Column="0"
+                        Content="OK"
+                        Width="50"
+                        HorizontalAlignment="Center"
+                        Margin="10"
+                        VerticalAlignment="Top"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

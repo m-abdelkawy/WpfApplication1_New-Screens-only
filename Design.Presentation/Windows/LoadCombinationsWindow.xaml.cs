@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,11 @@ namespace Design.Presentation.Windows
     /// </summary>
     public partial class LoadCombinationsWindow : Window
     {
+        LoadCombinationsModel lcM = new LoadCombinationsModel();
         public MainWindow MainWindow { get; set; }
         #region Load Combination Storage
         //Load Combinations
-        List<string> Combinations = new List<string>();
-        public static List<string> loadCaseName = new List<string>();
-        List<double> loadFactorList = new List<double>();
+        
         #endregion
 
         public LoadCombinationsWindow()
@@ -63,10 +63,10 @@ namespace Design.Presentation.Windows
             {
                 if (LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName != null)
                 {
-                    Combinations.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName);
+                    AnalysisMapping.Combinations.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName);
                     //loadCaseName.Add(dgcbLoadCases.);
-                    loadCaseName.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadCases[0].LoadcaseName);
-                    loadFactorList.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadFactor);
+                    AnalysisMapping.loadCaseName.Add(lcM.loadCaseSelectedItem);
+                    AnalysisMapping.loadFactorList.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadFactor);
                 }
             }
         }
@@ -74,6 +74,19 @@ namespace Design.Presentation.Windows
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void SelectionLoadCase_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = sender as ComboBox;
+            var s = cb.SelectedItem as LoadCasesModel;
+            lcM.loadCaseSelectedItem = s.LoadcaseName;
+
+        }
+
+        private void loadComboGridData_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lcM = (LoadCombinationsModel)loadComboGridData.SelectedItem;
         }
     }
 }

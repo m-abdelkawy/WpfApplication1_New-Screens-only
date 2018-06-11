@@ -32,7 +32,8 @@
                                   Height="100"
                                   Grid.Column="0"
                                   AutoGenerateColumns="False"
-                            ItemsSource="{Binding Path= LoadComboCollection}" >
+                                  ItemsSource="{Binding Path= LoadComboCollection}"
+                                  SelectionChanged="loadComboGridData_SelectionChanged" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id"
                                                     Binding="{Binding Path=Id}"/>
@@ -43,13 +44,14 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <ComboBox Name="SelectionLoadCase"
-                                             ItemsSource="{Binding Path=LoadCases}"
-                                                DisplayMemberPath="LoadcaseName" />
+                                                      ItemsSource="{Binding Path=LoadCases}"
+                                                      DisplayMemberPath="LoadcaseName"
+                                                      SelectionChanged="SelectionLoadCase_SelectionChanged"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate >
-                                            <TextBlock Text="{Binding SelectedLoadCase.Name}" />
+                                            <TextBlock Text="{Binding Path= loadCaseSelectedItem}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

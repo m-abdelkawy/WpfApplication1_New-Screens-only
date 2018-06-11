@@ -10,7 +10,9 @@
         Title="Geometry Editor" Height="460" Width="520" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="RestraintsEnum">
+        <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            x:Key="RestraintsEnum">
             <ObjectDataProvider.MethodParameters>
                 <x:Type Type="myRes:Restraints"/>
             </ObjectDataProvider.MethodParameters>
@@ -106,9 +108,11 @@
                                 <DataGridTemplateColumn Header="Restrain">
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <ComboBox  x:Name="SelectionRestrain" Loaded="SelectionRestrain_Loaded"    
-                                             ItemsSource="{Binding Path=Restrain}"
-                                                       SelectedValuePath="SelectedRestrain" SelectionChanged="SelectionRestrain_SelectionChanged"
+                                            <ComboBox  x:Name="SelectionRestrain"
+                                                       Loaded="SelectionRestrain_Loaded"    
+                                                       ItemsSource="{Binding Path=Restrain}"
+                                                       SelectedValuePath="SelectedRestrain"
+                                                       SelectionChanged="SelectionRestrain_SelectionChanged"
                                                />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>

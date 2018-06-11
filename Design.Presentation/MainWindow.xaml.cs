@@ -155,5 +155,19 @@ namespace Design.Presentation
             loadComboWin.DataContext = new LoadCombinationsViewModel();
             loadComboWin.ShowDialog();
         }
+
+        private void Btn_DistLoadAssignment_Click(object sender, RoutedEventArgs e)
+        {
+            var distLoadAssignWindow = new DistLoadAssignmentWindow();
+            distLoadAssignWindow.DataContext = new DistLoadAssignmentViewModel();
+            distLoadAssignWindow.ShowDialog();
+        }
+
+        private void Btn_PointLoadAssignment_Click(object sender, RoutedEventArgs e)
+        {
+            var pointLoadAssignWindow = new PointLoadAssignmentWindow();
+            pointLoadAssignWindow.DataContext = new PointLoadAssignmentViewModel();
+            pointLoadAssignWindow.ShowDialog();
+        }
     }
 }

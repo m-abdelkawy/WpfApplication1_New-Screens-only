@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Desing.Core.Sap;
 using SAP2000v20;
@@ -24,12 +25,7 @@ namespace Design.Presentation.Windows
     public partial class LoadCasesWindow : Window
     {
         #region Load Pattern Storage
-        public static List<string> loadPatternName = new List<string>();
-        public List<double> SelfWtMultiplier = new List<double>();
-        public List<eLoadPatternType> patternType = new List<eLoadPatternType>();
-
-
-        public List<SapLoadPattern> loadPatterns = new List<SapLoadPattern>();
+        
         public eCNameType ec = eCNameType.LoadCase;
         /*------------------------------*/
         #endregion
@@ -66,9 +62,9 @@ namespace Design.Presentation.Windows
             {
                 if (LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName != null)
                 {
-                    loadPatternName.Add(LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName);
-                    SelfWtMultiplier.Add(LoadCasesViewModel.LoadCasesModelCollection[i].SelfWtMult);
-                    patternType.Add(LoadCasesViewModel.LoadCasesModelCollection[i].loadPatternType);
+                    AnalysisMapping.loadPatternName.Add(LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName);
+                    AnalysisMapping.SelfWtMultiplier.Add(LoadCasesViewModel.LoadCasesModelCollection[i].SelfWtMult);
+                    AnalysisMapping.patternType.Add(LoadCasesViewModel.LoadCasesModelCollection[i].loadPatternType);
 
                 }
             }

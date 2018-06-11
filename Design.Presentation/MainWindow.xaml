@@ -34,8 +34,8 @@
                 <Button Name="Btn_Material" Content="Material" Margin="10 10 10 0" Click="Btn_Material_Click" />
                 <Button Name="btn_loadCases" Content="Load Cases" Margin="10 10 10 0" Click="btn_loadCases_Click"/>
                 <Button Name="Btn_LoadCombos" Content="LoadCombinations" Margin="10 10 10 0" Click="Btn_LoadCombos_Click"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
-                <Button Content="Beam Editor" Margin="10 10 10 0"/>
+                <Button x:Name="Btn_DistLoadAssignment" Content="Distributed Load" Margin="10 10 10 0" Click="Btn_DistLoadAssignment_Click"/>
+                <Button x:Name="Btn_PointLoadAssignment" Content="Point Load" Margin="10 10 10 0" Click="Btn_PointLoadAssignment_Click"/>
                 <Button Name="btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
