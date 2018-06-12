@@ -48,6 +48,10 @@ namespace Design.Presentation.Geometry
             if (!GCanvas.Canvas.Children.Contains(Shape)) return;
             GCanvas.Canvas.Children.Remove(Shape);
         }
+        public virtual void Hide()
+        {
+            Shape.Visibility = Visibility=Visibility.Collapsed;
+        }
 
     }
 }

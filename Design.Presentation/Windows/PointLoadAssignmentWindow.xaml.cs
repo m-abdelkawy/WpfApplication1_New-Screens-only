@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Desing.Core.Sap;
 using System;
@@ -75,6 +76,37 @@ namespace Design.Presentation.Windows
             var cb = sender as ComboBox;
             var s = (int)cb.SelectedItem;
             PLAM.selectedSpanNo = s;
+        }
+
+        private void PointLoadSubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Count; i++)
+            {
+                if (PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedLoadCase != null)
+                {
+                    //Point Load Value
+                    AnalysisMapping.concLoadVals.Add(PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal);
+
+                    //SapFrame Element we assign the Point Load to
+                    AnalysisMapping.concLoadFrameElement.Add((PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo).ToString());
+
+                    //Load Case we assign the load to
+                    AnalysisMapping.concLoadPattern.Add(PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedLoadCase);
+
+                    //Point Load Direction
+                    AnalysisMapping.concLoadDirVal.Add(PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedDir);
+
+                    //Relative Distance List
+                    AnalysisMapping.relDistList.Add(PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance);
+                    
+                }
+            }
+        }
+
+        private void PointLoadDltBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var index = PointLoadGridData.SelectedIndex;
+            PointLoadAssignmentViewModel.PointLoadModelStaticCollection.RemoveAt(index);
         }
     }
 }

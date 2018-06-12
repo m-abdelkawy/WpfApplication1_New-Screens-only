@@ -19,7 +19,7 @@ namespace Design.Presentation.ViewModels
         private SectionEditorVM _selectedSection;
 
         public static GeometryEditorVM GeometryEditor { get; set; }
-= new GeometryEditorVM();
+= new GeometryEditorVM(); //List of grid data
         public int NumberOfSpans
         {
             get { return _numberOfSpans; }
@@ -43,7 +43,7 @@ namespace Design.Presentation.ViewModels
             get { return _sections; }
             set { _sections = value; try { UpdateGeometry(); } catch { } }
         }
-        public ObservableCollection<GridData> GridData { get; set; }
+        public ObservableCollection<GridData> GridData { get; set; } //span, sec of 
         public SectionEditorVM SelectedSection
         {
             get
