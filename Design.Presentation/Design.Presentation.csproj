@@ -63,6 +63,7 @@
     <Compile Include="Geometry\GPolygon.cs" />
     <Compile Include="Geometry\GTriangle.cs" />
     <Compile Include="Geometry\GShape.cs" />
+    <Compile Include="Geometry\Hinged.cs" />
     <Compile Include="Geometry\ShapesEnum.cs" />
     <Compile Include="LoadAssignment.xaml.cs">
       <DependentUpon>LoadAssignment.xaml</DependentUpon>

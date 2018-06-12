@@ -160,22 +160,22 @@ namespace Design.Presentation
         }
 
 
-        GLine g;
+      
         private void Btn_DrawLine_Click(object sender, RoutedEventArgs e)
         {
-             g= new GLine(GeometryEngine.GCanvas, new Point(0, 0), new Point(60, 70));
-            var c = new GCircle(GeometryEngine.GCanvas, new Point(0,0), 50);
-          
-            System.Windows.Point Point1 = new System.Windows.Point(1, 50);
-            System.Windows.Point Point2 = new System.Windows.Point(10, 80);
-            System.Windows.Point Point3 = new System.Windows.Point(50, 50);
-    
+
+          //  var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
+            var h = new Hinged(GeometryEngine.GCanvas,new Point(60,60));
+            System.Windows.Point Point1 = new System.Windows.Point(60, 60);
+            System.Windows.Point Point2 = new System.Windows.Point(80, 80);
+            System.Windows.Point Point3 = new System.Windows.Point(40, 40);
+
             PointCollection myPointCollection = new PointCollection();
             myPointCollection.Add(Point1);
             myPointCollection.Add(Point2);
             myPointCollection.Add(Point3);
-            
-            GPolygon tr = new GPolygon(GeometryEngine.GCanvas, myPointCollection);
+         //   var p = new GPolygon(GeometryEngine.GCanvas, myPointCollection);
+
 
             GeometryEngine.GCanvas.Render();
         }
