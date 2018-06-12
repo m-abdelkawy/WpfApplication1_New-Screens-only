@@ -127,14 +127,16 @@
                             <Button x:Name="PointLoadDltBtn"
                                     Content="Delete"
                                     Width="50"
-                                    Margin="5"/>
+                                    Margin="5"
+                                    Click="PointLoadDltBtn_Click"/>
                             <Button x:Name="PointLoadSubmitBtn"
                                     Grid.Column="0"
                                     Content="Submit"
                                     Width="50"
                                     HorizontalAlignment="Right"
                                     Margin="10"
-                                    VerticalAlignment="Top"/>
+                                    VerticalAlignment="Top"
+                                    Click="PointLoadSubmitBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>

@@ -11,6 +11,11 @@ namespace Design.Core.Sap
     public class AnalysisMapping
     {
         #region DataMembers
+        /*-----------------------------*/
+        public static List<int> spanList = new List<int>();
+
+
+
         //LoadPattern
         public static List<string> loadPatternName = new List<string>();
         public static List<double> SelfWtMultiplier = new List<double>();
