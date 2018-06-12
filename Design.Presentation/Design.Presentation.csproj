@@ -67,7 +67,6 @@
     <Compile Include="LoadAssignment.xaml.cs">
       <DependentUpon>LoadAssignment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ConcreteMaterialProperties.cs" />
     <Compile Include="Model\DistLoadAssignmentModel.cs" />
     <Compile Include="Model\GridData.cs" />
     <Compile Include="Model\LoadCaseGridData.cs" />
@@ -81,9 +80,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PointLoadAssignmentViewModel.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
-    <Compile Include="Model\SteelMaterialProperties.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
-    <Compile Include="Model\MaterialProperty.cs" />
     <Compile Include="ViewModels\LoadCasesVM.cs" />
     <Compile Include="ViewModels\MaterialEditorVM.cs" />
     <Compile Include="ViewModels\SectionEditorVM.cs" />
