@@ -47,7 +47,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Number of Span"/>
-                    <TextBox Grid.Column="1" Width="50" Text="{Binding NumberOfSpans}"/>
+                    <TextBox x:Name="nSpansTxtBox" Grid.Column="1" Width="50" Text="{Binding NumberOfSpans}" TextChanged="TextBox_TextChanged"/>
                     <Label Grid.Column="3" Content="Span Length"/>
                     <TextBox Grid.Column="4" Width="50" Text="{Binding SpanLength}"/>
                 </Grid>
@@ -85,7 +85,8 @@
                         <DataGrid Name="Gr_GridData" Grid.Column="0" Height="150" Width="250"
                                   ItemsSource="{Binding GridData}" 
                                   CanUserSortColumns="False"
-                                  AutoGenerateColumns="False" SelectionChanged="Gr_GridData_SelectionChanged">
+                                  AutoGenerateColumns="False"
+                                  SelectionChanged="Gr_GridData_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Grid Id" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Span" Binding="{Binding Span}" />
@@ -95,7 +96,8 @@
                                         <DataTemplate>
                                             <ComboBox Name="SelectionCol"
                                              ItemsSource="{Binding Path=SectionProperties}"
-                                                DisplayMemberPath="Name"  SelectionChanged="SelectionCol_SelectionChanged"/>
+                                                DisplayMemberPath="Name" 
+                                                      SelectionChanged="SelectionCol_SelectionChanged"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>

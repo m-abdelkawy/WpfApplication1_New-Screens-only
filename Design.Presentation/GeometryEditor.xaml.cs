@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Design.Presentation.Views.Section;
 using Desing.Core.Sap;
@@ -158,6 +159,15 @@ namespace Design.Presentation
             var cb = ((ComboBox)sender).SelectedItem as SectionEditorVM;
             if (cb == null) return;
             var selectedSection = ((GeometryEditorVM)DataContext).SelectedSection = cb;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < Convert.ToInt32(nSpansTxtBox.Text) + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
         }
     }
 }
