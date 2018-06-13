@@ -91,7 +91,14 @@
                                                Width="100"
                                                Loaded="FlexureSpanComboBox_Loaded"
                                                SelectionChanged="FlexureSpanComboBox_SelectionChanged">
-                                        
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal"
+                                                            Margin="2">
+                                                    <TextBlock Text="{Binding Id}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                     <!--Sections-->
                                     <TextBlock Text="Chose section:"
@@ -99,7 +106,9 @@
                                                Grid.Column="0"/>
                                     <ComboBox x:Name="FlexureSectionComboBox"
                                               Grid.Row="1"
-                                              Grid.Column="1">
+                                              Grid.Column="1"
+                                              Loaded="FlexureSectionComboBox_Loaded"
+                                              SelectionChanged="FlexureSectionComboBox_SelectionChanged">
                                     </ComboBox>
 
                                     <TextBlock Text="As (cm2):"
@@ -114,7 +123,8 @@
                                                Grid.Column="0"/>
                                     <ComboBox x:Name="rebarDiaComboBox"
                                               Grid.Row="3"
-                                              Grid.Column="1">
+                                              Grid.Column="1"
+                                              Loaded="rebarDiaComboBox_Loaded">
                                     </ComboBox>
                                     <TextBlock Text="No. of Rebars:"
                                                Grid.Row="4"
@@ -171,14 +181,16 @@
                                     <ComboBox x:Name="ShearSpanComboBox"
                                               Grid.Row="0"
                                               Grid.Column="1"
-                                              Width="100"/>
+                                              Width="100"
+                                              Loaded="ShearSpanComboBox_Loaded"/>
                                     <!--Sections-->
                                     <TextBlock Text="Chose section:"
                                                Grid.Row="1"
                                                Grid.Column="0"/>
                                     <ComboBox x:Name="ShearSectionComboBox"
                                               Grid.Row="1"
-                                              Grid.Column="1">
+                                              Grid.Column="1"
+                                              Loaded="ShearSectionComboBox_Loaded">
                                     </ComboBox>
 
                                     <TextBlock Text="stirrup Diameter"
@@ -186,7 +198,8 @@
                                                Grid.Column="0"/>
                                     <ComboBox x:Name="stirrupComboBox"
                                               Grid.Row="2"
-                                              Grid.Column="1">
+                                              Grid.Column="1"
+                                              Loaded="stirrupComboBox_Loaded">
                                     </ComboBox>
                                     <Button x:Name="calcSBtn"
                                             Grid.Row="2"

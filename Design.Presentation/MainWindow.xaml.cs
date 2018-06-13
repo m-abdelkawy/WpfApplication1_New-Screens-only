@@ -32,6 +32,12 @@ namespace Design.Presentation
     /// </summary>
     public partial class MainWindow : Window
     {
+        //lists
+        int[] spanIndex = GeometryEditorVM.GeometryEditor.GridData.Select(e => e.Id).ToArray();
+        int[] rebarDiameterArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32 };
+        int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 14, 16, 18 };
+        int[] Flexuresections = new int[] { 1, 2, 3 };
+        int[] shearSections = new int[] { 1, 2 };
         #region Storage
         //public List<int> spanList = new List<int>();
         //public List<int> beamNames = new List<int>();
@@ -49,7 +55,7 @@ namespace Design.Presentation
         //SapFrameElement[] xbeams;
 
         //SapRectSection B;
-        
+
         /*------------------------------*/
 
 
@@ -251,7 +257,49 @@ namespace Design.Presentation
 
         private void FlexureSpanComboBox_Loaded(object sender, RoutedEventArgs e)
         {
+            var FlexureSpanComboBox = sender as ComboBox;
+            FlexureSpanComboBox.ItemsSource = spanIndex;
+            FlexureSpanComboBox.SelectedIndex = 0;
+        }
 
+        private void FlexureSectionComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var FlexureSectionComboBox = sender as ComboBox;
+            FlexureSectionComboBox.ItemsSource = Flexuresections;
+            FlexureSectionComboBox.SelectedIndex = 0;
+        }
+
+        private void FlexureSectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void rebarDiaComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var rebarDiaComboBox = sender as ComboBox;
+            rebarDiaComboBox.ItemsSource = rebarDiameterArr;
+            rebarDiaComboBox.SelectedIndex = 0;
+        }
+
+        private void ShearSpanComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var ShearSpanComboBox = sender as ComboBox;
+            ShearSpanComboBox.ItemsSource = spanIndex;
+            ShearSpanComboBox.SelectedIndex = 0;
+        }
+
+        private void ShearSectionComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var ShearSectionComboBox = sender as ComboBox;
+            ShearSectionComboBox.ItemsSource = shearSections;
+            ShearSectionComboBox.SelectedIndex = 0;
+        }
+
+        private void stirrupComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var stirrupComboBox = sender as ComboBox;
+            stirrupComboBox.ItemsSource = StirrupsDiameterArr;
+            stirrupComboBox.SelectedIndex = 0;
         }
     }
 }

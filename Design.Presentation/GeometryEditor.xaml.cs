@@ -171,5 +171,39 @@ namespace Design.Presentation
                 AnalysisMapping.spanList.Add(i);
             }
         }
+
+        private void Btn_AddBeam_Click(object sender, RoutedEventArgs e)
+        {//-------------Revise
+            //New object of the Model(Auto Column Generating)
+            var newBeaElementRow = new GridData();
+
+            //Add object of the model to a collection of the object mode(DataGrid)
+            GeometryEditorVM.GeometryEditor.GridData.Add(newBeaElementRow);
+
+            //Update SpanList //------------Revise
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
+        }
+
+        private void Btn_DltBeam_Click(object sender, RoutedEventArgs e)
+        {//------------Revise
+            var index = Gr_GridData.SelectedIndex;
+            GeometryEditorVM.GeometryEditor.GridData.RemoveAt(index);
+
+            //Update SpanList //------------Revise
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
+        }
+
+        private void Gr_GridData_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+
+        }
     }
 }
