@@ -166,17 +166,9 @@ namespace Design.Presentation
 
           //  var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
             var h = new Hinged(GeometryEngine.GCanvas,new Point(60,60));
-            System.Windows.Point Point1 = new System.Windows.Point(60, 60);
-            System.Windows.Point Point2 = new System.Windows.Point(80, 80);
-            System.Windows.Point Point3 = new System.Windows.Point(40, 40);
-
-            PointCollection myPointCollection = new PointCollection();
-            myPointCollection.Add(Point1);
-            myPointCollection.Add(Point2);
-            myPointCollection.Add(Point3);
-         //   var p = new GPolygon(GeometryEngine.GCanvas, myPointCollection);
-
-
+            var roller = new Roller(GeometryEngine.GCanvas, new Point(100,60));
+            //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
+            var xxx= new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
             GeometryEngine.GCanvas.Render();
         }
 

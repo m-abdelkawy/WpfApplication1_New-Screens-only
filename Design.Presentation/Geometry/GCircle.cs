@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Design.Presentation.Geometry
@@ -27,6 +28,7 @@ namespace Design.Presentation.Geometry
             var left = Position.X - (Radius / 2);
             var top = Position.Y - (Radius / 2);
             Circle.Margin = new Thickness(left,top,0,0);
+            Fill = Brushes.Transparent;
             GCanvas.Shapes.Add(this);
 
         }
