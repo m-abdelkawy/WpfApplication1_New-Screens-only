@@ -68,9 +68,6 @@
     <Compile Include="Geometry\GRectangle.cs" />
     <Compile Include="Geometry\Roller.cs" />
     <Compile Include="Geometry\ShapesEnum.cs" />
-    <Compile Include="LoadAssignment.xaml.cs">
-      <DependentUpon>LoadAssignment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\DistLoadAssignmentModel.cs" />
     <Compile Include="Model\GridData.cs" />
     <Compile Include="Model\LoadCaseGridData.cs" />
@@ -78,6 +75,7 @@
     <Compile Include="Model\LoadCombinationsModel.cs" />
     <Compile Include="Model\LoadComboGridData.cs" />
     <Compile Include="Model\PointLoadAssignmentModel.cs" />
+    <Compile Include="ViewModels\AnalysisMapping.cs" />
     <Compile Include="ViewModels\DistLoadAssignmentViewModel.cs" />
     <Compile Include="ViewModels\LoadCasesViewModel.cs" />
     <Compile Include="ViewModels\LoadCombinationsViewModel.cs" />
@@ -113,10 +111,6 @@
     <Page Include="GeometryEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LoadAssignment.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +190,8 @@
       <Name>Design.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Out Of Service\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

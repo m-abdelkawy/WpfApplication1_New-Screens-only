@@ -39,6 +39,7 @@
                 <Button Name="Btn_DrawLine" Content="Draw Line" Margin="10 10 10 0" Click="Btn_DrawLine_Click"/>
                 <Button Name="Btn_Hide" Content="Hide Drawings" Margin="10 10 10 0" Click="bBtn_Show_Click"/>
                 <Button Name="Btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
+                <Button x:Name="Btn_Design" Content="Design" Margin="10 10 10 0" Click="Btn_Design_Click"/>
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
@@ -46,7 +47,179 @@
                     </Canvas>
                 </TabItem>
                 <TabItem Header="Design-Untitled">
-                    <Grid Background="#FFE5E5E5"/>
+                    <!--<Grid Background="#FFE5E5E5"/>-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Width="350">
+                            <GroupBox Header="Design for Flexure" Margin="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--Beam Span-->
+                                    <TextBlock Text="Choose Beam:"
+                                               Grid.Column="0"
+                                               Grid.Row="0"/>
+                                    <ComboBox x:Name="FlexureSpanComboBox"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Width="100"
+                                               Loaded="FlexureSpanComboBox_Loaded"
+                                               SelectionChanged="FlexureSpanComboBox_SelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal"
+                                                            Margin="2">
+                                                    <TextBlock Text="{Binding Id}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <!--Sections-->
+                                    <TextBlock Text="Chose section:"
+                                               Grid.Row="1"
+                                               Grid.Column="0"/>
+                                    <ComboBox x:Name="FlexureSectionComboBox"
+                                              Grid.Row="1"
+                                              Grid.Column="1"
+                                              Loaded="FlexureSectionComboBox_Loaded"
+                                              SelectionChanged="FlexureSectionComboBox_SelectionChanged">
+                                    </ComboBox>
+
+                                    <TextBlock Text="As (cm2):"
+                                               Grid.Row="2"
+                                               Grid.Column="0"/>
+                                    <TextBlock x:Name="AsTxtBlock"
+                                               Grid.Row="2"
+                                               Grid.Column="1"
+                                               Background="Chocolate"/>
+                                    <TextBlock Text="choose rebar D:"
+                                               Grid.Row="3"
+                                               Grid.Column="0"/>
+                                    <ComboBox x:Name="rebarDiaComboBox"
+                                              Grid.Row="3"
+                                              Grid.Column="1"
+                                              Loaded="rebarDiaComboBox_Loaded">
+                                    </ComboBox>
+                                    <TextBlock Text="No. of Rebars:"
+                                               Grid.Row="4"
+                                               Grid.Column="0"/>
+                                    <TextBlock x:Name="rebarNoTxtBlock"
+                                               Grid.Row="4"
+                                               Grid.Column="1"
+                                               Background="Chocolate"/>
+
+                                    <TextBlock Text="Chosen No:"
+                                               Grid.Row="5"
+                                               Grid.Column="0"/>
+                                    <TextBox x:Name="chosenNotxtBox"
+                                             Grid.Row="5"
+                                             Grid.Column="1"
+                                             Background="BurlyWood"/>
+
+                                    <Button x:Name="calcAsBtn"
+                                            Content="Calc As"
+                                            Width="100"
+                                            Grid.Row="3"
+                                            Grid.Column="2"/>
+
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Grid.Row="0"
+                                    Grid.Column="1">
+                            <GroupBox Header="Design for Shear">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Choose Beam:"
+                                               Grid.Column="0"
+                                               Grid.Row="0"/>
+                                    <ComboBox x:Name="ShearSpanComboBox"
+                                              Grid.Row="0"
+                                              Grid.Column="1"
+                                              Width="100"
+                                              Loaded="ShearSpanComboBox_Loaded"/>
+                                    <!--Sections-->
+                                    <TextBlock Text="Chose section:"
+                                               Grid.Row="1"
+                                               Grid.Column="0"/>
+                                    <ComboBox x:Name="ShearSectionComboBox"
+                                              Grid.Row="1"
+                                              Grid.Column="1"
+                                              Loaded="ShearSectionComboBox_Loaded">
+                                    </ComboBox>
+
+                                    <TextBlock Text="stirrup Diameter"
+                                               Grid.Row="2"
+                                               Grid.Column="0"/>
+                                    <ComboBox x:Name="stirrupComboBox"
+                                              Grid.Row="2"
+                                              Grid.Column="1"
+                                              Loaded="stirrupComboBox_Loaded">
+                                    </ComboBox>
+                                    <Button x:Name="calcSBtn"
+                                            Grid.Row="2"
+                                            Grid.Column="2"
+                                            Width="100"
+                                            Content="calc Spacing"/>
+                                    <TextBlock Text="Spacing(mm):"
+                                               Grid.Row="3"
+                                               Grid.Column="0"/>
+                                    <TextBlock x:Name="spacingTxtBlock"
+                                               Grid.Row="3"
+                                               Grid.Column="1"
+                                               Background="Chartreuse"/>
+
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+                    </Grid>
+                    
+                    
                 </TabItem>
             </TabControl>
         </Grid>

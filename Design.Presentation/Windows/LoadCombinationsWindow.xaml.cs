@@ -65,7 +65,7 @@ namespace Design.Presentation.Windows
                 {
                     AnalysisMapping.Combinations.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadComboName);
                     //loadCaseName.Add(dgcbLoadCases.);
-                    AnalysisMapping.loadCaseName.Add(lcM.loadCaseSelectedItem);
+                    AnalysisMapping.loadCaseName.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].loadCaseSelectedItem);
                     AnalysisMapping.loadFactorList.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadFactor);
                 }
             }

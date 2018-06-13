@@ -47,7 +47,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Number of Span"/>
-                    <TextBox Grid.Column="1" Width="50" Text="{Binding NumberOfSpans}"/>
+                    <TextBox x:Name="nSpansTxtBox" Grid.Column="1" Width="50" Text="{Binding NumberOfSpans}" TextChanged="TextBox_TextChanged"/>
                     <Label Grid.Column="3" Content="Span Length"/>
                     <TextBox Grid.Column="4" Width="50" Text="{Binding SpanLength}"/>
                 </Grid>
@@ -68,7 +68,9 @@
                               Name="cb_SelectedSection"
                               ItemsSource="{Binding Path=Sections}"
                               DisplayMemberPath="Name"
-                              SelectedValuePath="SelectedSection" SelectedItem="SelectedSection" SelectionChanged="cb_SelectedSection_SelectionChanged" >
+                              SelectedValuePath="SelectedSection"
+                              SelectedItem="SelectedSection"
+                              SelectionChanged="cb_SelectedSection_SelectionChanged" >
 
                     </ComboBox>
                     <Button Name="Btn_Add_Section" Grid.Column="2"  Content="+" Width="50" Click="Btn_Add_Section_Click" ></Button>
@@ -85,17 +87,19 @@
                         <DataGrid Name="Gr_GridData" Grid.Column="0" Height="150" Width="250"
                                   ItemsSource="{Binding GridData}" 
                                   CanUserSortColumns="False"
-                                  AutoGenerateColumns="False" SelectionChanged="Gr_GridData_SelectionChanged">
+                                  AutoGenerateColumns="False"
+                                  SelectionChanged="Gr_GridData_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Grid Id" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Span" Binding="{Binding Span}" />
                                 <!--Section Columns-->
-                                <DataGridTemplateColumn Header="Section Properties">
+                                <DataGridTemplateColumn x:Name="SecTempCol" Header="Section Properties">
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <ComboBox Name="SelectionCol"
+                                            <ComboBox x:Name="SelectionCol"
                                              ItemsSource="{Binding Path=SectionProperties}"
-                                                DisplayMemberPath="Name"  SelectionChanged="SelectionCol_SelectionChanged"/>
+                                                DisplayMemberPath="Name" 
+                                                      SelectionChanged="SelectionCol_SelectionChanged"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
@@ -143,8 +147,8 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center"  >
-                            <Button Content="Add" Width="50" Margin="10"/>
-                            <Button Content="Delete" Width="50"/>
+                            <Button x:Name="Btn_AddBeam" Content="Add" Width="50" Margin="10" Click="Btn_AddBeam_Click"/>
+                            <Button x:Name="Btn_DltBeam" Content="Delete" Width="50" Click="Btn_DltBeam_Click"/>
                         </StackPanel>
                     </Grid>
                 </Expander>

@@ -70,7 +70,6 @@
     <Compile Include="Dxf\DXFTextClass.cs" />
     <Compile Include="Dxf\GenerateDXF.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Sap\AnalysisMapping.cs" />
     <Compile Include="Sap\SapFrameDistLoad.cs" />
     <Compile Include="Sap\SapFrameElement.cs" />
     <Compile Include="Sap\SapFrameResult.cs" />
@@ -82,6 +81,7 @@
     <Compile Include="Sap\SapPointLoad.cs" />
     <Compile Include="Sap\SapRectSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sap\StartAnalysis.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

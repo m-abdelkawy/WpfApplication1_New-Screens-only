@@ -1,4 +1,5 @@
-﻿using Design.Presentation.Model;
+﻿using Design.Core.Sap;
+using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Design.Presentation.Views.Section;
 using Desing.Core.Sap;
@@ -141,10 +142,12 @@ namespace Design.Presentation
 
         private void SelectionCol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             var cb = (ComboBox)sender;
             var se = (SectionEditorVM)cb.SelectedItem;
             if (se == null) return;
             GridData.SelectedSection = se;
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -158,6 +161,49 @@ namespace Design.Presentation
             var cb = ((ComboBox)sender).SelectedItem as SectionEditorVM;
             if (cb == null) return;
             var selectedSection = ((GeometryEditorVM)DataContext).SelectedSection = cb;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < Convert.ToInt32(nSpansTxtBox.Text) + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
+        }
+
+        private void Btn_AddBeam_Click(object sender, RoutedEventArgs e)
+        {//-------------Revise
+            //New object of the Model(Auto Column Generating)
+            var newBeaElementRow = new GridData();
+
+            //Add object of the model to a collection of the object mode(DataGrid)
+            GeometryEditorVM.GeometryEditor.GridData.Add(newBeaElementRow);
+
+            //Update SpanList //------------Revise
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
+        }
+
+        private void Btn_DltBeam_Click(object sender, RoutedEventArgs e)
+        {//------------Revise
+            var index = Gr_GridData.SelectedIndex;
+            GeometryEditorVM.GeometryEditor.GridData.RemoveAt(index);
+
+            //Update SpanList //------------Revise
+            AnalysisMapping.spanList.Clear();
+            for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+            {
+                AnalysisMapping.spanList.Add(i);
+            }
+        }
+
+        private void Gr_GridData_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Design.Presentation.ViewModels
     {
         public static ObservableCollection<SectionEditorVM> Sections { get; set; }
         = new ObservableCollection<SectionEditorVM>(); //Name, Width, Depth of Sections entered
+        public static ObservableCollection<SectionEditorVM> SectionsAssigned { get; set; }
+        = new ObservableCollection<SectionEditorVM>();
 
         public string Name { get; set; }
         public double Depth { get; set; }

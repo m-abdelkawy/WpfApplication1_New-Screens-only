@@ -153,7 +153,8 @@
                         Width="50"
                         HorizontalAlignment="Center"
                         Margin="10"
-                        VerticalAlignment="Top"/>
+                        VerticalAlignment="Top"
+                        Click="OkBtn_Click"/>
             </Grid>
         </StackPanel>
     </Grid>
