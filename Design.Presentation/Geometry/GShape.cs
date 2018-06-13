@@ -15,6 +15,8 @@ namespace Design.Presentation.Geometry
 
     public class GShape
     {
+        public double Scale { get; set; }
+        public ShapeType ShapeType { get; set; }
         public GCanvas GCanvas { get; set; }
         public Shape Shape { get; set; }
         public Thickness Thickness { get; set; }
@@ -26,11 +28,12 @@ namespace Design.Presentation.Geometry
         public GShape(GCanvas gCanvas)
         {
             GCanvas = gCanvas;
-            // Thickness = new Thickness(101, -11, 362, 250);
+            Thickness = new Thickness(101, -11, 362, 250);
             Visibility = Visibility.Visible;
             Stroke = Brushes.Black;
             StrokeThickness = 1;
             Fill = Brushes.Red;
+            Scale = 1;
             //
 
         }

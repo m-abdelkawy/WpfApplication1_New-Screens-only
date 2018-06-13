@@ -44,12 +44,6 @@
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
                     <Canvas Name="canvas_Geometry" Width="850" Height="620" MinWidth="850" MinHeight="620" >
-
-                        <Line
-    X1="10" Y1="10"
-    X2="50" Y2="50"
-    Stroke="Black"
-    StrokeThickness="4" />
                     </Canvas>
                 </TabItem>
                 <TabItem Header="Design-Untitled">

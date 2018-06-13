@@ -17,8 +17,8 @@ namespace Design.Presentation.Model
         public int Id { get; set; }
         public double Span { get; set; }
         public ObservableCollection<SectionEditorVM> SectionProperties { get; set; }
-        public Restraints Restrain { get; set; }
         public SectionEditorVM SelectedSection { get; set; }
         public Restraints SelectedRestrain { get; set; }
+        public Restraints Restrain { get; set; }
     }
 }

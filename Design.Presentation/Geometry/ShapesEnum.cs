@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Design.Presentation.Geometry
 {
-    public enum ShapesType
+    public enum ShapeType
     {
+        Line,
         Triangle,
         Rectangle,
         Circle,
         Arrow,
         Roller,
-        Hinge,
+        Hinged,
         Fixed,
         Point,
         Cross,

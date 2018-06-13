@@ -20,7 +20,7 @@ namespace Design.Presentation.Geometry
             Shape = Circle = new Ellipse();
             //set shape specific property
             Position = position;
-            Radius = radius;
+            Radius = radius*Scale;
             //
             Circle.Height = Radius;
             Circle.Width = Radius;

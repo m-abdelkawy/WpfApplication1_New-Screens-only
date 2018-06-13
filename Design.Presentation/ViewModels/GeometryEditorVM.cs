@@ -52,11 +52,12 @@ namespace Design.Presentation.ViewModels
                 {
                     _selectedSection = Sections.FirstOrDefault();
                 };
-                return _selectedSection; }
+                return _selectedSection;
+            }
             set
             {
                 _selectedSection = value;
-               
+
             }
         }
         public GeometryEditorVM()
@@ -64,7 +65,6 @@ namespace Design.Presentation.ViewModels
             Sections = SectionEditorVM.Sections;
             GridData = new ObservableCollection<GridData>();
         }
-
         private void UpdateGeometry()
         {
             GridData.Clear();
@@ -76,7 +76,7 @@ namespace Design.Presentation.ViewModels
                     SectionProperties = SectionEditorVM.Sections,
                     Span = SpanLength,
                     Restrain = Restraints.Fixed,
-                    SelectedSection =  GeometryEditor.SelectedSection
+                    SelectedSection = GeometryEditor.SelectedSection
                 });
 
 

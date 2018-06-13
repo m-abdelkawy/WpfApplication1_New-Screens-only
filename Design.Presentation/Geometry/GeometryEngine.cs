@@ -27,38 +27,38 @@ namespace Design.Presentation.Geometry
             
             GCanvas = new GCanvas();
         }
-        public void AddShape(ShapesType shapes)
+        public void AddShape(ShapeType shapes)
         {
             switch (shapes)
             {
-                case ShapesType.Triangle:
+                case ShapeType.Triangle:
                     DrawTriangle();
                     break;
-                case ShapesType.Rectangle:
+                case ShapeType.Rectangle:
                     DrawRectangle();
                     break;
-                case ShapesType.Circle:
+                case ShapeType.Circle:
                     DrawCircle();
                     break;
-                case ShapesType.Arrow:
+                case ShapeType.Arrow:
                     DrawArrow();
                     break;
-                case ShapesType.Roller:
+                case ShapeType.Roller:
                     DrawRoller();
                     break;
-                case ShapesType.Hinge:
+                case ShapeType.Hinged:
                     DrawHinge();
                     break;
-                case ShapesType.Fixed:
+                case ShapeType.Fixed:
                     DrawFixed();
                     break;
-                case ShapesType.Point:
+                case ShapeType.Point:
                     DrawPoint();
                     break;
-                case ShapesType.Cross:
+                case ShapeType.Cross:
                     DrawCross();
                     break;
-                case ShapesType.ArrowLoad:
+                case ShapeType.ArrowLoad:
                     DrawArrowLoad();
                     break;
                 default:
