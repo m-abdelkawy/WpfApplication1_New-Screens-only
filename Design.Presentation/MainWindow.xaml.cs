@@ -309,5 +309,21 @@ namespace Design.Presentation
             stirrupComboBox.ItemsSource = StirrupsDiameterArr;
             stirrupComboBox.SelectedIndex = 0;
         }
+
+        private void calcAsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AsTxtBlock.Text = AnalysisMapping.xbeams[Convert.ToInt32(FlexureSpanComboBox.SelectedIndex)]
+                .FrameResults.ElementAt(0).Asteel[Convert.ToInt32(FlexureSectionComboBox.SelectedIndex)].ToString();
+
+            rebarNoTxtBlock.Text = ((Convert.ToDouble(AsTxtBlock.Text) * 4)
+                / (Math.PI * Math.Pow(Convert.ToDouble(rebarDiaComboBox.SelectedItem) / 10, 2))).ToString();
+        }
+
+        private void calcSBtn_Click(object sender, RoutedEventArgs e)
+        {
+            double dia = Convert.ToDouble(stirrupComboBox.SelectedItem);
+            spacingTxtBlock.Text = ((Math.PI * Math.Pow(dia, 2)) / (4 * (AnalysisMapping.xbeams[Convert.ToInt32(ShearSpanComboBox.SelectedIndex)]
+                .FrameResults.ElementAt(0).Astr_sManual[Convert.ToInt32(ShearSectionComboBox.SelectedIndex)]))).ToString();
+        }
     }
 }

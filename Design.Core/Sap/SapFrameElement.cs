@@ -83,7 +83,7 @@ namespace Desing.Core.Sap
             }
         }
 
-        internal List<SapFrameResult> FrameResults
+        public List<SapFrameResult> FrameResults
         {
             get
             {
