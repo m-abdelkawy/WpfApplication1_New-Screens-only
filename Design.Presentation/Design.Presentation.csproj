@@ -56,6 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Split.cs" />
+    <Compile Include="Geometry\Arrow.cs" />
+    <Compile Include="Geometry\ArrowLoad.cs" />
+    <Compile Include="Geometry\Direction.cs" />
+    <Compile Include="Geometry\Fixed.cs" />
     <Compile Include="Geometry\GCanvas.cs" />
     <Compile Include="Geometry\GCircle.cs" />
     <Compile Include="Geometry\GeometryEngine.cs" />
@@ -64,6 +69,8 @@
     <Compile Include="Geometry\GTriangle.cs" />
     <Compile Include="Geometry\GShape.cs" />
     <Compile Include="Geometry\Hinged.cs" />
+    <Compile Include="Geometry\GRectangle.cs" />
+    <Compile Include="Geometry\Roller.cs" />
     <Compile Include="Geometry\ShapesEnum.cs" />
     <Compile Include="Model\DistLoadAssignmentModel.cs" />
     <Compile Include="Model\GridData.cs" />

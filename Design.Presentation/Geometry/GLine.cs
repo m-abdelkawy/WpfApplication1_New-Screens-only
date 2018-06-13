@@ -21,7 +21,7 @@ namespace Design.Presentation.Geometry
             //
             Line.X2 = EndPoint.X*Scale;
             Line.Y2 = EndPoint.Y*Scale;
-            //
+            //Add this Shape to Canvas
             GCanvas.Shapes.Add(this);
         }
 
