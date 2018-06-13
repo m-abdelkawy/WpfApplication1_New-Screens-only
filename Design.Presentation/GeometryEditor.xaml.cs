@@ -142,10 +142,12 @@ namespace Design.Presentation
 
         private void SelectionCol_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             var cb = (ComboBox)sender;
             var se = (SectionEditorVM)cb.SelectedItem;
             if (se == null) return;
             GridData.SelectedSection = se;
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

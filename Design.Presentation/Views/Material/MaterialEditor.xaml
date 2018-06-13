@@ -26,7 +26,7 @@
                    
                 </StackPanel>
                 <StackPanel Grid.Column="1">
-                    <TextBox Text="{Binding Fcu}" Margin="8"  />
+                    <TextBox x:Name="fcutxtBox" Text="{Binding Fcu}" Margin="8"  />
                     <TextBox Text="{Binding Fy}" Margin="10"/>
                     <TextBox Text="{Binding NoOfBranches}" Margin="8"/>
                     <TextBox Text="{Binding FyStirrups}" Margin="10"/>

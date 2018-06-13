@@ -21,6 +21,9 @@ using SAP2000v20;
 using Design.Presentation.Windows;
 using Design.Presentation.Model;
 using Design.Presentation.Geometry;
+using Microsoft.Win32;
+using System.IO;
+using Design.Core.Sap;
 
 namespace Design.Presentation
 {
@@ -30,59 +33,58 @@ namespace Design.Presentation
     public partial class MainWindow : Window
     {
         #region Storage
-        public List<int> spanList = new List<int>();
-        public List<int> beamNames = new List<int>();
+        //public List<int> spanList = new List<int>();
+        //public List<int> beamNames = new List<int>();
 
-        public List<string> loadCaseName = new List<string>();
-        public int nSpans;
+        //public List<string> loadCaseName = new List<string>();
+        //public int nSpans;
 
-        public double[] spanValues;
-        public double[] comSpanValues; //comlative
-        //public int[] rebarDiameterArr;
-        public int[] sections = new int[] { 1, 2, 3 };
-        public int[] shearSections = new int[] { 1, 2 };
+        //public double[] spanValues;
+        //public double[] comSpanValues; //comlative
+        ////public int[] rebarDiameterArr;
+        //public int[] sections = new int[] { 1, 2, 3 };
+        //public int[] shearSections = new int[] { 1, 2 };
 
-        SapPoint[] points;
-        SapFrameElement[] xbeams;
+        //SapPoint[] points;
+        //SapFrameElement[] xbeams;
 
-        SapRectSection B;
-
-        SapModel mySapModel;
+        //SapRectSection B;
+        
         /*------------------------------*/
 
 
 
         /*------------------------------*/
 
-        //Load Combinations
-        public List<string> Combinations = new List<string>();
-        public List<double> loadFactorList = new List<double>();
-        /*------------------------------*/
-        /*----------Distributed Loads-----------*/
-        public List<string> distLoadPattern = new List<string>();
-        public List<LoadDir> distLoadDirVal = new List<LoadDir>();
-        public List<double> distLoadVals = new List<double>();
-        public List<string> DistLoadFrameElement = new List<string>();
+        ////Load Combinations
+        //public List<string> Combinations = new List<string>();
+        //public List<double> loadFactorList = new List<double>();
+        ///*------------------------------*/
+        ///*----------Distributed Loads-----------*/
+        //public List<string> distLoadPattern = new List<string>();
+        //public List<LoadDir> distLoadDirVal = new List<LoadDir>();
+        //public List<double> distLoadVals = new List<double>();
+        //public List<string> DistLoadFrameElement = new List<string>();
 
-        /*----------Point Loads--------*/
-        public List<string> concLoadPattern = new List<string>();
-        public List<double> concLoadVals = new List<double>();
-        public List<LoadDir> concLoadDirVal = new List<LoadDir>();
-        public List<string> concLoadFrameElement = new List<string>();
-        public List<double> relDistList = new List<double>();
+        ///*----------Point Loads--------*/
+        //public List<string> concLoadPattern = new List<string>();
+        //public List<double> concLoadVals = new List<double>();
+        //public List<LoadDir> concLoadDirVal = new List<LoadDir>();
+        //public List<string> concLoadFrameElement = new List<string>();
+        //public List<double> relDistList = new List<double>();
 
-        /*------------------------------*/
+        ///*------------------------------*/
 
 
-        public List<SapFrameDistLoad> distLoads = new List<SapFrameDistLoad>();
-        public List<SapPointLoad> pointLoads = new List<SapPointLoad>();
+        //public List<SapFrameDistLoad> distLoads = new List<SapFrameDistLoad>();
+        //public List<SapPointLoad> pointLoads = new List<SapPointLoad>();
 
-        string[] comboArray;
+        //string[] comboArray;
 
-        //Stirrup Arrays
-        public double[] stirDiaArr240 = new double[] { 8 };
-        public double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
-        public double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
+        ////Stirrup Arrays
+        //public double[] stirDiaArr240 = new double[] { 8 };
+        //public double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
+        //public double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
 
 
         /*----------DistLoadShape Lists----------*/
@@ -115,6 +117,41 @@ namespace Design.Presentation
 
         private void btn_analyse_Click(object sender, RoutedEventArgs e)
         {
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //if (saveFileDialog.ShowDialog() == true)
+            //    File.WriteAllText(saveFileDialog.FileName, txtEditor.Text);
+
+            /*-----------Initialize Model-----------*/
+            //file Path and file Name 
+            string filePath = "C:\\CSiAPIexample";
+            string fileName = "Model1";
+            //Create Sap Model
+            AnalysisMapping.mySapModel = new SapModel(filePath, fileName);
+            //initialize Model units KN, m, C:
+            AnalysisMapping.mySapModel.InitializeUnits(eUnits.kN_m_C);
+            /*-----------------------------------------------------------*/
+            AnalysisMapping.CalcSpanValues();
+            AnalysisMapping.CalcComSpanValues();
+            SapMaterial concMat = AnalysisMapping.CreateConcMat(MaterialEditorVM.Material.Fcu);
+            AnalysisMapping.CreateSapSections(SectionEditorVM.Sections, concMat);
+            AnalysisMapping.CreateSapPoints();
+            AnalysisMapping.CreateXbeams();
+            AnalysisMapping.InitializeSuports();
+            AnalysisMapping.AddLoadPatterns();
+            AnalysisMapping.AddLoadCombinations();
+            AnalysisMapping.AddDistributedLoads();
+            AnalysisMapping.AddPointLoads();
+            AnalysisMapping.RunModel();
+
+
+
+
+
+
+
+
+
+
 
         }
 
@@ -199,6 +236,22 @@ namespace Design.Presentation
             var pointLoadWin = new PointLoadAssignmentWindow();
             pointLoadWin.DataContext = new PointLoadAssignmentViewModel();
             pointLoadWin.ShowDialog();
+        }
+
+        private void Btn_Design_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FlexureSpanComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var FlexureSpanComboBox = sender as ComboBox;
+            string value = FlexureSpanComboBox.SelectedItem as string;
+        }
+
+        private void FlexureSpanComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
