@@ -56,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Split.cs" />
+    <Compile Include="Geometry\Arrow.cs" />
+    <Compile Include="Geometry\ArrowLoad.cs" />
+    <Compile Include="Geometry\Direction.cs" />
     <Compile Include="Geometry\Fixed.cs" />
     <Compile Include="Geometry\GCanvas.cs" />
     <Compile Include="Geometry\GCircle.cs" />
