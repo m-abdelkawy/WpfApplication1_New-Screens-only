@@ -108,5 +108,10 @@ namespace Design.Presentation.Windows
             var index = PointLoadGridData.SelectedIndex;
             PointLoadAssignmentViewModel.PointLoadModelStaticCollection.RemoveAt(index);
         }
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

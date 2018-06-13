@@ -33,7 +33,7 @@ namespace Design.Presentation
     public partial class MainWindow : Window
     {
         //lists
-        int[] spanIndex = GeometryEditorVM.GeometryEditor.GridData.Select(e => e.Id).ToArray();
+        int[] spanIndex = new int[GeometryEditorVM.GeometryEditor.GridData.Count];
         int[] rebarDiameterArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32 };
         int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 14, 16, 18 };
         int[] Flexuresections = new int[] { 1, 2, 3 };
@@ -257,6 +257,10 @@ namespace Design.Presentation
 
         private void FlexureSpanComboBox_Loaded(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < spanIndex.Length; i++)
+            {
+                spanIndex[i] = i + 1;
+            }
             var FlexureSpanComboBox = sender as ComboBox;
             FlexureSpanComboBox.ItemsSource = spanIndex;
             FlexureSpanComboBox.SelectedIndex = 0;
@@ -283,6 +287,10 @@ namespace Design.Presentation
 
         private void ShearSpanComboBox_Loaded(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < spanIndex.Length; i++)
+            {
+                spanIndex[i] = i + 1;
+            }
             var ShearSpanComboBox = sender as ComboBox;
             ShearSpanComboBox.ItemsSource = spanIndex;
             ShearSpanComboBox.SelectedIndex = 0;
