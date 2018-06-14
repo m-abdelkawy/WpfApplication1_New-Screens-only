@@ -210,11 +210,9 @@ namespace Design.Presentation
             // var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
             var hinged = new Hinged(GeometryEngine.GCanvas, new Point(60, 60));
             var roller = new Roller(GeometryEngine.GCanvas, new Point(100, 60));
-
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
             var fixedSupport = new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
             var arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60));
-
             var arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120));
 
             arrow.Rotate(45);
