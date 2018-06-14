@@ -83,6 +83,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <DataGrid Name="Gr_GridData" Grid.Column="0" Height="150" Width="250"
                                   ItemsSource="{Binding GridData}" 
@@ -110,23 +111,7 @@
                                 </DataGridTemplateColumn>
                                 
                                 <!--Restrain Column-->
-                                <DataGridTemplateColumn Header="Restrain" >
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <ComboBox  x:Name="SelectionRestrain"
-                                                       Loaded="SelectionRestrain_Loaded"    
-                                                       ItemsSource="{Binding Path=Restrain}"
-                                                       SelectedValuePath="SelectedRestrain"
-                                                       SelectionChanged="SelectionRestrain_SelectionChanged"
-                                               />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate >
-                                            <TextBlock Text="{Binding SelectedRestrain}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                
                                 <!--<DataGridComboBoxColumn 
                                     Header="Section Properties"
                                     SelectedValuePath="SelectedSection"
@@ -146,7 +131,33 @@
                                 </DataGridComboBoxColumn>-->
                             </DataGrid.Columns>
                         </DataGrid>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center"  >
+                        <DataGrid x:Name="SupportDataGrid" Grid.Column="1" Width="80" Height="150"
+                                  ItemsSource="{Binding RestraintsCollection}" 
+                                  CanUserSortColumns="False"
+                                  AutoGenerateColumns="False"
+                                  SelectionChanged="SupportDataGrid_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                                <DataGridTemplateColumn Header="Restraints">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox  x:Name="SelectionRestraint"
+                                                       Loaded="SelectionRestrain_Loaded"    
+                                                       ItemsSource="{Binding Path=Restraint}"
+                                                       SelectedValuePath="SelectedRestraint"
+                                                       SelectionChanged="SelectionRestraint_SelectionChanged"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock Text="{Binding SelectedRestraint}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                            
+                        </DataGrid>
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center"  >
                             <Button x:Name="Btn_AddBeam" Content="Add" Width="50" Margin="10" Click="Btn_AddBeam_Click"/>
                             <Button x:Name="Btn_DltBeam" Content="Delete" Width="50" Click="Btn_DltBeam_Click"/>
                         </StackPanel>

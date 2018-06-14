@@ -55,6 +55,10 @@ namespace Design.Presentation.Geometry
         {
             Shape.Visibility = Visibility=Visibility.Collapsed;
         }
+        public virtual void New()
+        {
+
+        }
 
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Geometry\Arrow.cs" />
     <Compile Include="Geometry\ArrowLoad.cs" />
     <Compile Include="Geometry\Direction.cs" />
+    <Compile Include="Geometry\DrawingHelper.cs" />
     <Compile Include="Geometry\Fixed.cs" />
     <Compile Include="Geometry\GCanvas.cs" />
     <Compile Include="Geometry\GCircle.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="ViewModels\LoadCombinationsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PointLoadAssignmentViewModel.cs" />
+    <Compile Include="ViewModels\RestraintsModel.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
     <Compile Include="ViewModels\LoadCasesVM.cs" />

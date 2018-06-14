@@ -6,12 +6,15 @@ using System.Collections.ObjectModel;
 using Design;
 using Design.Presentation.ViewModels;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace Design.Core.Sap
 {
     public class AnalysisMapping
     {
         #region DataMembers
+
+        public static int[] spanIndex;
 
         public static SapModel mySapModel;
         public static double[] spanValues;
@@ -81,7 +84,7 @@ namespace Design.Core.Sap
             //initialize Model units KN, m, C:
             mySapModel.InitializeUnits(eUnits.kN_m_C);
         }*/
-        public static void CalcSpanValues()
+        public static void CalcSpanValues(ComboBox FlexureSpanComboBox, ComboBox ShearSpanComboBox)
         {
             double[] spans = GeometryEditorVM.GeometryEditor.GridData.Select(e => e.Span).ToArray();
 
@@ -91,7 +94,19 @@ namespace Design.Core.Sap
             {
                 spanValues[i] = spans[i - 1];
             }
-            
+
+            //--------------->Consider Revision
+            spanIndex = new int[GeometryEditorVM.GeometryEditor.GridData.Count];
+            for (int i = 0; i < spanIndex.Length; i++)
+            {
+                spanIndex[i] = i + 1;
+            }
+
+            FlexureSpanComboBox.ItemsSource = spanIndex;
+            FlexureSpanComboBox.SelectedIndex = 0;
+
+            ShearSpanComboBox.ItemsSource = spanIndex;
+            ShearSpanComboBox.SelectedIndex = 0;
         }
 
         public static void CalcComSpanValues()
@@ -181,7 +196,23 @@ namespace Design.Core.Sap
             //Initialize hinged joints
             for (int i = 0; i < spanList.Count + 1; i++)
             {
-                points[i].SetRestraints(Restraints.Hinged);
+                switch (GeometryEditorVM.GeometryEditor.RestraintsCollection[i].SelectedRestraint)
+                {
+                    case Restraints.Fixed:
+                        points[i].SetRestraints(Restraints.Fixed);
+                        break;
+                    case Restraints.Hinged:
+                        points[i].SetRestraints(Restraints.Hinged);
+                        break;
+                    case Restraints.Roller:
+                        points[i].SetRestraints(Restraints.Roller);
+                        break;
+                    case Restraints.NoRestraints:
+                        points[i].SetRestraints(Restraints.NoRestraints);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -268,14 +299,18 @@ namespace Design.Core.Sap
         }
 
         //Run Analysis
-        public static void RunModel()
+        public static void RunModel(ComboBox DesignCombinationComboBox)
         {
             mySapModel.SaveAndRun();
 
             int cnt = mySapModel.MySapObjectModel.RespCombo.Count();
             comboArray = new string[cnt];
             mySapModel.MySapObjectModel.RespCombo.GetNameList(ref cnt, ref comboArray);
-            
+
+
+            DesignCombinationComboBox.ItemsSource = comboArray;
+            DesignCombinationComboBox.SelectedIndex = 0;
+
         }
 
 

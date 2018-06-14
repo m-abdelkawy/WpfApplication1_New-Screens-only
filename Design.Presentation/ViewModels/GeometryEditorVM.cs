@@ -60,14 +60,25 @@ namespace Design.Presentation.ViewModels
 
             }
         }
+        public ObservableCollection<RestraintsModel> RestraintsCollection { get; set; }//span, sec of 
         public GeometryEditorVM()
         {
             Sections = SectionEditorVM.Sections;
             GridData = new ObservableCollection<GridData>();
+            RestraintsCollection = new ObservableCollection<RestraintsModel>();
         }
         private void UpdateGeometry()
         {
             GridData.Clear();
+            RestraintsCollection.Clear();
+            for (int i = 0; i < NumberOfSpans + 1; i++)
+            {
+                RestraintsCollection.Add(new RestraintsModel()
+                {
+                    Id = i + 1,
+                    SelectedRestraint=Restraints.Fixed,
+                });
+            }
             for (int i = 0; i < NumberOfSpans; i++)
             {
                 GridData.Add(new GridData()
@@ -75,13 +86,16 @@ namespace Design.Presentation.ViewModels
                     Id = i + 1,
                     SectionProperties = SectionEditorVM.Sections,
                     Span = SpanLength,
-                    Restrain = Restraints.Fixed,
+                    //Restrain = Restraints.Fixed,
                     SelectedSection = GeometryEditor.SelectedSection
                 });
 
-
+                
 
             }
+
+
         }
+
     }
 }

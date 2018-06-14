@@ -26,10 +26,64 @@
                    
                 </StackPanel>
                 <StackPanel Grid.Column="1">
-                    <TextBox x:Name="fcutxtBox" Text="{Binding Fcu}" Margin="8"  />
-                    <TextBox Text="{Binding Fy}" Margin="10"/>
+                    <ComboBox x:Name="fcuComboBox"
+                              Margin="8"
+                              Grid.Row="2"
+                              Grid.Column="1"
+                              Width="90"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Loaded="fcuComboBox_Loaded"
+                              SelectionChanged="fcuComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                                Margin="2">
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <ComboBox x:Name="fyComboBox"
+                              Margin="8 4"
+                              Grid.Row="2"
+                              Grid.Column="1"
+                              Width="90"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Loaded="fyComboBox_Loaded"
+                              SelectionChanged="fyComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                                Margin="2">
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
                     <TextBox Text="{Binding NoOfBranches}" Margin="8"/>
-                    <TextBox Text="{Binding FyStirrups}" Margin="10"/>
+                    
+                    <ComboBox x:Name="fystrComboBox"
+                              Margin="8 6"
+                              Grid.Row="2"
+                              Grid.Column="1"
+                              Width="90"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Loaded="fystrComboBox_Loaded"
+                              SelectionChanged="fystrComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                                Margin="2">
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
 
             </Grid>
