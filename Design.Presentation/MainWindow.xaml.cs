@@ -345,5 +345,10 @@ namespace Design.Presentation
             var ShearSpanComboBox = sender as ComboBox;
             string value = ShearSpanComboBox.SelectedItem as string;
         }
+
+        private void Btn_LoadShow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

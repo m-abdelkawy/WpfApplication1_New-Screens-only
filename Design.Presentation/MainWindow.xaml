@@ -42,8 +42,28 @@
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
-                    <Canvas Name="canvas_Geometry" Width="850" Height="620" MinWidth="850" MinHeight="620" >
-                    </Canvas>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Center">
+                            <Button x:Name="Btn_LoadShow" Content="ShowLoad"
+                                Width="100" Height="20"
+                                    Click="Btn_LoadShow_Click">
+                            </Button>
+                            <ComboBox x:Name="ShowLoadComboBox">
+                            </ComboBox>
+                        </StackPanel>
+                        
+                        <Canvas Name="canvas_Geometry"
+                            VerticalAlignment="Bottom"
+                            Width="850"
+                            Height="620"
+                            MinWidth="850"
+                            MinHeight="500"
+                            Background="Beige">
+                        </Canvas>
+                    </StackPanel>
+                    
                 </TabItem>
                 <TabItem Header="Design-Untitled">
                     <!--<Grid Background="#FFE5E5E5"/>-->

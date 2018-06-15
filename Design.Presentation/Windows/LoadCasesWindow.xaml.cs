@@ -58,6 +58,11 @@ namespace Design.Presentation.Windows
 
         private void loadCasesSubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            /*--------------> Consider Revision*/
+            AnalysisMapping.loadPatternName.Clear();
+            AnalysisMapping.SelfWtMultiplier.Clear();
+            AnalysisMapping.patternType.Clear();
+
             for (int i = 0; i < LoadCasesViewModel.LoadCasesModelCollection.Count; i++)
             {
                 if (LoadCasesViewModel.LoadCasesModelCollection[i].LoadcaseName != null)
