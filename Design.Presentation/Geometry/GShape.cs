@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace Design.Presentation.Geometry
 {
-  
+
 
     public class GShape
     {
@@ -37,24 +37,28 @@ namespace Design.Presentation.Geometry
             //
 
         }
-        public virtual void Draw()
+        public virtual void Render()
         {
             Shape.Stroke = Stroke;
             Shape.Fill = Fill;
             Shape.Visibility = Visibility;
             Shape.StrokeThickness = StrokeThickness;
-            if (GCanvas.Canvas.Children.Contains(Shape)) return;
+            if (GCanvas.Canvas.Children.Contains(Shape) && GCanvas.Shapes.Contains(this))
+            {
+                return;
+            }
             GCanvas.Canvas.Children.Add(Shape);
+           
         }
         public virtual void Remove()
         {/*----------> Consider Revision*/
             if (!GCanvas.Canvas.Children.Contains(Shape)) return;
             GCanvas.Canvas.Children.Remove(Shape);
-           
+
         }
         public virtual void Hide()
         {
-            Shape.Visibility = Visibility=Visibility.Collapsed;
+            Shape.Visibility = Visibility = Visibility.Collapsed;
         }
         public virtual void New()
         {

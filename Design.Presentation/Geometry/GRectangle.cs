@@ -37,5 +37,17 @@ namespace Design.Presentation.Geometry
             //Add this Shape to Canvas
             GCanvas.Shapes.Add(this);
         }
+        public override void Render()
+        {
+            base.Render();
+        }
+        public override void Remove()
+        {
+            base.Remove();
+        }
+        public override void Hide()
+        {
+            base.Hide();
+        }
     }
 }

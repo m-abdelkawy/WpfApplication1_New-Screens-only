@@ -11,8 +11,8 @@ namespace Design.Presentation.Geometry
     public class GeometryEngine
     {
         public GCanvas GCanvas { get; set; }
-        
-        public Dictionary<string,List<GShape>> Shapes { get; set; }
+
+        public Dictionary<string, List<GShape>> Shapes { get; set; }
         public GeometryEngine()
         {
             Shapes = new Dictionary<string, List<GShape>>()
@@ -24,91 +24,59 @@ namespace Design.Presentation.Geometry
                 {"Grid",new List<GShape>()},
                 {"Points",new List<GShape>()},
             };
-            
+
             GCanvas = new GCanvas();
         }
-        public void AddShape(ShapeType shapes)
+
+        public void Render(string listName)
         {
-            switch (shapes)
+            var gShapes = Shapes[listName];
+            //
+            Render(gShapes);
+        }
+        public void Render(List<GShape> gShapes)
+        {
+            gShapes.ForEach(e => e.Render());
+        }
+        public void RenderAll()
+        {
+            GCanvas.Shapes.ForEach(e => e.Render());
+        }
+        public void RemoveAll()
+        {
+            GCanvas.Shapes.ForEach(e => e.Remove());
+            Shapes.Clear();
+
+        }
+        public void Remove(string listName)
+        {
+            //get shapes list based on string key and remove them from th Gcanvas
+            Remove(Shapes[listName]);
+        }
+        public void Remove(List<GShape> shapes)
+        {
+            shapes.ForEach(e => e.Remove());
+            foreach (var shape in shapes)
             {
-                case ShapeType.Triangle:
-                    DrawTriangle();
-                    break;
-                case ShapeType.Rectangle:
-                    DrawRectangle();
-                    break;
-                case ShapeType.Circle:
-                    DrawCircle();
-                    break;
-                case ShapeType.Arrow:
-                    DrawArrow();
-                    break;
-                case ShapeType.Roller:
-                    DrawRoller();
-                    break;
-                case ShapeType.Hinged:
-                    DrawHinge();
-                    break;
-                case ShapeType.Fixed:
-                    DrawFixed();
-                    break;
-                case ShapeType.Point:
-                    DrawPoint();
-                    break;
-                case ShapeType.Cross:
-                    DrawCross();
-                    break;
-                case ShapeType.ArrowLoad:
-                    DrawArrowLoad();
-                    break;
-                default:
-                    break;
+                GCanvas.Shapes.Remove(shape);
             }
+        }
+        //Shapes.ForEach(e => e.Remove());
+        public void HideAll()
+        {
+            GCanvas.Shapes.ForEach(e => e.Hide());
+        }
+        public void Hide(string listName)
+        {
+            Hide(Shapes[listName]);
+        }
+        public void Hide(List<GShape> gShapes)
+        {
+            gShapes.ForEach(e => e.Hide());
         }
 
         #region Helper Functions
-        private void DrawTriangle()
-        {
 
-        }
-        private void DrawRectangle()
-        {
-
-
-        }
-        private void DrawRoller()
-        {
-
-        }
-        private void DrawCircle()
-        {
-
-        }
-        private void DrawArrow()
-        {
-
-        }
-        private void DrawHinge()
-        {
-
-        }
-
-        private void DrawFixed()
-        {
-
-        }
-        private void DrawPoint()
-        {
-
-        }
-        private void DrawCross()
-        {
-
-        }
-        private void DrawArrowLoad()
-        {
-
-        }
         #endregion
     }
 }

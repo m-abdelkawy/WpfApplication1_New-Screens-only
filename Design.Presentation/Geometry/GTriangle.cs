@@ -33,5 +33,19 @@ namespace Design.Presentation.Geometry
             Stroke = Brushes.Green;
             StrokeThickness = 2;
         }
+        public override void Hide()
+        {
+            base.Hide();
+        }
+
+        public override void Remove()
+        {
+            base.Remove();
+        }
+
+        public override void Render()
+        {
+            base.Render();
+        }
     }
 }
