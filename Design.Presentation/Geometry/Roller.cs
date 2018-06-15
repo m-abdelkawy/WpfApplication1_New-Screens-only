@@ -28,5 +28,20 @@ namespace Design.Presentation.Geometry
             Circle = new GCircle(GCanvas,new Point( insertionPoint.X,InsertionPoint.Y+ scaledHeight / 2), scaledHeight * Scale);
            
         }
+        public override void Render()
+        {
+            Line.Render();
+            Circle.Render();
+        }
+        public override void Remove()
+        {
+            Line.Remove();
+            Circle.Remove();
+        }
+        public override void Hide()
+        {
+            Line.Hide();
+            Circle.Hide();
+        }
     }
 }

@@ -136,7 +136,7 @@ namespace Design.Presentation
             {
                 return;
             }
-            GeometryEngine.GCanvas.RemoveAll();
+            GeometryEngine.RemoveAll();
 
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
             {
@@ -167,7 +167,7 @@ namespace Design.Presentation
                 }
             }
 
-            GeometryEngine.GCanvas.Render();
+            GeometryEngine.RenderAll();
             this.Close();
         }
 

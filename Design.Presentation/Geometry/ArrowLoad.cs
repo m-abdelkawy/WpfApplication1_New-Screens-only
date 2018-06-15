@@ -48,6 +48,17 @@ namespace Design.Presentation.Geometry
             Arrows.ForEach(e => e.Remove());
             Arrows.Clear();
         }
-        
+        public override void Render()
+        {
+            HeaderLine.Render();
+            Arrows.ForEach(e => e.Render());
+           
+        }
+        public override void Hide()
+        {
+            HeaderLine.Hide();
+            Arrows.ForEach(e => e.Hide());
+         
+        }
     }
 }

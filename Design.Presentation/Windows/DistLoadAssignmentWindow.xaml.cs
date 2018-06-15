@@ -202,7 +202,7 @@ namespace Design.Presentation.Windows
                         }
                     }
                 }
-            GeometryEngine.GCanvas.Render();
+            GeometryEngine.RenderAll();
                 
 
                 
@@ -233,7 +233,7 @@ namespace Design.Presentation.Windows
 
             //}
             #endregion
-            GeometryEngine.GCanvas.Render();
+            GeometryEngine.RenderAll();
         }
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)

@@ -33,7 +33,7 @@ namespace Design.Presentation
     public partial class MainWindow : Window
     {
         //lists
-        
+
         int[] rebarDiameterArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32 };
         int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 14, 16, 18 };
         int[] Flexuresections = new int[] { 1, 2, 3 };
@@ -116,7 +116,7 @@ namespace Design.Presentation
 
         private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
-            var ge = new GeometryEditor(GeometryEditorVM.GeometryEditor,GeometryEngine);
+            var ge = new GeometryEditor(GeometryEditorVM.GeometryEditor, GeometryEngine);
             ge.ShowDialog();
         }
         #endregion
@@ -203,28 +203,36 @@ namespace Design.Presentation
         }
 
 
-
+        Hinged hinged;
+        Roller roller;
+        Fixed fixd;
+        Arrow arrow;
+        ArrowLoad arrowLoad;
         private void Btn_DrawLine_Click(object sender, RoutedEventArgs e)
         {
 
             // var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
-            var hinged = new Hinged(GeometryEngine.GCanvas, new Point(60, 60));
-            var roller = new Roller(GeometryEngine.GCanvas, new Point(100, 60));
+            hinged = new Hinged(GeometryEngine.GCanvas, new Point(60, 60));
+            roller = new Roller(GeometryEngine.GCanvas, new Point(100, 60));
 
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
-            var fixedSupport = new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
-            //var arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60));
-
-            //var arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120));
+            fixd = new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
+             arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60), 20);
+            arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120), 20);
 
             //arrow.Rotate(45);
             //render on Screen
-            GeometryEngine.GCanvas.Render();
+            // GeometryEngine.RenderAll();
+            //   GeometryEngine.Render(new List<GShape>() { roller, hinged, fixd });
+            GeometryEngine.Shapes["Beams"].Add(fixd);
+            GeometryEngine.Render("Beams");
         }
 
         private void bBtn_Show_Click(object sender, RoutedEventArgs e)
         {
-            GeometryEngine.GCanvas.Hide();
+
+          //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
+            GeometryEngine.HideAll();
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
         }
@@ -289,7 +297,7 @@ namespace Design.Presentation
             var FlexureSpanComboBox = sender as ComboBox;
             string value = FlexureSpanComboBox.SelectedItem as string;
         }
-        
+
 
         private void FlexureSectionComboBox_Loaded(object sender, RoutedEventArgs e)
         {
