@@ -19,11 +19,11 @@ namespace Design.Presentation.Geometry
         public List<GLine> Lines { get; set; }
         public Point InsertionPoint { get; set; }
         public Direction Direction { get; set; }
-        public Arrow(GCanvas gCanvas, Point insertionPoint) :base(gCanvas)
+        public Arrow(GCanvas gCanvas, Point insertionPoint, double length) :base(gCanvas)
         {
             GCanvas = gCanvas;
             InsertionPoint = insertionPoint;
-            Length = 20;
+            Length = length;
             HeadHeight = 5;
             var body = new GLine(GCanvas,InsertionPoint,new Point(InsertionPoint.X,InsertionPoint.Y+Length));
            
@@ -43,6 +43,11 @@ namespace Design.Presentation.Geometry
             {
                 line.Line.RenderTransform = new RotateTransform(angle,InsertionPoint.X,InsertionPoint.Y);
             }
+        }
+        public override void Remove()
+        {
+            Lines.ForEach(e => e.Remove());
+            Lines.Clear();
         }
 
         /// <summary>

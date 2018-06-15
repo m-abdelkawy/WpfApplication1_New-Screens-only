@@ -19,5 +19,14 @@ namespace Design.Presentation.Geometry
             GTriangle gTriangle = new GTriangle(GCanvas, InsertionPoint, 20);
             GLine gline = new GLine(GCanvas, InsertionPoint,new Point(InsertionPoint.X,InsertionPoint.Y+20));
         }
+        public override void Remove()
+        {
+            //base.Remove();
+            GCanvas.Canvas.Children.Remove(Line.Line);
+            GCanvas.Canvas.Children.Remove(Triangle.Polygon);
+            GCanvas.Shapes.Remove(Triangle);
+            GCanvas.Shapes.Remove(Line);
+
+        }
     }
 }

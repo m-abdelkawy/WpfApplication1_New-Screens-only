@@ -1,4 +1,5 @@
 ﻿using Design.Core.Sap;
+using Design.Presentation.Geometry;
 using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Desing.Core.Sap;
@@ -24,10 +25,11 @@ namespace Design.Presentation.Windows
     public partial class DistLoadAssignmentWindow : Window
     {
         public DistLoadAssignmentModel DLAM = new DistLoadAssignmentModel();
-
-        public DistLoadAssignmentWindow()
+        private GeometryEngine GeometryEngine { get; set; }
+        public DistLoadAssignmentWindow(GeometryEngine geometryEngine)
         {
             InitializeComponent();
+            this.GeometryEngine = geometryEngine;
 
             DistLoadGridData.CanUserAddRows = false;
             DistLoadGridData.CanUserDeleteRows = false;
@@ -88,6 +90,18 @@ namespace Design.Presentation.Windows
 
         private void DistLoadSubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            /*------------------------Comulative Span------------------------*/
+            //List<double> GComSpanValues = new List<double>();
+            //GComSpanValues.Clear();
+            //GComSpanValues.Add(0);
+            //double cumulativeSpans = 0;
+            //for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
+            //{
+            //    cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
+
+            //    GComSpanValues.Add(cumulativeSpans);
+            //}
+            /*--------------------------------------------------------------------*/
             for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
             {
                 if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].LoadCases!=null)
@@ -105,6 +119,121 @@ namespace Design.Presentation.Windows
                     AnalysisMapping.distLoadDirVal.Add(DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedDir);
                 }
             }
+
+            //Draw Loads
+            if (AnalysisMapping.distLoadDirVal.Count<1)
+            {
+                return;
+            }
+            DrawingHelper.DistLoadShapes.Clear();
+            List<double> GComSpanValues = new List<double>();
+            GComSpanValues.Clear();
+            GComSpanValues.Add(0);
+            double cumulativeSpans = 0;
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
+            {
+                cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
+
+                GComSpanValues.Add(cumulativeSpans);
+            }
+            List<string> Dead = new List<string>();
+            List<string> Live = new List<string>();
+            List<string> SD = new List<string>();
+
+            int[] Js = new int[DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count];
+            int YPosition = 100;
+
+            for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
+            {
+                double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
+                double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
+                for (int j = 0; j < AnalysisMapping.loadPatternName.Count; j++)
+                {
+                    if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedLoadCase == AnalysisMapping.loadPatternName[j])
+                    {
+                        switch (j)
+                        {
+                            case 0:
+                                Dead.Add(AnalysisMapping.distLoadPattern[i]);
+                                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                    , new Point(startX, 100), new Point(endX, 100), DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal));
+                                //Text
+                                {
+                                    TextBlock textBlock = new TextBlock();
+
+                                    textBlock.Text = AnalysisMapping.loadPatternName[j] + " Load";
+
+                                    textBlock.Foreground = new SolidColorBrush(Colors.Black);
+                                    textBlock.Background = new SolidColorBrush(Colors.PaleVioletRed);
+                                    textBlock.Height = 20;
+                                    textBlock.Width = 80;
+                                    textBlock.Visibility = Visibility.Visible;
+
+                                    Canvas.SetLeft(textBlock, GComSpanValues[GeometryEditorVM.GeometryEditor.NumberOfSpans] * 20 + 20);
+
+                                    Canvas.SetTop(textBlock, 110);
+
+                                    GeometryEngine.GCanvas.Canvas.Children.Add(textBlock);
+                                }
+                                
+                                break;
+                            case 1:
+                                Live.Add(AnalysisMapping.distLoadPattern[i]);
+                                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                    , new Point(startX, 200), new Point(endX, 200), DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
+                                break;
+                            case 2:
+                                SD.Add(AnalysisMapping.distLoadPattern[i]);
+                                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                    , new Point(startX, 300), new Point(endX, 300), DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
+                                break;
+                            case 3:
+                                SD.Add(AnalysisMapping.distLoadPattern[i]);
+                                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                    , new Point(startX, 400), new Point(endX, 400), DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
+                                break;
+                            case 4:
+                                SD.Add(AnalysisMapping.distLoadPattern[i]);
+                                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                    , new Point(startX, 500), new Point(endX, 500), DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            GeometryEngine.GCanvas.Render();
+                
+
+                
+            }
+
+
+            #region Trial
+            //for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
+            //{
+            //    double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
+            //    double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
+            //    for (int j = 0; j < AnalysisMapping.loadPatternName.Count; j++)
+            //    {
+            //        if (AnalysisMapping.distLoadPattern[i] == AnalysisMapping.loadPatternName[j])
+            //        {
+            //            Js[i] = j;
+            //            if (i != 0 && Js[i] != Js[i - 1])
+            //            {
+            //                YPosition += 100;
+            //                GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+            //                , new Point(startX, YPosition), new Point(endX, YPosition)));
+            //            }
+            //            YPosition += 100;
+            //            GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+            //            , new Point(startX, YPosition), new Point(endX, YPosition)));
+            //        }
+            //    }
+
+            //}
+            #endregion
+            GeometryEngine.GCanvas.Render();
         }
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)

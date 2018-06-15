@@ -18,9 +18,9 @@ namespace Design.Presentation.Geometry
         {
             Height = 15;
             Rectangle = new GRectangle(GCanvas, 30, 15,
-             new Point(InsertionPoint.X * 20/**/, InsertionPoint.Y + 15));
+             new Point(InsertionPoint.X * 20/*scale*/, InsertionPoint.Y + 15));
             
-            Line = new GLine(GCanvas, InsertionPoint, new Point(InsertionPoint.X/**/, InsertionPoint.Y + Height+Height/2));
+            Line = new GLine(GCanvas, new Point(InsertionPoint.X * 20/*scale*/, InsertionPoint.Y), new Point(InsertionPoint.X * 20/*scale*/, InsertionPoint.Y + Height+Height/2));
         }
     }
 }

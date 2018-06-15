@@ -47,9 +47,10 @@ namespace Design.Presentation.Geometry
             GCanvas.Canvas.Children.Add(Shape);
         }
         public virtual void Remove()
-        {
+        {/*----------> Consider Revision*/
             if (!GCanvas.Canvas.Children.Contains(Shape)) return;
             GCanvas.Canvas.Children.Remove(Shape);
+           
         }
         public virtual void Hide()
         {

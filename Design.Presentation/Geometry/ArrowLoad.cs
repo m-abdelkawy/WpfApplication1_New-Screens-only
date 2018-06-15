@@ -16,21 +16,22 @@ namespace Design.Presentation.Geometry
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
         public double Height { get; set; }
-        public ArrowLoad(GCanvas gCanvas,Point startPoint,Point endPoint):base(gCanvas)
+        public double Spacings { get; set; }
+        public ArrowLoad(GCanvas gCanvas,Point startPoint,Point endPoint, double loadValue):base(gCanvas)
         {
             GCanvas = gCanvas;
             StartPoint = startPoint;
             EndPoint = endPoint;
             Arrows = new List<Arrow>();
-            Height = 20;
+            Height = loadValue /*Scale*/;
             var span = Math.Sqrt(
                 Math.Pow(startPoint.X - endPoint.X, 2) +
                 Math.Pow(startPoint.Y - endPoint.Y, 2));
-
-            var spaces = Split.Equal(span, 20);
+            Spacings = 10;
+            var spaces = Split.Equal(span, Spacings);
             foreach (var space in spaces)
             {
-                var arrow = new Arrow(GCanvas, new Point(StartPoint.X+space, StartPoint.Y));
+                var arrow = new Arrow(GCanvas, new Point(StartPoint.X+space, StartPoint.Y), Height);
                 arrow.Rotate(180);
                 Arrows.Add(arrow);
             }
@@ -41,5 +42,12 @@ namespace Design.Presentation.Geometry
             
         }
 
+        public override void Remove()
+        {
+            GCanvas.Canvas.Children.Remove(HeaderLine.Line);
+            Arrows.ForEach(e => e.Remove());
+            Arrows.Clear();
+        }
+        
     }
 }

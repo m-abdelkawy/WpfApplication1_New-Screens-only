@@ -17,15 +17,12 @@ namespace Design.Presentation.Geometry
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
-            if (Line != null)
-            {
-                GCanvas.Shapes.Remove(this);
-            }
+           
             Shape = Line = new Line();
-            Line.X1 = StartPoint.X * 20/*Scale*/;
+            Line.X1 = StartPoint.X /*Scale*/;
             Line.Y1 = StartPoint.Y;
             //
-            Line.X2 = EndPoint.X * 20/*Scale*/;
+            Line.X2 = EndPoint.X /*Scale*/;
             Line.Y2 = EndPoint.Y;
             //Add this Shape to Canvas
             GCanvas.Shapes.Add(this);

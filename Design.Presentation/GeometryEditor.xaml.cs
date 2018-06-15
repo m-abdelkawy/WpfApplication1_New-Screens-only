@@ -136,14 +136,17 @@ namespace Design.Presentation
             {
                 return;
             }
+            GeometryEngine.GCanvas.RemoveAll();
 
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
             {
-                GeometryEngine.Shapes["Beams"].Add(new GLine(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100)
-                    , new Point(GComSpanValues[i + 1], 100)));
-                GeometryEngine.Shapes["Beams"].ForEach(d => { d.Scale = 10;d.New(); });
+                GeometryEngine.Shapes["Beams"].Add(new GLine(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)
+                    , new Point(GComSpanValues[i + 1] * 20, 100)));
+               // GeometryEngine.Shapes["Beams"].ForEach(d => { d.Scale = 10;d.New(); });
                 //new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
             }
+
+
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.RestraintsCollection.Count; i++)
             {
                 switch (GeometryEditorVM.GeometryEditor.RestraintsCollection[i].SelectedRestraint)

@@ -213,11 +213,11 @@ namespace Design.Presentation
 
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
             var fixedSupport = new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
-            var arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60));
+            //var arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60));
 
-            var arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120));
+            //var arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120));
 
-            arrow.Rotate(45);
+            //arrow.Rotate(45);
             //render on Screen
             GeometryEngine.GCanvas.Render();
         }
@@ -231,7 +231,7 @@ namespace Design.Presentation
 
         private void Btn_DistLoadAssinment_Click(object sender, RoutedEventArgs e)
         {
-            var distLoadWin = new DistLoadAssignmentWindow();
+            var distLoadWin = new DistLoadAssignmentWindow(GeometryEngine);
             distLoadWin.DataContext = new DistLoadAssignmentViewModel();
             distLoadWin.ShowDialog();
         }

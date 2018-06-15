@@ -98,9 +98,24 @@ namespace Design.Presentation.Geometry
         {
             Shapes.ForEach(e => e.Draw());
         }
-        public void Hide()
+        public void RemoveAll()
         {
             Shapes.ForEach(e => e.Remove());
+            Shapes.Clear();
+
+        }
+        public void Remove( List<GShape>shapes)
+        {
+            shapes.ForEach(e => e.Remove());
+            foreach (var shape in shapes)
+            {
+                Shapes.Remove(shape);
+            }
+        }
+        //Shapes.ForEach(e => e.Remove());
+        public void Hide()
+        {
+            Shapes.ForEach(e => e.Hide());
         }
     }
 }

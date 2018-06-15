@@ -10,6 +10,7 @@ namespace Design.Presentation.Geometry
     {
         #region DataMembers
         public static List<GLine> GLineList = new List<GLine>();
+        public static List<List<ArrowLoad>> DistLoadShapes = new List<List<ArrowLoad>>();
 
         #endregion
     }
