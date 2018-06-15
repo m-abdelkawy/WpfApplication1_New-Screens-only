@@ -24,7 +24,7 @@ namespace Design.Presentation.Geometry
         public Brush Stroke { get; set; }
         public int StrokeThickness { get; set; }
         public Brush Fill { get; set; }
-
+        public int Id { get; set; }
         public GShape(GCanvas gCanvas)
         {
             GCanvas = gCanvas;
@@ -35,7 +35,8 @@ namespace Design.Presentation.Geometry
             Fill = Brushes.Red;
             Scale = 1;
             //
-
+            Id = GeometryEngine.Id;
+            GeometryEngine.Id++;
         }
         public virtual void Render()
         {

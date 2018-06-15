@@ -103,11 +103,16 @@ namespace Design.Presentation
         /*-------------------------------------------------------------------------------------------------------*/
 
         public GeometryEngine GeometryEngine { get; set; }
+        public static List<string> LoadCasesToShowLoads { get; set; }
+        = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
             GeometryEngine = new GeometryEngine();
             GeometryEngine.GCanvas.Canvas = canvas_Geometry;
+            LoadCasesToShowLoads = AnalysisMapping.loadPatternName;
+            ShowLoadComboBox.ItemsSource = LoadCasesToShowLoads;
+
         }
 
 
@@ -216,8 +221,8 @@ namespace Design.Presentation
             roller = new Roller(GeometryEngine.GCanvas, new Point(100, 60));
 
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
-            fixd = new Fixed(GeometryEngine.GCanvas, new Point(160, 60));
-             arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60), 20);
+            fixd = new Fixed(GeometryEngine.GCanvas, new Point(160, 60), 20);
+            arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60), 20);
             arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120), 20);
 
             //arrow.Rotate(45);
@@ -225,14 +230,17 @@ namespace Design.Presentation
             // GeometryEngine.RenderAll();
             //   GeometryEngine.Render(new List<GShape>() { roller, hinged, fixd });
             GeometryEngine.Shapes["Beams"].Add(fixd);
+            GeometryEngine.Shapes["Beams"].Add(arrow);
+            GeometryEngine.Shapes["Beams"].Add(arrowLoad);
             GeometryEngine.Render("Beams");
         }
 
         private void bBtn_Show_Click(object sender, RoutedEventArgs e)
         {
 
-          //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
-            GeometryEngine.HideAll();
+            //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
+            GeometryEngine.RemoveAll();
+
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
         }
@@ -356,7 +364,60 @@ namespace Design.Presentation
 
         private void Btn_LoadShow_Click(object sender, RoutedEventArgs e)
         {
+            
 
+            GeometryEngine.Remove("DistributedLoad");
+            GeometryEngine.Remove("ConcentratedLoad");
+
+            List<double> GComSpanValues = new List<double>();
+            GComSpanValues.Clear();
+            GComSpanValues.Add(0);
+            double cumulativeSpans = 0;
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
+            {
+                cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
+
+                GComSpanValues.Add(cumulativeSpans);
+            }
+            //List<string> Dead = new List<string>();
+            //List<string> Live = new List<string>();
+            //List<string> SD = new List<string>();
+
+            int[] Js = new int[DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count];
+            int YPosition = 100;
+
+            //Draw Distributed Load
+            for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
+            {
+                double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
+                double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
+                if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedLoadCase
+                    == (ShowLoadComboBox.SelectedItem).ToString())
+                {
+                    GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
+                                   , new Point(startX, 100), new Point(endX, 100)
+                                   , DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
+                    
+                }
+            }
+
+            //Draw Point Load
+            //for (int i = 0; i < PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Count; i++)
+            //{
+            //    //double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
+            //    //double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
+            //    if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedLoadCase
+            //        == (ShowLoadComboBox.SelectedItem).ToString())
+            //    {
+            //        var arrow = new Arrow(GeometryEngine.GCanvas,
+            //            new Point(GComSpanValues[i] + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance * GridData, 100, 30));
+            //        arrow.Rotate(180);
+            //        GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
+
+
+            //    }
+            //}
+            GeometryEngine.RenderAll();
         }
     }
 }

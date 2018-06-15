@@ -10,6 +10,7 @@ namespace Design.Presentation.Geometry
 {
     public class GeometryEngine
     {
+        public static int Id { get; set; } = 0;
         public GCanvas GCanvas { get; set; }
 
         public Dictionary<string, List<GShape>> Shapes { get; set; }
@@ -45,21 +46,32 @@ namespace Design.Presentation.Geometry
         public void RemoveAll()
         {
             GCanvas.Shapes.ForEach(e => e.Remove());
-            Shapes.Clear();
+            GCanvas.Shapes.Clear();
+            foreach (var item in Shapes)
+            {
+                item.Value.Clear();
+            }
+            // Shapes.Clear();
 
         }
         public void Remove(string listName)
         {
             //get shapes list based on string key and remove them from th Gcanvas
             Remove(Shapes[listName]);
+            //clear Dictionary List
+            Shapes[listName].Clear();
         }
         public void Remove(List<GShape> shapes)
         {
+            //remove WPF shapes from Canavs children
             shapes.ForEach(e => e.Remove());
-            foreach (var shape in shapes)
+            var Ids =shapes.Select(e=>e.Id).ToList();
+            foreach (var id in Ids)
             {
-                GCanvas.Shapes.Remove(shape);
+                GCanvas.Shapes.Remove(GCanvas.Shapes.Find(e=>e.Id==id));
             }
+            //remove Gshapes from Gcanvas Shapes List
+            
         }
         //Shapes.ForEach(e => e.Remove());
         public void HideAll()

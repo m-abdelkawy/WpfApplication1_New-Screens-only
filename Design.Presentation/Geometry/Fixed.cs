@@ -14,9 +14,10 @@ namespace Design.Presentation.Geometry
         public GRectangle Rectangle { get; set; }
         public double Height { get; set; }
         public GLine Line { get; set; }
-        public Fixed(GCanvas gCanvas, Point InsertionPoint) : base(gCanvas)
+        public Fixed(GCanvas gCanvas, Point InsertionPoint,double scale) : base(gCanvas)
         {
             Height = 15;
+            Scale = scale;
             Rectangle = new GRectangle(GCanvas, 30, 15,
              new Point(InsertionPoint.X /*scale*/, InsertionPoint.Y + 15));
             Line = new GLine(GCanvas, new Point(InsertionPoint.X/*scale*/, InsertionPoint.Y), new Point(InsertionPoint.X /*scale*/, InsertionPoint.Y + Height + Height / 2));

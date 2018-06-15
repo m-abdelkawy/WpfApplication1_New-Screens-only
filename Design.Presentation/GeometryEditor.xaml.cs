@@ -152,7 +152,8 @@ namespace Design.Presentation
                 switch (GeometryEditorVM.GeometryEditor.RestraintsCollection[i].SelectedRestraint)
                 {
                     case Restraints.Fixed:
-                        new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100));
+                        //Revise
+                        new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100), 20);
                         break;
                     case Restraints.Hinged:
                         new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));

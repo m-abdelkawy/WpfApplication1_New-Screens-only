@@ -39,6 +39,7 @@ namespace Design.Presentation.Geometry
                 headRightLine,
                 headLeftLine
             };
+
         }
         public void Rotate(double angle)
         {
@@ -51,6 +52,11 @@ namespace Design.Presentation.Geometry
         {
             Lines.ForEach(e => e.Remove());
             Lines.Clear();
+            foreach (var id in Lines.Select(e=>e.Id).ToList())
+            {
+                GCanvas.Shapes.Remove(GCanvas.Shapes.Find(e=>e.Id==id));
+            }
+            
         }
 
         public override void Render()
