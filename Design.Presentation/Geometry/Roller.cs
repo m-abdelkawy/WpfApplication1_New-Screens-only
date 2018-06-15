@@ -21,8 +21,8 @@ namespace Design.Presentation.Geometry
             GCanvas = gCanvas;
             Height = 20;
             var scaledHeight = Height * Scale;
-            var sPoint = new Point(InsertionPoint.X - scaledHeight / 2, InsertionPoint.Y+scaledHeight);
-            var ePoint = new Point(InsertionPoint.X + scaledHeight / 2, InsertionPoint.Y+scaledHeight);
+            var sPoint = new Point(InsertionPoint.X - scaledHeight / (2 * 20/**/), InsertionPoint.Y+scaledHeight);
+            var ePoint = new Point(InsertionPoint.X + scaledHeight / (2 * 20/**/), InsertionPoint.Y+scaledHeight);
            
             Line = new GLine(GCanvas, sPoint,ePoint);
             Circle = new GCircle(GCanvas,new Point( insertionPoint.X,InsertionPoint.Y+ scaledHeight / 2), scaledHeight * Scale);

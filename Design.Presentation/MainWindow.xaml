@@ -39,7 +39,6 @@
                 <Button Name="Btn_DrawLine" Content="Draw Line" Margin="10 10 10 0" Click="Btn_DrawLine_Click"/>
                 <Button Name="Btn_Hide" Content="Hide Drawings" Margin="10 10 10 0" Click="bBtn_Show_Click"/>
                 <Button Name="Btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
-                <Button x:Name="Btn_Design" Content="Design" Margin="10 10 10 0" Click="Btn_Design_Click"/>
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
                 <TabItem Header="Untitled">
@@ -55,14 +54,16 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
                         <StackPanel HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
+                                    VerticalAlignment="Top"
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Width="350">
-                            <GroupBox Header="Design for Flexure" Margin="10">
+                            <GroupBox Header="Design for Flexure"
+                                      Margin="10">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -89,16 +90,8 @@
                                                Grid.Row="0"
                                                Grid.Column="1"
                                                Width="100"
-                                               Loaded="FlexureSpanComboBox_Loaded"
                                                SelectionChanged="FlexureSpanComboBox_SelectionChanged">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal"
-                                                            Margin="2">
-                                                    <TextBlock Text="{Binding Id}"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
+                                        
                                     </ComboBox>
                                     <!--Sections-->
                                     <TextBlock Text="Chose section:"
@@ -156,7 +149,8 @@
                                     VerticalAlignment="Top"
                                     Grid.Row="0"
                                     Grid.Column="1">
-                            <GroupBox Header="Design for Shear">
+                            <GroupBox Header="Design for Shear"
+                                      Margin="10">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -183,7 +177,7 @@
                                               Grid.Row="0"
                                               Grid.Column="1"
                                               Width="100"
-                                              Loaded="ShearSpanComboBox_Loaded"/>
+                                              SelectionChanged="ShearSpanComboBox_SelectionChanged"/>
                                     <!--Sections-->
                                     <TextBlock Text="Chose section:"
                                                Grid.Row="1"
@@ -218,6 +212,39 @@
 
                                 </Grid>
                             </GroupBox>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Grid.Row="0"
+                                    Grid.Column="2">
+                            <GroupBox Header="Design Combo"
+                                      Margin="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Design Combo: "
+                                           Grid.Row="0"
+                                           Grid.Column="0"/>
+                                    <ComboBox x:Name="DesignCombinationComboBox"
+                                          Grid.Row="0"
+                                          Grid.Column="1"
+                                          Width="100"/>
+                                    <Button x:Name="Btn_Design"
+                                        Content="Design"
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Height="50"
+                                        Click="Btn_Design_Click"/>
+                                </Grid>
+                            </GroupBox>
+                                
                         </StackPanel>
                     </Grid>
                     

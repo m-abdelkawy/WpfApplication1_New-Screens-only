@@ -21,7 +21,7 @@ namespace Desing.Core.Sap
         private List<SapFrameDistLoad> distLoads;
         private List<SapPointLoad> pointLoads;
         private List<SapFrameResult> frameResults;
-        //private List<SapRectSection> sec;
+        private List<SapRectSection> sec;
         
 
         #endregion
@@ -96,18 +96,18 @@ namespace Desing.Core.Sap
             }
         }
 
-        //internal List<SapRectSection> Sec
-        //{
-        //    get
-        //    {
-        //        return sec;
-        //    }
+        public List<SapRectSection> Sec
+        {
+            get
+            {
+                return sec;
+            }
 
-        //    set
-        //    {
-        //        sec = value;
-        //    }
-        //}
+            set
+            {
+                sec = value;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -123,8 +123,9 @@ namespace Desing.Core.Sap
             this.distLoads = new List<SapFrameDistLoad>();
             this.pointLoads = new List<SapPointLoad>();
             this.frameResults = new List<SapFrameResult>();
-            //this.sec = new List<SapRectSection>();
+            this.sec = new List<SapRectSection>();
             mySapObjectModel.FrameObj.AddByPoint(this.p1.PointName, this.p2.PointName, ref this.name, this.name);
+            SetFrameSection(mySapObjectModel, this.MyRectSec, MyRectSec.SecName);
         }
 
         #endregion
@@ -143,6 +144,11 @@ namespace Desing.Core.Sap
             this.pointLoads.Add(pointLoad);
             int check2 = this.mySapObjectModel.FrameObj.SetLoadPoint(this.name, pointLoad.LoadPattern.Name, 
                 (int)pointLoad.LoadType, (int)pointLoad.Dir, dist, pointLoad.Value);
+        }
+
+        public void SetFrameSection(cSapModel mySapObjectModel , SapRectSection myRectSec, string propName)
+        {
+            MySapObjectModel.FrameObj.SetSection(name, propName, eItemType.Objects);
         }
         #endregion
     }

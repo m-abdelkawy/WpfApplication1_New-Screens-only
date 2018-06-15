@@ -33,7 +33,7 @@ namespace Design.Presentation
     public partial class MainWindow : Window
     {
         //lists
-        int[] spanIndex = new int[GeometryEditorVM.GeometryEditor.GridData.Count];
+        
         int[] rebarDiameterArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32 };
         int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 14, 16, 18 };
         int[] Flexuresections = new int[] { 1, 2, 3 };
@@ -116,7 +116,7 @@ namespace Design.Presentation
 
         private void Btn_editBeam_Click(object sender, RoutedEventArgs e)
         {
-            var ge = new GeometryEditor(GeometryEditorVM.GeometryEditor);
+            var ge = new GeometryEditor(GeometryEditorVM.GeometryEditor,GeometryEngine);
             ge.ShowDialog();
         }
         #endregion
@@ -136,7 +136,7 @@ namespace Design.Presentation
             //initialize Model units KN, m, C:
             AnalysisMapping.mySapModel.InitializeUnits(eUnits.kN_m_C);
             /*-----------------------------------------------------------*/
-            AnalysisMapping.CalcSpanValues();
+            AnalysisMapping.CalcSpanValues(FlexureSpanComboBox, ShearSpanComboBox);
             AnalysisMapping.CalcComSpanValues();
             SapMaterial concMat = AnalysisMapping.CreateConcMat(MaterialEditorVM.Material.Fcu);
             AnalysisMapping.CreateSapSections(SectionEditorVM.Sections, concMat);
@@ -147,7 +147,7 @@ namespace Design.Presentation
             AnalysisMapping.AddLoadCombinations();
             AnalysisMapping.AddDistributedLoads();
             AnalysisMapping.AddPointLoads();
-            AnalysisMapping.RunModel();
+            AnalysisMapping.RunModel(DesignCombinationComboBox);
 
 
 
@@ -216,6 +216,7 @@ namespace Design.Presentation
             var arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120));
 
             arrow.Rotate(45);
+            //render on Screen
             GeometryEngine.GCanvas.Render();
         }
 
@@ -241,8 +242,44 @@ namespace Design.Presentation
         }
 
         private void Btn_Design_Click(object sender, RoutedEventArgs e)
-        {
+        {//----------------Consider Revision
+            int[] secIndex = new int[GeometryEditorVM.GeometryEditor.GridData.Count];
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.GridData.Count; i++)
+            {
+                for (int j = 0; j < AnalysisMapping.SapSectionsArr.Length; j++)
+                {
+                    if (GeometryEditorVM.GeometryEditor.GridData[i].SelectedSection.Width == AnalysisMapping.SapSectionsArr[j].B
+                        && GeometryEditorVM.GeometryEditor.GridData[i].SelectedSection.Depth == AnalysisMapping.SapSectionsArr[j].T)
+                    {
+                        secIndex[i] = j;
+                    }
+                }
+            }
+            int bindex = 0;
+            foreach (var item in AnalysisMapping.xbeams)
+            {
+                //clear all case and combo output selections:
+                int ret1 = AnalysisMapping.mySapModel.MySapObjectModel.Results.Setup.DeselectAllCasesAndCombosForOutput();
 
+                //set case and combo output selections
+                int ret2 = AnalysisMapping.mySapModel.MySapObjectModel.Results.Setup.SetComboSelectedForOutput(DesignCombinationComboBox.SelectedItem as string);
+
+
+
+                AnalysisMapping.xbeams[bindex].FrameResults.Add(new SapFrameResult(AnalysisMapping.mySapModel.MySapObjectModel, item.Label));
+
+                //add sections created:
+                AnalysisMapping.xbeams[bindex].Sec.Add(AnalysisMapping.SapSectionsArr[secIndex[bindex]]);
+                bindex++;
+            }
+            /*----------------------------------------------------------*/
+            //Design:
+            double fcu = Convert.ToDouble(MaterialEditorVM.Material.Fcu);
+            double fy = Convert.ToDouble(MaterialEditorVM.Material.Fy);
+            double fystr = Convert.ToDouble(MaterialEditorVM.Material.FyStirrups);
+            int nBranches = Convert.ToInt32(MaterialEditorVM.Material.NoOfBranches);
+
+            BeamDesign design = new BeamDesign(AnalysisMapping.xbeams, fy, fystr, fcu, nBranches);
         }
 
         private void FlexureSpanComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -250,17 +287,7 @@ namespace Design.Presentation
             var FlexureSpanComboBox = sender as ComboBox;
             string value = FlexureSpanComboBox.SelectedItem as string;
         }
-
-        private void FlexureSpanComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < spanIndex.Length; i++)
-            {
-                spanIndex[i] = i + 1;
-            }
-            var FlexureSpanComboBox = sender as ComboBox;
-            FlexureSpanComboBox.ItemsSource = spanIndex;
-            FlexureSpanComboBox.SelectedIndex = 0;
-        }
+        
 
         private void FlexureSectionComboBox_Loaded(object sender, RoutedEventArgs e)
         {
@@ -279,17 +306,6 @@ namespace Design.Presentation
             var rebarDiaComboBox = sender as ComboBox;
             rebarDiaComboBox.ItemsSource = rebarDiameterArr;
             rebarDiaComboBox.SelectedIndex = 0;
-        }
-
-        private void ShearSpanComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < spanIndex.Length; i++)
-            {
-                spanIndex[i] = i + 1;
-            }
-            var ShearSpanComboBox = sender as ComboBox;
-            ShearSpanComboBox.ItemsSource = spanIndex;
-            ShearSpanComboBox.SelectedIndex = 0;
         }
 
         private void ShearSectionComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -320,6 +336,12 @@ namespace Design.Presentation
             double dia = Convert.ToDouble(stirrupComboBox.SelectedItem);
             spacingTxtBlock.Text = ((Math.PI * Math.Pow(dia, 2)) / (4 * (AnalysisMapping.xbeams[Convert.ToInt32(ShearSpanComboBox.SelectedIndex)]
                 .FrameResults.ElementAt(0).Astr_sManual[Convert.ToInt32(ShearSectionComboBox.SelectedIndex)]))).ToString();
+        }
+
+        private void ShearSpanComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var ShearSpanComboBox = sender as ComboBox;
+            string value = ShearSpanComboBox.SelectedItem as string;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Design.Core.Sap;
+using Design.Presentation.Geometry;
 using Design.Presentation.Model;
 using Design.Presentation.ViewModels;
 using Design.Presentation.Views.Section;
@@ -27,13 +28,27 @@ namespace Design.Presentation
     public partial class GeometryEditor : Window
     {
         private GridData GridData { get; set; }
-
-        public GeometryEditor(GeometryEditorVM geometryEditorVM)
+        private GeometryEngine GeometryEngine { get; set; }
+        private RestraintsModel RestraintsModel { get; set; }
+        public GeometryEditor(GeometryEditorVM geometryEditorVM, GeometryEngine geometryEngine)
         {
             DataContext = geometryEditorVM;
+            this.GeometryEngine = geometryEngine;
             InitializeComponent();
-            Gr_GridData.CanUserResizeColumns = false;
+
+            Gr_GridData.CanUserAddRows = false;
+            Gr_GridData.CanUserDeleteRows = false;
+            Gr_GridData.CanUserSortColumns = false;
             Gr_GridData.CanUserReorderColumns = false;
+            Gr_GridData.CanUserResizeColumns = false;
+            Gr_GridData.CanUserResizeRows = false;
+
+            SupportDataGrid.CanUserAddRows = false;
+            SupportDataGrid.CanUserDeleteRows = false;
+            SupportDataGrid.CanUserSortColumns = false;
+            SupportDataGrid.CanUserReorderColumns = false;
+            SupportDataGrid.CanUserResizeColumns = false;
+            SupportDataGrid.CanUserResizeRows = false;
 
         }
 
@@ -100,7 +115,56 @@ namespace Design.Presentation
 
         private void Btn_Ok_Click(object sender, RoutedEventArgs e)
         {
+            if (GeometryEditorVM.GeometryEditor.GridData.Count < 1)
+            {
+                return;
+            }
+            DrawingHelper.GLineList.Clear();
+            List<double> GComSpanValues = new List<double>();
+            GComSpanValues.Clear();
+            GComSpanValues.Add(0);
+            double cumulativeSpans = 0;
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
+            {
+                cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
 
+                GComSpanValues.Add(cumulativeSpans);
+            }
+
+
+            if (GeometryEditorVM.GeometryEditor.NumberOfSpans < 1)
+            {
+                return;
+            }
+
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
+            {
+                GeometryEngine.Shapes["Beams"].Add(new GLine(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100)
+                    , new Point(GComSpanValues[i + 1], 100)));
+                GeometryEngine.Shapes["Beams"].ForEach(d => { d.Scale = 10;d.New(); });
+                //new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
+            }
+            for (int i = 0; i < GeometryEditorVM.GeometryEditor.RestraintsCollection.Count; i++)
+            {
+                switch (GeometryEditorVM.GeometryEditor.RestraintsCollection[i].SelectedRestraint)
+                {
+                    case Restraints.Fixed:
+                        new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100));
+                        break;
+                    case Restraints.Hinged:
+                        new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
+                        break;
+                    case Restraints.Roller:
+                        new Roller(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
+                        break;
+                    case Restraints.NoRestraints:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            GeometryEngine.GCanvas.Render();
             this.Close();
         }
 
@@ -128,12 +192,7 @@ namespace Design.Presentation
             cb.ItemsSource = Enum.GetValues(typeof(Restraints)).Cast<Restraints>();
         }
 
-        private void SelectionRestrain_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var cb = (ComboBox)sender;
-            var s = (Restraints)cb.SelectedItem;
-            GridData.SelectedRestrain = s;
-        }
+
 
         private void Gr_GridData_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -166,10 +225,14 @@ namespace Design.Presentation
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             AnalysisMapping.spanList.Clear();
-            for (int i = 1; i < Convert.ToInt32(nSpansTxtBox.Text) + 1; i++)
+            if (nSpansTxtBox.Text != null && nSpansTxtBox.Text != "")
             {
-                AnalysisMapping.spanList.Add(i);
+                for (int i = 0; i < Convert.ToInt32(nSpansTxtBox.Text); i++)
+                {
+                    AnalysisMapping.spanList.Add(i + 1);
+                }
             }
+            
         }
 
         private void Btn_AddBeam_Click(object sender, RoutedEventArgs e)
@@ -191,19 +254,35 @@ namespace Design.Presentation
         private void Btn_DltBeam_Click(object sender, RoutedEventArgs e)
         {//------------Revise
             var index = Gr_GridData.SelectedIndex;
-            GeometryEditorVM.GeometryEditor.GridData.RemoveAt(index);
-
-            //Update SpanList //------------Revise
-            AnalysisMapping.spanList.Clear();
-            for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+            if (index < GeometryEditorVM.GeometryEditor.GridData.Count)
             {
-                AnalysisMapping.spanList.Add(i);
+                GeometryEditorVM.GeometryEditor.GridData.RemoveAt(index);
+
+                //Update SpanList //------------Revise
+                AnalysisMapping.spanList.Clear();
+                for (int i = 1; i < GeometryEditorVM.GeometryEditor.GridData.Count + 1; i++)
+                {
+                    AnalysisMapping.spanList.Add(i);
+                }
             }
+
         }
 
         private void Gr_GridData_AddingNewItem(object sender, AddingNewItemEventArgs e)
         {
 
+        }
+
+        private void SupportDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RestraintsModel = SupportDataGrid.SelectedItem as RestraintsModel;
+        }
+
+        private void SelectionRestraint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            var s = (Restraints)cb.SelectedItem;
+            RestraintsModel.SelectedRestraint = s;
         }
     }
 }
