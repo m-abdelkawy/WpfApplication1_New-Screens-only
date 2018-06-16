@@ -59,6 +59,7 @@
     <Compile Include="Common\Split.cs" />
     <Compile Include="Geometry\Arrow.cs" />
     <Compile Include="Geometry\ArrowLoad.cs" />
+    <Compile Include="Geometry\AxisEnum.cs" />
     <Compile Include="Geometry\Direction.cs" />
     <Compile Include="Geometry\DrawingHelper.cs" />
     <Compile Include="Geometry\Fixed.cs" />

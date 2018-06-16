@@ -10,6 +10,14 @@ namespace Design.Presentation.Geometry
 {
     public class GTriangle : GPolygon
     {
+        private double scale=1;
+
+        public double Scale
+        {
+            get { return scale; }
+            set { scale = value; }
+        }
+
         public Point Top { get; set; }
         public Point Right { get; set; }
         public Point Left { get; set; }
@@ -28,10 +36,6 @@ namespace Design.Presentation.Geometry
             Points.Add(Top);
             Points.Add(Right);
             Points.Add(Left);
-
-            Fill = Brushes.Transparent;
-            Stroke = Brushes.Green;
-            StrokeThickness = 2;
         }
         public override void Hide()
         {
@@ -46,6 +50,10 @@ namespace Design.Presentation.Geometry
         public override void Render()
         {
             base.Render();
+        }
+        public override void SetScale(double value)
+        {
+            Polygon.RenderTransform = new ScaleTransform(value, value, Top.X, Top.Y);
         }
     }
 }

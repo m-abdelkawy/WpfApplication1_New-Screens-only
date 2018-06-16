@@ -33,8 +33,19 @@ namespace Design.Presentation.Geometry
 
         public override void Render()
         {
+            Triangle.Fill = Line.Fill = Fill;
+            Triangle.StrokeThickness = Line.StrokeThickness = StrokeThickness;
+            Triangle.Thickness = Line.Thickness = Thickness;
+            Triangle.Stroke = Line.Stroke = Stroke;
+            Triangle.Visibility = Line.Visibility = Visibility;
+
             Line.Render();
             Triangle.Render();
+        }
+        public override void SetScale(double value)
+        {
+            Line.SetScale(value);
+            Triangle.SetScale(value);
         }
     }
 }

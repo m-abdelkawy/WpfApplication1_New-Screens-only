@@ -40,24 +40,39 @@ namespace Design.Presentation.Geometry
                 headLeftLine
             };
 
+            foreach (var line in Lines)
+            {
+                line.Line.RenderTransform = new TransformGroup();
+            }
+
         }
         public void Rotate(double angle)
         {
             foreach (var line in Lines)
             {
-                line.Line.RenderTransform = new RotateTransform(angle, InsertionPoint.X, InsertionPoint.Y);
+                ((TransformGroup)line.Line.RenderTransform).Children.Add(
+                    new RotateTransform(angle, InsertionPoint.X, InsertionPoint.Y));
             }
         }
         public override void Remove()
         {
             Lines.ForEach(e => e.Remove());
             Lines.Clear();
-           
-            
+
+
         }
 
         public override void Render()
         {
+            foreach (var line in Lines)
+            {
+                line.Fill = Fill;
+                line.StrokeThickness = StrokeThickness;
+                line.Thickness = Thickness;
+                line.Stroke = Stroke;
+                line.Visibility = Visibility;
+            }
+
             Lines.ForEach(e => e.Render());
 
         }
@@ -65,9 +80,20 @@ namespace Design.Presentation.Geometry
         {
             Lines.ForEach(e => e.Hide());
         }
-        
 
-        
+        public override void SetScale(double value)
+        {
+            ((TransformGroup)Lines[0].Line.RenderTransform).Children.Add(
+                new ScaleTransform(value, value, Lines[0].Line.X1, Lines[0].Line.Y1)); //set the body scale;
+
+            ((TransformGroup)Lines[1].Line.RenderTransform).Children.Add(
+                new ScaleTransform(value, value, Lines[0].Line.X1, Lines[1].Line.Y1)); //set the body scale;
+
+            ((TransformGroup)Lines[1].Line.RenderTransform).Children.Add(
+                new ScaleTransform(value, value, Lines[0].Line.X1, Lines[1].Line.Y1)); //set the body scale;
+
+        }
+
     }
 
 }
