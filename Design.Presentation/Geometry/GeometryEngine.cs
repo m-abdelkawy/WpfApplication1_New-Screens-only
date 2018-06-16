@@ -41,42 +41,38 @@ namespace Design.Presentation.Geometry
         }
         public void RenderAll()
         {
-            GCanvas.Shapes.ForEach(e => e.Render());
+            foreach (var shapeList in Shapes)
+            {
+                shapeList.Value.ForEach(e=>e.Render());
+            }
         }
         public void RemoveAll()
         {
-            GCanvas.Shapes.ForEach(e => e.Remove());
-            GCanvas.Shapes.Clear();
-            foreach (var item in Shapes)
+           
+            foreach (var shapeList in Shapes)
             {
-                item.Value.Clear();
+                shapeList.Value.ForEach(e => e.Remove());
+                shapeList.Value.Clear();
             }
-            // Shapes.Clear();
+           
 
         }
         public void Remove(string listName)
         {
             //get shapes list based on string key and remove them from th Gcanvas
-            Remove(Shapes[listName]);
+            var shapes = Shapes[listName];
+            shapes.ForEach(e => e.Remove());
             //clear Dictionary List
             Shapes[listName].Clear();
         }
-        public void Remove(List<GShape> shapes)
-        {
-            //remove WPF shapes from Canavs children
-            shapes.ForEach(e => e.Remove());
-            var Ids =shapes.Select(e=>e.Id).ToList();
-            foreach (var id in Ids)
-            {
-                GCanvas.Shapes.Remove(GCanvas.Shapes.Find(e=>e.Id==id));
-            }
-            //remove Gshapes from Gcanvas Shapes List
-            
-        }
+     
         //Shapes.ForEach(e => e.Remove());
         public void HideAll()
         {
-            GCanvas.Shapes.ForEach(e => e.Hide());
+            foreach (var shapeList in Shapes)
+            {
+                shapeList.Value.ForEach(e => e.Hide());
+            }
         }
         public void Hide(string listName)
         {

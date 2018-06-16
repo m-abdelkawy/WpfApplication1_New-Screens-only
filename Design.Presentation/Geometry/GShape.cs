@@ -44,7 +44,7 @@ namespace Design.Presentation.Geometry
             Shape.Fill = Fill;
             Shape.Visibility = Visibility;
             Shape.StrokeThickness = StrokeThickness;
-            if (GCanvas.Canvas.Children.Contains(Shape) && GCanvas.Shapes.Contains(this))
+            if (GCanvas.Canvas.Children.Contains(Shape))
             {
                 return;
             }

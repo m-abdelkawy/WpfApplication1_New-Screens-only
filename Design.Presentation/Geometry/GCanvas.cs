@@ -12,8 +12,6 @@ namespace Design.Presentation.Geometry
 {
     public class GCanvas
     {
-
-        public List<GShape> Shapes { get; set; }
         //
         private Canvas _canvas;
         private Vector translateVector;
@@ -33,7 +31,7 @@ namespace Design.Presentation.Geometry
             ZoomMin = .5;
             ZoomSpeed = .001;
             Zoom = 1;
-            Shapes = new List<GShape>();
+            
         }
 
         private void Initializer()

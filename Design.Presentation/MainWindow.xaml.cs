@@ -232,14 +232,17 @@ namespace Design.Presentation
             GeometryEngine.Shapes["Beams"].Add(fixd);
             GeometryEngine.Shapes["Beams"].Add(arrow);
             GeometryEngine.Shapes["Beams"].Add(arrowLoad);
+
+            GeometryEngine.Shapes["Supports"].Add(roller);
             GeometryEngine.Render("Beams");
+            GeometryEngine.Render("Supports");
         }
 
         private void bBtn_Show_Click(object sender, RoutedEventArgs e)
         {
 
             //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
-            GeometryEngine.RemoveAll();
+            GeometryEngine.Remove("Beams");
 
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
@@ -418,6 +421,11 @@ namespace Design.Presentation
             //    }
             //}
             GeometryEngine.RenderAll();
+        }
+
+        private void ShowLoadComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

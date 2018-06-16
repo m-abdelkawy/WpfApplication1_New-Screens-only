@@ -29,7 +29,7 @@ namespace Design.Presentation.Geometry
             var top = Position.Y - (Radius / 2);
             Circle.Margin = new Thickness(left,top,0,0);
             Fill = Brushes.Transparent;
-            GCanvas.Shapes.Add(this);
+            
 
         }
         

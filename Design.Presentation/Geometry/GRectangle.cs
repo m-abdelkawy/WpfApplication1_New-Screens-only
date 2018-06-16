@@ -35,7 +35,6 @@ namespace Design.Presentation.Geometry
             Rectangle.Margin = new Thickness(left, top, 0, 0);
             Fill = Brushes.Transparent;
             //Add this Shape to Canvas
-            GCanvas.Shapes.Add(this);
         }
         public override void Render()
         {

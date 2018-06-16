@@ -24,9 +24,6 @@ namespace Design.Presentation.Geometry
             //base.Remove();
             GCanvas.Canvas.Children.Remove(Line.Line);
             GCanvas.Canvas.Children.Remove(Triangle.Polygon);
-            GCanvas.Shapes.Remove(Triangle);
-            GCanvas.Shapes.Remove(Line);
-
         }
         public override void Hide()
         {

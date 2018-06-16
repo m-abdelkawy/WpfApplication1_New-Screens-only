@@ -50,7 +50,7 @@
                                 Width="100" Height="20"
                                     Click="Btn_LoadShow_Click">
                             </Button>
-                            <ComboBox x:Name="ShowLoadComboBox">
+                            <ComboBox x:Name="ShowLoadComboBox" SelectionChanged="ShowLoadComboBox_SelectionChanged">
                             </ComboBox>
                         </StackPanel>
                         
