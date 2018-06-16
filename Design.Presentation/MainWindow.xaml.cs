@@ -105,6 +105,11 @@ namespace Design.Presentation
         public GeometryEngine GeometryEngine { get; set; }
         public static List<string> LoadCasesToShowLoads { get; set; }
         = new List<string>();
+
+        #region RFT 
+        public GeometryEngine GeometryEngineRFT { get; set; }
+
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
@@ -112,7 +117,12 @@ namespace Design.Presentation
             GeometryEngine.GCanvas.Canvas = canvas_Geometry;
             LoadCasesToShowLoads = AnalysisMapping.loadPatternName;
             ShowLoadComboBox.ItemsSource = LoadCasesToShowLoads;
-            
+
+            //RFT Canvas
+            GeometryEngineRFT = new GeometryEngine();
+            GeometryEngineRFT.GCanvas.Canvas = canvas_Design;
+
+
         }
 
 
@@ -457,6 +467,16 @@ namespace Design.Presentation
         }
 
         private void ShowLoadComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Btn_RFT_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_ClrRFTCanvas_Click(object sender, RoutedEventArgs e)
         {
 
         }

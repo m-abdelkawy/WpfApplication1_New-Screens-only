@@ -243,8 +243,11 @@
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
@@ -258,12 +261,22 @@
                                           Grid.Column="1"
                                           Width="100"/>
                                     <Button x:Name="Btn_Design"
-                                        Content="Design"
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="2"
-                                        Height="50"
-                                        Click="Btn_Design_Click"/>
-                                </Grid>
+                                            Content="Design"
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            Height="50"
+                                            Click="Btn_Design_Click"/>
+                                        <Button x:Name="Btn_RFT"
+                                                Content="Show RFT"
+                                                Grid.Row="2"
+                                                Grid.ColumnSpan="2"
+                                                Click="Btn_RFT_Click"/>
+                                        <Button x:Name="Btn_ClrRFTCanvas"
+                                                Content="Clear Canvas"
+                                                Grid.Row="3"
+                                                Grid.ColumnSpan="2"
+                                                Click="Btn_ClrRFTCanvas_Click"/>
+                                    </Grid>
                             </GroupBox>
                                 
                         </StackPanel>
