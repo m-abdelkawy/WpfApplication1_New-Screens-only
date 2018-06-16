@@ -112,7 +112,7 @@ namespace Design.Presentation
             GeometryEngine.GCanvas.Canvas = canvas_Geometry;
             LoadCasesToShowLoads = AnalysisMapping.loadPatternName;
             ShowLoadComboBox.ItemsSource = LoadCasesToShowLoads;
-
+            
         }
 
 
@@ -213,29 +213,52 @@ namespace Design.Presentation
         Fixed fixd;
         Arrow arrow;
         ArrowLoad arrowLoad;
+        GLine l;
+        GCircle c;
         private void Btn_DrawLine_Click(object sender, RoutedEventArgs e)
         {
+           // GeometryEngine.Remove("Supports");
 
             // var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
-            hinged = new Hinged(GeometryEngine.GCanvas, new Point(60, 60));
-            roller = new Roller(GeometryEngine.GCanvas, new Point(100, 60));
-
+            l = new GLine(GeometryEngine.GCanvas, new Point(60, 60),new Point(100, 200));
+            c = new GCircle(GeometryEngine.GCanvas, new Point(200, 200), 50);
+            c.Fill = Brushes.Green;
+            hinged = new Hinged(GeometryEngine.GCanvas, new Point(500, 500));
+            hinged.Fill = Brushes.Transparent;
+            hinged.Stroke = Brushes.Red;
+            hinged.StrokeThickness=2;
+            roller = new Roller(GeometryEngine.GCanvas, new Point(160, 60));
+            roller.Fill = Brushes.Transparent;
+            roller.StrokeThickness = 2;
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
-            fixd = new Fixed(GeometryEngine.GCanvas, new Point(160, 60), 20);
+            fixd = new Fixed(GeometryEngine.GCanvas, new Point(100, 60), 20);
+            fixd.Fill = Brushes.Orange;
+            fixd.StrokeThickness=2;
             arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60), 20);
+            arrow.Stroke = Brushes.Yellow;
+            arrow.StrokeThickness=4;
             arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120), 20);
-
+            arrowLoad.Stroke = Brushes.Blue;
+            arrowLoad.StrokeThickness = 2;
+            
             //arrow.Rotate(45);
             //render on Screen
             // GeometryEngine.RenderAll();
             //   GeometryEngine.Render(new List<GShape>() { roller, hinged, fixd });
-            GeometryEngine.Shapes["Beams"].Add(fixd);
+            GeometryEngine.Shapes["Beams"].Add(c);
             GeometryEngine.Shapes["Beams"].Add(arrow);
-            GeometryEngine.Shapes["Beams"].Add(arrowLoad);
+            GeometryEngine.Shapes["Supports"].Add(arrowLoad);
 
             GeometryEngine.Shapes["Supports"].Add(roller);
-            GeometryEngine.Render("Beams");
-            GeometryEngine.Render("Supports");
+            GeometryEngine.Shapes["Supports"].Add(fixd);
+            GeometryEngine.Shapes["Supports"].Add(l);
+            GeometryEngine.Shapes["Supports"].Add(hinged);
+            // GeometryEngine.Render("Beams");
+            // GeometryEngine.Render("Supports");
+            l.Stroke = Brushes.Red;
+            l.StrokeThickness=4;
+
+            GeometryEngine.RenderAll();
         }
 
         private void bBtn_Show_Click(object sender, RoutedEventArgs e)
@@ -243,7 +266,11 @@ namespace Design.Presentation
 
             //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
             GeometryEngine.Remove("Beams");
-
+            l.SetScale(2);
+            hinged.SetScale(2);
+            fixd.SetScale(2);
+            roller.SetScale(2);
+            arrowLoad.SetScale(1.5);
             //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
 
         }

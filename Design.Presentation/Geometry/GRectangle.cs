@@ -18,7 +18,7 @@ namespace Design.Presentation.Geometry
         public double RadiusY { get; set; }
 
         public Point Position { get; set; }
-        public GRectangle(GCanvas gCanvas ,double width,double height,Point position) : base(gCanvas)
+        public GRectangle(GCanvas gCanvas, double width, double height, Point position) : base(gCanvas)
         {
             Width = width;
             Height = height;
@@ -47,6 +47,13 @@ namespace Design.Presentation.Geometry
         public override void Hide()
         {
             base.Hide();
+        }
+
+        public override void SetScale(double value)
+        {
+            //var left =  Position.X +Width;
+            //var top = (Position.Y-Height) / 2;
+            Rectangle.RenderTransform = new ScaleTransform(value, value, Width / 2, -Height / 2);
         }
     }
 }

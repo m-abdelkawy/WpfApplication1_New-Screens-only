@@ -10,11 +10,18 @@ namespace Design.Presentation.Geometry
 {
     public class Fixed : GShape
     {
+        private double scale;
+
+        public double Scale
+        {
+            get { return scale; }
+            set { scale = value; }
+        }
         public Point InsertionPoint { get; set; }
         public GRectangle Rectangle { get; set; }
         public double Height { get; set; }
         public GLine Line { get; set; }
-        public Fixed(GCanvas gCanvas, Point InsertionPoint,double scale) : base(gCanvas)
+        public Fixed(GCanvas gCanvas, Point InsertionPoint, double scale) : base(gCanvas)
         {
             Height = 15;
             Scale = scale;
@@ -25,6 +32,13 @@ namespace Design.Presentation.Geometry
 
         public override void Render()
         {
+
+            Rectangle.Fill = Line.Fill = Fill;
+            Rectangle.StrokeThickness = Line.StrokeThickness = StrokeThickness;
+            Rectangle.Thickness = Line.Thickness = Thickness;
+            Rectangle.Stroke = Line.Stroke = Stroke;
+            Rectangle.Visibility = Line.Visibility = Visibility;
+
             Line.Render();
             Rectangle.Render();
         }
@@ -39,6 +53,11 @@ namespace Design.Presentation.Geometry
         {
             Line.Hide();
             Rectangle.Hide();
+        }
+        public override void SetScale(double value)
+        {
+            Line.SetScale(value);
+            Rectangle.SetScale(value);
         }
     }
 }

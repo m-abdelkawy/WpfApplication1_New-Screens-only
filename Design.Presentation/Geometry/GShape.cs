@@ -15,8 +15,7 @@ namespace Design.Presentation.Geometry
 
     public class GShape
     {
-        public double Scale { get; set; }
-        public ShapeType ShapeType { get; set; }
+
         public GCanvas GCanvas { get; set; }
         public Shape Shape { get; set; }
         public Thickness Thickness { get; set; }
@@ -33,11 +32,13 @@ namespace Design.Presentation.Geometry
             Stroke = Brushes.Black;
             StrokeThickness = 1;
             Fill = Brushes.Red;
-            Scale = 1;
             //
             Id = GeometryEngine.Id;
             GeometryEngine.Id++;
         }
+
+
+
         public virtual void Render()
         {
             Shape.Stroke = Stroke;
@@ -49,7 +50,7 @@ namespace Design.Presentation.Geometry
                 return;
             }
             GCanvas.Canvas.Children.Add(Shape);
-           
+
         }
         public virtual void Remove()
         {/*----------> Consider Revision*/
@@ -62,6 +63,14 @@ namespace Design.Presentation.Geometry
             Shape.Visibility = Visibility = Visibility.Collapsed;
         }
         public virtual void New()
+        {
+
+        }
+        public virtual void SetScale(double value)
+        {
+
+        }
+        public virtual void SetTranslate(double valueX,double valueY)
         {
 
         }
