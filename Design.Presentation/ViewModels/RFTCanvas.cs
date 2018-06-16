@@ -1,5 +1,6 @@
 ﻿using Design.Core.Sap;
 using Design.Presentation.Geometry;
+using Design.Presentation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace Design.Presentation.ViewModels
         //Comulative Span Values
         public static double[] SpanVals = AnalysisMapping.spanValues;
         public static double[] comSpanVals = new double[SpanVals.Length + 1];
+
+        //thicknesses
+        public static double[] thickness = new double[SpanVals.Length];
 
         /*-------------Points------------*/
         //Top Points
@@ -60,6 +64,13 @@ namespace Design.Presentation.ViewModels
                 comSpanVals[i] += SpanVals[i];
             }
         }
+        public static void CalcThickness()
+        {
+            for (int i = 0; i < thickness.Length; i++)
+            {
+                thickness[i] = GeometryEditorVM.GeometryEditor.GridData[i].SelectedSection.Depth;
+            }
+        }
 
         #region CalcPoints
         public static void ConstructTopStartPoints(double scale)/*scale = 20 as previously stated*/
@@ -76,14 +87,14 @@ namespace Design.Presentation.ViewModels
                 EndPointTopArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, 100);
             }
         }
-        public static void ConstructBotStartPoints(double scale, double[] thickness)
+        public static void ConstructBotStartPoints(double scale)
         {
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 StartPointBotArr[i] = new Point((comSpanVals[i] + 0.15) * scale, thickness[i] * scale);
             }
         }
-        public static void ConstructBotEndPoints(double scale, double[] thickness)
+        public static void ConstructBotEndPoints(double scale)
         {
             for (int i = 0; i < SpanVals.Length; i++)
             {
@@ -113,7 +124,7 @@ namespace Design.Presentation.ViewModels
                 GeometryEngineRFT.Shapes["RFT"].Add(BotLineArr[i]);
             }
         }
-        public static void ConstructColLines(GCanvas gCanvas, double scale, double[] thickness, GeometryEngine GeometryEngineRFT)
+        public static void ConstructColLines(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
         {
             //Top Start Lines
             for (int i = 0; i < ColLinesTopStart.Length; i++)
@@ -191,7 +202,7 @@ namespace Design.Presentation.ViewModels
         #endregion
 
         #region Stirrups
-        public static void LeftSecStirrups(GCanvas gCanvas, double[] thickness, double scale, GeometryEngine GeometryEngineRFT)
+        public static void LeftSecStirrups(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
         {
             double spacingLeft = 0;
             for (int i = 0; i < StirrupsLeftSec.GetLength(0); i++)
@@ -209,7 +220,7 @@ namespace Design.Presentation.ViewModels
             }
         }
 
-        public static void RightSecStirrups(GCanvas gCanvas, double[] thickness, double scale, GeometryEngine GeometryEngineRFT)
+        public static void RightSecStirrups(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
         {
             double spacingRight = 0;
             for (int i = 0; i < StirrupsRightSec.GetLength(0); i++)

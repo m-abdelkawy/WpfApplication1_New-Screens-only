@@ -473,7 +473,15 @@ namespace Design.Presentation
 
         private void Btn_RFT_Click(object sender, RoutedEventArgs e)
         {
+            GeometryEngineRFT.Remove("RFT");
 
+            /*----------RFT Visualization---------*/
+            RFTCanvas.CalcComSpanVals(GeometryEditorVM.GeometryEditor.NumberOfSpans);
+
+            //Points
+            RFTCanvas.ConstructTopStartPoints(20);
+            RFTCanvas.ConstructTopEndPoints(20);
+            RFTCanvas.ConstructBotStartPoints(20, );
         }
 
         private void Btn_ClrRFTCanvas_Click(object sender, RoutedEventArgs e)
