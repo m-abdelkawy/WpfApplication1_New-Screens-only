@@ -301,6 +301,8 @@ namespace Design.Presentation
             int nBranches = Convert.ToInt32(MaterialEditorVM.Material.NoOfBranches);
 
             BeamDesign design = new BeamDesign(AnalysisMapping.xbeams, fy, fystr, fcu, nBranches);
+
+
         }
 
         private void FlexureSpanComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -403,24 +405,28 @@ namespace Design.Presentation
                     
                 }
             }
-
+            List<double> spanList = GeometryEditorVM.GeometryEditor.GridData.Select(d => d.Span).ToList();
             //Draw Point Load
-            //for (int i = 0; i < PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Count; i++)
-            //{
-            //    //double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
-            //    //double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
-            //    if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedLoadCase
-            //        == (ShowLoadComboBox.SelectedItem).ToString())
-            //    {
-            //        var arrow = new Arrow(GeometryEngine.GCanvas,
-            //            new Point(GComSpanValues[i] + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance * GridData, 100, 30));
-            //        arrow.Rotate(180);
-            //        GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
+            for (int i = 0; i < PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Count; i++)
+            {
+                //double startX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo - 1] * 20;
+                //double endX = GComSpanValues[DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].selectedSpanNo] * 20;
+                if (PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedLoadCase
+                    == (ShowLoadComboBox.SelectedItem).ToString() && ShowLoadComboBox.SelectedItem != null)
+                {
+                    var arrow = new Arrow(GeometryEngine.GCanvas,
+                        new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
+                        + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] *20, 100), 30);
+                    arrow.Rotate(180);
+                    GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
 
 
-            //    }
-            //}
-            GeometryEngine.RenderAll();
+                }
+            }
+            GeometryEngine.Render("DistributedLoad");
+            GeometryEngine.Render("ConcentratedLoad");
+            //GeometryEngine.RenderAll();
         }
 
         private void ShowLoadComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

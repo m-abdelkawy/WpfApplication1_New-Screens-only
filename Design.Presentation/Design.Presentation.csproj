@@ -87,6 +87,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PointLoadAssignmentViewModel.cs" />
     <Compile Include="ViewModels\RestraintsModel.cs" />
+    <Compile Include="ViewModels\RFTCanvas.cs" />
     <Compile Include="ViewModels\SectionDialougeVM.cs" />
     <Compile Include="ViewModels\GeometryEditorVM.cs" />
     <Compile Include="ViewModels\LoadCasesVM.cs" />

@@ -41,7 +41,7 @@
                 <Button Name="Btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
             <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
-                <TabItem Header="Untitled">
+                <TabItem Header="Load Visualization">
                     <StackPanel HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
                         <StackPanel HorizontalAlignment="Right"
@@ -65,8 +65,9 @@
                     </StackPanel>
                     
                 </TabItem>
-                <TabItem Header="Design-Untitled">
+                <TabItem Header="Design-Tab">
                     <!--<Grid Background="#FFE5E5E5"/>-->
+                    <StackPanel Height="500" VerticalAlignment="Top">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -266,9 +267,20 @@
                             </GroupBox>
                                 
                         </StackPanel>
+                        
                     </Grid>
+                        <Canvas Name="canvas_Design"
+                                    VerticalAlignment="Bottom"
+                                    Width="850"
+                                    Height="200"
+                                    MinWidth="850"
+                                    MinHeight="300"
+                                    Background="Beige">
+                        </Canvas>
+                    </StackPanel>
                     
-                    
+
+
                 </TabItem>
             </TabControl>
         </Grid>
