@@ -74,6 +74,10 @@ namespace Design.Presentation.Geometry
         {
 
         }
+        public virtual void Rotate(double angle)
+        {
+
+        }
 
     }
 }
