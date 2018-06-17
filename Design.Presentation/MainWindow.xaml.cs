@@ -417,7 +417,7 @@ namespace Design.Presentation
             double cumulativeSpans = 0;
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
             {
-                cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
+                 cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
 
                 GComSpanValues.Add(cumulativeSpans);
             }
@@ -476,12 +476,34 @@ namespace Design.Presentation
             GeometryEngineRFT.Remove("RFT");
 
             /*----------RFT Visualization---------*/
+            RFTCanvas.CalcSpanVals();
             RFTCanvas.CalcComSpanVals(GeometryEditorVM.GeometryEditor.NumberOfSpans);
+            RFTCanvas.CalcThickness();
 
-            //Points
+            //Points  /*--------the Order is Important-----------*/
             RFTCanvas.ConstructTopStartPoints(20);
             RFTCanvas.ConstructTopEndPoints(20);
-            RFTCanvas.ConstructBotStartPoints(20, );
+
+            RFTCanvas.ConstructBotStartPoints(20);
+            RFTCanvas.ConstructBotEndPoints(20);
+
+            
+
+            //Lines
+            RFTCanvas.ConstructTopLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT);
+            RFTCanvas.ConstructBotLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT);
+            RFTCanvas.ConstructColLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            //RFT Lines
+            RFTCanvas.BotRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            RFTCanvas.TopRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            
+            //Stirrups
+            RFTCanvas.LeftSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            RFTCanvas.RightSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            GeometryEngineRFT.RenderAll();
+
         }
 
         private void Btn_ClrRFTCanvas_Click(object sender, RoutedEventArgs e)

@@ -14,7 +14,7 @@ namespace Design.Presentation.ViewModels
     {
         #region Static Member Variables
         //Comulative Span Values
-        public static double[] SpanVals = AnalysisMapping.spanValues;
+        public static double[] SpanVals = new double[GeometryEditorVM.GeometryEditor.NumberOfSpans];
         public static double[] comSpanVals = new double[SpanVals.Length + 1];
 
         //thicknesses
@@ -43,7 +43,7 @@ namespace Design.Presentation.ViewModels
 
         /*------------Reinforcement Lines-------------*/
         public static GLine[] BotRFTLines = new GLine[SpanVals.Length];
-        public static GLine[] TopRFTLines = new GLine[SpanVals.Length - 1];
+        public static GLine[] TopRFTLines = new GLine[SpanVals.Length + 1];
 
         /*------------Stirrups Lines-------------*/
         public static GLine[,] StirrupsLeftSec = new GLine[SpanVals.Length, 3];
@@ -55,13 +55,19 @@ namespace Design.Presentation.ViewModels
         #endregion
 
         #region Methods
-
+        public static void CalcSpanVals()
+        {
+            for (int i = 0; i < SpanVals.Length; i++)
+            {
+                SpanVals[i] = GeometryEditorVM.GeometryEditor.GridData[i].Span;
+            }
+        }
         public static void CalcComSpanVals(int nSpans)
         {
             comSpanVals[0] = 0;
             for (int i = 1; i < comSpanVals.Length; i++)
             {
-                comSpanVals[i] += SpanVals[i];
+                comSpanVals[i] = comSpanVals[i - 1] + SpanVals[i - 1];
             }
         }
         public static void CalcThickness()
@@ -73,6 +79,9 @@ namespace Design.Presentation.ViewModels
         }
 
         #region CalcPoints
+
+        /*---------------Top Points--------------*/
+
         public static void ConstructTopStartPoints(double scale)/*scale = 20 as previously stated*/
         {
             for (int i = 0; i < SpanVals.Length; i++)
@@ -87,25 +96,26 @@ namespace Design.Presentation.ViewModels
                 EndPointTopArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, 100);
             }
         }
+        /*---------------Bottom Points--------------*/
         public static void ConstructBotStartPoints(double scale)
         {
             for (int i = 0; i < SpanVals.Length; i++)
             {
-                StartPointBotArr[i] = new Point((comSpanVals[i] + 0.15) * scale, thickness[i] * scale);
+                StartPointBotArr[i] = new Point((comSpanVals[i] + 0.15) * scale, StartPointTopArr[i].Y + thickness[i] * scale);
             }
         }
         public static void ConstructBotEndPoints(double scale)
         {
             for (int i = 0; i < SpanVals.Length; i++)
             {
-                EndPointBotArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, thickness[i] * scale);
+                EndPointBotArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, EndPointTopArr[i].Y + thickness[i] * scale);
             }
         }
-
 
         #endregion
 
         #region BeamLines
+        /*--------------------------Top Lines-------------------------*/
         public static void ConstructTopLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT)
         {
             for (int i = 0; i < SpanVals.Length; i++)
@@ -115,6 +125,8 @@ namespace Design.Presentation.ViewModels
                 GeometryEngineRFT.Shapes["RFT"].Add(TopLineArr[i]);
             }
         }
+
+        /*--------------------------Bottom Lines-------------------------*/
         public static void ConstructBotLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT)
         {
             for (int i = 0; i < SpanVals.Length; i++)
@@ -124,42 +136,46 @@ namespace Design.Presentation.ViewModels
                 GeometryEngineRFT.Shapes["RFT"].Add(BotLineArr[i]);
             }
         }
-        public static void ConstructColLines(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
+        public static void ConstructColLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
-            //Top Start Lines
+            /*----------------------Bottom Start Lines----------------------*/
+            for (int i = 0; i < ColLinesBotStart.Length; i++)
+            {
+                ColLinesBotStart[i] = new GLine(gCanvas, StartPointBotArr[i], new Point(StartPointBotArr[i].X, StartPointBotArr[i].Y + 0.4 * scale));
+                //add to the CANVAS 
+                GeometryEngineRFT.Shapes["RFT"].Add(ColLinesBotStart[i]);
+            }
+            /*----------------------Bottom End Lines----------------------*/
+            for (int i = 0; i < ColLinesBotEnd.Length; i++)
+            {
+                ColLinesBotEnd[i] = new GLine(gCanvas, EndPointBotArr[i], new Point(EndPointBotArr[i].X, EndPointBotArr[i].Y + 0.4 * scale));
+                //add to the CANVAS 
+                GeometryEngineRFT.Shapes["RFT"].Add(ColLinesBotEnd[i]);
+            }
+
+            /*-----------------Top Start Lines---------------*/
             for (int i = 0; i < ColLinesTopStart.Length; i++)
             {
-                ColLinesTopStart[i] = new GLine(gCanvas, StartPointTopArr[i], new Point(StartPointTopArr[i].X, -0.40 * scale));
+                ColLinesTopStart[i] = new GLine(gCanvas, StartPointTopArr[i], new Point(StartPointTopArr[i].X, StartPointTopArr[i].Y - 0.40 * scale));
                 //add to the CANVAS 
                 GeometryEngineRFT.Shapes["RFT"].Add(ColLinesTopStart[i]);
             }
             //Top End Lines
             for (int i = 0; i < ColLinesTopEnd.Length; i++)
             {
-                ColLinesTopEnd[i] = new GLine(gCanvas, EndPointTopArr[i], new Point(EndPointTopArr[i].X, -0.40 * scale));
+                ColLinesTopEnd[i] = new GLine(gCanvas, EndPointTopArr[i], new Point(EndPointTopArr[i].X, EndPointTopArr[i].Y - 0.40 * scale));
                 //add to the CANVAS 
                 GeometryEngineRFT.Shapes["RFT"].Add(ColLinesTopEnd[i]);
             }
-            //Bottom Start Lines
-            for (int i = 0; i < ColLinesBotStart.Length; i++)
-            {
-                ColLinesBotStart[i] = new GLine(gCanvas, StartPointBotArr[i], new Point(StartPointBotArr[i].X, (thickness[i] + 0.40) * scale));
-                //add to the CANVAS 
-                GeometryEngineRFT.Shapes["RFT"].Add(ColLinesBotStart[i]);
-            }
-            //Bottom End Lines
-            for (int i = 0; i < ColLinesBotEnd.Length; i++)
-            {
-                ColLinesBotEnd[i] = new GLine(gCanvas, EndPointBotArr[i], new Point(EndPointBotArr[i].X, (thickness[i] + 0.40) * scale));
-                //add to the CANVAS 
-                GeometryEngineRFT.Shapes["RFT"].Add(ColLinesBotEnd[i]);
-            }
+            
             /*-------------Start and End Column Lines-------------*/
-            GLine startColLine = new GLine(gCanvas, new Point(StartPointTopArr[0].X - 0.15 * scale, -0.40 * scale), new Point(StartPointBotArr[0].X - 0.15 * scale, 0.40 * scale));
+            GLine startColLine = new GLine(gCanvas, new Point(StartPointTopArr[0].X - 0.15 * scale, StartPointTopArr[0].Y - 0.40 * scale)
+                , new Point(StartPointBotArr[0].X - 0.15 * scale, StartPointBotArr[0].Y + 0.40 * scale));
             //add to the CANVAS 
             GeometryEngineRFT.Shapes["RFT"].Add(startColLine);
 
-            GLine endColLine = new GLine(gCanvas, new Point(EndPointTopArr[SpanVals.Length - 1].X + 0.15 * scale, -0.40 * scale), new Point(EndPointBotArr[SpanVals.Length - 1].X + 0.15 * scale, 0.40 * scale));
+            GLine endColLine = new GLine(gCanvas, new Point(EndPointTopArr[SpanVals.Length - 1].X + 0.15 * scale, EndPointTopArr[SpanVals.Length - 1].Y - 0.40 * scale)
+                , new Point(EndPointBotArr[SpanVals.Length - 1].X + 0.15 * scale, EndPointBotArr[SpanVals.Length - 1].Y + 0.40 * scale));
             //add to the CANVAS 
             GeometryEngineRFT.Shapes["RFT"].Add(endColLine);
         }
@@ -168,7 +184,7 @@ namespace Design.Presentation.ViewModels
 
 
         #region Longitudinal Reinforcement
-        public static void BotRFT(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
+        public static void BotRFT(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
             for (int i = 0; i < BotRFTLines.Length; i++)
             {
@@ -178,23 +194,23 @@ namespace Design.Presentation.ViewModels
                 GeometryEngineRFT.Shapes["RFT"].Add(BotRFTLines[i]);
             }
         }
-        public static void TopRFT(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
+        public static void TopRFT(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
             TopRFTLines[0] = new GLine(gCanvas, new Point(StartPointTopArr[0].X, StartPointTopArr[0].Y + 0.07 * scale),
-                new Point(StartPointTopArr[0].X + 0.15 * (EndPointBotArr[0].X - StartPointBotArr[0].X), StartPointTopArr[0].Y + 0.07 * scale));
+                new Point(StartPointTopArr[0].X + 0.20 * (EndPointTopArr[0].X - StartPointTopArr[0].X), StartPointTopArr[0].Y + 0.07 * scale));
             //add to the CANVAS 
             GeometryEngineRFT.Shapes["RFT"].Add(TopRFTLines[0]);
 
             for (int i = 1; i < TopRFTLines.Length - 1; i++)
             {
-                TopRFTLines[i] = new GLine(gCanvas, new Point(EndPointTopArr[i - 1].X - 0.15 * (EndPointTopArr[i - 1].X - StartPointTopArr[i - 1].X), EndPointTopArr[i - 1].Y + 0.07 * scale),
-                    new Point(StartPointTopArr[i].X + 0.15 * (EndPointTopArr[i].X - StartPointTopArr[i].X), StartPointTopArr[i].Y + 0.07 * scale));
+                TopRFTLines[i] = new GLine(gCanvas, new Point(EndPointTopArr[i - 1].X - 0.20 * (EndPointTopArr[i - 1].X - StartPointTopArr[i - 1].X), EndPointTopArr[i - 1].Y + 0.07 * scale),
+                    new Point(StartPointTopArr[i].X + 0.20 * (EndPointTopArr[i].X - StartPointTopArr[i].X), StartPointTopArr[i].Y + 0.07 * scale));
                 //add to the CANVAS 
                 GeometryEngineRFT.Shapes["RFT"].Add(TopRFTLines[i]);
             }
 
-            TopRFTLines[TopRFTLines.Length - 1] = new GLine(gCanvas, new Point(StartPointTopArr[TopRFTLines.Length - 1].X + 0.85 * (EndPointTopArr[TopRFTLines.Length - 1].X - StartPointTopArr[TopRFTLines.Length - 1].X), StartPointTopArr[TopRFTLines.Length - 1].Y + 0.07 * scale),
-                new Point(EndPointTopArr[TopRFTLines.Length - 1].X, EndPointTopArr[TopRFTLines.Length - 1].Y + 0.07 * scale));
+            TopRFTLines[TopRFTLines.Length - 1] = new GLine(gCanvas, new Point(StartPointTopArr[TopRFTLines.Length - 2].X + 0.80 * (EndPointTopArr[TopRFTLines.Length - 2].X - StartPointTopArr[TopRFTLines.Length - 2].X), StartPointTopArr[TopRFTLines.Length - 2].Y + 0.07 * scale),
+                new Point(EndPointTopArr[TopRFTLines.Length - 2].X, EndPointTopArr[TopRFTLines.Length - 2].Y + 0.07 * scale));
             //add to the CANVAS 
             GeometryEngineRFT.Shapes["RFT"].Add(TopRFTLines[TopRFTLines.Length - 1]);
         }
@@ -202,7 +218,7 @@ namespace Design.Presentation.ViewModels
         #endregion
 
         #region Stirrups
-        public static void LeftSecStirrups(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
+        public static void LeftSecStirrups(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
             double spacingLeft = 0;
             for (int i = 0; i < StirrupsLeftSec.GetLength(0); i++)
@@ -211,7 +227,7 @@ namespace Design.Presentation.ViewModels
                 for (int j = 0; j < StirrupsLeftSec.GetLength(1); j++)
                 {
                     StirrupsLeftSec[i, j] = new GLine(gCanvas, new Point(StartPointTopArr[i].X + 0.05 * scale + (spacingLeft / 1000) * scale, StartPointTopArr[i].Y + 0.07 * scale)
-                        , new Point(StartPointTopArr[i].X + 0.05 * scale + (spacingLeft / 1000) * scale, StartPointTopArr[i].Y + thickness[i] * scale - 0.07 * scale));
+                        , new Point(StartPointBotArr[i].X + 0.05 * scale + (spacingLeft / 1000) * scale, StartPointBotArr[i].Y/* - 0.07 * scale*/));
                     spacingLeft += 150;
 
                     //add to the CANVAS 
@@ -220,7 +236,7 @@ namespace Design.Presentation.ViewModels
             }
         }
 
-        public static void RightSecStirrups(GCanvas gCanvas, double scale, GeometryEngine GeometryEngineRFT)
+        public static void RightSecStirrups(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
             double spacingRight = 0;
             for (int i = 0; i < StirrupsRightSec.GetLength(0); i++)
@@ -229,7 +245,7 @@ namespace Design.Presentation.ViewModels
                 for (int j = 0; j < StirrupsRightSec.GetLength(1); j++)
                 {
                     StirrupsRightSec[i, j] = new GLine(gCanvas, new Point(EndPointTopArr[i].X - (0.05 + spacingRight / 1000) * scale, EndPointTopArr[i].Y + 0.07 * scale)
-                        , new Point(EndPointTopArr[i].X - (0.05 + spacingRight / 1000) * scale, EndPointTopArr[i].Y + thickness[i] * scale - 0.07 * thickness[i]));
+                        , new Point(EndPointBotArr[i].X - (0.05 + spacingRight / 1000) * scale, EndPointBotArr[i].Y/* -  0.07 * scale*/));
                     spacingRight += 150;
 
                     //add to the CANVAS 

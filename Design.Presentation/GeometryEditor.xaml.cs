@@ -153,13 +153,16 @@ namespace Design.Presentation
                 {
                     case Restraints.Fixed:
                         //Revise
-                        new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i], 100), 20);
+                     GeometryEngine.Shapes["Supports"].Add(
+                         new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i]* 20, 100), 20));
                         break;
                     case Restraints.Hinged:
-                        new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
+                        GeometryEngine.Shapes["Supports"].Add(
+                        new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)));
                         break;
                     case Restraints.Roller:
-                        new Roller(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
+                        GeometryEngine.Shapes["Supports"].Add(
+                        new Roller(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)));
                         break;
                     case Restraints.NoRestraints:
                         break;
@@ -169,6 +172,8 @@ namespace Design.Presentation
             }
 
             GeometryEngine.RenderAll();
+            GeometryEngine.Shapes["Supports"].ForEach(d => d.SetScale(1.5));
+            //GeometryEngine.Shapes.Add("li", new List<GShape>()); Add List in Real Time
             this.Close();
         }
 
