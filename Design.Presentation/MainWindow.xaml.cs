@@ -24,6 +24,7 @@ using Design.Presentation.Geometry;
 using Microsoft.Win32;
 using System.IO;
 using Design.Core.Sap;
+using System.Globalization;
 
 namespace Design.Presentation
 {
@@ -225,35 +226,41 @@ namespace Design.Presentation
         ArrowLoad arrowLoad;
         GLine l;
         GCircle c;
+        GText gText;
         private void Btn_DrawLine_Click(object sender, RoutedEventArgs e)
         {
-           // GeometryEngine.Remove("Supports");
+            // GeometryEngine.Remove("Supports");
 
             // var traingle = new GTriangle(GeometryEngine.GCanvas, new Point(60, 60), 20);
-            l = new GLine(GeometryEngine.GCanvas, new Point(60, 60),new Point(100, 200));
+            l = new GLine(GeometryEngine.GCanvas, new Point(60, 60), new Point(100, 200));
             c = new GCircle(GeometryEngine.GCanvas, new Point(200, 200), 50);
             c.Fill = Brushes.Green;
             hinged = new Hinged(GeometryEngine.GCanvas, new Point(500, 500));
             hinged.Fill = Brushes.Transparent;
             hinged.Stroke = Brushes.Red;
-            hinged.StrokeThickness=2;
+            hinged.StrokeThickness = 2;
             roller = new Roller(GeometryEngine.GCanvas, new Point(160, 60));
             roller.Fill = Brushes.Transparent;
             roller.StrokeThickness = 2;
             //var rectangle = new GRectangle(GeometryEngine.GCanvas, 30, 15, new Point(140, 60+15));
             fixd = new Fixed(GeometryEngine.GCanvas, new Point(100, 60), 20);
             fixd.Fill = Brushes.Orange;
-            fixd.StrokeThickness=2;
+            fixd.StrokeThickness = 2;
             arrow = new Arrow(GeometryEngine.GCanvas, new Point(220, 60), 20);
             arrow.Stroke = Brushes.Yellow;
-            arrow.StrokeThickness=4;
+            arrow.StrokeThickness = 4;
             arrowLoad = new ArrowLoad(GeometryEngine.GCanvas, new Point(100, 120), new Point(200, 120), 20);
             arrowLoad.Stroke = Brushes.Blue;
             arrowLoad.StrokeThickness = 2;
+
+            gText = new GText(GeometryEngine.GCanvas, new Point(60, 60), "Hello Text!");
+            gText.Text = "Hello Text!";
+            gText.Render();
             
+          
             //arrow.Rotate(45);
             //render on Screen
-            // GeometryEngine.RenderAll();
+            //GeometryEngine.RenderAll();
             //   GeometryEngine.Render(new List<GShape>() { roller, hinged, fixd });
             GeometryEngine.Shapes["Beams"].Add(c);
             GeometryEngine.Shapes["Beams"].Add(arrow);
@@ -263,25 +270,31 @@ namespace Design.Presentation
             GeometryEngine.Shapes["Supports"].Add(fixd);
             GeometryEngine.Shapes["Supports"].Add(l);
             GeometryEngine.Shapes["Supports"].Add(hinged);
+          //  GeometryEngine.Shapes["Supports"].Add(gText);
             // GeometryEngine.Render("Beams");
             // GeometryEngine.Render("Supports");
             l.Stroke = Brushes.Red;
-            l.StrokeThickness=4;
-
+            l.StrokeThickness = 4;
             GeometryEngine.RenderAll();
+          
         }
 
         private void bBtn_Show_Click(object sender, RoutedEventArgs e)
         {
 
             //  GeometryEngine.Hide(new List<GShape>() { roller, fixd, arrow,arrowLoad,hinged });
-            GeometryEngine.Remove("Beams");
-            l.SetScale(2);
-            hinged.SetScale(2);
-            fixd.SetScale(2);
-            roller.SetScale(2);
-            arrowLoad.SetScale(1.5);
-            //  GeometryEngine.GCanvas.Canvas.UpdateLayout();
+            //GeometryEngine.Remove("Beams");
+            //l.SetScale(2);
+            //hinged.SetScale(2);
+            //fixd.SetScale(2);
+            //roller.SetScale(2);
+            //arrowLoad.SetScale(1.5);
+          
+           gText.SetTranslate(50, 50);
+           
+            gText.SetScale(1.5);
+            gText.Rotate(45);
+
 
         }
 
@@ -406,7 +419,7 @@ namespace Design.Presentation
 
         private void Btn_LoadShow_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             GeometryEngine.Remove("DistributedLoad");
             GeometryEngine.Remove("ConcentratedLoad");
@@ -417,7 +430,7 @@ namespace Design.Presentation
             double cumulativeSpans = 0;
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
             {
-                 cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
+                cumulativeSpans += GeometryEditorVM.GeometryEditor.GridData[i].Span;
 
                 GComSpanValues.Add(cumulativeSpans);
             }
@@ -439,7 +452,7 @@ namespace Design.Presentation
                     GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
                                    , new Point(startX, 100), new Point(endX, 100)
                                    , DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
-                    
+
                 }
             }
             List<double> spanList = GeometryEditorVM.GeometryEditor.GridData.Select(d => d.Span).ToList();
@@ -454,7 +467,7 @@ namespace Design.Presentation
                     var arrow = new Arrow(GeometryEngine.GCanvas,
                         new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
                         + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
-                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] *20, 100), 30);
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 100), 30);
                     arrow.Rotate(180);
                     GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
 
@@ -487,7 +500,7 @@ namespace Design.Presentation
             RFTCanvas.ConstructBotStartPoints(20);
             RFTCanvas.ConstructBotEndPoints(20);
 
-            
+
 
             //Lines
             RFTCanvas.ConstructTopLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT);
@@ -497,7 +510,7 @@ namespace Design.Presentation
             //RFT Lines
             RFTCanvas.BotRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
             RFTCanvas.TopRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
-            
+
             //Stirrups
             RFTCanvas.LeftSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
             RFTCanvas.RightSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);

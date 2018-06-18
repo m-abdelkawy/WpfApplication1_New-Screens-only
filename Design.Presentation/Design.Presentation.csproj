@@ -68,6 +68,7 @@
     <Compile Include="Geometry\GeometryEngine.cs" />
     <Compile Include="Geometry\GLine.cs" />
     <Compile Include="Geometry\GPolygon.cs" />
+    <Compile Include="Geometry\GText.cs" />
     <Compile Include="Geometry\GTriangle.cs" />
     <Compile Include="Geometry\GShape.cs" />
     <Compile Include="Geometry\Hinged.cs" />
