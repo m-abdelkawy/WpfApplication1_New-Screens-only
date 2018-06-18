@@ -253,7 +253,7 @@ namespace Design.Presentation
             arrowLoad.Stroke = Brushes.Blue;
             arrowLoad.StrokeThickness = 2;
 
-            gText = new GText(GeometryEngine.GCanvas, new Point(60, 60));
+            gText = new GText(GeometryEngine.GCanvas, new Point(60, 60), "Hello Text!");
             gText.Text = "Hello Text!";
             gText.Render();
             

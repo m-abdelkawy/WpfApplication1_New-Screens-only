@@ -23,9 +23,10 @@ namespace Design.Presentation.Geometry
         public Point InsertionPoint { get; set; }
 
         public double Height { get; set; }
-        public GText(GCanvas gCanvas, Point insertionPoint) : base(gCanvas)
+        public GText(GCanvas gCanvas, Point insertionPoint,string text) : base(gCanvas)
         {
             TextBlock = new TextBlock();
+            Text = text;
             // defaults;
             Height = 20;
             ForegroundColor = Brushes.Black;
