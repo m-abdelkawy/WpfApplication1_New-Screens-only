@@ -271,11 +271,11 @@
                                                 Grid.Row="2"
                                                 Grid.ColumnSpan="2"
                                                 Click="Btn_RFT_Click"/>
-                                        <Button x:Name="Btn_ClrRFTCanvas"
-                                                Content="Clear Canvas"
+                                        <Button x:Name="Btn_DXFExport"
+                                                Content="Export DXF"
                                                 Grid.Row="3"
                                                 Grid.ColumnSpan="2"
-                                                Click="Btn_ClrRFTCanvas_Click"/>
+                                                Click="Btn_DXFExport_Click"/>
                                     </Grid>
                             </GroupBox>
                                 

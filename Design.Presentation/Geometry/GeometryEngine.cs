@@ -25,7 +25,7 @@ namespace Design.Presentation.Geometry
                 {"Grid",new List<GShape>()},
                 {"Points",new List<GShape>()},
                 {"RFT",new List<GShape>()},//Newly Added
-
+                {"Text",new List<GShape>()}, //Newly Added
             };
 
             GCanvas = new GCanvas();

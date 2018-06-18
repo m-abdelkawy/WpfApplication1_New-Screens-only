@@ -33,7 +33,7 @@ namespace Design.Presentation.Geometry
             InsertionPoint = insertionPoint;
             BackgroundColor = Brushes.Transparent;
             TextBlock.RenderTransform = new TransformGroup();
-            TextBlock.FontWeight = FontWeights.DemiBold;
+            TextBlock.FontWeight = FontWeights.Normal;
 
             SetTranslate(InsertionPoint.X, InsertionPoint.Y);
         }

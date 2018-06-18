@@ -95,6 +95,7 @@
     <Compile Include="ViewModels\LoadCasesVM.cs" />
     <Compile Include="ViewModels\MaterialEditorVM.cs" />
     <Compile Include="ViewModels\SectionEditorVM.cs" />
+    <Compile Include="ViewModels\TxtRFTCanvas.cs" />
     <Compile Include="Views\Material\MaterialEditor.xaml.cs">
       <DependentUpon>MaterialEditor.xaml</DependentUpon>
     </Compile>

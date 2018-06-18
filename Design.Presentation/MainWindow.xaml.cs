@@ -352,6 +352,9 @@ namespace Design.Presentation
 
             BeamDesign design = new BeamDesign(AnalysisMapping.xbeams, fy, fystr, fcu, nBranches);
 
+            /* --------------------- ADD TEXT --------------------- */
+
+
 
         }
 
@@ -423,6 +426,7 @@ namespace Design.Presentation
 
             GeometryEngine.Remove("DistributedLoad");
             GeometryEngine.Remove("ConcentratedLoad");
+            GeometryEngine.Remove("Text");
 
             List<double> GComSpanValues = new List<double>();
             GComSpanValues.Clear();
@@ -439,7 +443,7 @@ namespace Design.Presentation
             //List<string> SD = new List<string>();
 
             int[] Js = new int[DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count];
-            int YPosition = 100;
+            //int YPosition = 100;
 
             //Draw Distributed Load
             for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
@@ -453,6 +457,8 @@ namespace Design.Presentation
                                    , new Point(startX, 100), new Point(endX, 100)
                                    , DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
 
+                    /*-----------------------Add Text-----------------------*/
+                    GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(startX, 50), $"{DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal} KN/m"));
                 }
             }
             List<double> spanList = GeometryEditorVM.GeometryEditor.GridData.Select(d => d.Span).ToList();
@@ -471,11 +477,16 @@ namespace Design.Presentation
                     arrow.Rotate(180);
                     GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
 
-
+                    /*-----------------------Add Text-----------------------*/
+                    GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
+                        + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 50), $"{PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal}"));
                 }
             }
             GeometryEngine.Render("DistributedLoad");
             GeometryEngine.Render("ConcentratedLoad");
+            GeometryEngine.Render("Text");
+
             //GeometryEngine.RenderAll();
         }
 
@@ -489,7 +500,7 @@ namespace Design.Presentation
             GeometryEngineRFT.Remove("RFT");
 
             /*----------RFT Visualization---------*/
-            RFTCanvas.CalcSpanVals();
+                    RFTCanvas.CalcSpanVals();
             RFTCanvas.CalcComSpanVals(GeometryEditorVM.GeometryEditor.NumberOfSpans);
             RFTCanvas.CalcThickness();
 
@@ -515,11 +526,19 @@ namespace Design.Presentation
             RFTCanvas.LeftSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
             RFTCanvas.RightSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
 
+            #region Text Trial
+            TxtRFTCanvas.CalcSpanVals();
+            TxtRFTCanvas.CalcComSpanVals();
+            //TxtRFTCanvas.CreateBottomRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            TxtRFTCanvas.CreateTopRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            #endregion
+
             GeometryEngineRFT.RenderAll();
 
         }
 
-        private void Btn_ClrRFTCanvas_Click(object sender, RoutedEventArgs e)
+        private void Btn_DXFExport_Click(object sender, RoutedEventArgs e)
         {
 
         }
