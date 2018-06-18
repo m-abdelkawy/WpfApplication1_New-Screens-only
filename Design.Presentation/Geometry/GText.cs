@@ -22,20 +22,26 @@ namespace Design.Presentation.Geometry
         public string Text { get; set; }
         public Point InsertionPoint { get; set; }
 
-        public double Height { get; set; }
-        public GText(GCanvas gCanvas, Point insertionPoint,string text) : base(gCanvas)
+        public double Size { get; set; }
+        public GText(GCanvas gCanvas, Point insertionPoint,double size,string text) : base(gCanvas)
         {
             TextBlock = new TextBlock();
             Text = text;
+            Size = size; //default size  =5
             // defaults;
-            Height = 20;
+            Size = 20;
             ForegroundColor = Brushes.Black;
             InsertionPoint = insertionPoint;
             BackgroundColor = Brushes.Transparent;
             TextBlock.RenderTransform = new TransformGroup();
             TextBlock.FontWeight = FontWeights.Normal;
 
-            SetTranslate(InsertionPoint.X, InsertionPoint.Y);
+            
+        }
+
+        public GText(GCanvas gCanvas, Point insertionPoint, string text) : this(gCanvas,insertionPoint,5,text)
+        {
+           
         }
 
         #region Methods
@@ -47,18 +53,15 @@ namespace Design.Presentation.Geometry
             TextBlock.Foreground = ForegroundColor;
             TextBlock.Background = BackgroundColor;
             TextBlock.Visibility = Visibility;
-            TextBlock.Height = Height;
             TextBlock.Text = Text;
-
-            // Canvas.SetLeft(TextBlock, 300);
-            // Canvas.SetTop(TextBlock, 100);
+            TextBlock.FontSize =Size;
 
             if (GCanvas.Canvas.Children.Contains(TextBlock))
             {
                 return;
             }
             GCanvas.Canvas.Children.Add(TextBlock);
-
+            SetTranslate(InsertionPoint.X , InsertionPoint.Y - TextBlock.FontSize / 2);
         }
         public override void New()
         {
@@ -74,7 +77,7 @@ namespace Design.Presentation.Geometry
         public override void SetScale(double value)
         {
             ((TransformGroup)TextBlock.RenderTransform).Children.Add(
-                        new ScaleTransform(value, value));
+                        new ScaleTransform(value, value,InsertionPoint.X,InsertionPoint.Y));
         }
 
         public override void Hide()
