@@ -27,7 +27,7 @@ namespace Design.Presentation.Geometry
         {
             TextBlock = new TextBlock();
             Text = text;
-            Size = size;
+            Size = size; //default size  =5
             // defaults;
             Size = 20;
             ForegroundColor = Brushes.Black;
@@ -36,7 +36,12 @@ namespace Design.Presentation.Geometry
             TextBlock.RenderTransform = new TransformGroup();
             TextBlock.FontWeight = FontWeights.DemiBold;
 
-            SetTranslate(InsertionPoint.X, InsertionPoint.Y);
+            
+        }
+
+        public GText(GCanvas gCanvas, Point insertionPoint, string text) : this(gCanvas,insertionPoint,5,text)
+        {
+           
         }
 
         #region Methods
@@ -56,7 +61,7 @@ namespace Design.Presentation.Geometry
                 return;
             }
             GCanvas.Canvas.Children.Add(TextBlock);
-
+            SetTranslate(InsertionPoint.X , InsertionPoint.Y - TextBlock.FontSize / 2);
         }
         public override void New()
         {
