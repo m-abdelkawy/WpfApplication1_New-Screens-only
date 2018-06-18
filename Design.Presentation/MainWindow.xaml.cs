@@ -255,6 +255,7 @@ namespace Design.Presentation
 
             gText = new GText(GeometryEngine.GCanvas, new Point(60, 60), "Hello Text!");
             gText.Text = "Hello Text!";
+            gText.Size = 50;
             gText.Render();
             
           
@@ -275,6 +276,7 @@ namespace Design.Presentation
             // GeometryEngine.Render("Supports");
             l.Stroke = Brushes.Red;
             l.StrokeThickness = 4;
+           
             GeometryEngine.RenderAll();
           
         }
@@ -290,9 +292,9 @@ namespace Design.Presentation
             //roller.SetScale(2);
             //arrowLoad.SetScale(1.5);
           
-           gText.SetTranslate(50, 50);
+           //gText.SetTranslate(50, 50);
            
-            gText.SetScale(1.5);
+           // gText.SetScale(1.5);
             gText.Rotate(45);
 
 
