@@ -338,19 +338,19 @@ namespace Design.Core.Dxf
                     if (spacingLeftIndexes[i] < stirDiaArr240.Length)
                     {
                         fystr = 240;
-                        stirLeftTxt[i] = new DxfText($"Y{stirDiaArr240[spacingLeftIndexes[i]]}@{spacingLeftSec[i]}\n{fystr}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirLeftTxt[i] = new DxfText($"Y{stirDiaArr240[spacingLeftIndexes[i]]}@{spacingLeftSec[i]}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirLeftTxt[i]);
                     }
                     else if (spacingLeftIndexes[i] < stirDiaArr240.Length + stirDiaArr360.Length)
                     {
                         fystr = 360;
-                        stirLeftTxt[i] = new DxfText($"T{stirDiaArr360[spacingLeftIndexes[i] - stirDiaArr240.Length]}@{spacingLeftSec[i]}\n{fystr}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirLeftTxt[i] = new DxfText($"T{stirDiaArr360[spacingLeftIndexes[i] - stirDiaArr240.Length]}@{spacingLeftSec[i]}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirLeftTxt[i]);
                     }
                     else if (spacingLeftIndexes[i] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
                     {
                         fystr = 400;
-                        stirLeftTxt[i] = new DxfText($"T{stirDiaArr400[spacingLeftIndexes[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingLeftSec[i]}\n{fystr}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirLeftTxt[i] = new DxfText($"T{stirDiaArr400[spacingLeftIndexes[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingLeftSec[i]}", new Point3D(stirrupsLeft[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirLeftTxt[i]);
                     }
                     
@@ -616,19 +616,19 @@ namespace Design.Core.Dxf
                     if (spacingRightIndexes[i] < stirDiaArr240.Length)
                     {
                         fystr = 240;
-                        stirRightTxt[i] = new DxfText($"Y{stirDiaArr240[spacingRightIndexes[i]]}@{spacingRightSec[i]}\n{fystr}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirRightTxt[i] = new DxfText($"Y{stirDiaArr240[spacingRightIndexes[i]]}@{spacingRightSec[i]}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
                     else if (spacingRightIndexes[i] < stirDiaArr240.Length + stirDiaArr360.Length)
                     {
                         fystr = 360;
-                        stirRightTxt[i] = new DxfText($"T{stirDiaArr360[spacingRightIndexes[i] - stirDiaArr240.Length]}@{spacingRightSec[i]}\n{fystr}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirRightTxt[i] = new DxfText($"T{stirDiaArr360[spacingRightIndexes[i] - stirDiaArr240.Length]}@{spacingRightSec[i]}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
                     else if (spacingRightIndexes[i] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
                     {
                         fystr = 400;
-                        stirRightTxt[i] = new DxfText($"T{stirDiaArr400[spacingRightIndexes[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingRightSec[i]}\n{fystr}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
+                        stirRightTxt[i] = new DxfText($"T{stirDiaArr400[spacingRightIndexes[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingRightSec[i]}", new Point3D(stirrupsRight[i, 2].Start.X - 0.85, -1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
 

@@ -29,7 +29,7 @@ namespace Design.Presentation.Geometry
             Text = text;
             Size = size; //default size  =5
             // defaults;
-            Size = 20;
+            Size = 5;
             ForegroundColor = Brushes.Black;
             InsertionPoint = insertionPoint;
             BackgroundColor = Brushes.Transparent;

@@ -4,27 +4,20 @@ using Design.Presentation.Views.Section;
 using Desing.Core.Sap;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SAP2000v20;
 using Design.Presentation.Windows;
-using Design.Presentation.Model;
 using Design.Presentation.Geometry;
-using Microsoft.Win32;
-using System.IO;
 using Design.Core.Sap;
-using System.Globalization;
+using Design.Core.Dxf;
+using WW.Cad.IO;
+using WW.Cad.Model;
+using WW.Cad.Model.Entities;
+using WW.Math;
 
 namespace Design.Presentation
 {
@@ -354,8 +347,80 @@ namespace Design.Presentation
 
             BeamDesign design = new BeamDesign(AnalysisMapping.xbeams, fy, fystr, fcu, nBranches);
 
-            /* --------------------- ADD TEXT --------------------- */
+            /* --------------------- ADD RFT --------------------- */
 
+            #region RFT Visualization
+            GeometryEngineRFT.Remove("RFT");
+
+            /*----------RFT Visualization---------*/
+            RFTCanvas.CalcSpanVals();
+            RFTCanvas.CalcComSpanVals(GeometryEditorVM.GeometryEditor.NumberOfSpans);
+            RFTCanvas.CalcThickness();
+
+            //Points  /*--------the Order is Important-----------*/
+            RFTCanvas.ConstructTopStartPoints(20);
+            RFTCanvas.ConstructTopEndPoints(20);
+
+            RFTCanvas.ConstructBotStartPoints(20);
+            RFTCanvas.ConstructBotEndPoints(20);
+
+
+
+            //Lines
+            RFTCanvas.ConstructTopLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT);
+            RFTCanvas.ConstructBotLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT);
+            RFTCanvas.ConstructColLines(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            //RFT Lines
+            RFTCanvas.BotRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            RFTCanvas.TopRFT(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            //Stirrups
+            RFTCanvas.LeftSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            RFTCanvas.RightSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            #region Text Trial
+            //TxtRFTCanvas.CalcSpanVals();
+            //TxtRFTCanvas.CalcComSpanVals();
+            ////TxtRFTCanvas.CreateBottomRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            //TxtRFTCanvas.CreateTopRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            #endregion
+
+            GeometryEngineRFT.Render("RFT");
+            #endregion
+
+            /* --------------------- ADD TEXT --------------------- */
+            #region Text RFTCanvas
+            GeometryEngineRFT.Remove("Text");
+
+
+            TxtRFTCanvas.CalcSpanVals();
+            TxtRFTCanvas.CalcComSpanVals();
+
+            //Bottom RFT
+            TxtRFTCanvas.GetnRebarBotArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.GetChosenDiameterArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.CreateBottomRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            //Top RFT
+            TxtRFTCanvas.GetnRebarTopSupportArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.GetChosenDiameterTopSupportArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.CreateTopRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            //Stirrups Left
+            TxtRFTCanvas.GetSpacingLeftArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams);
+            TxtRFTCanvas.StirrupLeftTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+
+            //Stirrups Right
+            TxtRFTCanvas.GetSpacingRightArr(AnalysisMapping.xbeams);
+            TxtRFTCanvas.GetSpacingRightArrIndexes(AnalysisMapping.xbeams);
+            TxtRFTCanvas.StirrupRightTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+
+            GeometryEngineRFT.Render("Text");
+            #endregion
 
 
         }
@@ -499,10 +564,11 @@ namespace Design.Presentation
 
         private void Btn_RFT_Click(object sender, RoutedEventArgs e)
         {
+            #region RFT Visualization
             GeometryEngineRFT.Remove("RFT");
 
             /*----------RFT Visualization---------*/
-                    RFTCanvas.CalcSpanVals();
+            RFTCanvas.CalcSpanVals();
             RFTCanvas.CalcComSpanVals(GeometryEditorVM.GeometryEditor.NumberOfSpans);
             RFTCanvas.CalcThickness();
 
@@ -529,20 +595,124 @@ namespace Design.Presentation
             RFTCanvas.RightSecStirrups(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
 
             #region Text Trial
-            TxtRFTCanvas.CalcSpanVals();
-            TxtRFTCanvas.CalcComSpanVals();
-            //TxtRFTCanvas.CreateBottomRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
-            TxtRFTCanvas.CreateTopRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            //TxtRFTCanvas.CalcSpanVals();
+            //TxtRFTCanvas.CalcComSpanVals();
+            ////TxtRFTCanvas.CreateBottomRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
+            //TxtRFTCanvas.CreateTopRFTTxt(GeometryEngineRFT.GCanvas, GeometryEngineRFT, 20);
 
             #endregion
 
             GeometryEngineRFT.RenderAll();
+            #endregion
 
         }
 
         private void Btn_DXFExport_Click(object sender, RoutedEventArgs e)
         {
+            #region Save DXF
+            DxfModel model = new DxfModel(DxfVersion.Dxf14);
 
+            //double thickness = Convert.ToDouble(ttxtBox.Text);
+
+            //Stirrup Arrays
+            double[] stirDiaArr240 = new double[] { 8 };
+            double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
+            double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
+            /////////////
+
+            ///////////
+            //Comulative spanVals
+            int nSpans = AnalysisMapping.spanList.Count;
+
+            double[] comSpanVals = AnalysisMapping.comSpanValues;
+
+
+            /*---------*/
+            //Points
+            Point2D[] startPointsBot = DXFPoints.BottomStartPoints(nSpans, comSpanVals);
+            Point2D[] endPointsBot = DXFPoints.BottomEndPoints(nSpans, comSpanVals);
+
+            Point2D[] startPointsTop = DXFPoints.TopStartPoints(nSpans, RFTCanvas.thickness, comSpanVals);
+            Point2D[] endPointsTop = DXFPoints.TopEndPoints(nSpans, RFTCanvas.thickness, comSpanVals);
+
+
+            /*---------Lines---------*/
+            DXFLines.ConstructBottomLines(model, nSpans, startPointsBot, endPointsBot);
+            DXFLines.ConstructTopLines(model, nSpans, startPointsTop, endPointsTop);
+
+            DXFLines.ConstructColLines(model, nSpans, RFTCanvas.thickness, startPointsBot, endPointsBot, startPointsTop, endPointsTop);
+            DXFLines.ConstructGrids(model, nSpans, RFTCanvas.thickness, comSpanVals);
+
+            /*---------Rebar---------*/
+            DxfLine[] BottomRFT = DXFRebar.BotRFT(model, nSpans, startPointsBot, endPointsBot);
+
+            double[] Ln = DXFRebar.Lnet(nSpans, startPointsTop, endPointsTop);
+
+            DxfLine[] TopSpan = DXFRebar.TopSpanRFT(model, nSpans, RFTCanvas.thickness, Ln, startPointsTop, endPointsTop);
+
+            DxfLine[] TopSupport = DXFRebar.TopSupportRFT(model, nSpans, RFTCanvas.thickness, Ln, startPointsTop, endPointsTop);
+
+            DXFRebar.Legs(model, nSpans, RFTCanvas.thickness, BottomRFT, TopSpan);
+
+            /*---------Stirrups-------*/
+            DxfLine[,] stirrupsLeft = DXFRebar.StirrupsLeftSec(model, nSpans, RFTCanvas.thickness[0], startPointsBot);
+
+            DxfLine[,] stirrupsMidspan = DXFRebar.StirrupsMidSpanSec(model, nSpans, RFTCanvas.thickness[0], startPointsBot, endPointsBot);
+
+            DxfLine[,] stirrupsRight = DXFRebar.StirrupsRightSec(model, nSpans, RFTCanvas.thickness[0], endPointsBot);
+
+            /*------------------------------Annotation------------------------------*/
+            DXFAnnotation.AnnotationStirLeft(model, nSpans, RFTCanvas.thickness[0], stirrupsLeft);
+            //DXFAnnotation.AnnotationStirMidSpan(model, nSpans, RFTCanvas.thickness[0], stirrupsMidspan);
+            DXFAnnotation.AnnotationStirRight(model, nSpans, RFTCanvas.thickness[0], stirrupsRight);
+
+            /*------------------------------Dimensions------------------------------*/
+            DXFDimClass.DrawGridDims(model, nSpans, comSpanVals);
+            DXFDimClass.DrawLnetDims(model, nSpans, startPointsBot, endPointsBot, comSpanVals);
+            DXFDimClass.DrawTopRFTRightDims(model, nSpans, RFTCanvas.thickness[0], Ln, startPointsTop, comSpanVals);
+            DXFDimClass.DrawTopRFTLeftDims(model, nSpans, RFTCanvas.thickness[0], Ln, endPointsTop, comSpanVals);
+
+            /*------------------------------Text------------------------------*/
+            //double fystr = Convert.ToDouble(fstirtxtBox.Text);
+
+            //01. RFT bottom Text
+            int[] nRebarBot = DXFTextClass.GetnRebarBotArr(AnalysisMapping.xbeams);
+            double[] chosenDiameterBot = DXFTextClass.GetChosenDiameterArr(AnalysisMapping.xbeams);
+            DXFTextClass.BottomRFTTxt(model, nSpans, nRebarBot, chosenDiameterBot, Ln, startPointsBot);
+
+            //02. RFT Top Support Text
+            int[] nRebarTopSupportArr = DXFTextClass.GetnRebarTopSupportArr(AnalysisMapping.xbeams);
+            double[] chosenDiameterTopSupport = DXFTextClass.GetChosenDiameterTopSupportArr(AnalysisMapping.xbeams);
+            DXFTextClass.TopRFTSupportTxt(model, nSpans, RFTCanvas.thickness[0], nRebarTopSupportArr, chosenDiameterTopSupport, TopSpan, TopSupport);
+
+            //03. Stirrups Left Section
+            {
+                double[] spacingLeftArr = DXFTextClass.GetSpacingLeftArr(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                int[] spacingLeftIndexes = DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                DXFTextClass.StirrupLeftTxt(model, nSpans, stirrupsLeft, spacingLeftArr, spacingLeftIndexes, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+
+            }
+            //05. Stirrups Right Section
+            {
+                double[] spacingRightArr = DXFTextClass.GetSpacingRightArr(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                int[] spacingRightIndexes = DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                DXFTextClass.StirrupRightTxt(model, nSpans, stirrupsRight, spacingRightArr, spacingRightIndexes, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+
+            }
+
+
+            ////04. Stirrups MidSpan
+            //DXFTextClass.StirrupMidSpanTxt(model, nSpans, stirrupsMidspan);
+
+            ////05. Stirrups Right Section
+            //double[] spacingRightSec = DXFTextClass.GetSpacingRightArr(xbeams);
+            //DXFTextClass.StirrupRightTxt(model, nSpans, stirrupsRight, spacingRightSec);
+
+
+            /*------------------------------Create DXF File------------------------------*/
+            //Create DXF File
+            DxfWriter.Write("D:\\dxf\\Test12.dxf", model, true);
+            #endregion
         }
     }
 }

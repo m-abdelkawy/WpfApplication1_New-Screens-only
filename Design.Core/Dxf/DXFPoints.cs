@@ -95,21 +95,21 @@ namespace Design.Core.Dxf
 
 
 
-        public static Point2D[] TopStartPoints(int nSpans, double thickness, double[] comSpanVals)
+        public static Point2D[] TopStartPoints(int nSpans, double[] thickness, double[] comSpanVals)
         {
             Point2D[] startPointsTop = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                startPointsTop[i] = new Point2D(comSpanVals[i] + 0.15, thickness);
+                startPointsTop[i] = new Point2D(comSpanVals[i] + 0.15, thickness[i]);
             }
             return startPointsTop;
         }
-        public static Point2D[] TopEndPoints(int nSpans, double thickness, double[] comSpanVals)
+        public static Point2D[] TopEndPoints(int nSpans, double[] thickness, double[] comSpanVals)
         {
             Point2D[] endPointsTop = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                endPointsTop[i] = new Point2D(comSpanVals[i + 1] - 0.15, thickness);
+                endPointsTop[i] = new Point2D(comSpanVals[i + 1] - 0.15, thickness[i]);
             }
             return endPointsTop;
         }

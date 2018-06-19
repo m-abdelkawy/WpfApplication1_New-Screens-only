@@ -44,7 +44,7 @@ namespace Design.Core.Dxf
             }
         }
 
-        public static void ConstructColLines(DxfModel model, int nSpans, double thickness, Point2D[] startPointsBot,
+        public static void ConstructColLines(DxfModel model, int nSpans, double[] thickness, Point2D[] startPointsBot,
             Point2D[] endPointsBot, Point2D[] startPointsTop, Point2D[] endPointsTop)
         {
             //bottom start
@@ -65,29 +65,29 @@ namespace Design.Core.Dxf
             DxfLine[] colLinesTopStart = new DxfLine[nSpans];
             for (int i = 0; i < colLinesTopStart.Length; i++)
             {
-                colLinesTopStart[i] = new DxfLine(startPointsTop[i], new Point2D(startPointsTop[i].X, thickness + 0.40));
+                colLinesTopStart[i] = new DxfLine(startPointsTop[i], new Point2D(startPointsTop[i].X, thickness[i] + 0.40));
                 model.Entities.Add(colLinesTopStart[i]);
             }
             //Top End
             DxfLine[] colLinesTopEnd = new DxfLine[nSpans];
             for (int i = 0; i < colLinesTopEnd.Length; i++)
             {
-                colLinesTopEnd[i] = new DxfLine(endPointsTop[i], new Point2D(endPointsTop[i].X, thickness + 0.40));
+                colLinesTopEnd[i] = new DxfLine(endPointsTop[i], new Point2D(endPointsTop[i].X, thickness[i] + 0.40));
                 model.Entities.Add(colLinesTopEnd[i]);
             }
             //Start and end col Lines
-            DxfLine StartLine = new DxfLine(new Point2D(startPointsBot[0].X - 0.30, -0.40), new Point2D(startPointsTop[0].X - 0.30, thickness + 0.40));
+            DxfLine StartLine = new DxfLine(new Point2D(startPointsBot[0].X - 0.30, -0.40), new Point2D(startPointsTop[0].X - 0.30, thickness[0] + 0.40));
             model.Entities.Add(StartLine);
-            DxfLine EndLine = new DxfLine(new Point2D(endPointsBot[nSpans - 1].X + 0.30, -0.40), new Point2D(endPointsTop[nSpans - 1].X + 0.30, thickness + 0.40));
+            DxfLine EndLine = new DxfLine(new Point2D(endPointsBot[nSpans - 1].X + 0.30, -0.40), new Point2D(endPointsTop[nSpans - 1].X + 0.30, thickness[nSpans - 1] + 0.40));
             model.Entities.Add(EndLine);
         }
 
-        public static void ConstructGrids(DxfModel model, int nSpans, double thickness, double[] comSpanVals)
+        public static void ConstructGrids(DxfModel model, int nSpans, double[] thickness, double[] comSpanVals)
         {
             DxfLine[] grids = new DxfLine[nSpans + 1];
             for (int i = 0; i < grids.Length; i++)
             {
-                grids[i] = new DxfLine(EntityColors.Red, new Point2D(comSpanVals[i], -1), new Point2D(comSpanVals[i], thickness + 1));
+                grids[i] = new DxfLine(EntityColors.Red, new Point2D(comSpanVals[i], -1), new Point2D(comSpanVals[i], thickness[0]/**/ + 1));
                 model.Entities.Add(grids[i]);
             }
         }

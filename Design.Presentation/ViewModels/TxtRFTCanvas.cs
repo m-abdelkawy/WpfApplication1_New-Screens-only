@@ -86,21 +86,21 @@ namespace Design.Presentation.ViewModels
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
                 BotRFTTxt[0] = new GText(gCanvas, new Point(RFTCanvas.StartPointBotArr[0].X + 0.30 * SpanVals[0] * scale
-                    , RFTCanvas.StartPointBotArr[0].Y - 0.70 * scale), $"{nRebarBot[0]}T{BotChosenDiameterArr[0]}");
+                    , RFTCanvas.StartPointBotArr[0].Y - 0.30 * scale), $"{nRebarBot[0]}T{BotChosenDiameterArr[0]}");
                 GeometryEngineRFT.Shapes["Text"].Add(BotRFTTxt[0]);
             }
             //Bottom Rft Text/*------------------*/
             for (int i = 1; i < BotRFTTxt.Length - 1; i++)
             {
                 BotRFTTxt[i] = new GText(gCanvas, new Point(RFTCanvas.StartPointBotArr[i].X + 0.30 * SpanVals[i] * scale
-                    , RFTCanvas.StartPointBotArr[i].Y - 0.70 * scale), $"{nRebarBot[i]}T{BotChosenDiameterArr[i]}");
+                    , RFTCanvas.StartPointBotArr[i].Y - 0.30 * scale), $"{nRebarBot[i]}T{BotChosenDiameterArr[i]}");
                 GeometryEngineRFT.Shapes["Text"].Add(BotRFTTxt[i]);
             }
             //Case of Cantilever End
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
             {
                 BotRFTTxt[BotRFTTxt.Length - 1] = new GText(gCanvas, new Point(RFTCanvas.StartPointBotArr[BotRFTTxt.Length - 1].X + 0.30 * SpanVals[BotRFTTxt.Length - 1] * scale
-                    , RFTCanvas.StartPointBotArr[BotRFTTxt.Length - 1].Y - 0.70 * scale), $"{nRebarBot[BotRFTTxt.Length - 1]}T{BotChosenDiameterArr[BotRFTTxt.Length - 1]}");
+                    , RFTCanvas.StartPointBotArr[BotRFTTxt.Length - 1].Y - 0.30 * scale), $"{nRebarBot[BotRFTTxt.Length - 1]}T{BotChosenDiameterArr[BotRFTTxt.Length - 1]}");
                 GeometryEngineRFT.Shapes["Text"].Add(BotRFTTxt[BotRFTTxt.Length - 1]);
             }
         }
@@ -138,7 +138,7 @@ namespace Design.Presentation.ViewModels
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
                 TopRFTTxt[0] = new GText(gCanvas, new Point(RFTCanvas.TopRFTLines[0].EndPoint.X /*+ 0.30 * SpanVals[0] * scale*/
-                    , RFTCanvas.TopRFTLines[0].EndPoint.Y /*+ 0.07 * scale*/), $"{nRebarTopSupport[0]}T{TopChosenDiameterArr[0]}");
+                    , RFTCanvas.TopRFTLines[0].EndPoint.Y + 0.07 * scale), $"{nRebarTopSupport[0]}T{TopChosenDiameterArr[0]}");
                 GeometryEngineRFT.Shapes["Text"].Add(TopRFTTxt[0]);
             }
 
@@ -146,7 +146,7 @@ namespace Design.Presentation.ViewModels
             for (int i = 1; i < TopRFTTxt.Length - 1; i++)
             {
                 TopRFTTxt[i] = new GText(gCanvas, new Point(RFTCanvas.TopRFTLines[i].EndPoint.X /*+ 0.30 * SpanVals[i] * scale*/
-                    , RFTCanvas.TopRFTLines[i].EndPoint.Y /*+ 0.07 * scale*/), $"{nRebarTopSupport[i]}T{TopChosenDiameterArr[i]}");
+                    , RFTCanvas.TopRFTLines[i].EndPoint.Y + 0.07 * scale), $"{nRebarTopSupport[i]}T{TopChosenDiameterArr[i]}");
                 GeometryEngineRFT.Shapes["Text"].Add(TopRFTTxt[i]);
             }
 
@@ -154,7 +154,7 @@ namespace Design.Presentation.ViewModels
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
             {
                 TopRFTTxt[TopRFTTxt.Length - 1] = new GText(gCanvas, new Point(RFTCanvas.TopRFTLines[TopRFTTxt.Length - 1].EndPoint.X /*+ 0.30 * SpanVals[TopRFTTxt.Length - 1] * scale*/
-                    , RFTCanvas.TopRFTLines[TopRFTTxt.Length - 1].EndPoint.Y /*+ 0.07 * scale*/), $"{nRebarTopSupport[TopRFTTxt.Length]}T{TopChosenDiameterArr[TopRFTTxt.Length]}");
+                    , RFTCanvas.TopRFTLines[TopRFTTxt.Length - 1].EndPoint.Y + 0.07 * scale), $"{nRebarTopSupport[TopRFTTxt.Length - 1]}T{TopChosenDiameterArr[TopRFTTxt.Length - 1]}");
                 GeometryEngineRFT.Shapes["Text"].Add(TopRFTTxt[TopRFTTxt.Length - 1]);
             }
         }
@@ -398,7 +398,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 240;
                         stirLeftTxt[0] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.40 * scale)
                             , $"Y{stirDiaArr240[indexesLeft[0]]}@{spacingLeftSec[0]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[0]);
 
@@ -407,7 +407,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 360;
                         stirLeftTxt[0] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.40 * scale)
                             , $"T{stirDiaArr360[indexesLeft[0] - stirDiaArr240.Length]}@{spacingLeftSec[0]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[0]);
                     }
@@ -415,7 +415,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 400;
                         stirLeftTxt[0] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.40 * scale)
                             , $"T{stirDiaArr400[indexesLeft[0] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingLeftSec[0]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[0]);
                     }
@@ -424,7 +424,7 @@ namespace Design.Presentation.ViewModels
                 else
                 {
                     stirLeftTxt[0] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[0, 2].StartPoint.Y - 0.40 * scale)
                             , $"Increase Dims");
                     GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[0]);
                 }
@@ -439,7 +439,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 240;
                         stirLeftTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.40 * scale)
                             , $"Y{stirDiaArr240[indexesLeft[i]]}@{spacingLeftSec[i]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[i]);
 
@@ -448,7 +448,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 360;
                         stirLeftTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.40 * scale)
                             , $"T{stirDiaArr360[indexesLeft[i] - stirDiaArr240.Length]}@{spacingLeftSec[i]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[i]);
                     }
@@ -456,7 +456,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 400;
                         stirLeftTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.40 * scale)
                             , $"T{stirDiaArr400[indexesLeft[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingLeftSec[i]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[i]);
                     }
@@ -465,7 +465,7 @@ namespace Design.Presentation.ViewModels
                 else
                 {
                     stirLeftTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.X, RFTCanvas.StirrupsLeftSec[i, 2].StartPoint.Y - 0.40 * scale)
                             , $"Increase Dims");
                     GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[i]);
                 }
@@ -711,7 +711,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 240;
                         stirRightTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X - 0.7 * scale, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.30 * scale)
                             , $"Y{stirDiaArr240[indexesRight[i]]}@{spacingRightSec[i]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[i]);
                     }
@@ -719,7 +719,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 360;
                         stirRightTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.30 * scale)
                             , $"T{stirDiaArr360[indexesRight[i] - stirDiaArr240.Length]}@{spacingRightSec[i]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[i]);
                     }
@@ -727,7 +727,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 400;
                         stirRightTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.30 * scale)
                             , $"T{stirDiaArr400[indexesRight[i] - stirDiaArr360.Length - stirDiaArr240.Length]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[i]);
                     }
@@ -736,7 +736,7 @@ namespace Design.Presentation.ViewModels
                 else
                 {
                     stirRightTxt[i] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[i, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[i, 2].StartPoint.Y - 0.30 * scale)
                             , $"Increase Dims");
                     GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[i]);
                 }
@@ -751,7 +751,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 240;
                         stirRightTxt[stirRightTxt.Length - 1] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.30 * scale)
                             , $"Y{stirDiaArr240[indexesRight[stirRightTxt.Length - 1]]}@{spacingRightSec[stirRightTxt.Length - 1]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
@@ -759,7 +759,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 360;
                         stirRightTxt[stirRightTxt.Length - 1] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.30 * scale)
                             , $"T{stirDiaArr360[indexesRight[stirRightTxt.Length - 1] - stirDiaArr240.Length]}@{spacingRightSec[stirRightTxt.Length - 1]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
@@ -767,7 +767,7 @@ namespace Design.Presentation.ViewModels
                     {
                         fystr = 400;
                         stirRightTxt[stirRightTxt.Length - 1] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.30 * scale)
                             , $"T{stirDiaArr400[indexesRight[stirRightTxt.Length - 1] - stirDiaArr360.Length - stirDiaArr240.Length]}");
                         GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
@@ -776,7 +776,7 @@ namespace Design.Presentation.ViewModels
                 else
                 {
                     stirRightTxt[stirRightTxt.Length - 1] = new GText(gCanvas
-                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.07 * scale)
+                            , new Point(RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.X - 0.70 * scale, RFTCanvas.StirrupsRightSec[stirRightTxt.Length - 1, 2].StartPoint.Y - 0.30 * scale)
                             , $"Increase Dims");
                     GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[stirRightTxt.Length - 1]);
                 }

@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=22aa93b221fe46e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="SAP2000v20">
       <HintPath>C:\Program Files\Computers and Structures\SAP2000 20\SAP2000v20.dll</HintPath>
     </Reference>
@@ -50,6 +54,26 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WW, Version=4.0.36.84, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Cad, Version=4.0.36.84, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.Cad.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.GL, Version=4.0.36.84, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.License, Version=4.0.0.0, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.License.dll</HintPath>
+    </Reference>
+    <Reference Include="WW.Pdf, Version=4.0.36.84, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.Pdf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
