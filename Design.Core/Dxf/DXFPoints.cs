@@ -13,107 +13,55 @@ namespace Design.Core.Dxf
 {
      public class DXFPoints
     {
-        #region Member Variables
-        //double x;
-        //double y;
-        //double z;
+        #region Static DataMembers
+        public static Point2D[] startPointsTop;
+        public static Point2D[] endPointsTop;
 
-        
+        public static Point2D[] startPointsBot;
+        public static Point2D[] endPointsBot;
 
-        #endregion
 
-        #region Properties
-        //public double X
-        //{
-        //    get
-        //    {
-        //        return x;
-        //    }
-
-        //    set
-        //    {
-        //        x = value;
-        //    }
-        //}
-
-        //public double Y
-        //{
-        //    get
-        //    {
-        //        return y;
-        //    }
-
-        //    set
-        //    {
-        //        y = value;
-        //    }
-        //}
-
-        //public double Z
-        //{
-        //    get
-        //    {
-        //        return z;
-        //    }
-
-        //    set
-        //    {
-        //        z = value;
-        //    }
-        //}
-        #endregion
-
-        #region Constructors
-        //public DXFPoints(double x, double y, double z)
-        //{
-        //    this.x = x;
-        //    this.y = y;
-        //    this.z = z;
-            
-        //}
         #endregion
 
         #region Methods
-        public static Point2D[] BottomStartPoints(int nSpans, double[] comSpanVals)
+
+        #region Top Points
+        public static void TopStartPoints(int nSpans, double[] comSpanVals)
         {
-            Point2D[] startPointsBot = new Point2D[nSpans];
+            startPointsTop = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                startPointsBot[i] = new Point2D(comSpanVals[i] + 0.15, 0);
+                startPointsTop[i] = new Point2D(comSpanVals[i] + 0.15, 0);
             }
-            return startPointsBot;
         }
-        public static Point2D[] BottomEndPoints(int nSpans, double[] comSpanVals)
+        public static void TopEndPoints(int nSpans, double[] comSpanVals)
         {
-            Point2D[] endPointsBot = new Point2D[nSpans];
+            endPointsTop = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                endPointsBot[i] = new Point2D(comSpanVals[i + 1] - 0.15, 0);
+                endPointsTop[i] = new Point2D(comSpanVals[i + 1] - 0.15, 0);
             }
-            return endPointsBot;
         }
+        #endregion
 
-
-
-        public static Point2D[] TopStartPoints(int nSpans, double[] thickness, double[] comSpanVals)
+        #region Bottom Points
+        public static void BottomStartPoints(int nSpans, double[] thickness, double[] comSpanVals)
         {
-            Point2D[] startPointsTop = new Point2D[nSpans];
+            startPointsBot = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                startPointsTop[i] = new Point2D(comSpanVals[i] + 0.15, thickness[i]);
+                startPointsBot[i] = new Point2D(comSpanVals[i] + 0.15, startPointsTop[i].Y - thickness[i]);
             }
-            return startPointsTop;
         }
-        public static Point2D[] TopEndPoints(int nSpans, double[] thickness, double[] comSpanVals)
+        public static void BottomEndPoints(int nSpans, double[] thickness, double[] comSpanVals)
         {
-            Point2D[] endPointsTop = new Point2D[nSpans];
+            endPointsBot = new Point2D[nSpans];
             for (int i = 0; i < nSpans; i++)
             {
-                endPointsTop[i] = new Point2D(comSpanVals[i + 1] - 0.15, thickness[i]);
+                endPointsBot[i] = new Point2D(comSpanVals[i + 1] - 0.15, endPointsTop[i].Y - thickness[i]);
             }
-            return endPointsTop;
         }
-
+        #endregion
 
         #endregion
     }

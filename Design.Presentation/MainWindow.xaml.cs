@@ -629,48 +629,49 @@ namespace Design.Presentation
 
             /*---------*/
             //Points
-            Point2D[] startPointsBot = DXFPoints.BottomStartPoints(nSpans, comSpanVals);
-            Point2D[] endPointsBot = DXFPoints.BottomEndPoints(nSpans, comSpanVals);
+            DXFPoints.TopStartPoints(nSpans, comSpanVals);
+            DXFPoints.TopEndPoints(nSpans, comSpanVals);
 
-            Point2D[] startPointsTop = DXFPoints.TopStartPoints(nSpans, RFTCanvas.thickness, comSpanVals);
-            Point2D[] endPointsTop = DXFPoints.TopEndPoints(nSpans, RFTCanvas.thickness, comSpanVals);
+            DXFPoints.BottomStartPoints(nSpans, RFTCanvas.thickness, comSpanVals);
+            DXFPoints.BottomEndPoints(nSpans, RFTCanvas.thickness, comSpanVals);
+
 
 
             /*---------Lines---------*/
-            DXFLines.ConstructBottomLines(model, nSpans, startPointsBot, endPointsBot);
-            DXFLines.ConstructTopLines(model, nSpans, startPointsTop, endPointsTop);
+            DXFLines.ConstructBottomLines(model, nSpans);
+            DXFLines.ConstructTopLines(model, nSpans);
 
-            DXFLines.ConstructColLines(model, nSpans, RFTCanvas.thickness, startPointsBot, endPointsBot, startPointsTop, endPointsTop);
-            DXFLines.ConstructGrids(model, nSpans, RFTCanvas.thickness, comSpanVals);
+            DXFLines.ConstructColLines(model, nSpans);
+            DXFLines.ConstructGrids(model, nSpans, comSpanVals);
 
             /*---------Rebar---------*/
-            DxfLine[] BottomRFT = DXFRebar.BotRFT(model, nSpans, startPointsBot, endPointsBot);
+            DXFRebar.BotRFT(model, nSpans);
 
-            double[] Ln = DXFRebar.Lnet(nSpans, startPointsTop, endPointsTop);
+            DXFRebar.Lnet(nSpans);
 
-            DxfLine[] TopSpan = DXFRebar.TopSpanRFT(model, nSpans, RFTCanvas.thickness, Ln, startPointsTop, endPointsTop);
+            DXFRebar.TopSpanRFT(model, nSpans);
 
-            DxfLine[] TopSupport = DXFRebar.TopSupportRFT(model, nSpans, RFTCanvas.thickness, Ln, startPointsTop, endPointsTop);
+            DXFRebar.TopSupportRFT(model, nSpans);
 
-            DXFRebar.Legs(model, nSpans, RFTCanvas.thickness, BottomRFT, TopSpan);
+            DXFRebar.Legs(model, nSpans);
 
             /*---------Stirrups-------*/
-            DxfLine[,] stirrupsLeft = DXFRebar.StirrupsLeftSec(model, nSpans, RFTCanvas.thickness[0], startPointsBot);
+            DXFRebar.StirrupsLeftSec(model, nSpans);
 
-            DxfLine[,] stirrupsMidspan = DXFRebar.StirrupsMidSpanSec(model, nSpans, RFTCanvas.thickness[0], startPointsBot, endPointsBot);
+            //DXFRebar.StirrupsMidSpanSec(model, nSpans);
 
-            DxfLine[,] stirrupsRight = DXFRebar.StirrupsRightSec(model, nSpans, RFTCanvas.thickness[0], endPointsBot);
+            DXFRebar.StirrupsRightSec(model, nSpans);
 
             /*------------------------------Annotation------------------------------*/
-            DXFAnnotation.AnnotationStirLeft(model, nSpans, RFTCanvas.thickness[0], stirrupsLeft);
+            DXFAnnotation.AnnotationStirLeft(model, nSpans);
             //DXFAnnotation.AnnotationStirMidSpan(model, nSpans, RFTCanvas.thickness[0], stirrupsMidspan);
-            DXFAnnotation.AnnotationStirRight(model, nSpans, RFTCanvas.thickness[0], stirrupsRight);
+            DXFAnnotation.AnnotationStirRight(model, nSpans);
 
             /*------------------------------Dimensions------------------------------*/
             DXFDimClass.DrawGridDims(model, nSpans, comSpanVals);
-            DXFDimClass.DrawLnetDims(model, nSpans, startPointsBot, endPointsBot, comSpanVals);
-            DXFDimClass.DrawTopRFTRightDims(model, nSpans, RFTCanvas.thickness[0], Ln, startPointsTop, comSpanVals);
-            DXFDimClass.DrawTopRFTLeftDims(model, nSpans, RFTCanvas.thickness[0], Ln, endPointsTop, comSpanVals);
+            DXFDimClass.DrawLnetDims(model, nSpans, comSpanVals);
+            DXFDimClass.DrawTopRFTRightDims(model, nSpans, comSpanVals);
+            DXFDimClass.DrawTopRFTLeftDims(model, nSpans, comSpanVals);
 
             /*------------------------------Text------------------------------*/
             //double fystr = Convert.ToDouble(fstirtxtBox.Text);

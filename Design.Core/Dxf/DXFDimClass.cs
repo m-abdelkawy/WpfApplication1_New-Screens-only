@@ -13,15 +13,6 @@ namespace Design.Core.Dxf
 {
     public class DXFDimClass
     {
-        #region Member Variables
-        #endregion
-
-        #region Properties
-        #endregion
-
-        #region Constructors
-        #endregion
-
         #region Methods
         public static void DrawGridDims(DxfModel model, int nSpans, double[] comSpanVals)
         {
@@ -58,7 +49,7 @@ namespace Design.Core.Dxf
             }
         }
 
-        public static void DrawLnetDims(DxfModel model, int nSpans, Point2D[] startPointsBot, Point2D[] endPointsBot, double[] comSpanVals)
+        public static void DrawLnetDims(DxfModel model, int nSpans, double[] comSpanVals)
         {
             //02. Ln Dims/*----------------*/
             DxfLayer lnspanLayer = new DxfLayer("DIMENSIONSLn");
@@ -83,8 +74,8 @@ namespace Design.Core.Dxf
                     dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
                     dimension.Layer = lnspanLayer;
                     dimension.DimensionLineLocation = new Point3D(0, 0, 0);
-                    dimension.ExtensionLine1StartPoint = new Point3D(startPointsBot[i].X, 0, 0);
-                    dimension.ExtensionLine2StartPoint = new Point3D(endPointsBot[i].X, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsBot[i].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsBot[i].X, 0, 0);
                     dimension.UseTextMiddlePoint = true;
                     dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (comSpanVals[i] + comSpanVals[i + 1]), 0.2d, 0d);
                     blockLnSpan.Entities.Add(dimension);
@@ -93,7 +84,7 @@ namespace Design.Core.Dxf
             }
         }
 
-        public static void DrawTopRFTRightDims(DxfModel model, int nSpans, double thickness, double[] Ln, Point2D[] startPointsTop, double[] comSpanVals)
+        public static void DrawTopRFTRightDims(DxfModel model, int nSpans, double[] comSpanVals)
         {
             //03. TopRFT Right Dims/*----------------*/
             DxfLayer TopRFTDimLayerRt = new DxfLayer("DIMENSIONSTopRFTRt");
@@ -102,7 +93,7 @@ namespace Design.Core.Dxf
             DxfBlock blockTopRFTDimRt = new DxfBlock("ALIGNED_DIMENSIONSTopRFTRt");
             model.Blocks.Add(blockTopRFTDimRt);
 
-            DxfInsert insertTopRFTDimRt = new DxfInsert(blockTopRFTDimRt, new Point3D(0, thickness + 0.15, 0));
+            DxfInsert insertTopRFTDimRt = new DxfInsert(blockTopRFTDimRt, new Point3D(0, DXFPoints.startPointsTop[0].Y + 0.15, 0));
             insertTopRFTDimRt.Layer = TopRFTDimLayerRt;
             model.Entities.Add(insertTopRFTDimRt);
 
@@ -118,17 +109,17 @@ namespace Design.Core.Dxf
                     dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
                     dimension.Layer = TopRFTDimLayerRt;
                     dimension.DimensionLineLocation = new Point3D(0, 0, 0);
-                    dimension.ExtensionLine1StartPoint = new Point3D(startPointsTop[i].X, 0, 0);
-                    dimension.ExtensionLine2StartPoint = new Point3D(startPointsTop[i].X + Math.Max(0.33 * Ln[i - 1], 0.33 * Ln[i]) + 0.25, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsTop[i].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.startPointsTop[i].X + Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) + 0.25, 0, 0);
                     dimension.UseTextMiddlePoint = true;
-                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (startPointsTop[i].X + startPointsTop[i].X + Math.Max(0.33 * Ln[i - 1], 0.33 * Ln[i]) + 0.25), 0.2d, 0d);
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.startPointsTop[i].X + DXFPoints.startPointsTop[i].X + Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) + 0.25), 0.2d, 0d);
                     blockTopRFTDimRt.Entities.Add(dimension);
                 }
 
             }
         }
 
-        public static void DrawTopRFTLeftDims(DxfModel model, int nSpans, double thickness, double[] Ln, Point2D[] endPointsTop, double[] comSpanVals)
+        public static void DrawTopRFTLeftDims(DxfModel model, int nSpans, double[] comSpanVals)
         {
             //04.TopRFT Left Dims/*----------------*/
             DxfLayer TopRFTDimLayerLt = new DxfLayer("DIMENSIONSTopRFTLt");
@@ -137,7 +128,7 @@ namespace Design.Core.Dxf
             DxfBlock blockTopRFTDimLt = new DxfBlock("ALIGNED_DIMENSIONSTopRFTLt");
             model.Blocks.Add(blockTopRFTDimLt);
 
-            DxfInsert insertTopRFTDimLt = new DxfInsert(blockTopRFTDimLt, new Point3D(0, thickness + 0.15, 0));
+            DxfInsert insertTopRFTDimLt = new DxfInsert(blockTopRFTDimLt, new Point3D(0, DXFPoints.startPointsTop[0].Y + 0.15, 0));
             insertTopRFTDimLt.Layer = TopRFTDimLayerLt;
             model.Entities.Add(insertTopRFTDimLt);
 
@@ -153,10 +144,10 @@ namespace Design.Core.Dxf
                     dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
                     dimension.Layer = TopRFTDimLayerLt;
                     dimension.DimensionLineLocation = new Point3D(0, 0, 0);
-                    dimension.ExtensionLine1StartPoint = new Point3D(endPointsTop[i - 1].X - Math.Max(0.33 * Ln[i - 1], 0.33 * Ln[i]) - 0.25, 0, 0);
-                    dimension.ExtensionLine2StartPoint = new Point3D(endPointsTop[i - 1].X, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.endPointsTop[i - 1].X - Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) - 0.25, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsTop[i - 1].X, 0, 0);
                     dimension.UseTextMiddlePoint = true;
-                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (endPointsTop[i - 1].X - Math.Max(0.33 * Ln[i - 1], 0.33 * Ln[i]) - 0.25 + endPointsTop[i - 1].X), 0.2d, 0d);
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.endPointsTop[i - 1].X - Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) - 0.25 + DXFPoints.endPointsTop[i - 1].X), 0.2d, 0d);
                     blockTopRFTDimLt.Entities.Add(dimension);
                 }
             }
