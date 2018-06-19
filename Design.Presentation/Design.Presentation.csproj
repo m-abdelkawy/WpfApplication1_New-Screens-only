@@ -81,6 +81,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Split.cs" />
+    <Compile Include="Dxf\DXFAnnotation.cs" />
+    <Compile Include="Dxf\DXFDimClass.cs" />
+    <Compile Include="Dxf\DXFLines.cs" />
+    <Compile Include="Dxf\DXFPoints.cs" />
+    <Compile Include="Dxf\DXFRebar.cs" />
+    <Compile Include="Dxf\DXFTextClass.cs" />
+    <Compile Include="Dxf\GenerateDXF.cs" />
     <Compile Include="Geometry\Arrow.cs" />
     <Compile Include="Geometry\ArrowLoad.cs" />
     <Compile Include="Geometry\AxisEnum.cs" />

@@ -62,13 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Design\BeamDesign.cs" />
-    <Compile Include="Dxf\DXFAnnotation.cs" />
-    <Compile Include="Dxf\DXFDimClass.cs" />
-    <Compile Include="Dxf\DXFLines.cs" />
-    <Compile Include="Dxf\DXFPoints.cs" />
-    <Compile Include="Dxf\DXFRebar.cs" />
-    <Compile Include="Dxf\DXFTextClass.cs" />
-    <Compile Include="Dxf\GenerateDXF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Sap\SapFrameDistLoad.cs" />
     <Compile Include="Sap\SapFrameElement.cs" />
@@ -82,6 +75,9 @@
     <Compile Include="Sap\SapRectSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sap\StartAnalysis.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dxf\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,7 @@ namespace Design.Core.Dxf
 {
     public class DXFAnnotation
     {
+
         #region Methods
         public static void AnnotationStirLeft(DxfModel model, int nSpans)
         {

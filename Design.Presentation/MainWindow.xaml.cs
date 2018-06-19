@@ -614,10 +614,7 @@ namespace Design.Presentation
 
             //double thickness = Convert.ToDouble(ttxtBox.Text);
 
-            //Stirrup Arrays
-            double[] stirDiaArr240 = new double[] { 8 };
-            double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
-            double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
+            
             /////////////
 
             ///////////
@@ -677,27 +674,27 @@ namespace Design.Presentation
             //double fystr = Convert.ToDouble(fstirtxtBox.Text);
 
             //01. RFT bottom Text
-            int[] nRebarBot = DXFTextClass.GetnRebarBotArr(AnalysisMapping.xbeams);
-            double[] chosenDiameterBot = DXFTextClass.GetChosenDiameterArr(AnalysisMapping.xbeams);
-            DXFTextClass.BottomRFTTxt(model, nSpans, nRebarBot, chosenDiameterBot, Ln, startPointsBot);
+            DXFTextClass.GetnRebarBotArr(AnalysisMapping.xbeams);
+            DXFTextClass.GetChosenDiameterArr(AnalysisMapping.xbeams);
+            DXFTextClass.BottomRFTTxt(model, nSpans);
 
             //02. RFT Top Support Text
-            int[] nRebarTopSupportArr = DXFTextClass.GetnRebarTopSupportArr(AnalysisMapping.xbeams);
-            double[] chosenDiameterTopSupport = DXFTextClass.GetChosenDiameterTopSupportArr(AnalysisMapping.xbeams);
-            DXFTextClass.TopRFTSupportTxt(model, nSpans, RFTCanvas.thickness[0], nRebarTopSupportArr, chosenDiameterTopSupport, TopSpan, TopSupport);
+            DXFTextClass.GetnRebarTopSupportArr(AnalysisMapping.xbeams);
+            DXFTextClass.GetChosenDiameterTopSupportArr(AnalysisMapping.xbeams);
+            DXFTextClass.TopRFTSupportTxt(model, nSpans);
 
             //03. Stirrups Left Section
             {
-                double[] spacingLeftArr = DXFTextClass.GetSpacingLeftArr(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
-                int[] spacingLeftIndexes = DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
-                DXFTextClass.StirrupLeftTxt(model, nSpans, stirrupsLeft, spacingLeftArr, spacingLeftIndexes, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                DXFTextClass.GetSpacingLeftArr(AnalysisMapping.xbeams);
+                //DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams);
+                DXFTextClass.StirrupLeftTxt(model, nSpans);
 
             }
             //05. Stirrups Right Section
             {
-                double[] spacingRightArr = DXFTextClass.GetSpacingRightArr(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
-                int[] spacingRightIndexes = DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams, stirDiaArr240, stirDiaArr360, stirDiaArr400);
-                DXFTextClass.StirrupRightTxt(model, nSpans, stirrupsRight, spacingRightArr, spacingRightIndexes, stirDiaArr240, stirDiaArr360, stirDiaArr400);
+                DXFTextClass.GetSpacingRightArr(AnalysisMapping.xbeams);
+
+                DXFTextClass.StirrupRightTxt(model, nSpans);
 
             }
 
