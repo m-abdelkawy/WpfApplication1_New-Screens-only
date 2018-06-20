@@ -132,8 +132,10 @@ namespace Design.Core.Dxf
             
             for (int i = 1; i < TopRFTSupprtTxt.Length - 1; i++)
             {
+                /*TopRFTSupprtTxt[i] = new DxfText($"{nRebarTopSupport[i]}T{TopchosenDiameterArr[i]}"
+                    , new Point3D(DXFRebar.TopSupport[i - 1].Start.X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);*/
                 TopRFTSupprtTxt[i] = new DxfText($"{nRebarTopSupport[i]}T{TopchosenDiameterArr[i]}"
-                    , new Point3D(DXFRebar.TopSupport[i - 1].Start.X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
+                , new Point3D(DXFPoints.startPointsTop[i].X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
                 model.Entities.Add(TopRFTSupprtTxt[i]);
             }
 

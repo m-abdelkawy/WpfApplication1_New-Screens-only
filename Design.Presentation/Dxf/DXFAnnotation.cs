@@ -24,8 +24,8 @@ namespace Design.Core.Dxf
                 LeaderLt[i].ArrowHeadEnabled = true;
                 LeaderLt[i].Vertices.AddRange(
                  new Point3D[] {
-                     new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X, (DXFPoints.startPointsTop[i].Y - DXFPoints.startPointsBot[i].Y)/2, 0),
-                     new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X + 0.25, (DXFPoints.startPointsTop[i].Y - DXFPoints.startPointsBot[i].Y)/2, 0),
+                     new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X, (DXFPoints.startPointsTop[i].Y + DXFPoints.startPointsBot[i].Y)/2, 0),
+                     new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X + 0.25, (DXFPoints.startPointsTop[i].Y + DXFPoints.startPointsBot[i].Y)/2, 0),
                      new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X + 0.25, DXFPoints.startPointsBot[i].Y - 1.50, 0),
                      new Point3D(DXFRebar.stirrupsLeft[i, 2].Start.X - 1, DXFPoints.startPointsBot[i].Y - 1.50, 0)
                  }
@@ -62,8 +62,8 @@ namespace Design.Core.Dxf
                 LeaderRt[i].ArrowHeadEnabled = true;
                 LeaderRt[i].Vertices.AddRange(
                  new Point3D[] {
-                     new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X, (DXFPoints.startPointsTop[i].Y - DXFPoints.startPointsBot[i].Y)/2, 0),
-                     new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.50, (DXFPoints.startPointsTop[i].Y - DXFPoints.startPointsBot[i].Y)/2, 0),
+                     new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X, (DXFPoints.startPointsTop[i].Y + DXFPoints.startPointsBot[i].Y)/2, 0),
+                     new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.50, (DXFPoints.startPointsTop[i].Y + DXFPoints.startPointsBot[i].Y)/2, 0),
                      new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.50, DXFPoints.startPointsBot[i].Y - 1.50, 0),
                      new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 1.50, DXFPoints.startPointsBot[i].Y - 1.50, 0)
                  }

@@ -23,7 +23,7 @@ namespace Design.Core.Dxf
             DxfBlock blockGridSpan = new DxfBlock("ALIGNED_DIMENSIONS");
             model.Blocks.Add(blockGridSpan);
 
-            DxfInsert insert = new DxfInsert(blockGridSpan, new Point3D(0, -1, 0));
+            DxfInsert insert = new DxfInsert(blockGridSpan, new Point3D(0, DXFPoints.endPointsBot[0].Y - 1, 0));
             insert.Layer = gridspanLayer;
             model.Entities.Add(insert);
 
@@ -58,7 +58,7 @@ namespace Design.Core.Dxf
             DxfBlock blockLnSpan = new DxfBlock("ALIGNED_DIMENSIONSLn");
             model.Blocks.Add(blockLnSpan);
 
-            DxfInsert insertLn = new DxfInsert(blockLnSpan, new Point3D(0, -0.5, 0));
+            DxfInsert insertLn = new DxfInsert(blockLnSpan, new Point3D(0, DXFPoints.endPointsBot[0].Y - 0.50, 0));
             insertLn.Layer = lnspanLayer;
             model.Entities.Add(insertLn);
 

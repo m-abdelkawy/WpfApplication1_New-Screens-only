@@ -186,11 +186,11 @@ namespace Design.Core.Dxf
             model.Entities.Add(legBot2);
 
             DxfLine legTop1 = new DxfLine(EntityColors.Blue, new Point2D(TopSpan[0].Start.X, TopSpan[0].Start.Y)
-                , new Point2D(TopSpan[0].Start.X, TopSpan[0].Start.Y - DXFPoints.startPointsTop[0].Y + 0.15));
+                , new Point2D(TopSpan[0].Start.X, /*TopSpan[0].Start.Y -*/ DXFPoints.startPointsBot[0].Y + 0.15));
             model.Entities.Add(legTop1);
 
             DxfLine legTop2 = new DxfLine(EntityColors.Blue, new Point2D(TopSpan[nSpans].End.X, TopSpan[nSpans].End.Y)
-                , new Point2D(TopSpan[nSpans].End.X, TopSpan[nSpans].End.Y - DXFPoints.startPointsTop[nSpans - 1].Y + 0.15));
+                , new Point2D(TopSpan[nSpans].End.X, /*TopSpan[nSpans].End.Y -*/ DXFPoints.startPointsBot[nSpans - 1].Y + 0.15));
             model.Entities.Add(legTop2);
         }
 
@@ -205,8 +205,8 @@ namespace Design.Core.Dxf
                 spacingLeft = 0;
                 for (int j = 0; j < stirrupsLeft.GetLength(1); j++)
                 {
-                    stirrupsLeft[i, j] = new DxfLine(new Point2D(DXFPoints.startPointsBot[i].X + 0.05 + (spacingLeft / 1000), 0.05)
-                        , new Point2D(DXFPoints.startPointsBot[i].X + 0.05 + (spacingLeft / 1000), DXFPoints.startPointsBot[i].Y/*--*/ - 0.07));
+                    stirrupsLeft[i, j] = new DxfLine(new Point2D(DXFPoints.startPointsBot[i].X + 0.05 + (spacingLeft / 1000), DXFPoints.startPointsTop[i].Y/* - 0.05*/)
+                        , new Point2D(DXFPoints.startPointsBot[i].X + 0.05 + (spacingLeft / 1000), DXFPoints.startPointsBot[i].Y/*--*/ /*+ 0.07*/));
                     model.Entities.Add(stirrupsLeft[i, j]);
                     spacingLeft += sec1Spacing;
                 }
@@ -232,7 +232,7 @@ namespace Design.Core.Dxf
         //    return stirrupsMidspan;
         //}
 
-        public static DxfLine[,] StirrupsRightSec(DxfModel model, int nSpans)
+        public static void StirrupsRightSec(DxfModel model, int nSpans)
         {
             double spacingRight = 0;
             double sec3Spacing = 150;
@@ -242,13 +242,12 @@ namespace Design.Core.Dxf
                 spacingRight = 0;
                 for (int j = 0; j < stirrupsRight.GetLength(1); j++)
                 {
-                    stirrupsRight[i, j] = new DxfLine(new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), 0.05)
-                    , new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsBot[i].Y - 0.07));
+                    stirrupsRight[i, j] = new DxfLine(new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsTop[i].Y /*- 0.05*/)
+                    , new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsBot[i].Y /*+ 0.07*/));
                     model.Entities.Add(stirrupsRight[i, j]);
                     spacingRight += sec3Spacing;
                 }
             }
-            return stirrupsRight;
         }
         
         #endregion

@@ -172,7 +172,7 @@ namespace Design.Presentation
             }
 
             GeometryEngine.RenderAll();
-            GeometryEngine.Shapes["Supports"].ForEach(d => d.SetScale(1.5));
+            GeometryEngine.Shapes["Supports"].ForEach(d => d.SetScale(1));
             //GeometryEngine.Shapes.Add("li", new List<GShape>()); Add List in Real Time
             this.Close();
         }

@@ -53,6 +53,7 @@ namespace Design.Presentation.Windows
 
         private void DltLoadComboBtn_Click(object sender, RoutedEventArgs e)
         {
+
             var index = loadComboGridData.SelectedIndex;
             LoadCombinationsViewModel.LoadComboModelCollection.RemoveAt(index);
         }

@@ -48,7 +48,7 @@ namespace Design.Presentation.ViewModels
 
         /*------------Stirrups Lines-------------*/
         public static GLine[,] StirrupsLeftSec = new GLine[SpanVals.Length, 3];
-        public static GLine[,] StirrupsMidSpan = new GLine[SpanVals.Length, 3];
+        //public static GLine[,] StirrupsMidSpan = new GLine[SpanVals.Length, 3];
         public static GLine[,] StirrupsRightSec = new GLine[SpanVals.Length, 3];
 
 
@@ -58,6 +58,7 @@ namespace Design.Presentation.ViewModels
         #region Methods
         public static void CalcSpanVals()
         {
+            SpanVals = new double[GeometryEditorVM.GeometryEditor.NumberOfSpans];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 SpanVals[i] = GeometryEditorVM.GeometryEditor.GridData[i].Span;
@@ -65,6 +66,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void CalcComSpanVals(int nSpans)
         {
+            comSpanVals = new double[SpanVals.Length + 1];
             comSpanVals[0] = 0;
             for (int i = 1; i < comSpanVals.Length; i++)
             {
@@ -73,6 +75,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void CalcThickness()
         {
+            thickness = new double[SpanVals.Length];
             for (int i = 0; i < thickness.Length; i++)
             {
                 thickness[i] = GeometryEditorVM.GeometryEditor.GridData[i].SelectedSection.Depth;
@@ -85,6 +88,7 @@ namespace Design.Presentation.ViewModels
 
         public static void ConstructTopStartPoints(double scale)/*scale = 20 as previously stated*/
         {
+            StartPointTopArr = new Point[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 StartPointTopArr[i] = new Point((comSpanVals[i] + 0.15) * scale, 100);
@@ -92,6 +96,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void ConstructTopEndPoints(double scale)
         {
+            EndPointTopArr = new Point[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 EndPointTopArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, 100);
@@ -100,6 +105,7 @@ namespace Design.Presentation.ViewModels
         /*---------------Bottom Points--------------*/
         public static void ConstructBotStartPoints(double scale)
         {
+            StartPointBotArr = new Point[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 StartPointBotArr[i] = new Point((comSpanVals[i] + 0.15) * scale, StartPointTopArr[i].Y + thickness[i] * scale);
@@ -107,6 +113,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void ConstructBotEndPoints(double scale)
         {
+            EndPointBotArr = new Point[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 EndPointBotArr[i] = new Point((comSpanVals[i + 1] - 0.15) * scale, EndPointTopArr[i].Y + thickness[i] * scale);
@@ -119,6 +126,7 @@ namespace Design.Presentation.ViewModels
         /*--------------------------Top Lines-------------------------*/
         public static void ConstructTopLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT)
         {
+            TopLineArr = new GLine[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 TopLineArr[i] = new GLine(gCanvas, StartPointTopArr[i], EndPointTopArr[i]);
@@ -130,6 +138,7 @@ namespace Design.Presentation.ViewModels
         /*--------------------------Bottom Lines-------------------------*/
         public static void ConstructBotLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT)
         {
+            BotLineArr = new GLine[SpanVals.Length];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 BotLineArr[i] = new GLine(gCanvas, StartPointBotArr[i], EndPointBotArr[i]);
@@ -139,6 +148,10 @@ namespace Design.Presentation.ViewModels
         }
         public static void ConstructColLines(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            ColLinesTopStart = new GLine[SpanVals.Length];
+            ColLinesTopEnd = new GLine[SpanVals.Length];
+            ColLinesBotStart = new GLine[SpanVals.Length];
+            ColLinesBotEnd = new GLine[SpanVals.Length];
             /*----------------------Bottom Start Lines----------------------*/
             //Case Of Cantilever at start
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
@@ -262,6 +275,7 @@ namespace Design.Presentation.ViewModels
         #region Longitudinal Reinforcement
         public static void BotRFT(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            BotRFTLines = new GLine[SpanVals.Length];
             //Case of Cantilever at start
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
@@ -286,6 +300,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void TopRFT(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            TopRFTLines = new GLine[SpanVals.Length + 1];
             //Case Of Cantilever Start Span
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
@@ -320,6 +335,7 @@ namespace Design.Presentation.ViewModels
         #region Stirrups
         public static void LeftSecStirrups(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            StirrupsLeftSec = new GLine[SpanVals.Length, 3];
             double spacingLeft = 0;
 
             //For Cantilever At Start:
@@ -354,6 +370,8 @@ namespace Design.Presentation.ViewModels
 
         public static void RightSecStirrups(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            StirrupsRightSec = new GLine[SpanVals.Length, 3];
+
             double spacingRight = 0;
             for (int i = 0; i < StirrupsRightSec.GetLength(0) - 1; i++)
             {

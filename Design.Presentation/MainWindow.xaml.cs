@@ -688,7 +688,6 @@ namespace Design.Presentation
                 DXFTextClass.GetSpacingLeftArr(AnalysisMapping.xbeams);
                 //DXFTextClass.GetSpacingLeftArrIndexes(AnalysisMapping.xbeams);
                 DXFTextClass.StirrupLeftTxt(model, nSpans);
-
             }
             //05. Stirrups Right Section
             {
