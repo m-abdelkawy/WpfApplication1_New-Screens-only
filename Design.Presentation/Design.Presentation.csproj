@@ -215,6 +215,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,6 +234,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Out Of Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DistLoadPic.png" />
+    <Resource Include="Images\Numbering.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PointLoadPic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

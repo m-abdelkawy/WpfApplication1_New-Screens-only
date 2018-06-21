@@ -52,7 +52,7 @@ namespace Design.Core.Dxf
             else
             {
                 DxfLine comLineBotStart = new DxfLine(DXFPoints.startPointsBot[0]
-                    , new Point2D(DXFPoints.startPointsBot[0].X - 0.30, DXFPoints.startPointsBot[0].Y));
+                    , new Point2D(DXFPoints.startPointsBot[0].X - 0.15/*0.30 previously*/, DXFPoints.startPointsBot[0].Y));
                 model.Entities.Add(comLineBotStart);
             }
 
@@ -84,7 +84,7 @@ namespace Design.Core.Dxf
             else
             {
                 DxfLine comLineBotEnd = new DxfLine(DXFPoints.endPointsBot[colLinesBotEnd.Length - 1]
-                    , new Point2D(DXFPoints.endPointsBot[colLinesBotEnd.Length - 1].X + 0.30, DXFPoints.endPointsBot[colLinesBotEnd.Length - 1].Y));
+                    , new Point2D(DXFPoints.endPointsBot[colLinesBotEnd.Length - 1].X + 0.15/*0.30 previously*/, DXFPoints.endPointsBot[colLinesBotEnd.Length - 1].Y));
                 model.Entities.Add(comLineBotEnd);
 
             }
@@ -102,7 +102,7 @@ namespace Design.Core.Dxf
             else
             {
                 DxfLine comLineTopStart = new DxfLine(DXFPoints.startPointsTop[0]
-                    , new Point2D(DXFPoints.startPointsTop[0].X - 0.30, DXFPoints.startPointsTop[0].Y));
+                    , new Point2D(DXFPoints.startPointsTop[0].X - 0.15/*0.30 previously*/, DXFPoints.startPointsTop[0].Y));
                 model.Entities.Add(comLineTopStart);
             }
 
@@ -132,7 +132,7 @@ namespace Design.Core.Dxf
             else
             {
                 DxfLine comLineTopEnd = new DxfLine(DXFPoints.endPointsTop[colLinesTopEnd.Length - 1]
-                    , new Point2D(DXFPoints.endPointsTop[colLinesTopEnd.Length - 1].X + 0.30, DXFPoints.endPointsTop[colLinesTopEnd.Length - 1].Y));
+                    , new Point2D(DXFPoints.endPointsTop[colLinesTopEnd.Length - 1].X + 0.15/*0.30 Previously*/, DXFPoints.endPointsTop[colLinesTopEnd.Length - 1].Y));
                 model.Entities.Add(comLineTopEnd);
             }
             /*----------------------------------------------*/
@@ -146,8 +146,8 @@ namespace Design.Core.Dxf
             }
             else
             {
-                DxfLine StartLine = new DxfLine(new Point2D(DXFPoints.startPointsBot[0].X - 0.30, DXFPoints.startPointsBot[0].Y)
-                , new Point2D(DXFPoints.startPointsTop[0].X - 0.30, DXFPoints.startPointsTop[0].Y));
+                DxfLine StartLine = new DxfLine(new Point2D(DXFPoints.startPointsBot[0].X - 0.15/*0.30 Previously*/, DXFPoints.startPointsBot[0].Y)
+                , new Point2D(DXFPoints.startPointsTop[0].X - 0.15/*0.30 Previously*/, DXFPoints.startPointsTop[0].Y));
                 model.Entities.Add(StartLine);
             }
 
@@ -160,8 +160,8 @@ namespace Design.Core.Dxf
             }
             else
             {
-                DxfLine EndLine = new DxfLine(new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.30, DXFPoints.endPointsBot[nSpans - 1].Y)
-                    , new Point2D(DXFPoints.endPointsTop[nSpans - 1].X + 0.30, DXFPoints.endPointsTop[nSpans - 1].Y));
+                DxfLine EndLine = new DxfLine(new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.15/*0.30 Previously*/, DXFPoints.endPointsBot[nSpans - 1].Y)
+                    , new Point2D(DXFPoints.endPointsTop[nSpans - 1].X + 0.15/*0.30 Previously*/, DXFPoints.endPointsTop[nSpans - 1].Y));
                 model.Entities.Add(EndLine);
             }
             
@@ -170,12 +170,29 @@ namespace Design.Core.Dxf
         public static void ConstructGrids(DxfModel model, int nSpans, double[] comSpanVals)
         {
             DxfLine[] grids = new DxfLine[nSpans + 1];
+
+            //Case of Cantilever at start
+            //if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+            //{
+            //    grids[0] = new DxfLine(EntityColors.Red, new Point2D(comSpanVals[0], DXFPoints.startPointsTop[0].Y - 2)
+            //        , new Point2D(comSpanVals[0], DXFPoints.startPointsTop[0].Y + 1));
+            //    model.Entities.Add(grids[0]);
+            //}
+
             for (int i = 0; i < grids.Length; i++)
             {
                 grids[i] = new DxfLine(EntityColors.Red, new Point2D(comSpanVals[i], DXFPoints.startPointsTop[0].Y - 2)
                     , new Point2D(comSpanVals[i], DXFPoints.startPointsTop[0].Y + 1));
                 model.Entities.Add(grids[i]);
             }
+
+            //Case of Cantilever at End
+            //if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+            //{
+            //    grids[grids.Length - 1] = new DxfLine(EntityColors.Red, new Point2D(comSpanVals[grids.Length - 1], DXFPoints.startPointsTop[0].Y - 2)
+            //        , new Point2D(comSpanVals[grids.Length - 1], DXFPoints.startPointsTop[0].Y + 1));
+            //    model.Entities.Add(grids[grids.Length - 1]);
+            //}
         }
         #endregion
     }

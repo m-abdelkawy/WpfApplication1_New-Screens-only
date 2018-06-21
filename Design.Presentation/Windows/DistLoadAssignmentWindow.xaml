@@ -7,7 +7,7 @@
         xmlns:localSapenum="clr-namespace:Desing.Core.Sap;assembly=Design.Core"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="DistLoadAssignmentWindow" Height="250" Width="450">
+        Title="DistLoadAssignmentWindow" Height="300" Width="450">
 
     <Window.Resources>
         <ObjectDataProvider MethodName="GetValues"
@@ -18,7 +18,8 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-    
+
+
     <Grid>
         <Grid.RowDefinitions>
             <!--Window Header-->
@@ -136,7 +137,7 @@
                     </Grid>
                 </GroupBox>
             </StackPanel>
-            
+
 
             <StackPanel Margin="10">
 
@@ -146,13 +147,16 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!--Dist Load Image-->
+                <Image Height="100" Width="356" Source="/Design.Presentation;component/Images/Numbering.png" Margin="0,-40,86.8,40" HorizontalAlignment="Right" />
+
 
                 <Button x:Name="OkBtn"
                         Grid.Column="0"
                         Content="OK"
                         Width="50"
                         HorizontalAlignment="Center"
-                        Margin="10"
+                        Margin="200,60,200,0"
                         VerticalAlignment="Top"
                         Click="OkBtn_Click"/>
             </Grid>

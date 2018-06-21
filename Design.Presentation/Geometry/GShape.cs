@@ -15,7 +15,7 @@ namespace Design.Presentation.Geometry
 
     public class GShape
     {
-
+       
         public GCanvas GCanvas { get; set; }
         public Shape Shape { get; set; }
         public Thickness Thickness { get; set; }
@@ -37,7 +37,13 @@ namespace Design.Presentation.Geometry
             GeometryEngine.Id++;
         }
 
+        //public Point ConvertCoordinates(Point point)
+        //{
+        //    var width = GCanvas.Canvas.Width;
+        //    var height = GCanvas.Canvas.Height;
 
+        //    return new Point(point.X + width / 2, height / 2 - point.Y);
+        //}
 
         public virtual void Render()
         {

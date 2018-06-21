@@ -42,7 +42,7 @@ namespace Design.Core.Dxf
             }
             else
             {
-                BottomRFT[0] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsBot[0].X - 0.25, DXFPoints.startPointsBot[0].Y + 0.05)
+                BottomRFT[0] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsBot[0].X - 0.10/*0.25 Previously*/, DXFPoints.startPointsBot[0].Y + 0.05)
                 , new Point2D(DXFPoints.endPointsBot[0].X + 0.25/*notice this one*/, DXFPoints.startPointsBot[0].Y + 0.05));
                 model.Entities.Add(BottomRFT[0]);
             }
@@ -83,12 +83,12 @@ namespace Design.Core.Dxf
                 if ((nSpans - 1) % 2 == 1)
                 {
                     BottomRFT[nSpans - 1] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsBot[nSpans - 1].X - 0.25/*----*/, DXFPoints.startPointsBot[nSpans - 1].Y + 0.07)
-                        , new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.25, DXFPoints.endPointsBot[nSpans - 1].Y + 0.07));
+                        , new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.10/*0.25 previouslt*/, DXFPoints.endPointsBot[nSpans - 1].Y + 0.07));
                 }
                 else if ((nSpans - 1) % 2 == 0)
                 {
                     BottomRFT[nSpans - 1] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsBot[nSpans - 1].X - 0.25/*----*/, DXFPoints.startPointsBot[nSpans - 1].Y + 0.05)
-                        , new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.25, DXFPoints.endPointsBot[nSpans - 1].Y + 0.05));
+                        , new Point2D(DXFPoints.endPointsBot[nSpans - 1].X + 0.10/*0.25 previouslt*/, DXFPoints.endPointsBot[nSpans - 1].Y + 0.05));
                 }
                 model.Entities.Add(BottomRFT[nSpans - 1]);
             }
@@ -117,7 +117,7 @@ namespace Design.Core.Dxf
             }
             else
             {
-                TopSpan[0] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsTop[0].X - 0.25/*------*/, DXFPoints.startPointsTop[0].Y - 0.05),
+                TopSpan[0] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsTop[0].X - 0.10/*0.25 Previously*//*------*/, DXFPoints.startPointsTop[0].Y - 0.05),
                 new Point2D(DXFPoints.endPointsTop[0].X + 0.15 + 1.50 * Ln[0]/*-------*/, DXFPoints.endPointsTop[0].Y - 0.05));
                 model.Entities.Add(TopSpan[0]);
             }
@@ -141,7 +141,7 @@ namespace Design.Core.Dxf
             else
             {
                 TopSpan[nSpans] = new DxfLine(EntityColors.Blue, new Point2D(DXFPoints.startPointsTop[nSpans - 1].X - 0.15 - 1.50 * Ln[nSpans - 1]/*----*/, DXFPoints.startPointsTop[nSpans - 1].Y - 0.05)
-                , new Point2D(DXFPoints.endPointsTop[nSpans - 1].X + 0.25/*----*/, DXFPoints.endPointsTop[nSpans - 1].Y - 0.05));
+                , new Point2D(DXFPoints.endPointsTop[nSpans - 1].X + 0.10/*0.25 Previously*//*----*/, DXFPoints.endPointsTop[nSpans - 1].Y - 0.05));
                 model.Entities.Add(TopSpan[nSpans]);
             }
         }
@@ -200,7 +200,21 @@ namespace Design.Core.Dxf
             double spacingLeft = 0;
             double sec1Spacing = 150;
             stirrupsLeft = new DxfLine[nSpans, 3];
-            for (int i = 0; i < stirrupsLeft.GetLength(0); i++)
+
+            /*------Case Of Cantilever At Start --------*/
+            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+            {
+                spacingLeft = 0;
+                for (int j = 0; j < stirrupsLeft.GetLength(1); j++)
+                {
+                    stirrupsLeft[0, j] = new DxfLine(new Point2D(DXFPoints.startPointsBot[0].X + 0.05 + (spacingLeft / 1000), DXFPoints.startPointsTop[0].Y/* - 0.05*/)
+                        , new Point2D(DXFPoints.startPointsBot[0].X + 0.05 + (spacingLeft / 1000), DXFPoints.startPointsBot[0].Y/*--*/ /*+ 0.07*/));
+                    model.Entities.Add(stirrupsLeft[0, j]);
+                    spacingLeft += sec1Spacing;
+                }
+            }
+
+            for (int i = 1; i < stirrupsLeft.GetLength(0); i++)
             {
                 spacingLeft = 0;
                 for (int j = 0; j < stirrupsLeft.GetLength(1); j++)
@@ -237,7 +251,7 @@ namespace Design.Core.Dxf
             double spacingRight = 0;
             double sec3Spacing = 150;
             stirrupsRight = new DxfLine[nSpans, 3];
-            for (int i = 0; i < stirrupsRight.GetLength(0); i++)
+            for (int i = 0; i < stirrupsRight.GetLength(0) - 1; i++)
             {
                 spacingRight = 0;
                 for (int j = 0; j < stirrupsRight.GetLength(1); j++)
@@ -245,6 +259,19 @@ namespace Design.Core.Dxf
                     stirrupsRight[i, j] = new DxfLine(new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsTop[i].Y /*- 0.05*/)
                     , new Point2D(DXFPoints.endPointsBot[i].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsBot[i].Y /*+ 0.07*/));
                     model.Entities.Add(stirrupsRight[i, j]);
+                    spacingRight += sec3Spacing;
+                }
+            }
+
+            /*--------Case Of Cantilever At End ----------*/
+            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+            {
+                spacingRight = 0;
+                for (int j = 0; j < stirrupsRight.GetLength(1); j++)
+                {
+                    stirrupsRight[stirrupsRight.GetLength(0) - 1, j] = new DxfLine(new Point2D(DXFPoints.endPointsBot[stirrupsRight.GetLength(0) - 1].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsTop[stirrupsRight.GetLength(0) - 1].Y /*- 0.05*/)
+                    , new Point2D(DXFPoints.endPointsBot[stirrupsRight.GetLength(0) - 1].X - 0.05 - (spacingRight / 1000), DXFPoints.endPointsBot[stirrupsRight.GetLength(0) - 1].Y /*+ 0.07*/));
+                    model.Entities.Add(stirrupsRight[stirrupsRight.GetLength(0) - 1, j]);
                     spacingRight += sec3Spacing;
                 }
             }

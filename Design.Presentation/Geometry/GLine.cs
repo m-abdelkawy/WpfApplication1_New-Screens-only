@@ -27,6 +27,8 @@ namespace Design.Presentation.Geometry
         public Point EndPoint { get; set; }
         public GLine(GCanvas gCanvas, Point startPoint, Point endPoint):base(gCanvas)
         {
+            //StartPoint = ConvertCoordinates(startPoint);
+            //EndPoint = ConvertCoordinates(endPoint);
             StartPoint = startPoint;
             EndPoint = endPoint;
             Shape = Line = new Line();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Design.Presentation.ViewModels;
+using Desing.Core.Sap;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,7 +67,24 @@ namespace Design.Core.Dxf
             {
                 DxfDimension.Aligned[] LnDimArr = new DxfDimension.Aligned[nSpans];
 
-                for (int i = 0; i < LnDimArr.Length; i++)
+                //Case of Cantilever at start
+                if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+                {
+                    // Dimension with text aligned with dimension line.
+                    DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
+                    dimension.DimensionStyleOverrides.ArrowSize = 0.2d;
+                    dimension.DimensionStyleOverrides.TextInsideHorizontal = false;
+                    dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
+                    dimension.Layer = lnspanLayer;
+                    dimension.DimensionLineLocation = new Point3D(0, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsBot[0].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsBot[0].X, 0, 0);
+                    dimension.UseTextMiddlePoint = true;
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (comSpanVals[0] + comSpanVals[0 + 1]), 0.2d, 0d);
+                    blockLnSpan.Entities.Add(dimension);
+                }
+
+                for (int i = 1; i < LnDimArr.Length - 1; i++)
                 {
                     // Dimension with text aligned with dimension line.
                     DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
@@ -81,6 +100,22 @@ namespace Design.Core.Dxf
                     blockLnSpan.Entities.Add(dimension);
                 }
 
+                //case of cantilever at end
+                if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+                {
+                    // Dimension with text aligned with dimension line.
+                    DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
+                    dimension.DimensionStyleOverrides.ArrowSize = 0.2d;
+                    dimension.DimensionStyleOverrides.TextInsideHorizontal = false;
+                    dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
+                    dimension.Layer = lnspanLayer;
+                    dimension.DimensionLineLocation = new Point3D(0, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsBot[LnDimArr.Length - 1].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsBot[LnDimArr.Length - 1].X, 0, 0);
+                    dimension.UseTextMiddlePoint = true;
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (comSpanVals[LnDimArr.Length - 1] + comSpanVals[LnDimArr.Length - 1 + 1]), 0.2d, 0d);
+                    blockLnSpan.Entities.Add(dimension);
+                }
             }
         }
 

@@ -268,7 +268,45 @@ namespace Design.Core.Dxf
             //Stirrups Text Left/*------------------*/
             double fystr = -1;
             stirLeftTxt = new DxfText[nSpans];
-            for (int i = 0; i < stirLeftTxt.Length; i++)
+
+            //Case of cantilever at start:
+
+            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+            {
+                if (indexesLeft[0] != -2)
+                {
+                    if (indexesLeft[0] < stirDiaArr240.Length)
+                    {
+                        fystr = 240;
+                        stirLeftTxt[0] = new DxfText($"Y{stirDiaArr240[indexesLeft[0]]}@{spacingLeftSec[0]}"
+                            , new Point3D(DXFRebar.stirrupsLeft[0, 2].Start.X - 0.85, DXFPoints.startPointsBot[0].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirLeftTxt[0]);
+                    }
+                    else if (indexesLeft[0] < stirDiaArr240.Length + stirDiaArr360.Length)
+                    {
+                        fystr = 360;
+                        stirLeftTxt[0] = new DxfText($"T{stirDiaArr360[indexesLeft[0] - stirDiaArr240.Length]}@{spacingLeftSec[0]}"
+                            , new Point3D(DXFRebar.stirrupsLeft[0, 2].Start.X - 0.85, DXFPoints.startPointsBot[0].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirLeftTxt[0]);
+                    }
+                    else if (indexesLeft[0] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
+                    {
+                        fystr = 400;
+                        stirLeftTxt[0] = new DxfText($"T{stirDiaArr400[indexesLeft[0] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingLeftSec[0]}"
+                            , new Point3D(DXFRebar.stirrupsLeft[0, 2].Start.X - 0.85, DXFPoints.startPointsBot[0].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirLeftTxt[0]);
+                    }
+
+                }
+                else
+                {
+                    stirLeftTxt[0] = new DxfText($"Increase Dims"
+                        , new Point3D(DXFRebar.stirrupsLeft[0, 2].Start.X - 0.85, DXFPoints.startPointsBot[0].Y - 1.40, 0), 0.2d);
+                    model.Entities.Add(stirLeftTxt[0]);
+                }
+            }
+
+            for (int i = 1; i < stirLeftTxt.Length; i++)
             {
                 if (indexesLeft[i] != -2)
                 {
@@ -434,7 +472,7 @@ namespace Design.Core.Dxf
             //Stirrups Text Left/*------------------*/
             double fystr = -1;
             DxfText[] stirRightTxt = new DxfText[nSpans];
-            for (int i = 0; i < stirRightTxt.Length; i++)
+            for (int i = 0; i < stirRightTxt.Length - 1; i++)
             {
                 if (indexesRight[i] != -2)
                 {
@@ -466,6 +504,42 @@ namespace Design.Core.Dxf
                     stirRightTxt[i] = new DxfText($"Increase Dims"
                         , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.85, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
                     model.Entities.Add(stirRightTxt[i]);
+                }
+            }
+
+            //case of cantilever at end
+            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+            {
+                if (indexesRight[stirRightTxt.Length - 1] != -2)
+                {
+                    if (indexesRight[stirRightTxt.Length - 1] < stirDiaArr240.Length)
+                    {
+                        fystr = 240;
+                        stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"Y{stirDiaArr240[indexesRight[stirRightTxt.Length - 1]]}@{spacingRightSec[stirRightTxt.Length - 1]}"
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
+                    }
+                    else if (indexesRight[stirRightTxt.Length - 1] < stirDiaArr240.Length + stirDiaArr360.Length)
+                    {
+                        fystr = 360;
+                        stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"T{stirDiaArr360[indexesRight[stirRightTxt.Length - 1] - stirDiaArr240.Length]}@{spacingRightSec[stirRightTxt.Length - 1]}"
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
+                    }
+                    else if (indexesRight[stirRightTxt.Length - 1] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
+                    {
+                        fystr = 400;
+                        stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"T{stirDiaArr400[indexesRight[stirRightTxt.Length - 1] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingRightSec[stirRightTxt.Length - 1]}"
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                        model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
+                    }
+
+                }
+                else
+                {
+                    stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"Increase Dims"
+                        , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                    model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
                 }
             }
         }

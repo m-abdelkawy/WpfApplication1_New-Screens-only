@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Design.Presentation.App" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.GeometryEditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgAAkAAHABIACAggAAAAMAABAQgAAABAiQAAABAAA=</HashCode>
+      <FileName>GeometryEditor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAQgAAEARFIBgCAAAAAgEIoYBBIBCKjg4AAAAIAAU=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Common.Split" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Split.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFAnnotation" Collapsed="true">
+    <Position X="36.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Dxf\DXFAnnotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFDimClass" Collapsed="true">
+    <Position X="36.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>Dxf\DXFDimClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFLines" Collapsed="true">
+    <Position X="36.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAg=</HashCode>
+      <FileName>Dxf\DXFLines.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFPoints" Collapsed="true">
+    <Position X="36.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAACAAAACAAAAAAAAAAAAAAAAAAAAAAAAAACAAgAg=</HashCode>
+      <FileName>Dxf\DXFPoints.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFRebar" Collapsed="true">
+    <Position X="36.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>A0AAAAAAAAAAAAAAAJAAAAAAAAAUAAEAQQQAAAIAABA=</HashCode>
+      <FileName>Dxf\DXFRebar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.DXFTextClass" Collapsed="true">
+    <Position X="36.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQEQAIAECAAECgAAACBCAAAAYBmBABAAAAAAAAAAKAA=</HashCode>
+      <FileName>Dxf\DXFTextClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Dxf.GenerateDXF" Collapsed="true">
+    <Position X="36.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dxf\GenerateDXF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.Arrow" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <InheritanceLine Type="Design.Presentation.Geometry.GShape" ManuallyRouted="true">
+      <Path>
+        <Point X="11.25" Y="1.062" />
+        <Point X="11.25" Y="3.116" />
+        <Point X="14.25" Y="3.116" />
+        <Point X="14.25" Y="4.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAECAABABAEAACAAICABAAAgAAAAA=</HashCode>
+      <FileName>Geometry\Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.ArrowLoad" Collapsed="true">
+    <Position X="11.75" Y="4.25" Width="1.5" />
+    <InheritanceLine Type="Design.Presentation.Geometry.GShape" ManuallyRouted="true">
+      <Path>
+        <Point X="11.25" Y="1.062" />
+        <Point X="11.25" Y="3.116" />
+        <Point X="12.5" Y="3.116" />
+        <Point X="12.5" Y="4.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAQAAAEAAABAAAAAAIAAAAABgAEgAAAAg=</HashCode>
+      <FileName>Geometry\ArrowLoad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.DrawingHelper" Collapsed="true">
+    <Position X="32" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometry\DrawingHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.Fixed" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAACAAAAEAIABAACAAAgAAAAABAAAgABAAA=</HashCode>
+      <FileName>Geometry\Fixed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GCanvas" Collapsed="true">
+    <Position X="32" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAgAAAAIEAIAgGgIIAAAAAAAIAAAAACAgAAAABAA=</HashCode>
+      <FileName>Geometry\GCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GCircle" Collapsed="true">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAgAAIAAAACAAgAAEAAAAAAAgAAAAA=</HashCode>
+      <FileName>Geometry\GCircle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GeometryEngine" Collapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAgAAAAAIEAAABAIAAAAAAAAAIBAAAAAAAAA=</HashCode>
+      <FileName>Geometry\GeometryEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GLine" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAIAAAACAAAAAEAAAAAAAgABAAg=</HashCode>
+      <FileName>Geometry\GLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GPolygon" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAggAAAAAAAAAAAAAAAAAAAAAgAACA=</HashCode>
+      <FileName>Geometry\GPolygon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GRectangle" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAgEAAAHEAAAAAgAAAAABAAAgAAAAA=</HashCode>
+      <FileName>Geometry\GRectangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GShape" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAGAAAAAiABACAAEAAABAAAEAgACEAAABAAAgAAAAA=</HashCode>
+      <FileName>Geometry\GShape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GText" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAigCAAEAAABAAAGAAAAEAAABAACgAAAAA=</HashCode>
+      <FileName>Geometry\GText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.GTriangle" Collapsed="true">
+    <Position X="15.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAEAIABAACAAAIAAAACBCAAgAAAAA=</HashCode>
+      <FileName>Geometry\GTriangle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.Hinged" Collapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAABEAAABAAAAAAAAAAAABAAAgABAAA=</HashCode>
+      <FileName>Geometry\Hinged.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Geometry.Roller" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAACAAAAEAIABAACAAgAAAAAABAAAgABAAA=</HashCode>
+      <FileName>Geometry\Roller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Model.DistLoadAssignmentModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAAAAAAAIAAAAAABgAAEAAAASAAIAAIAAAA=</HashCode>
+      <FileName>Model\DistLoadAssignmentModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Model.GridData" Collapsed="true">
+    <Position X="28.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAACAAIAAAA=</HashCode>
+      <FileName>Model\GridData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Model.LoadCaseGridData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAIAAAQAAAgAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\LoadCaseGridData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Model.LoadCasesModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAIAAAQAAAgAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\LoadCasesModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Model.LoadCombinationsModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAAAAAAAIAAAIAAAgAAAAAAAQAAAAAAAgAA=</HashCode>
+      <FileName>Model\LoadCombinationsModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Model.LoadComboGridData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACABAAAAAAAAAAIAAAIAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LoadComboGridData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Model.PointLoadAssignmentModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACiAAAAAAAAAAAAIAAAQAABgAAEAAAAQAAIAAIAAAE=</HashCode>
+      <FileName>Model\PointLoadAssignmentModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Properties.Resources" Collapsed="true">
+    <Position X="33.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Properties.Settings" Collapsed="true">
+    <Position X="33.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Core.Sap.AnalysisMapping" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>giEAQgDAgEMQGADAIgAiBAABgkRIIAAEAEgAQAAABAA=</HashCode>
+      <FileName>ViewModels\AnalysisMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.DistLoadAssignmentViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ViewModels\DistLoadAssignmentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.GeometryEditorVM" Collapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEgAAgAAAAAAAAAAAAAAIAEAIBAAIAQEASAAAAAAA=</HashCode>
+      <FileName>ViewModels\GeometryEditorVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.LoadCasesViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="33.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAIQAAQAAAgIAAAACAEAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LoadCasesViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.LoadCasesVM" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIABAAAAAAAAAAAAAAYAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LoadCasesVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.LoadCombinationsViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAgAgAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LoadCombinationsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.MainWindowViewModel" Collapsed="true">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.MaterialEditorVM" Collapsed="true">
+    <Position X="26.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAIAAAQAAAAAAQAAAAAAAAAAAAAACIA=</HashCode>
+      <FileName>ViewModels\MaterialEditorVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.PointLoadAssignmentViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAQABAAAAAAAAgAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PointLoadAssignmentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.RestraintsModel" Collapsed="true">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RestraintsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.RFTCanvas" Collapsed="true">
+    <Position X="25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASUEwAEAFBAgQAQCSIAAAEAAABAEAEIAAgAAAAIQRAg=</HashCode>
+      <FileName>ViewModels\RFTCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.SectionDialougeVM" Collapsed="true">
+    <Position X="28.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SectionDialougeVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.SectionEditorVM" Collapsed="true">
+    <Position X="33.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAgAEAAAAAAAIA=</HashCode>
+      <FileName>ViewModels\SectionEditorVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.ViewModels.TxtRFTCanvas" Collapsed="true">
+    <Position X="25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAUUAICEAAAECgQAACBCAAAAYBmBgBAAAAAAAACBaAA=</HashCode>
+      <FileName>ViewModels\TxtRFTCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Design.Presentation.Views.Material.MaterialEditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAUABBAAAAAAAACAACAAAAABIAAAABAAAAAAAAA=</HashCode>
+      <FileName>Views\Material\MaterialEditor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Views.Section.SectionDialouge" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Section\SectionDialouge.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Views.Section.SectionEditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Section\SectionEditor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Windows.DistLoadAssignmentWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAACAAAAIAAAAAAAAAAAACBAAACCgAACAACAAAA=</HashCode>
+      <FileName>Windows\DistLoadAssignmentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Windows.LoadCasesWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQQAAAAAAAAAAAAAAAAAAQgAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\LoadCasesWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Windows.LoadCombinationsWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAAAAAAAAkAAAEAAAAAAAAAAKAAAAAAAAAABA=</HashCode>
+      <FileName>Windows\LoadCombinationsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Design.Presentation.Windows.PointLoadAssignmentWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAhAgAAAAgAAAAAAAAAAAAAEAgAAACAAASAAAAAAAA=</HashCode>
+      <FileName>Windows\PointLoadAssignmentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="Design.Presentation.Geometry.Axis" Collapsed="true">
+    <Position X="23.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometry\AxisEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Design.Presentation.Geometry.Direction" Collapsed="true">
+    <Position X="25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometry\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Design.Presentation.Geometry.ShapeType" Collapsed="true">
+    <Position X="26.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAABAACAAEAAAAggAAAAAAiAAABDAAA=</HashCode>
+      <FileName>Geometry\ShapesEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -45,6 +45,7 @@ namespace Design.Presentation.ViewModels
         #region General Methods
         public static void CalcSpanVals()
         {
+            SpanVals = new double[GeometryEditorVM.GeometryEditor.NumberOfSpans];
             for (int i = 0; i < SpanVals.Length; i++)
             {
                 SpanVals[i] = GeometryEditorVM.GeometryEditor.GridData[i].Span;
@@ -52,6 +53,7 @@ namespace Design.Presentation.ViewModels
         }
         public static void CalcComSpanVals()
         {
+            comSpanVals = new double[SpanVals.Length + 1];
             comSpanVals[0] = 0;
             for (int i = 1; i < comSpanVals.Length; i++)
             {
@@ -82,6 +84,7 @@ namespace Design.Presentation.ViewModels
 
         public static void CreateBottomRFTTxt(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            BotRFTTxt = new GText[SpanVals.Length];
             //Case of Cantilever at start
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
@@ -132,8 +135,9 @@ namespace Design.Presentation.ViewModels
 
         public static void CreateTopRFTTxt(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            TopRFTTxt = new GText[SpanVals.Length + 1];
             //Top Support RFT/*------------------*/
-            
+
             //Case Of Cantilever Start Span
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
@@ -145,6 +149,7 @@ namespace Design.Presentation.ViewModels
 
             for (int i = 1; i < TopRFTTxt.Length - 1; i++)
             {
+
                 TopRFTTxt[i] = new GText(gCanvas, new Point(RFTCanvas.TopRFTLines[i].EndPoint.X /*+ 0.30 * SpanVals[i] * scale*/
                     , RFTCanvas.TopRFTLines[i].EndPoint.Y + 0.07 * scale), $"{nRebarTopSupport[i]}T{TopChosenDiameterArr[i]}");
                 GeometryEngineRFT.Shapes["Text"].Add(TopRFTTxt[i]);
@@ -386,10 +391,11 @@ namespace Design.Presentation.ViewModels
 
         public static void StirrupLeftTxt(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            stirLeftTxt = new GText[SpanVals.Length];
             //Stirrups Text Left/*------------------*/
             double fystr = -1;
             /*Case Of Cantilever at left End*/
-            //Case of Cantilever at start
+            #region Case of Cantilever at start
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
                 if (indexesLeft[0] != -2)
@@ -429,7 +435,8 @@ namespace Design.Presentation.ViewModels
                     GeometryEngineRFT.Shapes["Text"].Add(stirLeftTxt[0]);
                 }
             }
-            
+            #endregion
+
 
             for (int i = 1; i < stirLeftTxt.Length; i++)
             {
@@ -698,6 +705,7 @@ namespace Design.Presentation.ViewModels
 
         public static void StirrupRightTxt(GCanvas gCanvas, GeometryEngine GeometryEngineRFT, double scale)
         {
+            stirRightTxt = new GText[SpanVals.Length];
             //Stirrups Text Left/*------------------*/
             double fystr = -1;
 
@@ -743,7 +751,8 @@ namespace Design.Presentation.ViewModels
             }
 
             //Case Of Cantilever at right End
-            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+            #region Case of Cantilever at right end
+            if (GeometryEditorVM.GeometryEditor.RestraintsCollection[SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
             {
                 if (indexesRight[stirRightTxt.Length - 1] != -2)
                 {
@@ -781,6 +790,7 @@ namespace Design.Presentation.ViewModels
                     GeometryEngineRFT.Shapes["Text"].Add(stirRightTxt[stirRightTxt.Length - 1]);
                 }
             }
+            #endregion
         }
         #endregion
 
