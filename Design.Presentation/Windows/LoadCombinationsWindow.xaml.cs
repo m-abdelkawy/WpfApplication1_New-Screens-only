@@ -57,8 +57,9 @@ namespace Design.Presentation.Windows
             var index = loadComboGridData.SelectedIndex;
             LoadCombinationsViewModel.LoadComboModelCollection.RemoveAt(index);
         }
+        
 
-        private void loadComboSubmitBtn_Click(object sender, RoutedEventArgs e)
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < LoadCombinationsViewModel.LoadComboModelCollection.Count; i++)
             {
@@ -70,10 +71,7 @@ namespace Design.Presentation.Windows
                     AnalysisMapping.loadFactorList.Add(LoadCombinationsViewModel.LoadComboModelCollection[i].LoadFactor);
                 }
             }
-        }
 
-        private void OkBtn_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
         }
 

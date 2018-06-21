@@ -56,7 +56,9 @@ namespace Design.Presentation.Windows
             LoadCasesViewModel.LoadCasesModelCollection.RemoveAt(index);
         }
 
-        private void loadCasesSubmitBtn_Click(object sender, RoutedEventArgs e)
+        
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             /*--------------> Consider Revision*/
             AnalysisMapping.loadPatternName.Clear();
@@ -73,10 +75,7 @@ namespace Design.Presentation.Windows
 
                 }
             }
-        }
 
-        private void OkBtn_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
         }
     }

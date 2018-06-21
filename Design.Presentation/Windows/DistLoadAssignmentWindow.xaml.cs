@@ -87,8 +87,9 @@ namespace Design.Presentation.Windows
             var index = DistLoadGridData.SelectedIndex;
             DistLoadAssignmentViewModel.DistLoadModelStaticCollection.RemoveAt(index);
         }
+        
 
-        private void DistLoadSubmitBtn_Click(object sender, RoutedEventArgs e)
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             /*------------------------Comulative Span------------------------*/
             AnalysisMapping.distLoadVals.Clear();
@@ -98,7 +99,7 @@ namespace Design.Presentation.Windows
             /*--------------------------------------------------------------------*/
             for (int i = 0; i < DistLoadAssignmentViewModel.DistLoadModelStaticCollection.Count; i++)
             {
-                if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].LoadCases!=null)
+                if (DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].LoadCases != null)
                 {
                     //Load Value
                     AnalysisMapping.distLoadVals.Add(DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal);
@@ -229,11 +230,8 @@ namespace Design.Presentation.Windows
 
             //}
             //    GeometryEngine.RenderAll();
-        #endregion
-        }
+            #endregion
 
-        private void OkBtn_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
         }
     }

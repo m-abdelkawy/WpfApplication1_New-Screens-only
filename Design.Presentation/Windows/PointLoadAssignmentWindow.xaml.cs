@@ -77,8 +77,15 @@ namespace Design.Presentation.Windows
             var s = (int)cb.SelectedItem;
             PLAM.selectedSpanNo = s;
         }
+        
 
-        private void PointLoadSubmitBtn_Click(object sender, RoutedEventArgs e)
+        private void PointLoadDltBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var index = PointLoadGridData.SelectedIndex;
+            PointLoadAssignmentViewModel.PointLoadModelStaticCollection.RemoveAt(index);
+        }
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < PointLoadAssignmentViewModel.PointLoadModelStaticCollection.Count; i++)
             {
@@ -98,19 +105,10 @@ namespace Design.Presentation.Windows
 
                     //Relative Distance List
                     AnalysisMapping.relDistList.Add(PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance);
-                    
+
                 }
             }
-        }
 
-        private void PointLoadDltBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var index = PointLoadGridData.SelectedIndex;
-            PointLoadAssignmentViewModel.PointLoadModelStaticCollection.RemoveAt(index);
-        }
-
-        private void OkBtn_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
         }
     }
