@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Design.Core", "Design.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Design.Presentation", "Design.Presentation\Design.Presentation.csproj", "{14F43B0E-62D9-45FA-BE10-768C46AEC2FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Themes", "WPF.Themes\WPF.Themes.csproj", "{CD3CD636-D63E-4BD5-9FE9-2B63DA6F0616}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{14F43B0E-62D9-45FA-BE10-768C46AEC2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14F43B0E-62D9-45FA-BE10-768C46AEC2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14F43B0E-62D9-45FA-BE10-768C46AEC2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3CD636-D63E-4BD5-9FE9-2B63DA6F0616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3CD636-D63E-4BD5-9FE9-2B63DA6F0616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3CD636-D63E-4BD5-9FE9-2B63DA6F0616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3CD636-D63E-4BD5-9FE9-2B63DA6F0616}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

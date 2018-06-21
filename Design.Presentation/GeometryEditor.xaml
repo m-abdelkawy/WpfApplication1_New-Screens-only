@@ -7,7 +7,9 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:myRes="clr-namespace:Desing.Core.Sap;assembly=Design.Core"
         mc:Ignorable="d"
-        Title="Geometry Editor" Height="460" Width="520" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Geometry Editor" Height="460" Width="520" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+        themes:ThemeManager.Theme= "WhistlerBlue">
 
     <Window.Resources>
         <ObjectDataProvider MethodName="GetValues"

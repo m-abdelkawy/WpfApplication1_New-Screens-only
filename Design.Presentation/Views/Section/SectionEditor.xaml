@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Section"
         mc:Ignorable="d"
-        Title="SectionEditor"  Height="300" Width="500" WindowStartupLocation="CenterScreen">
+        Title="SectionEditor"  Height="300" Width="500" WindowStartupLocation="CenterScreen"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+        themes:ThemeManager.Theme= "WhistlerBlue">
     <StackPanel Margin="10">
         <StackPanel>
             <!--General-->

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1024" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="700" Width="1024" WindowStartupLocation="CenterScreen"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+        themes:ThemeManager.Theme= "WhistlerBlue">
 
     <StackPanel>
         <!--Menu Bar-->

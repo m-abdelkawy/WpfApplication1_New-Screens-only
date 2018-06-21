@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Material"
         mc:Ignorable="d"
-        Title="MaterialEditor" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MaterialEditor" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+        themes:ThemeManager.Theme= "WhistlerBlue">
     <StackPanel Margin="10,10,19,10">
         <!--General-->
         <!--Weight and MAss-->

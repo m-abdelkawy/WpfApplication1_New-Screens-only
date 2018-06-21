@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation.Views.Section"
         mc:Ignorable="d"
-    Title="Sections" Height="350" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    Title="Sections" Height="350" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
+        themes:ThemeManager.Theme= "WhistlerBlue">
     <Grid Margin="10 10 10 10">
         <Grid>
             <Grid.ColumnDefinitions>

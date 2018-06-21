@@ -54,6 +54,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPF.Themes">
+      <HintPath>..\WPF.Themes\bin\Debug\WPF.Themes.dll</HintPath>
+    </Reference>
     <Reference Include="WW, Version=4.0.36.84, Culture=neutral, PublicKeyToken=87d16b8f7b531b65, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lenovo\Documents\CadLib 4.0\WW.dll</HintPath>
