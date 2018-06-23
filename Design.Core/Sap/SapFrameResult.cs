@@ -51,7 +51,7 @@ namespace Desing.Core.Sap
         string[] statusShear;
 
         //for Mapping Design for Flexure
-        int[] DiameterArr = new int[] { 12, 14, 16, 18, 20, 22, 25 };
+        int[] DiameterArr = new int[] { 12, 16, 18, 20, 22, 25 };
         int[,] nRebarArr;
         double[,] AsActual;
         int nLayerMax = 3;
@@ -63,12 +63,12 @@ namespace Desing.Core.Sap
         double[] diameterChosenArr;
 
         /*Mapping Desin for Shear*/
-        int[] StirDiaArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25 };
+        int[] StirDiaArr = new int[] { 8, 10, 12, 16, 18, 20, 22, 25 };
 
         double[,][] spacing;
         int[] stirDiaArr240 = new int[] { 8 };
-        int[] stirDiaArr360 = new int[] { 10, 12, 14, 16 };
-        int[] stirDiaArr400 = new int[] { 10, 12, 14, 16 };
+        int[] stirDiaArr360 = new int[] { 10, 12, 16, 18 };
+        int[] stirDiaArr400 = new int[] { 10, 12, 16, 18 };
 
 
 

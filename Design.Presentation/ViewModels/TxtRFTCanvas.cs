@@ -14,8 +14,8 @@ namespace Design.Presentation.ViewModels
         #region Static Members
         //Stirrup Arrays
         public static double[] stirDiaArr240 = new double[] { 8 };
-        public static double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
-        public static double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
+        public static double[] stirDiaArr360 = new double[] { 10, 12, 16, 18 };
+        public static double[] stirDiaArr400 = new double[] { 10, 12, 16, 18 };
 
         public static double[] SpanVals = new double[GeometryEditorVM.GeometryEditor.NumberOfSpans];
         public static double[] comSpanVals = new double[SpanVals.Length + 1];

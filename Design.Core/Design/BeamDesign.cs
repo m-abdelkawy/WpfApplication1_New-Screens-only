@@ -215,12 +215,12 @@ namespace Desing.Core.Sap
 
                 //for Mapping
                 XBeamArr[i].FrameResults.ElementAt(0).NRebarArr =
-                    CalcnRebarArr(new double[] { 12, 14, 16, 18, 20, 22, 25 }, xBeamArr[i].FrameResults.ElementAt(0).Asteel);
+                    CalcnRebarArr(new double[] { 12, 16, 18, 20, 22, 25 }, xBeamArr[i].FrameResults.ElementAt(0).Asteel);
 
                 XBeamArr[i].FrameResults.ElementAt(0).AsActual1 =
-                    CalcAsActual(new double[] { 12, 14, 16, 18, 20, 22, 25 }, XBeamArr[i].FrameResults.ElementAt(0).NRebarArr);
+                    CalcAsActual(new double[] { 12, 16, 18, 20, 22, 25 }, XBeamArr[i].FrameResults.ElementAt(0).NRebarArr);
 
-                XBeamArr[i].FrameResults.ElementAt(0).NRebarMaxInLayer = CalcMaxNRebarinLayer(new double[] { 12, 14, 16, 18, 20, 22, 25 }, arr[i]);
+                XBeamArr[i].FrameResults.ElementAt(0).NRebarMaxInLayer = CalcMaxNRebarinLayer(new double[] { 12, 16, 18, 20, 22, 25 }, arr[i]);
 
                 XBeamArr[i].FrameResults.ElementAt(0).NLayerArr = CalcnLayers(XBeamArr[i].FrameResults.ElementAt(0).NRebarArr, XBeamArr[i].FrameResults.ElementAt(0).NRebarMaxInLayer);
 
@@ -233,7 +233,7 @@ namespace Desing.Core.Sap
 
                 //Diameter Chosen
                 XBeamArr[i].FrameResults.ElementAt(0).DiameterChosenArr =
-                    getDiameterChosen(XBeamArr[i].FrameResults.ElementAt(0).AsChosenIndex, new double[] { 12, 14, 16, 18, 20, 22, 25 });
+                    getDiameterChosen(XBeamArr[i].FrameResults.ElementAt(0).AsChosenIndex, new double[] { 12, 16, 18, 20, 22, 25 });
 
 
                 /*-----Shear-----*/
@@ -254,7 +254,7 @@ namespace Desing.Core.Sap
 
                 //For Mapping
                 XBeamArr[i].FrameResults.ElementAt(0).Spacing = CalcSpacing(xBeamArr[i].FrameResults.ElementAt(0).Astr_s, nBranches
-                    , new double[] { 8 }, new double[] { 10, 12, 14, 16 }, new double[] { 10, 12, 14, 16 });
+                    , new double[] { 8 }, new double[] { 10, 12, 16, 18 }, new double[] { 10, 12, 16, 18 });
             }
 
         }

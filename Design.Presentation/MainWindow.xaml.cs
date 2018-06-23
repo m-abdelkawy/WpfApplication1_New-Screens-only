@@ -28,8 +28,8 @@ namespace Design.Presentation
     {
         //lists
 
-        int[] rebarDiameterArr = new int[] { 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 32 };
-        int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 14, 16, 18 };
+        int[] rebarDiameterArr = new int[] { 8, 10, 12, 16, 18, 20, 22, 25, 28, 32 };
+        int[] StirrupsDiameterArr = new int[] { 8, 10, 12, 16, 18 };
         int[] Flexuresections = new int[] { 1, 2, 3 };
         int[] shearSections = new int[] { 1, 2 };
         #region Storage
@@ -521,11 +521,11 @@ namespace Design.Presentation
                     == (ShowLoadComboBox.SelectedItem).ToString())
                 {
                     GeometryEngine.Shapes["DistributedLoad"].Add(new ArrowLoad(GeometryEngine.GCanvas
-                                   , new Point(startX, 100), new Point(endX, 100)
+                                   , new Point(startX, 130), new Point(endX, 130)
                                    , DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal * 0.50));
 
                     /*-----------------------Add Text-----------------------*/
-                    GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(startX, 50), $"{DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal} KN/m"));
+                    GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(startX, 70), $"{DistLoadAssignmentViewModel.DistLoadModelStaticCollection[i].DistLoadVal} KN/m"));
                 }
             }
             List<double> spanList = GeometryEditorVM.GeometryEditor.GridData.Select(d => d.Span).ToList();
@@ -540,14 +540,14 @@ namespace Design.Presentation
                     var arrow = new Arrow(GeometryEngine.GCanvas,
                         new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
                         + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
-                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 100), 30);
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 130/**/), 60);
                     arrow.Rotate(180);
                     GeometryEngine.Shapes["ConcentratedLoad"].Add(arrow);
 
                     /*-----------------------Add Text-----------------------*/
                     GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
                         + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
-                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 80), $"{PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal} KN"));
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 40), $"{PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal} KN"));
                 }
             }
 

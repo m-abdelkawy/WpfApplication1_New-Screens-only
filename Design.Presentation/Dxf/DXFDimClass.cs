@@ -135,7 +135,24 @@ namespace Design.Core.Dxf
             {
                 DxfDimension.Aligned[] TopRFTDimArrRt = new DxfDimension.Aligned[nSpans + 1];
 
-                for (int i = 1; i < TopRFTDimArrRt.Length - 1; i++)
+                //Case Of Cantilever Start Span
+                if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
+                {
+                    // Dimension with text aligned with dimension line.
+                    DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
+                    dimension.DimensionStyleOverrides.ArrowSize = 0.2d;
+                    dimension.DimensionStyleOverrides.TextInsideHorizontal = false;
+                    dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
+                    dimension.Layer = TopRFTDimLayerRt;
+                    dimension.DimensionLineLocation = new Point3D(0, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsTop[1].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.startPointsTop[1].X + Math.Max(0.33 * DXFRebar.Ln[1 - 1], 0.33 * DXFRebar.Ln[1]) + 0.25, 0, 0);
+                    dimension.UseTextMiddlePoint = true;
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.startPointsTop[1].X + DXFPoints.startPointsTop[1].X + Math.Max(0.33 * DXFRebar.Ln[1 - 1], 0.33 * DXFRebar.Ln[1]) + 0.25), 0.2d, 0d);
+                    blockTopRFTDimRt.Entities.Add(dimension);
+                }
+
+                for (int i = 2; i < TopRFTDimArrRt.Length - 2; i++)
                 {
                     // Dimension with text aligned with dimension line.
                     DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
@@ -150,9 +167,26 @@ namespace Design.Core.Dxf
                     dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.startPointsTop[i].X + DXFPoints.startPointsTop[i].X + Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) + 0.25), 0.2d, 0d);
                     blockTopRFTDimRt.Entities.Add(dimension);
                 }
+                //Case of Cantilever at end
+                if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+                {
+                    // Dimension with text aligned with dimension line.
+                    DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
+                    dimension.DimensionStyleOverrides.ArrowSize = 0.2d;
+                    dimension.DimensionStyleOverrides.TextInsideHorizontal = false;
+                    dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
+                    dimension.Layer = TopRFTDimLayerRt;
+                    dimension.DimensionLineLocation = new Point3D(0, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.startPointsTop[TopRFTDimArrRt.Length - 1].X, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.startPointsTop[TopRFTDimArrRt.Length - 1].X + Math.Max(0.33 * DXFRebar.Ln[TopRFTDimArrRt.Length - 1 - 1], 0.33 * DXFRebar.Ln[TopRFTDimArrRt.Length - 1]) + 0.25, 0, 0);
+                    dimension.UseTextMiddlePoint = true;
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.startPointsTop[TopRFTDimArrRt.Length - 1].X + DXFPoints.startPointsTop[TopRFTDimArrRt.Length - 1].X + Math.Max(0.33 * DXFRebar.Ln[TopRFTDimArrRt.Length - 1 - 1], 0.33 * DXFRebar.Ln[TopRFTDimArrRt.Length - 1]) + 0.25), 0.2d, 0d);
+                    blockTopRFTDimRt.Entities.Add(dimension);
+                }
 
             }
         }
+            
 
         public static void DrawTopRFTLeftDims(DxfModel model, int nSpans, double[] comSpanVals)
         {
@@ -170,7 +204,7 @@ namespace Design.Core.Dxf
             {
                 DxfDimension.Aligned[] TopRFTDimArrLt = new DxfDimension.Aligned[nSpans + 1];
 
-                for (int i = 1; i < TopRFTDimArrLt.Length - 1; i++)
+                for (int i = 1; i < TopRFTDimArrLt.Length - 2; i++)
                 {
                     // Dimension with text aligned with dimension line.
                     DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
@@ -183,6 +217,22 @@ namespace Design.Core.Dxf
                     dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsTop[i - 1].X, 0, 0);
                     dimension.UseTextMiddlePoint = true;
                     dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.endPointsTop[i - 1].X - Math.Max(0.33 * DXFRebar.Ln[i - 1], 0.33 * DXFRebar.Ln[i]) - 0.25 + DXFPoints.endPointsTop[i - 1].X), 0.2d, 0d);
+                    blockTopRFTDimLt.Entities.Add(dimension);
+                }
+                //Case of Cantilever at end
+                if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
+                {
+                    // Dimension with text aligned with dimension line.
+                    DxfDimension.Aligned dimension = new DxfDimension.Aligned(model.CurrentDimensionStyle);
+                    dimension.DimensionStyleOverrides.ArrowSize = 0.2d;
+                    dimension.DimensionStyleOverrides.TextInsideHorizontal = false;
+                    dimension.DimensionStyleOverrides.TextAboveDimensionLine = true;
+                    dimension.Layer = TopRFTDimLayerLt;
+                    dimension.DimensionLineLocation = new Point3D(0, 0, 0);
+                    dimension.ExtensionLine1StartPoint = new Point3D(DXFPoints.endPointsTop[TopRFTDimArrLt.Length - 1 - 1].X - Math.Max(0.33 * DXFRebar.Ln[TopRFTDimArrLt.Length - 1 - 1], 0.33 * DXFRebar.Ln[TopRFTDimArrLt.Length - 1]) - 0.25, 0, 0);
+                    dimension.ExtensionLine2StartPoint = new Point3D(DXFPoints.endPointsTop[TopRFTDimArrLt.Length - 1 - 1].X, 0, 0);
+                    dimension.UseTextMiddlePoint = true;
+                    dimension.TextMiddlePoint = new Point3D(comSpanVals[0] + 0.50 * (DXFPoints.endPointsTop[TopRFTDimArrLt.Length - 1 - 1].X - Math.Max(0.33 * DXFRebar.Ln[TopRFTDimArrLt.Length - 1 - 1], 0.33 * DXFRebar.Ln[TopRFTDimArrLt.Length - 1]) - 0.25 + DXFPoints.endPointsTop[TopRFTDimArrLt.Length - 1 - 1].X), 0.2d, 0d);
                     blockTopRFTDimLt.Entities.Add(dimension);
                 }
             }

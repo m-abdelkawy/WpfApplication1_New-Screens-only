@@ -31,8 +31,8 @@ namespace Design.Core.Dxf
 
         //Stirrup Arrays
         public static double[] stirDiaArr240 = new double[] { 8 };
-        public static double[] stirDiaArr360 = new double[] { 10, 12, 14, 16 };
-        public static double[] stirDiaArr400 = new double[] { 10, 12, 14, 16 };
+        public static double[] stirDiaArr360 = new double[] { 10, 12, 16, 18 };
+        public static double[] stirDiaArr400 = new double[] { 10, 12, 16, 18 };
 
         //Stirrups Left
         public static double[] spacingLeftSec;
@@ -480,21 +480,21 @@ namespace Design.Core.Dxf
                     {
                         fystr = 240;
                         stirRightTxt[i] = new DxfText($"Y{stirDiaArr240[indexesRight[i]]}@{spacingRightSec[i]}"
-                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.85, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
                     else if (indexesRight[i] < stirDiaArr240.Length + stirDiaArr360.Length)
                     {
                         fystr = 360;
                         stirRightTxt[i] = new DxfText($"T{stirDiaArr360[indexesRight[i] - stirDiaArr240.Length]}@{spacingRightSec[i]}"
-                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.85, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
                     else if (indexesRight[i] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
                     {
                         fystr = 400;
                         stirRightTxt[i] = new DxfText($"T{stirDiaArr400[indexesRight[i] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingRightSec[i]}"
-                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.85, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[i]);
                     }
 
@@ -502,7 +502,7 @@ namespace Design.Core.Dxf
                 else
                 {
                     stirRightTxt[i] = new DxfText($"Increase Dims"
-                        , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 0.85, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
+                        , new Point3D(DXFRebar.stirrupsRight[i, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[i].Y - 1.40, 0), 0.2d);
                     model.Entities.Add(stirRightTxt[i]);
                 }
             }
@@ -516,21 +516,21 @@ namespace Design.Core.Dxf
                     {
                         fystr = 240;
                         stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"Y{stirDiaArr240[indexesRight[stirRightTxt.Length - 1]]}@{spacingRightSec[stirRightTxt.Length - 1]}"
-                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
                     else if (indexesRight[stirRightTxt.Length - 1] < stirDiaArr240.Length + stirDiaArr360.Length)
                     {
                         fystr = 360;
                         stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"T{stirDiaArr360[indexesRight[stirRightTxt.Length - 1] - stirDiaArr240.Length]}@{spacingRightSec[stirRightTxt.Length - 1]}"
-                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
                     else if (indexesRight[stirRightTxt.Length - 1] < stirDiaArr240.Length + stirDiaArr360.Length + stirDiaArr400.Length)
                     {
                         fystr = 400;
                         stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"T{stirDiaArr400[indexesRight[stirRightTxt.Length - 1] - stirDiaArr360.Length - stirDiaArr240.Length]}@{spacingRightSec[stirRightTxt.Length - 1]}"
-                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                            , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
                         model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
                     }
 
@@ -538,7 +538,7 @@ namespace Design.Core.Dxf
                 else
                 {
                     stirRightTxt[stirRightTxt.Length - 1] = new DxfText($"Increase Dims"
-                        , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 0.85, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
+                        , new Point3D(DXFRebar.stirrupsRight[stirRightTxt.Length - 1, 2].Start.X - 1.20/**/, DXFPoints.startPointsBot[stirRightTxt.Length - 1].Y - 1.40, 0), 0.2d);
                     model.Entities.Add(stirRightTxt[stirRightTxt.Length - 1]);
                 }
             }
