@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Design.Presentation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1024" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="700" Width="1050" WindowStartupLocation="CenterScreen"
         xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
         themes:ThemeManager.Theme= "WhistlerBlue">
 
@@ -42,7 +42,7 @@
                 <Button Name="Btn_Hide" Content="Hide Drawings" Margin="10 10 10 0" Click="bBtn_Show_Click"/>
                 <Button Name="Btn_analyse" Content="Analyse" Margin="10 10 10 0" Click="btn_analyse_Click"/>
             </StackPanel>
-            <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="873" Grid.Column="1" >
+            <TabControl Margin="10,10,0,-428" HorizontalAlignment="Left" Width="900" Grid.Column="1" >
                 <TabItem Header="Load Visualization">
                     <StackPanel HorizontalAlignment="Center"
                                 VerticalAlignment="Center">

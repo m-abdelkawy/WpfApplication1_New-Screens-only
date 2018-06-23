@@ -27,7 +27,7 @@ namespace Design.Presentation.Geometry
             GCanvas = gCanvas;
             InsertionPoint = insertionPoint;
             Length = length;
-            HeadHeight = 5;
+            HeadHeight = 7;
             var body = new GLine(GCanvas, InsertionPoint, new Point(InsertionPoint.X, InsertionPoint.Y + Length));
 
             var headRightLine = new GLine(GCanvas, InsertionPoint, new Point(InsertionPoint.X + HeadHeight, InsertionPoint.Y + HeadHeight));

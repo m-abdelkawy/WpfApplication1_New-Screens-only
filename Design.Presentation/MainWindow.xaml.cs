@@ -547,7 +547,7 @@ namespace Design.Presentation
                     /*-----------------------Add Text-----------------------*/
                     GeometryEngine.Shapes["Text"].Add(new GText(GeometryEngine.GCanvas, new Point(GComSpanValues[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20
                         + PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].RelativeDistance *
-                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 50), $"{PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal}"));
+                        spanList[PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].selectedSpanNo - 1] * 20, 80), $"{PointLoadAssignmentViewModel.PointLoadModelStaticCollection[i].PointLoadVal} KN"));
                 }
             }
 

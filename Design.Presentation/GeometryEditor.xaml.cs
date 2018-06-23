@@ -140,8 +140,8 @@ namespace Design.Presentation
 
             for (int i = 0; i < GeometryEditorVM.GeometryEditor.NumberOfSpans; i++)
             {
-                GeometryEngine.Shapes["Beams"].Add(new GLine(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)
-                    , new Point(GComSpanValues[i + 1] * 20, 100)));
+                GeometryEngine.Shapes["Beams"].Add(new GLine(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 130)
+                    , new Point(GComSpanValues[i + 1] * 20, 130)));
                // GeometryEngine.Shapes["Beams"].ForEach(d => { d.Scale = 10;d.New(); });
                 //new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100));
             }
@@ -154,15 +154,15 @@ namespace Design.Presentation
                     case Restraints.Fixed:
                         //Revise
                      GeometryEngine.Shapes["Supports"].Add(
-                         new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i]* 20, 100), 20));
+                         new Fixed(GeometryEngine.GCanvas, new Point(GComSpanValues[i]* 20, 130), 20));
                         break;
                     case Restraints.Hinged:
                         GeometryEngine.Shapes["Supports"].Add(
-                        new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)));
+                        new Hinged(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 130)));
                         break;
                     case Restraints.Roller:
                         GeometryEngine.Shapes["Supports"].Add(
-                        new Roller(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 100)));
+                        new Roller(GeometryEngine.GCanvas, new Point(GComSpanValues[i] * 20, 130)));
                         break;
                     case Restraints.NoRestraints:
                         break;
@@ -172,7 +172,7 @@ namespace Design.Presentation
             }
 
             GeometryEngine.RenderAll();
-            GeometryEngine.Shapes["Supports"].ForEach(d => d.SetScale(1));
+            GeometryEngine.Shapes["Supports"].ForEach(d => d.SetScale(0.75));
             //GeometryEngine.Shapes.Add("li", new List<GShape>()); Add List in Real Time
             this.Close();
         }
