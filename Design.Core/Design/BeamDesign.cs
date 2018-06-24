@@ -296,13 +296,14 @@ namespace Desing.Core.Sap
             double[] cdArr = new double[3];
             for (int i = 0; i < cdArr.Length; i++)
             {
-                cdArr[i] = Math.Max(Math.Max((1 + Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50) / 0.80)
-                        , (1 - Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50) / 0.80)), 0.125);
+                double x = Math.Min(((1 + Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50)) / 0.80)
+                        , ((1 - Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50)) / 0.80));
+                cdArr[i] = Math.Max(x, 0.125);
 
-                if (cdArr[i] > 0.44)
-                {
-                    cdArr[i] = 0.44;
-                }
+                //if (cdArr[i] > 0.44)
+                //{
+                //    cdArr[i] = 0.44;
+                //}
             }
             return cdArr;
         }
@@ -317,7 +318,7 @@ namespace Desing.Core.Sap
                 }
                 else
                 {
-                    jArr[i] = (1 / (1.15 * (1 - 0.4 * cdArr[i])));
+                    jArr[i] = (1 /1.15) * (1 - 0.4 * cdArr[i]);
                 }
             }
             return jArr;
