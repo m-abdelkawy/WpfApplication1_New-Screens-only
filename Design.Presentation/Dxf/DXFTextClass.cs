@@ -71,25 +71,55 @@ namespace Design.Core.Dxf
             //Case of Cantilever at start
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
-                DxfText text = new DxfText($"{nRebarBot[0]}T{BotchosenDiameterArr[0]}"
+                if (nRebarBot[0] > 0)
+                {
+                    DxfText text = new DxfText($"{nRebarBot[0]}T{BotchosenDiameterArr[0]}"
                     , new Point3D(DXFPoints.startPointsBot[0].X + 0.60 * DXFRebar.Ln[0], DXFPoints.startPointsBot[0].Y + 0.10/*---*/, 0), 0.2d);
-                model.Entities.Add(text);
+                    model.Entities.Add(text);
+                }
+                else
+                {
+                    DxfText text = new DxfText($"Increase Dims"
+                    , new Point3D(DXFPoints.startPointsBot[0].X + 0.60 * DXFRebar.Ln[0], DXFPoints.startPointsBot[0].Y + 0.10/*---*/, 0), 0.2d);
+                    model.Entities.Add(text);
+                }
+                
             }
 
             //Bottom Rft Text/*------------------*/
             for (int i = 1; i < BotRFTTxt.Length - 1; i++)
             {
-                DxfText text = new DxfText($"{nRebarBot[i]}T{BotchosenDiameterArr[i]}"
+                if (nRebarBot[i] > 0)
+                {
+                    DxfText text = new DxfText($"{nRebarBot[i]}T{BotchosenDiameterArr[i]}"
                     , new Point3D(DXFPoints.startPointsBot[i].X + 0.60 * DXFRebar.Ln[i], DXFPoints.startPointsBot[i].Y + 0.10/*---*/, 0), 0.2d);
-                model.Entities.Add(text);
+                    model.Entities.Add(text);
+                }
+                else
+                {
+                    DxfText text = new DxfText($"Increase Dims"
+                    , new Point3D(DXFPoints.startPointsBot[i].X + 0.60 * DXFRebar.Ln[i], DXFPoints.startPointsBot[i].Y + 0.10/*---*/, 0), 0.2d);
+                    model.Entities.Add(text);
+                }
+                
             }
 
             //Case of Cantilever End
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
             {
-                DxfText text = new DxfText($"{nRebarBot[BotRFTTxt.Length - 1]}T{BotchosenDiameterArr[BotRFTTxt.Length - 1]}"
+                if (nRebarBot[BotRFTTxt.Length - 1] > 0)
+                {
+                    DxfText text = new DxfText($"{nRebarBot[BotRFTTxt.Length - 1]}T{BotchosenDiameterArr[BotRFTTxt.Length - 1]}"
                     , new Point3D(DXFPoints.startPointsBot[BotRFTTxt.Length - 1].X + 0.60 * DXFRebar.Ln[BotRFTTxt.Length - 1], DXFPoints.startPointsBot[BotRFTTxt.Length - 1].Y + 0.10/*---*/, 0), 0.2d);
-                model.Entities.Add(text);
+                    model.Entities.Add(text);
+                }
+                else
+                {
+                    DxfText text = new DxfText($"Increase Dims"
+                    , new Point3D(DXFPoints.startPointsBot[BotRFTTxt.Length - 1].X + 0.60 * DXFRebar.Ln[BotRFTTxt.Length - 1], DXFPoints.startPointsBot[BotRFTTxt.Length - 1].Y + 0.10/*---*/, 0), 0.2d);
+                    model.Entities.Add(text);
+                }
+                
             }
         }
         #endregion
@@ -123,28 +153,56 @@ namespace Design.Core.Dxf
             //Case Of Cantilever Start Span
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[0].SelectedRestraint != Restraints.NoRestraints)
             {
-                TopRFTSupprtTxt[0] = new DxfText($"{nRebarTopSupport[0]}T{TopchosenDiameterArr[0]}"
+                if (nRebarTopSupport[0] > 0)
+                {
+                    TopRFTSupprtTxt[0] = new DxfText($"{nRebarTopSupport[0]}T{TopchosenDiameterArr[0]}"
                     , new Point3D(DXFRebar.TopSpan[0].Start.X + 10 * 0.15, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
-                model.Entities.Add(TopRFTSupprtTxt[0]);
+                    model.Entities.Add(TopRFTSupprtTxt[0]);
+                }
+                else
+                {
+                    TopRFTSupprtTxt[0] = new DxfText($"Increase Dims"
+                    , new Point3D(DXFRebar.TopSpan[0].Start.X + 10 * 0.15, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
+                    model.Entities.Add(TopRFTSupprtTxt[0]);
+                }
+                
             }
 
             //Top Support RFT/*------------------*/
             
             for (int i = 1; i < TopRFTSupprtTxt.Length - 1; i++)
             {
-                /*TopRFTSupprtTxt[i] = new DxfText($"{nRebarTopSupport[i]}T{TopchosenDiameterArr[i]}"
-                    , new Point3D(DXFRebar.TopSupport[i - 1].Start.X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);*/
-                TopRFTSupprtTxt[i] = new DxfText($"{nRebarTopSupport[i]}T{TopchosenDiameterArr[i]}"
+                if (nRebarTopSupport[i] > 0)
+                {
+                    TopRFTSupprtTxt[i] = new DxfText($"{nRebarTopSupport[i]}T{TopchosenDiameterArr[i]}"
                 , new Point3D(DXFPoints.startPointsTop[i].X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
-                model.Entities.Add(TopRFTSupprtTxt[i]);
+                    model.Entities.Add(TopRFTSupprtTxt[i]);
+                }
+                else
+                {
+                    TopRFTSupprtTxt[i] = new DxfText($"Increase Dims"
+                , new Point3D(DXFPoints.startPointsTop[i].X + 0.60, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
+                    model.Entities.Add(TopRFTSupprtTxt[i]);
+                }
+                
             }
 
             //Case of Cantilever end Span
             if (GeometryEditorVM.GeometryEditor.RestraintsCollection[RFTCanvas.SpanVals.Length].SelectedRestraint != Restraints.NoRestraints)
             {
-                TopRFTSupprtTxt[nSpans] = new DxfText($"{nRebarTopSupport[nSpans]}T{TopchosenDiameterArr[nSpans]}"
+                if (nRebarTopSupport[nSpans] > 0)
+                {
+                    TopRFTSupprtTxt[nSpans] = new DxfText($"{nRebarTopSupport[nSpans]}T{TopchosenDiameterArr[nSpans]}"
                 , new Point3D(DXFRebar.TopSpan[nSpans].End.X - 10 * 0.15, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
-                model.Entities.Add(TopRFTSupprtTxt[nSpans]);
+                    model.Entities.Add(TopRFTSupprtTxt[nSpans]);
+                }
+                else
+                {
+                    TopRFTSupprtTxt[nSpans] = new DxfText($"Increase Dims"
+                , new Point3D(DXFRebar.TopSpan[nSpans].End.X - 10 * 0.15, DXFPoints.startPointsTop[0].Y - 0.3, 0), 0.2d);
+                    model.Entities.Add(TopRFTSupprtTxt[nSpans]);
+                }
+                
             }
             
         }

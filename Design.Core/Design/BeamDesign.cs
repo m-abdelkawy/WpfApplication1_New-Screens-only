@@ -277,7 +277,7 @@ namespace Desing.Core.Sap
             double[] c1Arr = new double[3];
             for (int i = 0; i < c1Arr.Length; i++)
             {
-                c1Arr[i] = Math.Abs((elem.MyRectSec.T * 1000 - cover) / Math.Pow(((m33Arr[i] * 100000/*N.mm*/)
+                c1Arr[i] = Math.Abs((elem.MyRectSec.T * 1000 - cover) / Math.Pow(((m33Arr[i] * 1000000/*N.mm*/)
                     / (fcu/*fcu N/mm2*/ * elem.MyRectSec.B * 1000)), 0.50));
             }
             return c1Arr;
@@ -298,6 +298,11 @@ namespace Desing.Core.Sap
             {
                 cdArr[i] = Math.Max(Math.Max((1 + Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50) / 0.80)
                         , (1 - Math.Pow((1 - 4 * 0.40 * cVals[i]), 0.50) / 0.80)), 0.125);
+
+                if (cdArr[i] > 0.44)
+                {
+                    cdArr[i] = 0.44;
+                }
             }
             return cdArr;
         }
@@ -349,7 +354,12 @@ namespace Desing.Core.Sap
                 for (int j = 0; j < nRebars.GetLength(1); j++)
                 {
                     nRebars[i, j] = Math.Max(Convert.ToInt32(Math.Ceiling(Asteel[i] * (4 / (Math.PI * (Math.Pow((Diameters[j] / 10), 2)))))), 2);
+                    if (Asteel[i] == -1)
+                    {
+                        nRebars[i, j] = -1;
+                    }
                 }
+                
             }
             return nRebars;
         }
